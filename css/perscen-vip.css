@@ -1,0 +1,699 @@
+/*公共部分 S*/
+
+body {
+    background: #F5F8FF;
+    overflow-y: scroll;
+    width: fit-content;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #666;
+}
+
+.relative {
+    margin-top: 100px;
+    position: relative;
+}
+
+.content {
+    display: flex;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*banner*/
+
+.vipBanner {
+    width: 100%;
+    height: 172px;
+    background: url(../img/perscen-vip/vip_head_bg.png)
+}
+
+.system {
+    width: 96px;
+    height: 21px;
+    font-size: 24px;
+    font-family: MicrosoftYaHeiSemibold;
+    color: rgba(255, 255, 255, 1);
+    line-height: 21px;
+}
+
+.bannerCont {
+    padding: 10px 0 0 98px;
+}
+
+.vip_goBack {
+    width: 28px;
+    height: 16px;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    color: rgba(255, 255, 255, 1);
+    line-height: 16px;
+    margin-bottom: 37px;
+}
+
+.vipBanner .bannerCont a i {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background: url(../img/icon/vip_back.png) no-repeat;
+    background-size: 100%;
+}
+
+.vip_bottom {
+    margin-top: 37px;
+}
+
+
+/*aside*/
+
+.person-left {
+    height: 100%;
+    background: #F5F8FF;
+    padding: 0 10px 0 83px;
+}
+
+.person-left dl {
+    padding-top: 10px;
+    /* height: -webkit-fill-available; */
+}
+
+.left-common {
+    width: 179px;
+    height: 30px;
+    background: rgba(33, 37, 56, 1);
+    font-size: 16px;
+    font-family: MicrosoftYaHeiSemibold;
+    color: rgba(255, 255, 255, 1);
+    line-height: 30px;
+    text-align: center;
+}
+
+.person-left dd {
+    text-align: center;
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    color: rgba(77, 77, 77, 1);
+    line-height: 19px;
+    margin: 15px 0;
+}
+
+.person-left .icon {
+    width: 51px;
+    height: 45px;
+    background-image: url(../img/perscen-vip/vip_logo.png);
+    margin-top: 30px;
+}
+
+
+/* section vip列表 */
+
+.vipHeader {
+    margin-left: 4px;
+    width: 190px;
+    height: 136px;
+    position: absolute;
+    top: -136px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border-radius: 6px 6px 0px 0px;
+}
+
+.vipCount .active {
+    height: 156px;
+    background: linear-gradient(180deg, rgba(77, 90, 255, 1) 0%, rgba(51, 75, 255, 1) 100%);
+    opacity: 0.9;
+    top: -156px;
+}
+
+.vipCount .countNum {
+    color: rgba(53, 56, 75, 1);
+    font-size: 14px;
+    position: absolute;
+    right: 11px;
+    top: 15px;
+    z-index: 1;
+    transform: rotate(45deg);
+}
+
+.vipCount .count::after {
+    content: '';
+    position: absolute;
+    background-image: url(../img/perscen-vip/vip_count.png);
+    width: 68px;
+    height: 68px;
+    top: 0;
+    right: 0;
+}
+
+.vipHeader .top {
+    padding-top: 12px;
+    height: 21px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1);
+    line-height: 21px;
+}
+
+.vipHeader sup {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 211, 128, 1);
+}
+
+.vipHeader .middle {
+    margin-top: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    font-size: 34px;
+}
+
+.vipHeader .middle span {
+    color: rgba(204, 204, 204, 1);
+    font-size: 14px;
+}
+
+.vipHeader .bottom {
+    color: rgba(204, 204, 204, 1);
+    font-size: 14px;
+    margin: 14px 0 21px;
+}
+
+.vipBlock {
+    background: #fff;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.vipCount {
+    position: relative;
+    width: 198px;
+    border-left: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+}
+
+.line {
+    margin: auto;
+    margin-top: 35px;
+    width: 180px;
+    height: 1px;
+    background: rgba(232, 232, 232, 1);
+}
+
+.vipBlock .vipCount .firstTop {
+    margin-top: 55px;
+}
+
+.vipBlock .vipCount .secondTop {
+    margin-top: 36px;
+}
+
+.vipBody ul li:last-child {
+    margin-bottom: 15px;
+}
+
+.vipBody li {
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    color: rgba(77, 77, 77, 1);
+    text-align: center;
+    margin: 15px;
+}
+
+.vipCount .normal {
+    width: 120px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid rgba(73, 111, 255, 1);
+    text-align: center;
+    font-size: 14px;
+    color: #36394F;
+    margin: auto;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.vipCount .use,
+.vipCount .renew {
+    background: #496FFF;
+    color: #fff;
+}
+
+.vipCount .tel {
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    display: none;
+}
+
+.vipBody i {
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    background-image: url(../img/perscen-vip/tel.png);
+}
+
+.vipBody span {
+    display: inline-block;
+    height: 20px;
+    width: 1px;
+    background: #E8E8E8;
+    margin: 0px 5px;
+}
+
+
+/* 支付相关 */
+
+#mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .7);
+}
+
+#payment {
+    width: 400px;
+    height: 394px;
+    padding: 0 30px;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#payment .title {
+    color: rgba(51, 51, 51, 1);
+    font-size: 20px;
+    margin-top: 19px;
+    text-align: center;
+}
+
+#payment .title i.close {
+    width: 14px;
+    height: 14px;
+    color: #999;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+}
+
+.payDetail p:first-child {
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.payDetail p:last-child {
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: rgba(153, 153, 153, 1);
+}
+
+.payDetail .middle {
+    display: flex;
+    width: 340px;
+    text-align: center;
+    height: 72px;
+    margin: 20px 0 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(196, 198, 207, 1)
+}
+
+.payDetail .middle .type {
+    width: 99px;
+    background: rgba(240, 242, 245, 1);
+    color: rgba(73, 111, 255, 1);
+    font-size: 18px;
+    line-height: 72px;
+}
+
+.payDetail .cost span {
+    font-size: 24px;
+    line-height: 72px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.payDetail .cost {
+    width: 241px;
+    font-size: 12px;
+    color: rgba(51, 51, 51, 1);
+}
+
+#payment .titlt2 {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 1);
+}
+
+#payment .payType {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+    overflow: hidden;
+}
+
+#payment .payType p {
+    width: 50%;
+    overflow: hidden;
+    float: left;
+}
+
+#payment .payType p .iCheck {
+    width: 14px;
+    height: 14px;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+#payment .payType p .iCheck.normal {
+    border: 1px solid #C4C6CF;
+    transition: all .5s
+}
+
+#payment .payType p .iCheck.normal:hover {
+    background: #EEF3F9;
+    border: 1px solid #5584FF;
+}
+
+#payment .payType p .iCheck.normal.active {
+    background: url(../img/icon/alglist_yes.png) no-repeat center #5584FF;
+    border: 1px solid #5584FF;
+}
+
+#payment .payType p .iCheck.disabled {
+    border: 1px solid #E6E7EB;
+    background: #F7F8FA;
+}
+
+#payment .payType p img {
+    width: 30px;
+    height: 30px;
+    margin: 0 15px 0 7px;
+}
+
+#payment .payType p span {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #666;
+    display: inline-block;
+}
+
+#payment .btn {
+    width: 96px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: #fff;
+    background: #496FFF;
+    cursor: pointer;
+}
+
+
+/* 二维码 */
+
+#wxerweimaMu,
+#zfberweimaMu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1999;
+}
+
+#wxerweima,
+#zfberweima {
+    width: 320px;
+    height: 365px;
+    padding: 20px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+}
+
+#wxerweima .close,
+#zfberweima .close {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: #999;
+    font-size: 24px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+#wxerweima .title,
+#zfberweima .title {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+
+#wxerweima img,
+#zfberweima img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    background: #ccc;
+    display: block;
+}
+
+#wxerweima .paytip,
+#wxerweima .reload,
+#zfberweima .paytip,
+#zfberweima .reload {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#wxerweima .reload:active,
+#zfberweima .reload:active {
+    color: #999;
+}
+
+#wxerweima .reload i,
+#zfberweima .reload i {
+    width: 16px;
+    height: 16px;
+    margin: 15px 5px 0 0;
+    background: url(../img/icon/reload.png) no-repeat;
+    background-size: 100%;
+    ;
+    display: inline-block;
+}
+
+
+/* 二维码加载动画 */
+
+.loader {
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    width: 180px;
+    height: 180px;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+@-webkit-keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    45% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    45% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ball-pulse>div:nth-child(1) {
+    -webkit-animation: scale 0.75s -0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s -0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse>div:nth-child(2) {
+    -webkit-animation: scale 0.75s -0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s -0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse>div:nth-child(3) {
+    -webkit-animation: scale 0.75s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse>div {
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    display: inline-block;
+}
+
+
+/*犀数币支付*/
+
+#xshuAlertMu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1998;
+}
+
+#xshuAlert {
+    width: 400px;
+    padding: 0 30px 20px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#xshuAlert .titl {
+    position: relative;
+    overflow: hidden;
+}
+
+#xshuAlert .titl p {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+#xshuAlert .titl i.close {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: #999;
+    font-size: 24px;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    cursor: pointer;
+}
+
+#xshuAlert .tip {
+    font-size: 14px;
+    color: #333;
+}
+
+#xshuAlert .tip2 {
+    margin-bottom: 15px;
+    color: red;
+}
+
+#xshuAlert input {
+    width: 100%;
+    height: 40px;
+    margin: 20px 0 10px;
+    padding: 0 10px;
+    font-size: 14px;
+    border: 1px solid #C4C6CF;
+}
+
+#xshuAlert .btn {
+    width: 96px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #fff;
+    background: #496FFF;
+    cursor: pointer;
+}
+
+#xshuAlert .btn:hover {
+    background: #666;
+}
+
+#xshuAlert .forgetMmGoChange {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
+
+.nav_percenvip_xf {
+    padding: 12px 0;
+    text-align: center;
+}
+
+.nav_percenvip_xfl {
+    color: #666;
+}
+
+.nav_percenvip_xfr {
+    color: #496fff;
+    padding-left: 5px;
+    cursor: pointer;
+}

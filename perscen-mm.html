@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 账户安全</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        .zhaohui {
+            display: inline-block !important;
+            line-height: 30px;
+            cursor: pointer;
+            color: #496FFF;
+            margin-right: 20px;
+        }
+
+        .zh,
+        .xg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            display: none;
+        }
+
+        .zh_box,
+        .xg_box {
+            width: 360px;
+            height: 294px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -147px;
+            margin-left: -180px;
+            background: #fff;
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            padding: 20px 30px;
+        }
+
+        .xg_box {
+            height: 250px;
+            margin-top: -125px;
+        }
+
+        .zh_box h2,
+        .xg_box h2 {
+            width: 100%;
+            height: 27px;
+            line-height: 27px;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .zh_box img,
+        .xg_box img {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            width: 12px;
+            height: 12px;
+        }
+
+        .zh_box input,
+        .xg_box input {
+            width: 300px;
+            height: 28px;
+            box-sizing: border-box;
+            border: 1px solid #E8E8E8;
+            padding-left: 15px;
+        }
+
+        .zh_box p,
+        .xg_box p {
+            font-size: 12px;
+            line-height: 15px;
+            color: red;
+            opacity: 0;
+        }
+
+        .zh_box span,
+        .xg_box span {
+            width: 90px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: #fff;
+            background: #496fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .zh_box span:hover,
+        .xg_box span:hover {
+            background: #ccc;
+        }
+
+        .zhaohui_sure,
+        .xiugai_sure {
+            width: 100px;
+            height: 30px;
+            background: #496FFF;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+            margin-left: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="mm">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_mm">
+                <div class="perscenBlock">
+                    <div class="zfMm">
+                        <h2 class="mmTitl">支付密码<span class="isSet"></span></h2>
+                        <div class="mmChoiceFoo hide mmChoiceFoo_old">
+                            <h3>原始密码</h3>
+                            <h4>：</h4>
+                            <input type="text" class="form-control noradius mmOld" data-item="原始密码">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="mmChoiceFoo hide">
+                            <h3>新密码</h3>
+                            <h4>：</h4>
+                            <input type="password" class="form-control noradius mmNew" data-item="密码">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="mmChoiceFoo hide">
+                            <h3>确认密码</h3>
+                            <h4>：</h4>
+                            <input type="password" class="form-control noradius mmConfirm" data-item="密码确认">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="btnFoo">
+                            <span class="zhaohui" data-type="zf">找回密码</span>
+                            <p class="btn hide btn_clickshow" data-type="qx">取消</p>
+                            <p class="btn hide btn_clickshow" data-type="bc">保存</p>
+                            <p class="btn hide btn_morenshow" data-type="re">修改密码</p>
+                            <p class="btn hide btn_morenshow" data-type="sz">设置密码</p>
+                        </div>
+                    </div>
+                    <div class="logMm">
+                        <h2 class="mmTitl">登录密码<span class="isSet">已设置</span></h2>
+                        <div class="mmChoiceFoo hide mmChoiceFoo_old">
+                            <h3>原始密码</h3>
+                            <h4>：</h4>
+                            <input type="text" class="form-control noradius old_pwd" data-item="原始密码">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="mmChoiceFoo hide">
+                            <h3>新密码</h3>
+                            <h4>：</h4>
+                            <input type="password" class="form-control noradius pwd1" data-item="密码">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="mmChoiceFoo hide">
+                            <h3>确认密码</h3>
+                            <h4>：</h4>
+                            <input type="password" class="form-control noradius pwd2" data-item="密码确认">
+                            <span class="cRed verticalM"></span>
+                        </div>
+                        <div class="btnFoo">
+                            <span class="zhaohui" data-type="dl">找回密码</span>
+
+                            <p class="btn hide" data-type="qx">取消</p>
+                            <p class="btn hide" data-type="bc">保存</p>
+                            <p class="btn" data-type="re">修改密码</p>
+                        </div>
+                    </div>
+                    <div class="sjHm">
+                        <h2 class="mmTitl">手机号码<span class="isSet">已设置</span></h2>
+                        <div class="btnFoo">
+                            <p class="btn xiugai">修改手机号</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mu"></div>
+
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+
+    <div class="zh">
+        <div class="zh_box">
+            <h2>找回密码</h2><img src="img/close4.png">
+            <input type="text" placeholder="手机号码">
+            <p>*请输入手机号码</p>
+            <input type="text" placeholder="验证码" style="width:195px;margin-right:15px;"><span>获取验证码</span>
+            <p>*请输入验证码</p>
+            <input type="text" placeholder="输入新密码">
+            <p>*请输入新密码</p>
+            <input type="text" placeholder="确认新密码">
+            <p>*请再次输入新密码</p>
+            <div class="zhaohui_sure">确认</div>
+        </div>
+    </div>
+
+    <div class="xg">
+        <div class="xg_box">
+            <h2>修改手机号</h2><img src="img/close4.png">
+            <input type="text" placeholder="请输入旧的手机号码">
+            <p>*请输入旧的手机号码</p>
+            <input type="text" placeholder="请输入新的手机号码">
+            <p>*请输入新的手机号码</p>
+            <input type="text" placeholder="验证码" style="width:195px;margin-right:15px;"><span>获取验证码</span>
+            <p>*请输入验证码</p>
+            <div class="xiugai_sure">确认</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    //犀数币密码是否初始
+    function havesecretFn() {
+        $.GSHajax({
+            url: '/personal/havesecret/',
+            success: function(res) {
+                if (res.status) {
+                    $('.zfMm .isSet').text('已设置');
+                    $('.zfMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                } else {
+                    $('.zfMm .isSet').text('未设置');
+                    $('.zfMm .btnFoo .btn[data-type="sz"]').show().siblings().hide();
+
+                }
+            }
+        })
+    }
+    $(function() {
+        //犀数币密码是否初始
+        havesecretFn();
+        //犀数币密码
+        $('.zfMm .btnFoo').on('click', '.btn', function() {
+            var nowType = $(this).attr('data-type');
+            $('.zfMm input').next().text('');
+            switch (nowType) {
+                case 'sz':
+                    $('.zfMm .btnFoo .btn_morenshow').hide();
+                    $('.zfMm .btnFoo .btn_clickshow').show();
+                    $('.zfMm .mmChoiceFoo').show().siblings('.mmChoiceFoo_old').hide();
+                    break;
+                case 're':
+                    $('.zfMm .btnFoo .btn_morenshow').hide();
+                    $('.zfMm .btnFoo .btn_clickshow').show();
+                    $('.zfMm .mmChoiceFoo').show();
+                    break;
+                case 'qx':
+
+                    $('.zfMm .btnFoo .btn_clickshow').hide();
+                    if ($('.zfMm .isSet').text() == '已设置') {
+                        $('.zfMm .btnFoo .btn_morenshow[data-type="re"]').show();
+                    } else {
+                        $('.zfMm .btnFoo .btn_morenshow[data-type="sz"]').show();
+                    }
+                    $('.zfMm .mmChoiceFoo').hide();
+                    $('.zfMm input').val('');
+                    break;
+                case 'bc':
+                    var obj = {};
+                    if ($('.zfMm .isSet').text() == '已设置') {
+                        obj.mmOld = $('.zfMm .mmOld').val();
+                    }
+                    obj.mmNew = $('.zfMm .mmNew').val();
+                    obj.mmConfirm = $('.zfMm .mmConfirm').val();
+                    for (let key in obj) {
+                        if (!obj[key]) {
+                            $('.zfMm .' + key).next().text($('.zfMm .' + key).attr('data-item') + '不允许为空');
+                            return;
+                        }
+                    }
+                    obj.mmOld = $('.zfMm .mmOld').val();
+                    if (obj.mmNew != obj.mmConfirm) {
+                        $('.zfMm .mmConfirm').next().text('密码不一致, 请重新输入');
+                        return;
+                    }
+                    $.GSHajax({
+                        url: '/personal/changepayment/',
+                        type: 'POST',
+                        data: {
+                            old_sec: obj.mmOld,
+                            new_sec: obj.mmConfirm
+                        },
+                        success: function(res) {
+                            if (res.status) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isOk',
+                                    h2txt: res.msg,
+                                    setTime: 2000
+                                });
+                                $('.zfMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                                $('.zfMm .mmChoiceFoo').hide();
+                                $('.zfMm input').val('');
+                                //犀数币密码是否初始
+                                havesecretFn();
+                            } else {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: res.msg,
+                                    setTime: 2000
+                                });
+                            }
+                        }
+                    })
+                    break;
+            }
+        })
+        $('.zhaohui').click(function() {
+            var type = $(this).attr('data-type')
+            if (type == 'zf') {
+                $('.zh input').val('')
+                $('.zh').show()
+            } else {
+                window.location.href = 'forget.html'
+            }
+        })
+        $('.zh img').click(function() {
+                $('.zh').hide()
+            })
+            //平台密码修改
+        $('.logMm .btnFoo').on('click', '.btn', function() {
+                $('.logMm input').next().text('');
+                var nowType = $(this).attr('data-type');
+                switch (nowType) {
+                    case 're':
+                        $('.logMm .mmChoiceFoo').show();
+                        $(this).hide().siblings().show();
+                        break
+                    case 'qx':
+                        $('.logMm .mmChoiceFoo').hide();
+                        $('.logMm input').val('');
+                        $('.logMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                        break
+                    case 'bc':
+                        var obj = {
+                            old_pwd: $('.logMm .old_pwd').val(),
+                            pwd1: $('.logMm .pwd1').val(),
+                            pwd2: $('.logMm .pwd2').val()
+                        };
+                        for (let key in obj) {
+                            if (!obj[key]) {
+                                $('.logMm .' + key).next().text($('.logMm .' + key).attr('data-item') + '不允许为空');
+                                return;
+                            }
+                        }
+                        if (obj.pwd1 != obj.pwd2) {
+                            $('.logMm .pwd2').next().text('密码不一致, 请重新输入');
+                            return;
+                        }
+                        $.GSHajax({
+                            url: '/personal/change_pwd/',
+                            type: 'POST',
+                            data: obj,
+                            success: function(res) {
+                                if (res.status) {
+                                    $('.logMm .mmChoiceFoo').hide();
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isOk',
+                                        h2txt: '密码修改成功',
+                                        setTime: 2000
+                                    });
+                                    $('.logMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                                    $('.logMm input').val('');
+                                    sessionStorage.removeItem('token');
+                                    $.GSHajax({
+                                        url: "/login/",
+                                    });
+                                    window.location.href = 'login.html?back';
+                                } else {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isNo',
+                                        h2txt: '原始密码错误, 请重新输入',
+                                        setTime: 2000
+                                    });
+                                    $('.logMm input.old_pwd').val('');
+                                }
+                            }
+                        })
+                        break
+                }
+            })
+            // 修改手机号显示
+        $(".xiugai").on("click", function() {
+            $(".xg").show();
+        });
+        // 修改手机号关闭
+        $('.xg img').click(function() {
+            $('.xg').hide()
+            $('.xg_box input:eq(0)').val("")
+            $('.xg_box input:eq(1)').val("")
+            $('.xg_box input:eq(2)').val("")
+        });
+        // 获取验证码
+        $('.xg_box span').click(function() {
+            if ($('.xg_box input:eq(0)').val() == '') {
+                $('.xg_box p:eq(0)').html('请输入旧的手机号码')
+                $('.xg_box p:eq(0)').css('opacity', 1)
+                timeout($('.xg_box p:eq(0)'))
+            } else if (!a.test($('.xg_box input:eq(0)').val())) {
+                $('.xg_box p:eq(0)').html('手机号码不存在')
+                $('.xg_box p:eq(0)').css('opacity', 1)
+                timeout($('.xg_box p:eq(0)'))
+            } else {
+                if ($('.xg_box span').html() == '获取验证码') {
+                    timeout3(60)
+                    $.ajax({
+                        url: url_ip + '/send_code/',
+                        type: 'POST',
+                        data: {
+                            mobile: $('.xg_box input:eq(0)').val(),
+                            type: 2
+                        },
+                        datatype: 'json',
+                        success: function(data) {
+                            // console.log(data)
+                        },
+                        error: function(data) {
+                            // console.log(data)
+                        }
+                    })
+                }
+            }
+        });
+        // 修改手机号确认
+        $('.xiugai_sure').click(function() {
+            if ($('.xg_box input:eq(0)').val() == '') {
+                $('.xg_box p:eq(0)').html('请输入旧的手机号码')
+                $('.xg_box p:eq(0)').css('opacity', 1)
+                timeout($('.xg_box p:eq(0)'))
+            } else if (!a.test($('.xg_box input:eq(0)').val())) {
+                $('.xg_box p:eq(0)').html('手机号码不存在')
+                $('.xg_box p:eq(0)').css('opacity', 1)
+                timeout($('.xg_box p:eq(0)'))
+            } else if ($('.xg_box input:eq(1)').val() == '') {
+                $('.xg_box p:eq(1)').html('请输入新的手机号码')
+                $('.xg_box p:eq(1)').css('opacity', 1)
+                timeout($('.xg_box p:eq(1)'))
+            } else if (!a.test($('.xg_box input:eq(1)').val())) {
+                $('.xg_box p:eq(1)').html('手机号码不存在')
+                $('.xg_box p:eq(1)').css('opacity', 1)
+                timeout($('.xg_box p:eq(1)'))
+            } else if ($('.xg_box input:eq(2)').val() == '') {
+                $('.xg_box p:eq(2)').html('验证码不能为空')
+                $('.xg_box p:eq(2)').css('opacity', 1)
+                timeout($('.xg_box p:eq(2)'))
+            } else {
+                $.ajax({
+                    url: url_ip + '/admins/changemobile/',
+                    type: 'POST',
+                    data: {
+                        old_mobile: $('.xg_box input:eq(0)').val(),
+                        new_mobile: $('.xg_box input:eq(1)').val(),
+                        code: $('.xg_box input:eq(2)').val()
+                    },
+                    datatype: 'json',
+                    headers: {
+                        'Authorization': token
+                    },
+                    success: function(res) {
+                        $('.xg_box input:eq(0)').val("")
+                        $('.xg_box input:eq(1)').val("")
+                        $('.xg_box input:eq(2)').val("")
+                        var data = $.parseJSON(res);
+                        // console.log(data);
+                        if (data.status) {
+                            alert('手机号修改成功')
+                            $('.xg').hide()
+                        } else {
+                            if (data.msg == '验证码已过期') {
+                                $('.xg_box p:eq(2)').html(data.msg)
+                                $('.xg_box p:eq(2)').css('opacity', 1)
+                                timeout($('.xg_box p:eq(2)'))
+                            } else if (data.msg == "验证码错误") {
+                                $('.xg_box p:eq(2)').html(data.msg)
+                                $('.xg_box p:eq(2)').css('opacity', 1)
+                                timeout($('.xg_box p:eq(2)'))
+                            } else if (data.msg == '用户查找失败') {
+                                $('.xg_box p:eq(1)').html(data.msg)
+                                $('.xg_box p:eq(1)').css('opacity', 1)
+                                timeout($('.xg_box p:eq(1)'))
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        // console.log(data)
+                    }
+                })
+            }
+        });
+
+        function timeout(obj) {
+            var timeout
+            clearTimeout(timeout)
+            timeout = setTimeout(function() {
+                obj.css('opacity', 0)
+            }, 2000)
+        }
+
+        function timeout2(time) {
+            var intervel = setInterval(function() {
+                if (time > 0) {
+                    time--;
+                    $('.zh_box span').css('background', '#ccc')
+                    $('.zh_box span').html('重新发送' + time + 's')
+                } else {
+                    $('.zh_box span').css('background', '#496fff')
+                    $('.zh_box span').html('获取验证码')
+                    clearInterval(intervel)
+                }
+            }, 1000)
+        }
+
+        function timeout3(time) {
+            var intervel = setInterval(function() {
+                if (time > 0) {
+                    time--;
+                    $('.xg_box span').css('background', '#ccc')
+                    $('.xg_box span').html('重新发送' + time + 's')
+                } else {
+                    $('.xg_box span').css('background', '#496fff')
+                    $('.xg_box span').html('获取验证码')
+                    clearInterval(intervel)
+                }
+            }, 1000)
+        }
+        // 找回密码
+        var a = /^((13[0-9])|(14[579])|(15([0-3]|[5-9]))|(16[0-9])|(17[0-9])|(18[0-9])|(19[89]))\d{8}$/;
+        $('.zh_box span').click(function() {
+            if ($('.zh_box input:eq(0)').val() == '') {
+                $('.zh_box p:eq(0)').css('opacity', 1)
+                timeout($('.zh_box p:eq(0)'))
+            } else if (!a.test($('.zh_box input:eq(0)').val())) {
+                $('.zh_box p:eq(0)').html('手机号码不存在')
+                $('.zh_box p:eq(0)').css('opacity', 1)
+                timeout($('.zh_box p:eq(0)'))
+            } else {
+                if ($('.zh_box span').html() == '获取验证码') {
+                    timeout2(60)
+                    $.ajax({
+                        url: url_ip + '/send_code/',
+                        type: 'POST',
+                        data: {
+                            mobile: $('.zh_box input:eq(0)').val(),
+                            type: 2
+                        },
+                        datatype: 'json',
+                        success: function(data) {
+                            // console.log(data);
+                        },
+                        error: function(data) {
+                            // console.log(data);
+                        }
+                    })
+                }
+            }
+        })
+        $('.zhaohui_sure').click(function() {
+            if ($('.zh_box input:eq(0)').val() == '') {
+                $('.zh_box p:eq(0)').html('请输入手机号码')
+                $('.zh_box p:eq(0)').css('opacity', 1)
+                timeout($('.zh_box p:eq(0)'))
+            } else if (!a.test($('.zh_box input:eq(0)').val())) {
+                $('.zh_box p:eq(0)').html('手机号码不存在')
+                $('.zh_box p:eq(0)').css('opacity', 1)
+                timeout($('.zh_box p:eq(0)'))
+            } else if ($('.zh_box input:eq(1)').val() == '') {
+                $('.zh_box p:eq(1)').html('验证码不能为空')
+                $('.zh_box p:eq(1)').css('opacity', 1)
+                timeout($('.zh_box p:eq(1)'))
+            } else if ($('.zh_box input:eq(2)').val() == '') {
+                $('.zh_box p:eq(2)').html('请输入新密码')
+                $('.zh_box p:eq(2)').css('opacity', 1)
+                timeout($('.zh_box p:eq(2)'))
+            } else if ($('.zh_box input:eq(2)').val().length > 20 || $('.zh_box input:eq(2)').val().length < 6) {
+                $('.zh_box p:eq(2)').html('密码长度为6-20位')
+                $('.zh_box p:eq(2)').css('opacity', 1)
+                timeout($('.zh_box p:eq(2)'))
+            } else if ($('.zh_box input:eq(3)').val() == '') {
+                $('.zh_box p:eq(3)').html('请再次输入密码')
+                $('.zh_box p:eq(3)').css('opacity', 1)
+                timeout($('.zh_box p:eq(3)'))
+            } else if ($('.zh_box input:eq(3)').val() != $('.zh_box input:eq(2)').val()) {
+                $('.zh_box p:eq(3)').html('两次密码输入不一致')
+                $('.zh_box p:eq(3)').css('opacity', 1)
+                timeout($('.zh_box p:eq(3)'))
+            } else {
+                $.ajax({
+                    url: url_ip + '/forget2/' + token_id + '/',
+                    type: 'put',
+                    data: {
+                        user: token_id,
+                        secret: $('.zh_box input:eq(2)').val(),
+                        code: $('.zh_box input:eq(1)').val(),
+                        mobile: $('.zh_box input:eq(0)').val()
+                    },
+                    datatype: 'json',
+                    success: function(data) {
+                        // console.log(data);
+                        if (data.status) {
+                            alert('支付密码重设成功')
+                            $('.zh').hide()
+                            // console.log(data.msg.substr(0, 3))
+                        } else {
+                            if (data.msg.substr(0, 3) == '验证码') {
+                                $('.zh_box p:eq(1)').html(data.msg)
+                                $('.zh_box p:eq(1)').css('opacity', 1)
+                                timeout($('.zh_box p:eq(1)'))
+                            } else if (data.msg.substr(0, 3) == '手机号') {
+                                $('.zh_box p:eq(0)').html(data.msg)
+                                $('.zh_box p:eq(0)').css('opacity', 1)
+                                timeout($('.zh_box p:eq(0)'))
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        // console.log(data)
+                    }
+                })
+            }
+        })
+    })
+</script>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Cache" content="no-cache">
+    <title>Datahoop 2.0 犀数支付</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/xshupay.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xshupay.js?v=0.19.11.21.11"></script>
+    <style>
+        #erweima {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            display: none;
+            z-index: 99999;
+        }
+
+        #erweima .ddNew_logoFoo {
+            width: 1024px;
+            height: 50px;
+            margin: 0 auto;
+        }
+
+        #erweima .ddNew_logo img {
+            width: 170px;
+            height: 28px;
+            margin-top: 10px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        #erweima .ddNew_logoFoo ul {
+            float: right;
+            padding-top: 20px;
+        }
+
+        #erweima .ddNew_logoFoo ul li {
+            height: 20px;
+            line-height: 20px;
+            padding: 0 11px 0 12px;
+            float: left;
+        }
+
+        #erweima .ddNew_logoFoo ul li:nth-child(2) {
+            border-right: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+        }
+
+        #erweima .ddNew_logoFoo ul li a {
+            color: #666;
+        }
+
+        #erweima .ddNew_logoFoo ul li a:hover {
+            color: #e4393c;
+        }
+
+        #erweima .o-init {
+            width: 1024px;
+            padding: 32px 0;
+            margin: 0 auto;
+        }
+
+        #erweima .o-init .o-title {
+            color: #333;
+            font-size: 14px;
+            float: left;
+        }
+
+        #erweima .o-init .o-price {
+            float: right;
+        }
+
+        #erweima .o-init .o-price em {
+            font: 12px/150% Arial, Verdana, "\5b8b\4f53";
+            font-style: normal;
+        }
+
+        #erweima .o-init .o-price strong {
+            font-size: 18px;
+            vertical-align: bottom;
+            color: #e31613;
+            margin: 0 3px;
+        }
+
+        #erweima .o-pay {
+            width: 1024px;
+            height: 550px;
+            margin: 0 auto;
+            padding: 12px 30px;
+            background-color: #fff;
+            box-shadow: 0 6px 32px rgba(0, 0, 0, .13);
+        }
+
+        #erweima .o-pay .o-pay-titl {
+            margin-bottom: 20px;
+        }
+
+        #erweima .o-pay .o-pay-titl span {
+            font-size: 18px;
+        }
+
+        #erweima .o-pay .o-pay-titl p {
+            margin-left: 55px;
+            color: #e31613;
+            display: inline-block;
+        }
+
+        #erweima .o-pay .o-pay-titl p.active {
+            color: #666;
+        }
+
+        #erweima .o-pay .o-pay-titl p i {
+            color: #67a4ff;
+            cursor: pointer;
+        }
+
+        #erweima .o-pay .o-pay-titl p.active i {
+            color: #e31613;
+        }
+
+        #erweima .o-pay-weixin .p-w-box {
+            margin-left: 130px;
+            float: left;
+        }
+
+        #erweima .o-pay-weixin .p-w-box img {
+            width: 298px;
+            height: 298px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            background: #ccc;
+        }
+
+        #erweima .o-pay-weixin .p-w-box p {
+            width: 300px;
+            height: 60px;
+            font-size: 14px;
+            line-height: 22px;
+            padding: 8px 0 8px 125px;
+            color: #fff;
+            background: url(img/icon/saoma.png) no-repeat 50px center #496FFF;
+            background-size: 50px;
+        }
+
+        #erweima .o-pay-weixin .p-sidebar {
+            width: 379px;
+            height: 421px;
+            margin-top: -20px;
+            padding-left: 50px;
+            float: left;
+        }
+
+        .no {
+            position: fixed;
+            display: none;
+            width: 360px;
+            height: 253px;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5555;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .no-content {
+            width: 360px;
+            height: 253px;
+            text-align: center;
+        }
+
+        .no-close {
+            font-size: 30px;
+            font-weight: 200;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .no .title {
+            font-size: 20px;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+            line-height: 20px;
+            margin: 15px 0;
+        }
+
+        .no .tips {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(102, 102, 102, 1);
+            line-height: 28px;
+            margin-bottom: 25px;
+        }
+
+        .no img {
+            margin-top: 35px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .no .btn {
+            cursor: pointer;
+            width: 96px;
+            height: 30px;
+            background: rgba(73, 111, 255, 1);
+            border-radius: 2px;
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="payStageFoo mb10">
+                <i class="fl pay_tip_tit">请支付</i>
+                <!-- <a style="margin-left: 10px;cursor: pointer;">到我的主页</a> -->
+<!--                <div class="fr">-->
+<!--                    <p class="payState fl "><i></i><span>我的收纳</span></p>-->
+<!--                    <p class="payState fl "><b></b><i></i><span>核对订单信息</span></p>-->
+<!--                    <p class="payState fl "><b></b><i></i><span>提交订单并支付</span></p>-->
+<!--&lt;!&ndash;                    <p class="payState fl active"><b></b><i></i><span>支付</span></p>&ndash;&gt;-->
+<!--                </div>-->
+            </div>
+            <div class="payBlock">
+                <p class="payHead">订单提交成功，请尽快完成支付</p>
+                <h2 class="payTitl"><span>支付详情</span><b>订单编号：</b><i class="payOrder mt10">--</i></h2>
+            </div>
+            <div class="payBlock payBlock_b">
+                <div id="xshupay" class="hide">
+                    <div class="payL">
+                        <div class="payName">
+                            <h2 class="fl">
+                                <p><i class="x_shu_Name"></i></p><span id="needXshu">0</span></h2>
+                            <!-- <h3 class="fl">优惠: &nbsp;犀数币<i class="xshuYh">0</i></h3> -->
+                        </div>
+                        <div class="shpName">
+                            <h2 class="fl">商品详情: </h2>
+                            <ul class="fl">
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="payR">
+                        <div class="goPay">
+                            <p class="goPayBtn">去支付</p>
+                            <p class="hasPay hide"><i></i>支付成功</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="qianpay" class="hide">
+                    <div class="payL active">
+                        <div class="payName">
+                            <h2 class="fl">
+                                <p>人民币</p><span id="needQian">0</span></h2>
+                            <!-- <h3 class="fl">优惠: &nbsp;¥<i class="xshuYh">0</i></h3> -->
+                        </div>
+                        <div class="shpName">
+                            <h2 class="fl">商品详情: </h2>
+                            <ul class="fl">
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                                <li>8小时，教你成为PowerBI大师——马世权</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="payR">
+                        <div class="payType">
+                            <span class="fl">支付方式</span>
+                            <p class="fl"><i class="iCheck normal active"></i><img src="img/weixin.png" alt=""><span>微信支付</span></p>
+                            <p class="fl" title="敬请期待..."><i class="iCheck disabled"></i><img src="img/zhifubao.png" alt=""><span style="color: #999;">支付宝支付</span></p>
+                        </div>
+                        <div class="goPay">
+                            <p class="goPayBtn">去支付</p>
+                            <p class="hasPay hide"><i></i>支付成功</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="mu"></div>
+
+    <!--提示信息-->
+    <div class="no alertMsg1">
+        <i class="no-close">×</i>
+        <div class="no-content">
+            <img src="img/Group Copy.png">
+            <p class="title">未设置支付密码</p>
+            <p class="tips">请先设置支付密码保证账户安全</p>
+            <div class="btn">去设置</div>
+        </div>
+    </div>
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+
+    <div id="erweima">
+        <div class="ddNew_logoFoo">
+            <a class="ddNew_logo" href="index.html"><img width="170" height="28" alt="首页" src="img/pic/logo2.png"></a>
+            <ul>
+                <li class="o-user"><a href="perscen.html">jd_767214f62d346</a></li>
+                <li><a href="perscen-dd.html">我的订单</a></li>
+                <li><a href="help_center.html?7">帮助</a></li>
+            </ul>
+        </div>
+        <div class="o-init">
+            <h3 class="o-title">订单提交成功，请尽快付款！订单号：<span>0</span></h3>
+            <div class="o-price"><em>应付金额</em><strong>9.11</strong><em>元</em></div>
+        </div>
+        <div class="o-pay">
+            <div class="o-pay-titl">
+                <span>微信支付</span>
+                <p>距离二维码过期还剩<i class="opaytime">60</i>秒，过期后请刷新页面重新获取二维码。</p>
+            </div>
+            <div class="o-pay-weixin">
+                <div class="p-w-box">
+                    <img src="" />
+                    <p>请使用微信扫一扫<br />扫描二维码支付</p>
+                </div>
+                <div class="p-sidebar">
+                    <img src="img/pic/pc_icon_phone-bg.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <i class=""><img src="img/close.png" /></i>
+    </div>
+    <div id="xshuAlertMu">
+        <div id="xshuAlert">
+            <h2 class="titl">
+                <p><span><i class="x_shu_Name"></i>支付</span></p><i class="close">×</i></h2>
+            <p class="tip">请输入您的支付密码</p>
+            <input type="password">
+            <p class="tip tip2"></p>
+            <div class="btn">立即支付</div>
+            <div class="forgetMmGoChange"><a href="perscen-mm.html">忘记密码?</a></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    $(function() { 
+
+        // $('.personR_sz .sz_qt .qx_top').on('click', '.btn', function () {
+        //   alert()
+        // })
+    })
+</script>

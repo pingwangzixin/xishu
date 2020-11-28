@@ -1,0 +1,342 @@
+.algo_rule {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 101;
+    display: none;
+}
+
+.algo_rule>div {
+    width: 900px;
+    height: 560px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -450px;
+    margin-top: -280px;
+    border: 4px solid rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+
+.algo_rule>div h2 {
+    line-height: 30px;
+    color: #000;
+    font-weight: 700;
+    background: #f3f3f3;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.algo_rule>div h2 span {
+    font-weight: normal;
+    color: #06BDD7;
+    line-height: 36px;
+    font-size: 12px;
+}
+
+.algo_rule>div h2 span img {
+    margin: 12px;
+    margin-right: 2px;
+}
+
+.algo_rule>div textarea {
+    outline: 0;
+    resize: none;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    height: 440px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.algo_rule>div .textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    height: 440px;
+    font-size: 14px;
+    font-family: monospace;
+    line-height: 25px;
+    overflow-y: scroll;
+}
+
+.algo_rule>div .rule_btn {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.algo_rule>div .rule_btn div {
+    display: inline-block;
+    width: 160px;
+    height: 36px;
+    background: #496FFF;
+    line-height: 36px;
+    margin: 0 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+}
+
+
+/* .algo_rule>div .rule_btn div:hover{background:#EFEFEF;} */
+
+.algo_bg {
+    width: 100%;
+    height: 180px;
+    background: url(../img/suanf.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    min-width: 1024px;
+}
+
+.algo_bg p {
+    position: absolute;
+    width: 160px;
+    height: 48px;
+    left: 12.5%;
+    line-height: 48px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    top: 106px;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+
+/* .upload_algo{width:74.964vw;margin:0 auto;height:calc(100vh - 180px);min-width:1024px;}
+.upload_algo .uploading1{overflow:hidden;padding:12px 0;}
+.upload_algo .uploading1>div{float:right;box-shadow:0 0 5px #EBEDED;border-radius:22px;height:44px;padding:8px 20px;box-sizing:border-box;background:#00A1E9;cursor:pointer;font-size:16px;color:#fff;}
+.upload_algo .uploading1>div img{padding:7px;border:1px dashed #fff;margin-right:12px;border-radius:50%;background:#fff;}
+.upload_algo .uploading1>div span{line-height:28px;}
+.upload_algo .uploading1 p{float:right;line-height:44px;margin-right:20px;color:#36BAFF;}
+.upload_algo .uploading1 p i{color:#FF7200;cursor:pointer;}
+.upload_algo .uploading1 p b{width:12px;height:12px;border:1px solid #06bdd7;display:inline-block;margin:15px 4px;vertical-align:top;}
+.upload_algo .uploading1 p b.on{background:url(../img/check_ok.png);background-size:100%;}
+.upload_algo .uploading2{width:100%;height:calc(100% - 68px);background:#fff;overflow-y:auto;position:relative;}
+.upload_algo .uploading2 table{width:100%;line-height:60px;border-collapse:collapse;text-align:center;}
+.upload_algo .uploading2 table tr:first-child{background:#e9f0f3;}
+.upload_algo .uploading2 table td{padding:0 20px;}
+.upload_algo .uploading2 table td img{padding:7px;margin:13px;box-shadow:0 0 5px #F3F3F3;margin-left:60px}
+.upload_algo .uploading2 table td b{padding:0 15px;color:#999;cursor:pointer;}
+.upload_algo .uploading2 table td b:hover{color:#333;}
+.upload_algo .uploading2 table td i{padding:0 12px;line-height:24px;margin:18px 0;border-radius:2px;color:#fff;}
+.upload_algo .uploading2 table td i.status0{background:#FF0130;}
+.upload_algo .uploading2 table td i.status1{background:#01DBA1;}
+.upload_algo .uploading2 table td i.status2{background:#FF9901;}
+.upload_algo .uploading2 table td i.status3{background:#00BBFF}
+.upload_algo .uploading2 table td.table_td_name{text-align:left;padding:0;}
+ */
+
+.up_algo2 {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 4;
+}
+
+.up_algo2 .up_load2_box {
+    width: 350px;
+    height: 180px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -90px;
+    background: #fff;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.up_algo2 .up_load2_box h2 {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+}
+
+.up_algo2 .up_load2_box i {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.up_algo2 .up_load2_box .upload_py {
+    padding: 30px 0;
+    /* border-bottom: 1px solid #E8E8E8; */
+    overflow: hidden;
+}
+
+.up_algo2 .up_load2_box .upload_py div {
+    width: 95px;
+    height: 30px;
+    color: #666;
+    background: #fff;
+    text-align: center;
+    line-height: 26px;
+    border: 1px solid #D9D9D9;
+    border-radius: 2px;
+    margin-right: 20px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.up_algo2 .up_load2_box .upload_py div>input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 26px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.up_algo2 .up_load2_box .upload_py>input {
+    float: left;
+    box-sizing: border-box;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    color: #333;
+    outline: 0;
+    border-bottom: 1px solid #D9D9D9;
+    font-size: 12px;
+    width: 155px;
+}
+
+.up_algo2 .up_load2_box .upload_py span {
+    width: 30px;
+    height: 26px;
+    line-height: 26px;
+    color: #333;
+}
+
+.up_algo2 .up_load2_box h3 {
+    height: 14px;
+    line-height: 14px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.up_algo2 .up_load2_box ul {
+    height: 200px;
+}
+
+.up_algo2 .up_load2_box ul li {
+    float: left;
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.up_algo2 .up_load2_box ul li.on {
+    box-shadow: 0 0 5px #D9D9D9;
+    border: 1px solid #D9D9D9;
+}
+
+.up_algo2 .up_load2_box .upload_sure {
+    width: 96px;
+    height: 30px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 2px;
+    background: #496FFF;
+    cursor: pointer;
+}
+
+.mu2 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.msgbox {
+    width: 324px;
+    background: #fff;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -60px;
+    overflow: hidden;
+    text-align: center;
+    display: none;
+    z-index: 999;
+}
+
+.msgbox img {
+    display: none;
+    width: 36px;
+    height: 28px;
+    margin: 18px auto;
+}
+
+.msgbox img.on {
+    display: block;
+}
+
+.msgbox span {
+    color: #06415E;
+    font-size: 14px;
+    line-height: 32px;
+    margin: 0 20px;
+    text-align: center;
+    display: inline-block;
+    width: 260px;
+}
+
+.alg_list_sf {
+    display: block;
+}
+
+.alg_list_cj {
+    display: none;
+}
+
+.null_data {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.null_data>img {
+    margin-bottom: 30px;
+}
+
+.null_data>span {
+    color: #666;
+    font-size: 14px;
+}
+/* 弹框禁用 */
+.disabled {
+    background: #D9D9D9!important;
+    pointer-events:none;
+}

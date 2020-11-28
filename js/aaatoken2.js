@@ -1,0 +1,44 @@
+document.write('<script type="text/javascript" src="js/jquery.js"></script>');
+document.write('<script type="text/javascript" src="js/url_ip.js"></script>');
+document.write('<script type="text/javascript" src="js/make_cookies.js"></script>');
+if (location.search.search('backurl') !== -1 && cookie.get('token')) {
+    $.ajax({
+        url: url_ip + '/userinfo/',
+        type: 'GET',
+        cache: false,
+        async: false,
+        data: {},
+        dataType: 'json',
+        headers: {'Authorization': "JWT " + cookie.get('token')},
+        success: function (res) {
+            localStorage.setItem('token', cookie.get('token'))
+            user_img = url_ip + res.header;
+            token_id = res.user_id;
+            user_name_ = res.name;
+            if (location.search.search('backurl') !== -1) {
+                if (location.search.search('www.cpda.cn') !== -1) {
+                    window.location.href = `http://www.cpda.cn/login/?useinfo={"username":"${user_name_}","token":"${cookie.get('token')}","user_img": "${user_img}","token_id": "${token_id}"}&${location.search.substr(1)}`;
+                } else if (location.search.search('www.chinacpda.com') !== -1) {
+                    window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"${user_name_}","token":"${cookie.get('token')}","user_img": "${user_img}","token_id": "${token_id}"}&${location.search.substr(1)}`;
+                } else {
+                    window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"${user_name_}","token":"${cookie.get('token')}","user_img": "${user_img}","token_id": "${token_id}"}&${location.search.substr(1)}`;
+                }
+            }
+        },
+        error: function (err) {
+            if (location.search.search('backurl') !== -1) {
+                var none_url = location.search.substr(1).split('backurl=')[1];
+                window.location.href = none_url;
+            }
+        }
+    })
+}
+else {
+    if (location.search.search('www.cpda.cn') !== -1) {
+        window.location.href = `http://www.cpda.cn/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    } else if (location.search.search('www.chinacpda.com') !== -1) {
+        window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    } else {
+        window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    }
+}

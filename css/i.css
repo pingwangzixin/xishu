@@ -1,0 +1,1194 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    box-sizing: border-box;
+    padding-top: 100px;
+}
+
+.icenter {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.icenter img {
+    width: 100%;
+    height: 100%;
+}
+
+#iTop {
+    width: 100%;
+    border-bottom: 10px solid #F5F8FF;
+    overflow: hidden;
+}
+
+#iTop .iMsg {
+    float: left;
+    overflow: hidden;
+}
+
+#iTop .iMsg .iMsgLeft {
+    float: left;
+    height: 154px;
+    text-align: center;
+    margin-right: 30px;
+    width: 100px;
+}
+
+.iMsgLeft>i {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.iMsgLeft>span {
+    line-height: 20px;
+    font-size: 14px;
+    color: #8590A6;
+}
+
+.iMsgRight {
+    float: left;
+    position: relative;
+    min-width: 500px;
+}
+
+.iMsgRight h2 {
+    overflow: hidden;
+}
+
+.iMsgRight h2 span {
+    font-size: 24px;
+    color: #333;
+    line-height: 24px;
+    margin: 30px 0 15px;
+    font-weight: 600;
+    float: left;
+    max-width: 400px;
+    overflow: hidden;
+    height: 24px;
+}
+
+.iMsgRight h2 b {
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin: 37px 0 0 10px;
+}
+
+.iMsgRight h2 b.nv {
+    background: url(../img/nv.png);
+    background-size: 100%;
+}
+
+.iMsgRight h2 b.nan {
+    background: url(../img/nan.png);
+    background-size: 100%;
+}
+
+.iMsgRight ol {
+    text-align: center;
+    max-width: 500px;
+    overflow: hidden;
+    height: 35px;
+}
+
+.iMsgRight ol li {
+    line-height: 18px;
+    height: 20px;
+    border: 1px solid #E8E8E8;
+    border-radius: 2px;
+    float: left;
+    font-size: 12px;
+    padding: 0 8px;
+    margin-right: 20px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.iMsgRight ol li.on {
+    background: #FF4E64;
+    color: #fff;
+}
+
+.iMsgRight dl {
+    max-width: 500px;
+    overflow: hidden;
+    height: 20px;
+    transition: all .5s;
+    margin-bottom: 30px;
+}
+
+.iMsgRight dt {
+    float: left;
+    height: 20px;
+    color: #666;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.iMsgRight dl dd {
+    display: none;
+    height: 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 15px;
+}
+
+.iMsgRight dl dd div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.iMsgRight dl dd span {
+    font-weight: bold;
+    color: #666;
+    margin-right: 20px;
+}
+
+.iMsgRight dl dd span s {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+    vertical-align: top;
+}
+
+.iMsgRight dl dd img {
+    width: 16px;
+    height: 16px;
+    margin: 2px 5px 17px 0;
+}
+
+.iMsgRight dl dd b {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 20px;
+    width: 120px;
+}
+
+.iMsgRight .more {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    cursor: pointer;
+    color: #999;
+}
+
+.iHandle {
+    float: right;
+    padding-top: 30px;
+}
+
+.iHandle div {
+    float: left;
+    margin-left: 50px;
+    text-align: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.iHandle div i {
+    font-size: 24px;
+    font-family: MicrosoftYaHeiSemibold;
+    color: rgba(51, 51, 51, 1);
+    line-height: 18px;
+    margin-bottom: 12px;
+}
+
+.iHandle div span {
+    font-size: 14px;
+    color: #333;
+    line-height: 14px;
+}
+
+.iHandle p {
+    float: right;
+    line-height: 30px;
+    color: #fff;
+    background: #496FFF;
+    font-size: 14px;
+    cursor: pointer;
+    width: 86px;
+    text-align: center;
+}
+
+#iNav {
+    width: 100%;
+    box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.1);
+    height: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+#iNav li {
+    float: left;
+    margin-right: 20px;
+    line-height: 46px;
+    height: 50px;
+    border-bottom: 4px solid transparent;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+}
+
+#iNav li.on {
+    border-color: #496FFF;
+    color: #496FFF;
+    background: #fafafa;
+}
+
+#icontxt {
+    width: 100%;
+}
+
+#icontxt .icenter {
+    position: relative;
+}
+
+#icontxt .icenter>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    background: #fff;
+    min-height: calc(100vh - 50px);
+}
+
+#icontxt .icenter>div ul {
+    padding: 20px 0 10px 0;
+    overflow: hidden;
+}
+
+#icontxt .icenter>div ul li {
+    line-height: 20px;
+    padding: 0 20px;
+    border-right: 1px solid #E8E8E8;
+    float: left;
+    color: #666;
+    font-size: 14px;
+    margin: 3px 0;
+    cursor: pointer;
+}
+
+#icontxt .icenter>div ul li.on {
+    color: #000;
+    font-weight: bold;
+}
+
+#icontxt .icenter>div>div {
+    padding: 0 20px 60px;
+    width: 100%;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    min-height: calc(100% - 56px);
+    display: none;
+}
+
+#icontxt .icenter>div>div ol {
+    width: 100%;
+}
+
+#icontxt .icenter>div>div ol li {
+    width: 100%;
+    padding: 15px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+#icontxt .icenter>div>div ol li i {
+    height: 56px;
+    width: 136px;
+    float: left;
+    margin-right: 10px;
+}
+
+#icontxt .icenter>div>div ol li s {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 0 10px;
+}
+
+#icontxt .icenter>div>div ol li .msg {
+    width: 200px;
+    height: 56px;
+    float: left;
+}
+
+#icontxt .icenter>div>div ol li .msg h2 {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 24px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+#icontxt .icenter>div>div ol li .msg .label {
+    width: 100%;
+    overflow: hidden;
+    height: 28px;
+}
+
+#icontxt .icenter>div>div ol li .msg .label b {
+    line-height: 18px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    float: left;
+    margin: 5px 10px 5px 0;
+}
+
+#icontxt .icenter>div>div ol li .msg2 {
+    width: 160px;
+    height: 50px;
+    float: left;
+}
+
+#icontxt .icenter>div>div ol li .msg2 h2 {
+    width: 100%;
+    overflow: hidden;
+}
+
+#icontxt .icenter>div>div ol li .msg2 h2 span {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 26px;
+    font-size: 16px;
+    color: #333;
+    max-width: 130px;
+}
+
+#icontxt .icenter>div>div ol li .msg2 h2 b {
+    width: 14px;
+    height: 14px;
+    margin: 6px;
+    background: url(../img/nan.png);
+    display: inline-block;
+    vertical-align: top;
+    background-size: 100%;
+}
+
+#icontxt .icenter>div>div ol li .msg2 h2 b.nv {
+    background: url(../img/nv.png);
+    background-size: 100%;
+}
+
+#icontxt .icenter>div>div ol li .msg2 h3 {
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+#icontxt .icenter>div>div ol li .abs {
+    width: calc(100% - 720px);
+    float: left;
+    height: 56px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 28px;
+    font-size: 14px;
+    margin: 0 20px;
+}
+
+#icontxt .icenter>div>div ol li .abs.on {
+    line-height: 50px;
+}
+
+#icontxt .icenter>div>div ol li p {
+    width: calc(100% - 400px);
+    float: left;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#icontxt .icenter>div>div ol li .btn2 {
+    line-height: 30px;
+    color: #fff;
+    background: #496FFF;
+    float: right;
+    margin: 10px;
+    width: 66px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#icontxt .icenter>div>div ol li .zt {
+    float: left;
+    line-height: 20px;
+    width: 40px;
+    margin: 18px 30px;
+    color: #fff;
+    background: #666;
+    text-align: center;
+}
+
+#icontxt .icenter>div .btn {
+    width: 234px;
+    float: right;
+    text-align: center;
+    height: 56px;
+}
+
+#icontxt .icenter>div .btn div {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 56px;
+    margin: 0 10px;
+    color: #333;
+    cursor: pointer;
+}
+
+#icontxt .icenter>div table {
+    line-height: 50px;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    color: #333;
+}
+
+#icontxt .icenter>div table tr:first-child {
+    background: #F4F7FE;
+    color: #333;
+    line-height: 59px;
+    height: 60px;
+}
+
+#icontxt .icenter>div table tr {
+    border-bottom: 1px solid #E8E8E8;
+}
+
+#icontxt .icenter>div table tr td:first-child {
+    text-align: left;
+    padding: 0 0 0 40px;
+}
+
+#icontxt .icenter>div table tr td:last-child {
+    padding: 0;
+}
+
+#icontxt .icenter>div table tr td {
+    padding: 0 50px;
+}
+
+#icontxt .icenter>div table td b {
+    color: #fff;
+    line-height: 20px;
+    padding: 0 8px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 5px;
+}
+
+#icontxt .icenter>div table td b.status0 {
+    background: #FF0130;
+}
+
+#icontxt .icenter>div table td b.status1 {
+    background: #01DBA1;
+}
+
+#icontxt .icenter>div table td b.status2 {
+    background: #FF9901;
+}
+
+#icontxt .icenter>div table td b.status3 {
+    background: #00BBFF;
+}
+
+#icontxt .icenter>div table td b.zt {
+    background: #666;
+}
+
+#icontxt .icenter>div table td span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+
+/*#icontxt .icenter>div table td.sceneImg{height:89px;padding:14px;width: 174px;}
+#icontxt .icenter>div table td.sceneImg img{background:#12131a;}*/
+
+#icontxt .icenter .ke .allke {
+    width: calc(100% + 20px);
+    overflow: hidden;
+}
+
+#icontxt .icenter .ke .allke dt {
+    line-height: 18px;
+    padding: 20px 0 15px;
+    width: 100%;
+    font-size: 14px;
+    border-top: 1px solid #E8E8E8;
+    float: left;
+}
+
+#icontxt .icenter .ke .allke dt:nth-child(1) {
+    padding: 10px 0 15px;
+    border: 0;
+}
+
+#icontxt .icenter .ke .allke dd {
+    float: left;
+    width: 182px;
+    height: 164px;
+    margin: 0 20px 20px 0;
+    padding: 0;
+    border: 0;
+    position: relative;
+}
+
+#icontxt .icenter .ke .allke dd:hover .operat {
+    display: block;
+}
+
+#icontxt .icenter .ke .allke dd .operat {
+    position: absolute;
+    width: 182px;
+    height: 102px;
+    background: rgba(9, 11, 15, 0.6);
+    text-align: center;
+    display: none;
+    top: 0;
+    left: 0;
+    padding: 11px 0;
+    overflow: hidden;
+}
+
+#icontxt .icenter .ke .allke dd .operat a {
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 15px;
+    vertical-align: middle;
+    margin: 5px 0;
+    background: #496FFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+#icontxt .icenter .ke .allke dd .gq0 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 182px;
+    height: 102px;
+    background: url(../img/pic/out_time.png);
+    background-size: 100%;
+}
+
+#icontxt .icenter .ke .allke dd img {
+    width: 182px;
+    height: 102px;
+    margin-bottom: 5px;
+}
+
+#icontxt .icenter .ke .allke dd h2 {
+    font-size: 14px;
+    line-height: 14px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#icontxt .icenter .ke .allke dd .label {
+    border-bottom: 1px solid #E8E8E8;
+    overflow: hidden;
+    margin-bottom: 5px;
+    height: 23px;
+}
+
+#icontxt .icenter .ke .allke dd .label b {
+    line-height: 22px;
+    font-size: 12px;
+    margin-right: 10px;
+    float: left;
+}
+
+#icontxt .icenter .ke .allke dd p {
+    color: #999;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.liuyan ol {
+    padding-top: 20px;
+    margin-bottom: 60px;
+}
+
+.liuyan ol .liuyanTitle {
+    line-height: 26px;
+    padding: 0 20px;
+    border-right: 1px solid #E8E8E8;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.liuyan ol .huifu1 {
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.liuyan ol .huifu1 textarea {
+    padding: 10px 15px;
+    line-height: 26px;
+    resize: none;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    border: 0;
+    height: 88px;
+    border-radius: 4px;
+}
+
+.liuyan ol .huifu1 h2 {
+    background: #F8F8F8;
+    height: 50px;
+}
+
+.liuyan ol .huifu1 h2 span {
+    float: left;
+    background: #496FFF;
+    color: #fff;
+    line-height: 30px;
+    padding: 0 20px;
+    margin: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing {
+    float: left;
+    padding: 16px 5px;
+    position: relative;
+    display: none;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing img {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing:hover ul {
+    display: block;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing ul {
+    position: absolute;
+    top: 5px;
+    left: 28px;
+    background: #fff;
+    z-index: 1;
+    overflow: hidden;
+    width: 278px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing ul#bqBox li {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 6px;
+    padding: 0;
+    border: 0;
+}
+
+.liuyan ol .huifu1 h2 .biaoqing ul#bqBox li img {
+    width: 100%;
+    height: 100%
+}
+
+.liuyan ol .huifu1 h2 p {
+    float: right;
+    margin-right: 20px;
+    color: #999;
+    line-height: 50px;
+}
+
+.liuyan ol li {
+    margin-bottom: 15px;
+}
+
+.liuyan .grade1 {
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.liuyan .grade1 i {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 20px 15px 20px 20px;
+}
+
+.liuyan .grade1 h2 {
+    line-height: 16px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.liuyan .grade1 h2 b {
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.liuyan .grade1 p {
+    line-height: 24px;
+    width: calc(100% - 120px);
+    float: left;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.liuyan .grade1 h3 {
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+    height: 16px;
+    width: calc(100% - 100px);
+    position: absolute;
+    left: 75px;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.liuyan .grade1 h3 img {
+    width: 14px;
+    height: 14px;
+    margin: 1px 2px 1px 1px;
+}
+
+.liuyan .grade2_box {
+    width: calc(100% - 75px);
+    margin-left: 75px;
+    background: #F8F8F8;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.liuyan .grade2_box .grade2 {
+    overflow: hidden;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+
+.liuyan .grade2_box .grade2 i {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 15px 15px 10px;
+}
+
+.liuyan .grade2_box .grade2 p {
+    line-height: 24px;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    float: left;
+    width: calc(100% - 120px);
+}
+
+.liuyan .grade2_box .grade2 p span {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 24px;
+    margin-right: 5px;
+}
+
+.liuyan .grade2_box .grade2 p span a {
+    color: #8590A6;
+    padding: 0 5px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.liuyan .grade2_box .grade2 h3 {
+    color: #999;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+}
+
+.liuyan .grade2_box .grade2 h3 b {
+    margin-right: 20px;
+}
+
+.liuyan .grade2_box .grade2 h3 a {
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.liuyan .grade2_box .huifu2 {
+    width: 100%;
+    padding: 15px 108px 0 20px;
+    position: relative;
+}
+
+.liuyan .grade2_box .huifu2 textarea {
+    width: 100%;
+    border: 1px solid #E8E8E8;
+    line-height: 26px;
+    padding: 3px 10px;
+    max-height: 58px;
+    resize: none;
+}
+
+.liuyan .grade2_box .huifu2 span {
+    padding: 0 15px;
+    line-height: 28px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 14px;
+    color: #fff;
+    background: #496FFF;
+    cursor: pointer;
+}
+
+.liuyan .grade2_box .huifu3 {
+    width: 100%;
+    padding: 15px 108px 0 60px;
+    position: relative;
+}
+
+.liuyan .grade2_box .huifu3 textarea {
+    width: 100%;
+    border: 1px solid #E8E8E8;
+    line-height: 26px;
+    padding: 0 10px;
+    max-height: 28px;
+    resize: none;
+}
+
+.liuyan .grade2_box .huifu3 span {
+    padding: 0 15px;
+    line-height: 28px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 14px;
+    color: #fff;
+    background: #496FFF;
+}
+
+.emptyBox {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    left: 0;
+    top: 50%;
+    margin-top: -225px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #666;
+    display: none;
+}
+
+.emptyBox img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.emptyBox span {
+    margin: 0 10px;
+}
+
+.emptyBox a {
+    color: #496FFF;
+    margin: 0 10px;
+}
+
+.operat {
+    position: absolute;
+    width: 182px;
+    height: 102px;
+    background: rgba(9, 11, 15, 0.6);
+    text-align: center;
+    display: none;
+}
+
+.operat div {
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 15px;
+    vertical-align: middle;
+    margin: 5px 0;
+}
+
+
+/*设置*/
+
+.setBg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: none;
+}
+
+.setBg .setBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 50px #000;
+    width: 800px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -400px;
+    padding: 60px 40px 70px;
+}
+
+.setBg .setBox>.setCenter {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.setBg .setBox>.setCenter h2 {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    background: #c6c6e9;
+    color: #fff;
+    border-radius: 0 15px 15px 0;
+    font-size: 14px;
+}
+
+.setBg .setBox>.setCenter h3 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.setBg .setBox>.setCenter div {
+    line-height: 30px;
+    margin-bottom: 26px;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+}
+
+.setBg .setBox>.setCenter div:last-child {
+    margin-bottom: 0;
+}
+
+.setBg .setBox>.setCenter div input {
+    width: 600px;
+    border: 1px solid #c6c6e9;
+    border-radius: 3px;
+    padding-left: 10px;
+    margin: 0 20px;
+    height: 30px;
+}
+
+.setBg .setBox>.setCenter div select {
+    width: 220px;
+    height: 30px;
+    border: 1px solid #c6c6e9;
+    border-radius: 3px;
+    text-align: center;
+    margin: 0 20px;
+    padding-left: 10px;
+}
+
+.setBg .setBox>.setCenter div p {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 20px;
+    overflow: hidden;
+    width: 640px;
+    padding: 0 15px;
+}
+
+.setBg .setBox>.setCenter div p b {
+    padding: 0 8px;
+    border: 1px solid #c6c6e9;
+    margin: 4px 5px;
+    float: left;
+}
+
+.setBg .setBox>.setCenter div p i {
+    float: left;
+    padding: 0 8px;
+    line-height: 20px;
+    border: 1px solid #c6c6e9;
+    margin: 4px 5px;
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.setBg .setBox>.setCenter div textarea {
+    vertical-align: top;
+    width: 600px;
+    padding: 0 10px;
+    margin: 0 20px;
+    border: 1px solid #c6c6e9;
+    border-radius: 3px;
+    resize: none;
+    height: 150px;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.setBg .setBox>.setCenter div.labelfold {
+    border: 1px solid #c6c6e9;
+    width: calc(100% - 100px);
+    padding: 0 2px;
+    display: none;
+    margin-left: 68px;
+}
+
+.setBg .setBox>.setCenter div.labelfold h5 {
+    text-align: right;
+    padding-right: 10px;
+    line-height: 20px;
+    color: #666;
+    cursor: pointer;
+}
+
+.setBg .setBox>.setCenter div.labelfold b {
+    float: left;
+    padding: 0 12px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: all .5s;
+    line-height: 20px;
+    cursor: default;
+    margin: 2px 0;
+}
+
+.setBg .setBox>.setCenter div.labelfold b span {
+    position: absolute;
+    right: 0;
+    color: #999;
+    display: none;
+    top: 0px;
+    cursor: pointer;
+}
+
+.setBg .setBox>.setCenter div.labelfold b:hover {
+    border-color: #333;
+}
+
+.setBg .setBox>.setCenter div.labelfold b:hover>span {
+    display: block;
+}
+
+.setBg .setBox>.setCenter div.labelfold .labelEr {
+    width: 100%;
+    margin-bottom: 0;
+    background: #f5f5f5;
+    border-top: 2px solid #c6c6e9;
+    display: none;
+    min-height: 28px;
+}
+
+.setBg .setBox>.setCenter div.labelfold .labelThree {
+    position: absolute;
+    width: 580px;
+    box-shadow: 0 0 5px #c6c6e9;
+    display: none;
+    top: 21px;
+    overflow: hidden;
+    background: #fff;
+    z-index: 10;
+    padding: 0 2px;
+}
+
+.setBg .setBox div.bc {
+    width: 200px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #496FFF;
+    margin-left: -100px;
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    margin-bottom: 0;
+}
+
+.setBg .setBox div.bc s {
+    width: 20px;
+    display: inline-block;
+    height: 30px;
+    vertical-align: top;
+}
+
+.Page {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+
+.export a {
+    color: #333;
+}
+
+.bq_del {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: url(../img/关闭.png);
+    background-size: cover;
+    cursor: pointer;
+    margin-left: 3px;
+}
+.levellabel {
+    margin:15px 0 0 4px!important;
+}

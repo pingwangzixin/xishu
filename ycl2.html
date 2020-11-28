@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Datahoop 2.0 数据加工</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/ycl2.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/component.css?v=0.19.11.21.11">
+	<script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/ycl2.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/lin_search.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/jquery.ba-throttle-debounce.min.js"></script>
+	<script type="text/javascript" src="js/jquery.stickyheader.js"></script>
+	<script type="text/javascript" src="js/jquery.nicescroll.js"></script>
+</head>
+<body>
+	<nav></nav>
+	<div class="datawork_box">
+        <div class="dataFile">
+            <h2>我的数据文件</h2>
+            <input type="text" id="searchInput" placeholder="关键字搜索">
+            <ul class="ul"></ul>
+        </div>
+        <div class="dataWork">
+            <div class="workTop">
+                <ul class="workTop_box"></ul>
+                <div class="set_workTop">
+                    <p>选择合并方式</p>
+                    <dl>
+                        <dd class="on" type="inner">
+                            <img src="img/yuan1.png">
+                            <span>内部</span>
+                        </dd>
+                        <dd type="right">
+                            <img src="img/yuan2.png">
+                            <span>右侧</span>
+                        </dd>
+                        <dd type="left">
+                            <img src="img/yuan3.png">
+                            <span>左侧</span>
+                        </dd>
+                        <dd type="outer">
+                            <img src="img/yuan4.png">
+                            <span>外部</span>
+                        </dd>
+                    </dl>
+                    <p>选择合并基准列</p>
+                    <div class="select set_select1">
+                        <span></span>
+                        <img src="img/down.png">
+                        <div></div>
+                    </div>
+                    <select class="select set_select2"></select>
+                    <div class="btn">
+                        <div class="setwork_sure">确定</div>
+                        <div class="setwork_no">取消</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dataworkLine"></div>
+            <div class="container">
+                <img src="img/loading.gif" class="load">
+                <div class="component">
+                    <table>
+						<thead>
+							
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+                </div>
+                <div class="work_box">
+                    <div><span>重命名(M)</span></div>
+                    <div><span>删除当前列(C)</span></div>
+                    <h3 class="line"><span><p></p></span></h3>
+                    <div>
+                        <span>缺失值处理(V)<s></s></span>
+                        <ul style="display:none;">
+                            <li>向前填充</li>
+                            <li>向后填充</li>
+                            <li>均值填充</li>
+                            <li>0值填充</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span>列值转换(T)<s></s></span>
+                        <ul>
+                            <li>转整数型</li>
+                            <li>转浮点型</li>
+                            <li>转字符型</li>
+                            <li>转日期型</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span>大小写转换(U)<s></s></span>
+                        <ul>
+                            <li>全大写</li>
+                            <li>全小写</li>
+                            <li>首字母大写</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span>去除特殊符(D)<s></s></span>
+                        <ul>
+                            <li>去除逗号</li>
+                            <li>去除$符</li>
+                            <li>去除%符</li>
+                        </ul>
+                    </div>
+                    <h3 class="line"><span><p></p></span></h3>
+                    <div><span>归类统计(S)</span></div>
+                    <div><span>数据信息(I)</span></div>
+                    <h3 class="line"><span><p></p></span></h3>
+                     <div>
+                        <span>全局处理(A)<s></s></span>
+                        <ul>
+                            <li>向前填充(A)</li>
+                            <li>向后填充(A)</li>
+                            <li>均值填充(A)</li>
+                            <li>0值填充(A)</li>
+                            <li>去除缺失值</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btn">
+                <div class="work_sure">保存</div>
+                <div class="work_no">重置</div>
+                <div class="work_back" style="display:none;">撤销当前操作</div>
+            </div>
+        </div>
+        <div class="reset_name">
+            <dl>
+                <dt><input type="text"></dt>
+                <dd class="reset_sure">确定</dd>
+                <dd class="reset_no">取消</dd>
+            </dl>
+        </div>
+        <div class="baocun_name">
+            <dl>
+                <h2>请为加工后的数据命名一个新的文件名</h2>
+                <dt><input type="text"></dt>
+                <dd class="baocun_sure">确定</dd>
+                <dd class="baocun_no">取消</dd>
+            </dl>
+        </div>
+        <div class="classify_box">
+            <div>
+                <h2></h2>
+                <div>
+                    <table></table>
+                </div>
+                <i><img src="img/close5.png"></i>
+            </div>
+        </div>
+    </div>
+    <div class="msg_box"></div>
+    <div class="msg-box-wraper login-alert shade hide" data-to="back"></div>
+</body>
+</html>

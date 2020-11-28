@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Datahoop 2.0 数据展示</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/ksh2.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/echarts.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/chart_js.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/comment_lkw.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/answer.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/ksh2.js?v=0.19.11.21.11"></script>
+</head>
+<body>
+	<nav></nav>
+	<div class="echars_box">
+        <div class="select_pic">
+            <h2>选择图表</h2>
+            <ul>
+                <!-- <div class="more_pic fl" style="line-height:38px;color:#999;">更多...</div> -->
+                <div class="more_pic fl" style="line-height:38px;color:#999;"></div>
+            </ul>
+            <h3><span style="color:#c6c6e9;">—————————</span></h3>
+            <h3 class="suggest">作图建议</h3>
+            <h4><span></span>：</h4>
+            <p></p>
+        </div>
+        <div class="field_box">
+            <!-- <h3 class="file">数据文件</h3> -->
+            <h2>还未选择文件</h2><span class="imgspan"></span>
+            <!-- <dl class="weidu"> -->
+            <!-- <dl>
+                <dt>字段</dt>
+                <div class="field_search">
+                    <input type="text" placeholder="关键字搜索"><img src="img/search.png">
+                </div>
+            </dl> -->
+            <dl class="weidu">
+                <dt class="on">维度</dt>
+            </dl>
+            <dl class="duliang">
+                <dt class="on">度量</dt>
+            </dl>
+            <div class="dataBox">
+            	<h3><img src="img/wjj.png">选择文件<i></i></h3>
+            	<ul></ul>
+            </div>
+        </div>
+        <div class="makeEchars">
+            <ul>
+                <li>
+                    <img src="img/lie.png"> <span>列:</span>
+                    <div class="dragBox">
+                        <img src="img/empty.png">
+                    </div>
+                </li>
+                <li>
+                    <img src="img/hang.png"> <span>行:</span>
+                    <div class="dragBox">
+                        <img src="img/empty.png">
+                    </div>
+                </li>
+                <li>
+                    <span>标 记:</span>
+                    <div class="biaoji">
+                        <img src="img/empty.png">
+                        <table>
+                            <tr>
+                                <td><img src="img/颜色.png">颜色</td>
+                                <td><img src="img/角度.png">角度</td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <span style="color:#ccc;">筛 选:</span>
+                    <div class="dragBox" id="filter" style="background:#f3ecec;border-color:#f3ecec;">
+                        <img src="img/empty.png">
+                    </div>
+                </li>
+            </ul>
+            <div class="canvas">
+                <div class="form">
+                    <table class="weidu2">
+                        <tr id="weidu2"></tr>
+                    </table>
+
+                    <div class="middle_box0" id="middle_box2"><table></table></div>
+                </div>
+            </div>
+            <!-- <div class="historyChars">
+                <dl>
+                    <dt>历史作图</dt>
+                </dl>
+            </div> -->
+            <div class="btn">
+                <div><img src="img/放大.png">放大</div>
+                <!-- <div><img src="img/保存.png">保存</div> -->
+            </div>
+        </div>
+        <div class="filter_box">
+            <ul>
+                <li class="on"><span>常规</span></li>
+                <li><span>通配符</span></li>
+            </ul>
+            <div class="filter_cg" style="display:block;">
+                <input type="radio" name="cg" id="select" value="select" checked><label for="select">从列表中选择</label></br>
+                <input type="radio" name="cg" id="self" value="self"><label for="self">自定义列表值</label></br>
+                <input type="radio" name="cg" id="all" value="all"><label for="all">使用全部</label>
+                <dl>
+                    <dt><input type="text" placeholder="关键字搜索"><img src="img/search.png"></dt>
+                    <div>
+                        <dd>安安的点点滴滴多多多多多多多多多多多</dd>
+                        <dd><input type="checkbox" id=""><label></label></dd>
+                        <dd>出错</dd>
+                        <dd>安安</dd>
+                        <dd>不不</dd>
+                        <dd>出错</dd>
+                        <dd>安安</dd>
+                        <dd>不不</dd>
+                        <dd>出错</dd>
+                        <dd>安安</dd>
+                        <dd>不不</dd>
+                        <dd>出错</dd>
+                        <dd>安安</dd>
+                        <dd>不不</dd>
+                        <dd>出错</dd>
+                    </div>
+                </dl>
+                <div class="filter_search" style="display:none;"><input type="text" placeholder="请输入要匹配的文本"></div>
+                <input type="checkbox" id="remove"><label for="remove">排除</label>
+                <div class="filter_sure">确认</div>
+            </div>
+            <div class="filter_tpf">
+                <h2>匹配值</h2>
+                <div class="filter_search"><input type="text" placeholder="请输入要匹配的文本"></div>
+                <input type="radio" name="tpf" id="have" checked><label for="have">包含有</label></br>
+                <input type="radio" name="tpf" id="begin"><label for="begin">起始值</label></br>
+                <input type="radio" name="tpf" id="last"><label for="last">结尾值</label></br>
+                <input type="radio" name="tpf" id="is"><label for="is">精确匹配</label></br>
+                <input type="radio" name="tpf" id="empty"><label for="empty">空值</label></br>
+                <input type="checkbox" id="remove"><label for="remove">排除</label>
+                <div class="filter_sure">确认</div>
+            </div>
+        </div>
+        <div class="filter_box2">
+            <h2>根据范围取值</h2>
+            <select>
+                <option value="little">小于 ( < )</option>
+                <option value="little_aqule">小于等于 ( <= )</option>
+                <option value="aqule">等于 ( = )</option>
+                <option value="big_aqule">大于等于 ( >= )</option>
+                <option value="big">大于 ( > )</option>
+            </select><input type="number">
+            <div class="filter_sure2">确定</div>
+        </div>
+        <div class="bigChart">
+            <i><img src="img/close.png"></i>
+        </div>
+        <div class="holdBox">
+            <div class="holdBox_center">
+                <h2>提示</h2>
+                <i><img src="img/close.png"></i>
+                <h3>请输入文件名</h3>
+                <input type="text">
+                <h4></h4>
+                <div class="btn">
+                    <div class="holdSure">确定</div>
+                    <div class="holdNo">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="msg-box-wraper login-alert shade hide" data-to="back"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+</body>
+</html>

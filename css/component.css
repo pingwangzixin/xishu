@@ -1,0 +1,118 @@
+.component {
+	/* line-height: 1.5em; */
+	margin: 0 auto;
+	/* padding: 2em 0 3em; */
+	width: 100%;
+	/* max-width: 1000px; */
+	overflow: hidden;
+}
+
+.component .filler {
+	font-family: "Blokk", Arial, sans-serif;
+	color: #d3d3d3;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 3em;
+	width: 100%;
+	background: #fff;
+}
+
+td,
+th {
+	padding: 0.75em 1.5em;
+	text-align: left;
+}
+
+td.err {
+	background-color: #e992b9;
+	color: #fff;
+	font-size: 0.75em;
+	text-align: center;
+	line-height: 1;
+}
+
+th {
+	background-color: #ebf4fd;
+	font-weight: bold;
+	color: #666;
+	white-space: nowrap;
+}
+
+tbody th {
+	background-color: #2ea879;
+}
+
+tbody tr:nth-child(2n-1) {
+	background-color: #f5f5f5;
+	transition: all .125s ease-in-out;
+}
+
+tbody tr:hover {
+	background-color: rgba(129, 208, 177, .3);
+}
+
+/* For appearance */
+.sticky-wrap {
+	    overflow-x: auto;
+	    overflow-y: auto;
+	    position: relative;
+	    /* margin: 3em 0; */
+	    width: 100%;
+		min-height: 500px;
+	    max-height: 600px;
+}
+
+.sticky-wrap .sticky-thead,
+.sticky-wrap .sticky-col,
+.sticky-wrap .sticky-intersect {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all .60s ease-in-out;
+	z-index: 50;
+	width: auto;
+	/* Prevent table from stretching to full size */
+}
+
+.sticky-wrap .sticky-thead {
+	box-shadow: 0 0.25em 0.1em -0.1em rgba(0, 0, 0, .125);
+	z-index: 100;
+	width: 100%;
+	/* Force stretch */
+}
+
+.sticky-wrap .sticky-intersect {
+	opacity: 1;
+	z-index: 150;
+
+}
+
+.sticky-wrap .sticky-intersect th {
+	background-color: #666;
+	color: #eee;
+}
+
+.sticky-wrap td,
+.sticky-wrap th {
+	box-sizing: border-box;
+}
+
+/* Not needed for sticky header/column functionality */
+td.user-name {
+	text-transform: capitalize;
+}
+
+.sticky-wrap.overflow-y {
+	overflow-y: auto;
+	max-height: 50vh;
+}
+.container .load{position:absolute;left:50%;top:50%;margin-left:-40px;margin-top:-40px;width:80px;height:80px;display:none;}
+/* .datawork_box .work_table{overflow:auto;width:100%;height:100%;} */
+.component table{min-width:100%;line-height:30px;border-collapse:collapse;text-align:center;border-bottom:1px solid #EEEAEA;}
+.component table tbody tr:nth-child(odd){background:#fff;border:1px solid #dbeaff;}
+.component table tbody tr:nth-child(even){background:#f5f8fd;border:1px solid #dbeaff;}
+.component table tbody tr td{height:30px;padding:0 16px;white-space: nowrap;color:#757676;border:1px solid #dbeaff;border-top:0;border-bottom:0;position:relative;}
+.component table tbody tr td b{width:0;height:0;border-top:5px solid #000;border-left:5px solid transparent;border-right:5px solid transparent;position:absolute;right:3px;top:14px;cursor:pointer;}

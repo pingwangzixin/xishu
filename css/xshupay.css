@@ -1,0 +1,88 @@
+/*公共部分 S*/
+body{background: #F5F8FF;overflow-y: scroll;}
+*{box-sizing: border-box;}
+a{color: #666;}
+.relative{position: relative;}
+.mt10{margin-top: 10px;}
+.typeArea {
+	width: 1200px;
+	margin: 100px auto 0;
+}
+
+.payBlock {
+	margin-bottom: 10px;
+	padding: 20px;
+	background: #fff;
+	overflow: hidden;
+}
+.payBlock_b{
+	background: url(../img/icon/pay_decoration.png) repeat-y left top #fff;
+}
+
+.payStageFoo{height: 50px;line-height: 50px;color: #666;}
+.payState i{
+	width: 8px;height: 8px;margin: 21px 5px 0 0;background: #496FFF;border-radius: 50%;display: inline-block;box-sizing: content-box;
+}
+.payState span{
+	font-size:14px;color: #666;
+}
+.payStageFoo b{
+	width: 80px;height: 2px;margin: 0 5px 4px;background: #E8E8E8;display: inline-block;
+}
+.payState.active span{color: #000;}
+.payState.active i{margin-top: 19px;border: 2px solid #b0c0ff;}
+.payState.active b{background: #496FFF;}
+
+.payHead{height:18px;line-height:18px;margin-bottom: 15px;font-size:14px;color: #666;}
+.payTitl span{margin-right: 15px;font-size: 24px;}
+.payTitl b,.payTitl i{font-size:14px;color: #666;}
+
+#xshupay{overflow: auto;border-bottom: 1px solid #E8E8E8;padding-bottom: 10px;}
+
+
+.payL{width: 540px;padding-left: 10px;float: left;}
+/* .payL:after{content: '';width: 12px;height: 12px;background: #fff;border: 2px solid #A0A2AD;border-radius: 50%;box-sizing: content-box;position: absolute;left: 0;top: 5px;} */
+/* .payL.active:after{background: #496FFF;border: 2px solid #b0c0ff;} */
+
+.payR{width: 620px;height: 80px;padding-top: 25px;border-left: 1px solid #E8E8E8;float: left;}
+
+.payL .payName{line-height: 30px;overflow: hidden;}
+.payL .payName h2 p{height:100%;font-size:14px;margin-right: 10px;color: #333;float: left;}
+.payL .payName h2 span{height:100%;line-height: 24px;margin-right: 20px;font-size:24px;color: #666;display: inline-block}
+.payL .payName h3{height:100%;font-size:12px;color: #666;}
+
+.payL .shpName{font-size: 14px;margin-top: 10px;color: #666;overflow: hidden;}
+.payL .shpName h2{margin-right: 10px;}
+.payL .shpName ul li{margin-bottom: 10px;}
+
+#qianpay{padding-top: 20px;}
+
+.goPay{float: right;}
+.goPayBtn{width: 83px;height: 30px;line-height: 30px;text-align: center;font-size: 14px;color: #fff;background: #496FFF;cursor: pointer;}
+.hasPay{width: 83px;height: 30px;}
+.hasPay i{width: 14px;height: 14px;margin: 1px 3px 0 0;background: url(../img/icon/duihao.png) no-repeat center;background-size: 100%;}
+
+.payR .payType{height: 30px;line-height: 30px;padding-left: 80px;float: left;}
+.payR .payType span{margin-right: 30px;font-size: 14px;color: #666;}
+.payR .payType img{width: 30px;height: 30px;margin: 0 15px 0 7px;}
+
+/*选择按钮*/
+.iCheck{width: 14px;height: 14px;margin-top: 8px;border-radius: 2px;}
+.iCheck.normal{border:1px solid #C4C6CF;transition: all .5s}
+.iCheck.normal:hover{background: #EEF3F9;border:1px solid #5584FF;}
+.iCheck.normal.active{background: url(../img/icon/alglist_yes.png) no-repeat center #5584FF;border:1px solid #5584FF;}
+.iCheck.disabled{border:1px solid #E6E7EB;background: #F7F8FA;}
+/*犀数币支付*/
+#xshuAlertMu{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background: rgba(0,0,0,0.7);display: none;z-index: 1998;}
+#xshuAlert{width: 400px;padding: 0 30px 20px;background: #fff;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+#xshuAlert .titl{position: relative;overflow: hidden;}
+#xshuAlert .titl p{text-align: center;padding: 20px 0;font-size: 20px;color: #333;position: relative;overflow: hidden;}
+#xshuAlert .titl i.close{width: 14px;height: 14px;line-height: 14px;text-align: center;color: #999;font-size: 24px;position: absolute;right: 0;top: 15px;cursor: pointer;}
+#xshuAlert .tip{font-size: 14px;color: #333;}
+#xshuAlert .tip2{margin-bottom: 15px;color: red;}
+#xshuAlert input{width: 100%;height: 40px;margin: 20px 0 10px;padding: 0 10px;font-size: 14px;border: 1px solid #C4C6CF;}
+#xshuAlert .btn{width: 96px;height: 30px;line-height: 30px;text-align: center;margin: 0 auto;font-size: 14px;color: #fff;background: #496FFF;cursor: pointer;}
+#xshuAlert .btn:hover{background:#666;}
+#xshuAlert .forgetMmGoChange{text-align: center;padding-top: 15px;font-size: 12px;color: #999;}
+
+.msg-box-wraper{z-index: 1999;}

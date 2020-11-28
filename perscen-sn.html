@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 我的收纳</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="sn">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_sn">
+                <div class="snStageFoo mb10">
+                    <i class="fl sn_tip_tit">请选择您要结算的商品</i>
+<!--                    <div class="fr">-->
+<!--                        <p class="snState fl active"><i></i><span>我的收纳</span></p>-->
+<!--                        <p class="snState fl"><b></b><i></i><span>核对订单信息</span></p>-->
+<!--                        <p class="snState fl"><b></b><i></i><span>成功提交订单</span></p>-->
+<!--                        <p class="snState fl"><b></b><i></i><span>支付</span></p>-->
+<!--                    </div>-->
+                </div>
+                <div class="snPage1 hide">
+                    <div class="snHead perscenBlock">
+                        <span class="snCheckAll"><i class="checkInput checkInputAll_page1"></i> 全选</span>
+                        <span>收纳信息</span>
+                        <span>价格</span>
+                        <span>操作</span>
+                    </div>
+                    <ul class="snCont">
+                        <!--页面1内容-->
+                    </ul>
+                    <div class="snPayFoo">
+                        <div class="snPayDetail">
+                            <h3><i class="checkInput checkInputAll_page1"></i><span class="checkAll">全选</span><span class="delCheck">删除选中商品</span><span class="hide">清空收纳箱</span></h3>
+                            <p><span class="snPayDetailTxt">共选择: </span><i class="numPane wkCount">0</i><span class="snPayDetailTxt">微课</span><i class="numPane sfCount">0</i><span class="snPayDetailTxt">算法</span><i class="numPane sjCount">0</i><span>数据</span></p>
+                        </div>
+                        <div class="snGoAccounts">
+                            <p class="fr">
+                                <span class="lessMoneyTxt">已优惠: ¥</span>
+                                <i class="lessMoney reducePrice">0</i>
+                                <strong class="allMoneyTxt">现金: &nbsp;&nbsp;¥</strong>
+                                <i class="allMoney nowAllPrice nowAllPrice_qian">0</i>
+                                <b>&nbsp;</b>
+                                <strong class="x_shu_Name"></strong>
+                                <i class="allMoney nowAllPrice nowAllPrice_xshu">0</i>
+                                <a href="javascript:;" class="btn">去结算</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="snPage2 hide">
+                    <div class="snHead perscenBlock">
+                        <span>收纳信息</span>
+                        <span>价格</span>
+                        <span>优惠方式</span>
+                    </div>
+                    <ul class="snCont">
+                        <!--页面2内容-->
+                    </ul>
+                    <div class="snPayFoo">
+                        <div class="snPayDetail">
+                            <h3><span class="goSnPage1">返回购物车</span></h3>
+                            <!-- <p><i class="checkInput active" style="margin-right: 5px;"></i>使用积分（你有<b>2300</b> 积分，可用<b>2000</b> 积分 ）</p> -->
+                            <div class="snGoAccounts" style="clear: none;">
+                                <p class="fr">
+                                    <span class="lessMoneyTxt">已优惠: ¥</span>
+                                    <i class="lessMoney reducePrice">0</i>
+                                    <strong class="allMoneyTxt">现金: &nbsp;&nbsp;¥</strong>
+                                    <i class="allMoney nowAllPrice nowAllPrice_qian">0</i>
+                                    <b>&nbsp;</b>
+                                    <strong class="x_shu_Name"></strong>
+                                    <i class="allMoney nowAllPrice nowAllPrice_xshu">0</i>
+                                    <a href="javascript:;" class="btn">提交订单</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="perscen_kong hide">
+                    <h6>
+                        <img src="img/empty_organize.png" alt="">
+                        <p>什么也没有...</p>
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mu"></div>
+
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img isOk"></h6>
+            <h2>tip</h2>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function calcSn1() {
+        var wkCount = sfCount = sjCount = qianAll = xshuAll = 0;
+        $('.snPage1 .snCont').find('.checkInput.active').each(function(i, ele) {
+            var nowType = $(this).attr('data-type');
+            var nowMoney = $(this).closest('.perscenBlock').find('.needMoney').text() - 0;
+            switch (nowType) {
+                case '微课':
+                    wkCount += 1;
+                    xshuAll += nowMoney;
+                    break;
+                case '算法':
+                    sfCount += 1;
+                    qianAll += nowMoney;
+                    break;
+                case '数据':
+                    sjCount += 1;
+                    qianAll += nowMoney;
+                    break;
+            }
+        })
+        $('.snPage1 .wkCount').text(wkCount);
+        $('.snPage1 .sfCount').text(sfCount);
+        $('.snPage1 .sjCount').text(sjCount);
+
+        $('.snPage1 .nowAllPrice_qian').text(qianAll);
+        $('.snPage1 .nowAllPrice_xshu').text(xshuAll);
+    }
+    $(function() {
+        //获取收纳page1
+        $('.snPage1 .snCont').html('');
+        $.GSHajax({
+                url: '/pay/mycart/',
+                success: function(res) {
+                    if (res.status) {
+                        if (res.cart.length == 0) {
+                            $('.perscen_kong').show().siblings('.snPage1').hide();
+                            return;
+                        }
+                        for(var i = 0; i < res.cart.length; i++) {
+                            if(!res.cart[i].time) {
+                                res.cart.splice(i, 1);
+                            }
+                        }
+                        $('.perscen_kong').hide().siblings('.snPage1').show();
+                        var oHtml = '';
+                        for (var i = 0; i < res.cart.length; i++) {
+                            var comSpan_mim2 = ''; //微课样式
+                            var xshu_or_qian = '¥ ';
+                            var spanHtml = '';
+                            var checkUrl = '';
+                            switch (res.cart[i].category) {
+                                case '微课':
+                                    comSpan_mim2 = 'comSpan_mim2'; //微课样式
+                                    xshu_or_qian = xs_bi_ + ' ';
+                                    spanHtml = '<span>' + res.cart[i].all + ' 共 ' + res.cart[i].chapter + '</span>';
+                                    checkUrl = 'xssy_list.html';
+                                    break;
+                                case '算法':
+                                    // spanHtml = '<span>计算秒数: ' + res.cart[i].num + 's</span><span>每秒单价: ¥' + res.cart[i].rhin_s + '</span>';
+                                    // checkUrl = 'alg_list.html?sf';
+                                    break;
+                                case '数据':
+                                    for (var j = 0; j < res.cart[i].length; j++) {
+                                        spanHtml += '<span>' + res.cart[i] + '</span>';
+                                    }
+                                    checkUrl = 'alg_list.html?sj';
+                                    break;
+                            }
+                            var oHtml = '<li class="perscenBlock">' +
+                                '<table>' +
+                                '<tbody>' +
+                                '<tr class="perscenBlock">' +
+                                '<td width="140">' +
+                                '<i class="checkInput fl" data-id="' + res.cart[i].id + '" data-type="' + res.cart[i].category + '"></i>' +
+                                '<p class="snImgFoo"><img src="' + url_ip + res.cart[i].image + '" alt="" width="100%" height="100%"></p>' +
+                                '</td>' +
+                                '<td width="315" style="cursor: pointer" data-id="'+res.cart[i].id+'" class="uptodetail">' +
+                                '<div class="contTitl" title="' + res.cart[i].name + '"><p class="">' + res.cart[i].name + '</p><span class="comSpan_mim fl ' + comSpan_mim2 + '">' + (res.cart[i].category ? res.cart[i].category : '--') + '</span><div class="fl snSpan">' + spanHtml + '</div></div>' +
+                                '</td>' +
+                                '<td width="160" class="sn_price"><span>' + (res.cart[i].activity_price === '' ? '合计' : '优惠价') + ': </span> ' + xshu_or_qian + '<span class="needMoney">' + (res.cart[i].activity_price === '' ? res.cart[i].price : res.cart[i].activity_price) + '</span></td>' +
+                                '<td width="160"></td>' +
+                                '<td width="160" class="sn_oprate"><a href="' + checkUrl + '">选择更多' + res.cart[i].category + '</a><p class="delOne">删除</p></td>' +
+                                '</tr>' +
+                                '</tbody>' +
+                                '</table>' +
+                                '</li>'
+                            $('.snPage1 .snCont').append(oHtml);
+                        }
+                        // 变化一下数据的颜色
+                        $('.comSpan_mim').each(function() {
+                            if($(this).html() === '数据') {
+                                $(this).css('background', '#3ACC9B')
+                            }
+                        })
+                    }
+                }
+            })
+            //收纳页1全选
+        $('.snPage1').on('click', '.checkInputAll_page1', function() {
+                if ($(this).hasClass('active')) {
+                    $('.snPage1 .checkInputAll_page1').removeClass('active'); //全选按钮
+                    $('.snPage1 .snCont').find('.checkInput').removeClass('active'); //单个按钮
+                    $('.snPage1 .numPane').text(0); //清空三种物品个数
+                    $('.snPage1 .allMoney').text(0); //清空价钱
+                } else {
+                    $('.snPage1 .checkInputAll_page1').addClass('active');
+                    $('.snPage1 .snCont').find('.checkInput').addClass('active');
+                    calcSn1(); //计算
+                }
+            })
+            //收纳页1单选
+        $('.snPage1 .snCont').on('click', '.checkInput', function() {
+                if ($(this).hasClass('active')) {
+                    $('.snPage1 .checkInputAll_page1').removeClass('active'); //全选按钮
+                    $(this).removeClass('active'); //单个按钮
+                } else {
+                    $(this).addClass('active');
+                    if ($('.snPage1 .snCont').find('.checkInput').length == $('.snPage1 .snCont').find('.checkInput.active').length) {
+                        $('.snPage1 .checkInputAll_page1').addClass('active');
+                    }
+                }
+                calcSn1(); //计算
+            })
+            //收纳页1单项删除
+        $('.snPage1 .snCont').on('click', '.delOne', function() {
+                delConfirm()
+                .then(() => {
+                    var goods_id = $(this).closest('tr').find('.checkInput').attr('data-id');
+                    var goods = '';
+                    var nowClase = 1; //第几级(原来的书-章-节)
+                    var nowType = $(this).closest('tr').find('.checkInput').attr('data-type');
+                    switch (nowType) {
+                        case '微课':
+                            if (nowClase == 1) {
+                                goods = 'wecourse';
+                            } else if (nowClase == 2) {
+                                goods = 'wecourses';
+                            } else {
+                                goods = 'wecourset';
+                            }
+                            break;
+                        case '算法':
+                            goods = 'algorithm';
+                            break;
+                        case '数据':
+                            goods = 'data';
+                            break;
+                    }
+                    var _this = this;
+                    $.GSHajax({
+                        url: '/pay/delmycart/',
+                        type: 'post',
+                        data: {
+                            goods: goods,
+                            goods_id: goods_id
+                        },
+                        success: function(res) {
+                            if (res.status) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isOk',
+                                    h2txt: '删除成功',
+                                    setTime: 1500
+                                });
+                                $(_this).closest('li').remove();
+                                calcSn1(); //计算
+                            } else {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isOk',
+                                    h2txt: res.msg,
+                                    setTime: 1500
+                                });
+                            }
+                        },
+                    })
+                },function() {
+                    return;
+                })
+            })
+
+            // 收纳页1整体删除
+        $('.snPage1 .snPayDetail').on('click', '.delCheck', function() {
+                delConfirm()
+                .then(() => {
+                    var data = [];
+                    if ($('.snPage1 .snCont').find('.checkInput.active').length == 0) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: '您未选择任何商品',
+                            setTime: 1500
+                        });
+                        return
+                    } else {
+                        $('.snPage1 .snCont').find('.checkInput.active').each(function(i, ele) {
+                            var obj = {};
+                            var nowType = $(ele).attr('data-type');
+                            var goods = '';
+                            obj.goods_id = $(ele).attr('data-id');
+                            switch (nowType) {
+                                case '微课':
+                                    goods = 'wecourse';
+                                    break;
+                                case '算法':
+                                    goods = 'algorithm';
+                                    break;
+                                case '数据':
+                                    goods = 'data';
+                                    break;
+                            }
+                            obj.goods = goods;
+                            data.push(obj);
+                        })
+                    }
+                    $.GSHajax({
+                        url: "/pay/delmycart/",
+                        data: {
+                            data: JSON.stringify(data)
+                        },
+                        success: function(res) {
+                            if (res.status) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isOk',
+                                    h2txt: '删除成功',
+                                    setTime: 1500
+                                });
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1500)
+                            } else {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: res.msg,
+                                    setTime: 1500
+                                });
+                            }
+                        }
+                    })
+                }, function() {
+                    return;
+                })
+            })
+            //收纳页1结算
+        $('.snPage1 .snPayFoo .snGoAccounts').on('click', '.btn', function() {
+                if ($('.snPage1 .snCont').find('.checkInput.active').length == 0) {
+                    $('.alertMsg').showMsg({
+                        isImg: 'isNo',
+                        h2txt: '您未选择任何商品',
+                        setTime: 1500
+                    });
+                    return
+                }
+                var obj = {
+                    wecourse: [],
+                    algorithm: [],
+                    data: []
+                };
+                $('.snPage1 .snCont').find('.checkInput.active').each(function(i, ele) {
+                    var nowType = $(ele).attr('data-type');
+                    var nowId = $(ele).attr('data-id');
+                    switch (nowType) {
+                        case '微课':
+                            obj.wecourse.push(nowId);
+                            break;
+                        case '算法':
+                            obj.algorithm.push(nowId);
+                            break;
+                        case '数据':
+                            obj.data.push(nowId);
+                            break;
+                    }
+                })
+                obj.wecourse = JSON.stringify(obj.wecourse);
+                obj.algorithm = JSON.stringify(obj.algorithm);
+                obj.data = JSON.stringify(obj.data);
+                //收纳页1请求获取2值
+                $.GSHajax({
+                    url: '/pay/tocount/',
+                    data: obj,
+                    success: function(res) {
+                        if (res.status) {
+                            //改变进度状态
+                            $('.personR_sn .snStageFoo .snState').eq(1).addClass('active');
+                            $('.personR_sn .snStageFoo .sn_tip_tit').text('请您核对订单');
+                            //赋值
+                            var qianAllNum = xshuAllNum = 0;
+                            $('.snPage2 .snCont').html('');
+                            $('.snPage1').hide().siblings('.snPage2').show();
+                            for (var i = 0; i < res.cart.length; i++) {
+                                var comSpan_mim2 = ''; //微课样式
+                                var xshu_or_qian = '¥ ';
+                                var spanHtml = '';
+                                var isPrice = '合计';
+                                var needPrice = res.cart[i].price; //价格
+                                switch (res.cart[i].category) {
+                                    case '微课':
+                                        comSpan_mim2 = 'comSpan_mim2'; //微课样式
+                                        xshu_or_qian = xs_bi_ + ' ';
+                                        spanHtml = '<span>' + res.cart[i].all + ' 共 ' + res.cart[i].chapter + '</span>';
+                                        if (res.cart[i].activity_price !== '') {
+                                            isPrice = '优惠价';
+                                            needPrice = res.cart[i].activity_price;
+                                        }
+                                        xshuAllNum += needPrice;
+                                        break;
+                                    case '算法':
+                                        spanHtml = '<span>计算秒数: ' + res.cart[i].num + 's</span><span>每秒单价: ¥' + res.cart[i].rhin_s + '</span>';
+                                        qianAllNum += needPrice;
+                                        break;
+                                    case '数据':
+                                        for (var j = 0; j < res.cart[i].labels.length; j++) {
+                                            spanHtml += '<span>' + res.cart[i].labels[j] + '</span>';
+                                        }
+                                        qianAllNum += needPrice;
+                                        break;
+                                }
+                                var oHtml = '<li class="perscenBlock" data-id="' + res.cart[i].id + '">' +
+                                    '<table>' +
+                                    '<tbody>' +
+                                    '<tr>' +
+                                    '<td width="140">' +
+                                    '<p class="snImgFoo"><img src="' + url_ip + res.cart[i].image + '" alt="" width="100%" height="100%"></p>' +
+                                    '</td>' +
+                                    '<td width="315">' +
+                                    '<div class="contTitl" title="' + res.cart[i].name + '"><p class="">' + res.cart[i].name + '</p><span class="comSpan_mim fl ' + comSpan_mim2 + '">' + res.cart[i].category + '</span><div class="fl snSpan">' + spanHtml + '</div></div>' +
+                                    '</td>' +
+                                    '<td width="160" class="sn_price">' + isPrice + ': ' + xshu_or_qian + '<span>' + needPrice + '</span></td>' +
+                                    '<td width="320" class="sn_oprate"><p>暂无优惠券</p></td>' +
+                                    '</tr>' +
+                                    '</tbody>' +
+                                    '</table>' +
+                                    '</li>';
+                                $('.snPage2 .snCont').append(oHtml);
+                            }
+                            $('.snPage2 .nowAllPrice_qian').text(qianAllNum)
+                            $('.snPage2 .nowAllPrice_xshu').text(xshuAllNum)
+                        } else {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: res.msg,
+                                setTime: 2000
+                            });
+                        }
+                    }
+                })
+            })
+            //收纳页2回页1
+        $('.personR_sn .snPage2 .snPayFoo').on('click', '.goSnPage1', function() {
+                //改变进度状态
+                $('.personR_sn .snStageFoo .snState').eq(1).removeClass('active');
+                $('.personR_sn .snStageFoo .sn_tip_tit').text('请选择您要结算的商品');
+                $('.snPage1').show().siblings('.snPage2').hide();
+            })
+            //收纳页2结算
+        $('.snPage2 .snPayFoo .snGoAccounts').on('click', '.btn', function() {
+            var objArr = [];
+            $('.snPage2 .snCont').children('li').each(function(i, ele) {
+                    var obj = {
+                        dis: {},
+                        is_coin: 'no'
+                    };
+                    var nowType = $(ele).find('.comSpan_mim').text();
+                    switch (nowType) {
+                        case '微课':
+                            obj.category = 'wecourse';
+                            obj.is_coin = 'yes';
+                            break;
+                        case '算法':
+                            obj.category = 'algorithm';
+                            break;
+                        case '数据':
+                            obj.category = 'data';
+                            break;
+                    }
+                    obj.category_id = $(ele).attr('data-id');
+                    obj.cost = $(ele).find('.sn_price span').text() - 0;
+                    objArr.push(obj)
+                })
+                //请求验证获取最终支付信息
+            $.GSHajax({
+                url: '/pay/createorder/',
+                data: {
+                    data: JSON.stringify(objArr)
+                },
+                success: function(res) {
+                    if (res.status) {
+                        // $('.alertMsg').showMsg({isImg: 'isOk', h2txt: res.msg, setTime: 2000});
+                        //结算跳转
+                        $.GSHajax({
+                            url: '/pay/pay/',
+                            data: res.data,
+                            success: function(res2) {
+                                if (res2.status) {
+                                    window.location.href = 'xshupay.html?xsord=' + res.data.num;
+                                } else {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isNo',
+                                        h2txt: res.msg,
+                                        setTime: 2000
+                                    });
+                                }
+                            }
+                        })
+                    } else {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: res.msg,
+                            setTime: 2000
+                        });
+                    }
+                }
+            })
+        })
+    })
+    // 收纳页面，商品信息需要可以点击
+    $('body').on('click', '.uptodetail', function() {
+        // if($(this).find('.comSpan_mim').html() === '数据') {
+        //     return;
+        // }
+        // else {
+        // }
+        if($(this).find('.comSpan_mim').html() === '微课') {
+            window.location.href = 'xssy_detail.html?' + $(this).attr('data-id');
+        }
+        else {
+            window.location.href = 'details.html?' + $(this).attr('data-id');
+
+        }
+    })
+
+</script>

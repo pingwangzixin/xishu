@@ -1,0 +1,182 @@
+/*全局样式*/
+*{margin:0;padding:0;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;outline:none;}
+h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+body{background:#fff;font-size:12px;}
+.fl{float:left;}
+.fr{float:right;}
+.cWight,.cWight:hover{
+	color: #fff;
+}
+.hide{display: none;}
+.mt5{
+	margin-top: 5px !important;
+}
+.tx-right{
+	text-align: right;
+}
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg.jpg) no-repeat center #373c5c;
+	background-size: 100% 100%;
+	box-sizing: border-box;
+}
+input:focus {
+	border: 1px solid #496FFF;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #496FFF;
+	border-radius: 3px;
+}
+/*登录页样式*/
+/*导航*/
+
+/*登录框*/
+/* .dl_box{margin-top: -230px !important;width:400px;box-sizing:border-box;padding:30px 30px 10px 30px;background:#fff;border-radius:6px;position:absolute;margin-top:100px;margin-left:50%;left:-200px;} */
+/*.dl_box .input{width:298px;height:38px;border-radius:5px;margin:20px 20px;background:#fff;}*/
+.dl_box span{/*position:absolute;*/color:#EEE;}
+.dl_box #usernameTip{left:55px;top:90px;}
+.dl_box #pwdTip{left:55px;top:152px;}
+.dl_box .input i{width:18px;height:16px;background:url(../img/icon.png) no-repeat -52px -126px;position: absolute;left: 10px;top: 9px;}
+.dl_box .input i.dl_input_icon2{background-position:-147px -126px;}
+.dl_box .forWidth{width: 298px;text-align: right;margin-top: 10px;}
+.dl_box .forWidth .loginCheckFoo{
+	display: inline-block;
+	float: none;
+	vertical-align: middle;
+	margin-right: 0;
+}
+/*.dl_box .input input{width:254px;height:38px;outline:none;font-size:14px;}*/
+input::-webkit-input-placeholder {color:#b1b1b1;}
+input:-moz-placeholder {color:#b1b1b1;}
+input:-ms-input-placeholder {color:#b1b1b1;}
+/*.dl_box a{margin:0 20px;color:#0d6db7;}*/
+/*.denglu{width:298px;height:38px;background:#06415e;text-align:center;line-height:38px;font-size:16px;color:#fff;margin-left:20px;border-radius:5px;margin-top:20px;cursor:pointer;}*/
+.other{margin:20px 20px 0;overflow:hidden;}
+.other div{float:left;}
+.other p{float:left;margin:0 15px 0;color:#666;}
+.other .line{width:90px;height:1px;background:#666;margin-top:8px;}
+.other .lin2{float:right;}
+.other_con{margin:20px 70px 20px;overflow:hidden;}
+.other_con i{width:40px;height:30px;background:url(../img/icon.png) no-repeat -2px -159px;}
+.other_con .qq{background-position:-62px -159px;margin:0 30px;}
+.other_con .wechat{background-position:-120px -159px;}
+
+
+/*注册页样式*/
+/* .login_r,.zc_bg,.forget_r{
+	width: 48%;
+	height: 100%;
+	float: right;
+	position: relative;	
+} */
+.logoFoo{
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+.logoFoo i{
+	width: 140px;
+	height: 30px;
+	display: inline-block;
+	background: url(../img/login_logo.png) no-repeat center;
+	background-size: 100%;
+}
+.logoFoo span{
+	color: #fff;
+	font-size: 14px;
+	margin-left: 5px;
+}
+.dl_box,.zc_box,.forget_box{position:absolute;margin-left:50%;top: 50%;transform: translate(-50%, -50%);box-sizing:border-box;padding:20px 30px;border-radius:6px;z-index:-0;overflow:hidden;}
+.forHeight{
+	height: 60px;
+}
+.zc_index,.dl_index{color:#3e3a39;}
+.dl_box .first_input,.dl_box .input,.zc_box .input,.forHeight .input{width:298px;height:38px;border-radius:3px;background:rgba(0,0,0,.3);position: relative;}
+.zc_box .input i{width:18px;height:16px;background:url(../img/icon.png) no-repeat -52px -126px;position: absolute;left: 10px;top: 50%;margin-top: -9.5px;}
+.zc_box .input .zc_input_icon1{width:17px;height:21px;background-position:-4px -127px;}
+.zc_box .input .zc_input_icon2{width:17px;height:17px;background-position:-29px -125px;}
+.zc_box .input .zc_input_icon4{width:17px;height:17px;background-position:-83px -127px;}
+.zc_box .input .zc_input_icon5{width:17px;height:17px;background-position:-112px -127px;}
+.dl_box input,.zc_box input,.forget_box input{width:298px;height:38px;outline:none;font-size:12px;color: #fff;background:rgba(0,0,0,0);padding-left: 30px;box-sizing: border-box;}
+.zc_box .yz{width:200px;position:relative;}
+.zc_box .yz input{width:200px;}
+.zc_box .zc_send,.forget_box .forget_send{width:90px;height:30px;line-height:30px;text-align:center;font-size:12px;color:#fff;;margin-right:20px;margin-top:5px;border-radius:3px;position:absolute;top:0;right:-120px;background:#496FFF;}
+.forget_send.active{background: rgba(255,255,255,.3);}
+.zc_box .zc_send:hover,.forget_box .forget_sendPre:hover{cursor:pointer;background: rgba(0,0,0,.3);}
+.jy_img{width:78px;height:28px;border:1px solid #0D6DB7;line-height:28px;text-align:center;font-size:18px;color:#fff;float:right;margin-right:20px;margin-top:5px;border-radius:5px;background:rgba(255,255,255,0.4);cursor:pointer;}
+
+.Datahoop{height:16px;line-height:14px;margin:10px 0;}
+.Datahoop .read{color:#fff;}
+.Datahoop #datahoop{color:#004cff;}
+.Datahoop #datahoop:hover{color: #03f;text-decoration:underline;}
+.loginCheckFoo,.zc_box .check{width:13px;height:13px;border:1px solid #fff;position:relative;float:left;margin-right:10px;border-radius:2px;}
+.loginCheckFoo img,.zc_box .check img{display:none;margin:2px auto;}
+.loginCheckFoo .isRemPwdChk,.zc_box .zc_check{width:14px;height:14px;opacity:0;position:absolute;top:0;left:0;margin:0;}
+.denglu,#zhuce,.forget{display:block;width: 298px;height: 38px;line-height: 38px;text-align: center;font-size: 16px;color: #fff;background: #496FFF;border-radius: 3px;cursor: pointer;transition: all .3s;}
+.denglu:hover,#zhuce:hover,.forget:hover,.denglu:active,#zhuce:active,.forget:active{background: rgba(0,0,0,.3)}
+.isRePassword,.quick_box{width: 298px;text-align: right;margin-top: 10px;color: #F1F1F1;overflow: hidden;}
+.quick_box span{}
+.quick{float:right;cursor:pointer;color:#004cff;}
+.quick:hover,.quick:active{color:#03f;}
+/*验证*/
+.forHeight span,.phoneTip,.yz_phoneTip,.yzTip,.pwdTip,.repet_pwdTip{display: block;margin: 2px 0 0 10px;}
+/*.yz_phoneTip{position:absolute;left:55px;top:142px;color:#ff0000;}
+.yzTip{position:absolute;left:55px;top:202px;color:#ff0000;}
+.pwdTip{position:absolute;left:55px;top:262px;color:#ff0000;}
+.repet_pwdTip{position:absolute;left:55px;top:322px;color:#ff0000;}*/
+
+/*用户协议*/
+#xieyi{width:100%;height:100%;background:#fff;position:absolute;top:0;left:0;display:none;z-index: 1;}
+#xieyi i{position:absolute;top:10px;right:10px;width:20px;height:20px;cursor:pointer;}
+#xieyi h2{height:30px;line-height:30px;text-align:center;margin:30px 0;font-size:24px;font-weight: bold;color:#000;}
+/* #xieyi p{width:430px;margin:20px 0 0 40px;overflow:auto;height:320px;text-indent:2em;font-size:12px;color:#666;word-spacing:10px; letter-spacing: 2px;background:#fff;box-sizing:border-box;padding:2px;} */
+#xieyi p span{width:2em;display:inline-block;vertical-align:top;}
+#xieyi .xieyiCont,#xieyi .yinsiCont{width: 1200px;height: calc(100% - 180px);line-height: 30px;margin: 0 auto;font-size: 16px;font-family: PingFangSC-Regular;color: #333;overflow: scroll;overflow-x: hidden;box-sizing: border-box;}
+#xieyi .xieyiCont h3,#xieyi .yinsiCont h3{margin: 20px 0 10px;font-size: 16px;font-weight: bold;}
+#xieyi .xieyi_jixu{width:420px;height:48px;text-align:center;line-height:48px;color:#fff;background:#496FFF;font-size:18px;letter-spacing: 2px;margin:20px auto;border-radius:2px;cursor:pointer;}
+
+
+/*忘记密码页样式*/
+.forget_bg{width:100%;height:100vh;background:url(../img/bg.jpg) no-repeat;background-size:100% 100%;position:relative;}
+/* .forget_box{width:400px;position:absolute;margin-left:50%;left:-200px;box-sizing:border-box;padding:20px 30px;border-radius:6px;z-index:-0;overflow:hidden;} */
+/* .cancel{position:absolute;top:10px;right:10px;cursor:pointer;} */
+/*.forget_box .input{width:298px;height:38px;border:1px solid #dcdcdc;border-radius:5px;margin:20px 20px;background:#fff;}*/
+.forget_box .input i{width:17px;height:17px;background:url(../img/icon.png) no-repeat -113px -128px;position: absolute;left: 10px;top: 9px;}
+.forget_box .input .forget_input_icon1{width:17px;height:21px;background-position:-4px -127px;}
+.forget_box .input .forget_input_icon2{width:17px;height:17px;background-position:-29px -127px;}
+.forget_box .input .forget_input_icon3{width:17px;height:17px;background-position:-83px -127px;margin-left:1px;}
+/*.forget_box input{width:254px;height:38px;outline:none;font-size:14px;}*/
+.forget_box span{position:absolute;left:50px;}
+.forget_box .phoneTip{/*top:81px;*/color:#ff0000;}
+.forget_box .yz_phoneTip{/*top:141px;*/color:#ff0000;}
+.forget_box .pwdTip{/*top:201px;*/color:#ff0000;}
+.forget_box .repet_pwdTip{/*top:262px;*/color:#ff0000;}
+.forget_box .f_yz{width:198px;position:relative;}
+.forget_box .f_yz input{width:200px;}
+/*.forget_box .forget_send{width:78px;height:28px;border:1px solid #0D6DB7;line-height:28px;text-align:center;font-size:12px;color:#fff;margin-right:20px;margin-top:5px;border-radius:3px;position:absolute;top:0;right:-120px;background:#06415e;}*/
+/*.forget_box .forget_send:hover{cursor:pointer;}*/
+.forget_box .check{width:13px;height:13px;border:1px solid #0D6DB7;position:relative;float:left;margin-right:10px;}
+/*.forget{width:298px;height:38px;margin:20px;color:#fff;text-align:center;line-height:38px;font-size:16px;border-radius:5px;background:#06415e;cursor:pointer;}*/
+/*记住密码*/
+.isRemPwd.check-box{
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+}
+
+/*底部*/
+/*footer*/
+.footer2{width:100%;border-top:box-sizing:border-box;padding:10px 0;position:absolute;left:0;bottom:0;}
+.footer2 div{text-align:center;font-size:12px;color:#fff;height:20px;line-height:34px;}
+
+.logoFoo2{width: 299px;height: 40px;position: relative;}
+.logoFoo2 b{font-size: 14px;color: #fff;position: absolute;left: 50px;top: 20px;}
+.logoFoo2 strong{height: 12px;line-height: 12px;font-size: 12px;color: #fff;position: absolute;right: 0;bottom: 0;cursor: pointer;}

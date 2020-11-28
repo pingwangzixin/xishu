@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 CPDA选课</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/cpda_selsource.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xssy_json.js?v=0.20.02.20.16"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lkw_scroll.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/ued.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/cda_selsource.js?v=0.19.11.21.11"></script>
+    <style>
+        .mytooltip {
+            position: fixed;
+            min-width: 150px;
+            max-width: 330px;
+            line-height: 20px;
+            padding: 15px;
+            color: #fff;
+            background: #4A71FF;
+            font-size: 12px;
+            border-radius: 2px;
+            display: none;
+            z-index: 1025;
+        }
+        /*收纳层级: 1024*/
+
+        .mytooltip:after {
+            content: '';
+            /* width: 0;
+			height: 0;
+			border: 8px solid transparent;
+			border-bottom-color: #4A71FF; */
+            width: 11px;
+            height: 8px;
+            background: url(img/icon/cpdaAreaU.png) no-repeat center;
+            background-size: 100%;
+            position: absolute;
+            z-index: 1000;
+            top: -16px;
+            top: -8px;
+            left: 80px;
+            margin-left: -8px;
+        }
+
+        .mytooltip.top_mytooltip:after {
+            /* border-bottom-color: transparent;
+			border-top-color: #4A71FF; */
+            background: url(img/icon/cpdaAreaD.png) no-repeat center;
+            background-size: 100%;
+            top: auto;
+            /* bottom: -16px; */
+            bottom: -8px;
+        }
+
+        .mytooltipR:after {
+            left: auto;
+            right: 80px;
+        }
+
+        .sel_T h2.sel_T_h2 {
+            width: 60px;
+            height: 60px;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="mytooltip" title="个性样式">
+
+	</span>
+    <nav></nav>
+    <div class="sel_T">
+        <div class="sel_TCont">
+            <h2 class="sel_T_h2">
+                <a href=""><img src="img/cda.png" width="100%" height="100%"></a>
+            </h2>
+            <p>
+                <a href="javascript:;" data-type="lk" style="background: #fff;opacity: 0;">查看详情</a>
+                <a href="javascript:;" data-type="xk">选课须知</a>
+            </p>
+        </div>
+    </div>
+    <div class="sel_C">
+        <div class="sel_L">
+            <ul class="sel_LCont">
+                <!--左侧tab列-->
+            </ul>
+        </div>
+        <div class="sel_R">
+            <div class="sel_RCont">
+                <div class="tabCont" data-item="">
+                    <!--右侧tab文-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sel_B">
+        <div class="sel_BCont">
+            <h4><span>我的<i class="x_shu_Name"></i>: <b class="myScore">--</b> <strong style="margin: 0 20px;color: #D8D8D8;">|</strong> </span><span>需消耗<i class="x_shu_Name"></i></span><i class="allScore">0</i></h4>
+            <div class="btn">确定选择</div>
+        </div>
+    </div>
+    <div class="loadingGif"></div>
+    <div class="sel_alertMu">
+        <div class="sel_alert">
+            <h2 class="titl">
+                <span>选课说明</span><i class="close">×</i>
+            </h2>
+            <div class="sel_alertCont">
+
+            </div>
+            <div class="btn close">好的</div>
+        </div>
+    </div>
+    <div class="selpayAlertMu">
+        <div class="selpayAlert">
+            <h2 class="titl">
+                <span></span><i class="close">×</i>
+            </h2>
+            <p>请您慎重使用您的积分，及选择课程， 一旦确认选择后课程将无法删除更换。</p>
+            <div class="btn">去结算</div>
+        </div>
+    </div>
+    <style>
+        #yindaoye {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, .5);
+            display: none;
+        }
+
+        #yindaoye .stepInfo {
+            width: 598px;
+            height: 243px;
+            padding: 28px 42px 0 52px;
+            background: url(img/pic/step.png) no-repeat center;
+            background-size: 100% 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -121px 0 0 -300px;
+            box-sizing: border-box;
+        }
+
+        #yindaoye .stepInfo p {
+            line-height: 25px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #fff;
+            display: none;
+        }
+
+        #yindaoye .stepInfo p.pTitl {
+            font-size: 18px;
+        }
+
+        #yindaoye .stepInfo .btnFoo {
+            margin-top: 40px;
+            text-align: right;
+        }
+
+        #yindaoye .stepInfo .btnFoo span {
+            width: 99px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            margin-left: 40px;
+            background: url(img/icon/step_btn.png) no-repeat center;
+            color: #fff;
+            background-size: 100% 100%;
+            font-size: 16px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        #yindaoye .step01 {
+            width: 290px;
+            height: 52px;
+            line-height: 48px;
+            padding: 0 15px;
+            color: #fff;
+            background: #496FFF;
+            font-size: 16px;
+            border: 2px solid #fff;
+            box-sizing: border-box;
+        }
+
+        #yindaoye .step01 i {
+            font-size: 14px;
+            color: #fff;
+            float: right;
+            transition: all .3s;
+        }
+
+        #yindaoye .step02 {
+            width: 260px;
+            height: 45px;
+            padding-top: 15px;
+            background: #fff;
+        }
+
+        #yindaoye .step02 a {
+            width: 85px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: 30px;
+            color: #fff;
+            background: #496FFF;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        #yindaoye .step03 {
+            width: 725px;
+            background: #fff;
+            overflow: hidden;
+        }
+        /* #yindaoye .stepTip li{display: none;} */
+    </style>
+    <div id="yindaoye">
+        <ul class="stepTip">
+            <li class="step01">
+
+            </li>
+            <li class="step02">
+
+            </li>
+            <li class="step03">
+
+            </li>
+        </ul>
+        <div class="stepInfo">
+            <p class="pTitl" data-step="1">您已进入CDA自主选课界面</p>
+            <p data-step="1">现在您所看到的是，CDA课程内容所包含的大纲目录，您可以点开相应的章节， 进行章节内课程的选择！</p>
+            <p class="pTitl" data-step="2">查看更多课程信息</p>
+            <p data-step="2">“选课说明”您可以查看到CDA自主选课的流程，方便您进行课程的选择，“查看详情”您可以查看到CDA课程的整体介绍以及各知识点的简介！</p>
+            <p class="pTitl" data-step="3">章节内课程的选择</p>
+            <p data-step="3">您可以根据您自己的知识储备以及个人偏好，选择您所想学习的课程哦！每个数据分析师都有自己独立的课程哦！您只要单击相应课程的名称即可将其加入您的课程收纳箱，若您想删除课程再次单击课程即可。</p>
+            <div class="btnFoo">
+                <span data-item="close">跳 过</span>
+                <span data-item="next_">下一步</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide" data-to="back">
+
+    </div>
+    <!-- 提示框 -->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <!-- 购物车 -->
+    <div class="fixed_btn">
+
+    </div>
+    <!-- msgbox -->
+    <div class="mu"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+
+    <div class="lkw-msg" style="top: -100%;">
+        <!--alert-message-->
+    </div>
+    <div class="loading_lkw" style="display: none;"></div>
+</body>
+
+</html>

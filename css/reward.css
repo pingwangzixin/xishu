@@ -1,0 +1,59 @@
+/*全局样式*/
+*{margin:0;padding:0;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;outline:none;}
+h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+body{background:#F9FBFB;font-size:12px;position:relative;}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear:both;}
+
+.head_bg{width:100%;background:url(../img/suanf.png);background-size:100% 100%;min-width:1024px;}
+.reward_header{width:74.964vw;height:100px;color:#fff;margin:0 auto;min-width:1024px;position:relative;}
+.reward_header h1{width:160px;padding-left:20px;height:48px;background:rgba(0,0,0,0.6);position:absolute;left:0;top:26px;line-height:48px;font-size:16px;font-weight:normal;border-radius:2px;}
+.reward_header p{line-height:48px;position:absolute;top:26px;left:calc(12.5% + 200px);padding:0 40px;font-size:14px;background:rgba(0,0,0,0.6);}
+
+.reward_body{width:74.964vw;margin:0 auto;padding-top:20px;min-width:1024px;}
+.reward_left{width:calc(100% - 220px);float:left;}
+.reward_left .reward_progress{width:100%;height:74px;background:#fff;box-shadow:0 0 5px #F3F5F5;margin-bottom:10px;text-align:center;padding-top:26px;}
+.reward_progress span{width:20px;height:20px;background:#D2D2D2;text-align:center;line-height:20px;border-radius:50%;position:relative;display:inline-block;color:#fff;}
+.reward_progress span i{position:absolute;bottom:-30px;left:50%;width:100px;margin-left:-50px;text-align:center;color:#666666;}
+.reward_progress span.to_on{box-sizing:border-box;border:1px solid #0099FF;background:#fff;color:#0099FF;}
+.reward_progress span.to_on i{color:#0099FF;}
+.reward_progress b{width:8.6vw;border:1px solid #D2D2D2;display:inline-block;vertical-align:20%;}
+.reward_left .reward_form{width:100%;background:#fff;box-shadow:0 0 5px #F3F5F5;padding:20px;box-sizing:border-box;}
+.reward_left .reward_form form div{margin:10px 0 20px;}
+.reward_form form span{line-height:36px;}
+.reward_form form div input{line-height:34px;padding-left:15px;border:1px solid #EEEEEE;width:calc(100% - 120px);}
+.reward_form form div textarea{width:calc(100% - 125px);height:243px;resize:none;border:1px solid #EEEEEE;outline:0;vertical-align:top;padding:10px;line-height:20px;color:#333;}
+.reward_form form select{line-height:34px;border:1px solid #EEEEEE;width:120px;height:34px;outline:0;margin-right:60px;margin-bottom:10px;}
+.reward_form form input[type="number"]{line-height:34px;padding-left:15px;border:1px solid #EEEEEE;width:120px;}
+.reward_form form input.reward_phone{width:50%;margin-right:20px;}
+.reward_form form div i{line-height:34px;width:140px;text-align:center;border:1px solid #EEEEEE;background:#eee;cursor:pointer; box-shadow:0 0 5px #eee;}
+.reward_form form div i.false_click{color:#beafaf;}
+.reward_form form input.yzm{width:50%;margin-bottom:20px;}
+.reward_left .reward_form form div.reward_button{width:160px;line-height:38px;font-size:14px;margin:0 auto;background:linear-gradient(to right,#02A1FF,#1A37FF);color:#fff;border-radius:19px;text-align:center;box-shadow:0 0 5px #03A8FF;margin-bottom:20px;cursor:pointer;}
+.reward_right{float:right;width:210px;height:1032px;background:url(../img/reward_right.png);}
+
+.msgBox{width:100vw;height:100vh;position:fixed;top:0;left:0;background:rgba(0,0,0,0.6);}
+.msgBox div{width:400px;position:absolute;top:50%;left:50%;margin-left:-200px;margin-top:-80px;background:#fff;box-sizing:border-box;padding:30px 30px 40px;text-align:center;border-radius:8px;}
+.msgBox div i{width:40px;height:40px;margin-bottom:20px;}
+.msgBox div i.s0{background:url(../img/错误.png);background-size:100%;}
+.msgBox div i.s1{background:url(../img/正确.png);background-size:100%;}
+.msgBox div i.s2{background:url(../img/警告.png);background-size:100%;}
+.msgBox div i.s3{background:url(../img/提示.png);background-size:100%;}
+.msgBox div span{font-size:14px;color:#666;letter-spacing:1px}
+
+/*登录提示*/
+.shade{width:100vw;height:100vh;position:fixed;top:0;left:0;background:rgba(0,0,0,0.6);}
+#hint_login{width:440px;height:110px;background:#fff;position:absolute;top:50%;left:50%;z-index:1000;margin-top:-55px;margin-left:-220px;}
+#hint_login .hint_logo_cancel{position:absolute;right:-10px;top:-10px;width:35px;cursor:pointer;}
+#hint_login .hint_logo{position:absolute;left:-42px;top:-120px;}
+#hint_login .hint_logo_shadow{position:absolute;left:-56px;top:16px;}
+#hint_login p{color:#06415e;position:absolute;left:78px;top:30px;width:280px;text-align:center;}
+#hint_login .btn{position:absolute;right:5px;bottom:10px;}
+#hint_login .btn a{display:inline-block;width:56px;height:22px;background:#06415e;color:#fff;text-align:center;line-height:21px;border-radius:5px;margin-left:3px;}

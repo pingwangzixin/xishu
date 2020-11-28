@@ -1,0 +1,17 @@
+/*全局样式*/
+*{margin:0;padding:0;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;}
+h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+body{font-size:12px;font-family: "Microsoft YaHei", "微软雅黑", Tahoma, Geneva, sans-serif;background:#f9fbfb;}
+.clear{clear:both;}
+.fl{float:left;}
+.fr{float:right;}
+
+.center{width:340px;height:248px;position:absolute;left:50%;top:50%;margin-top:-124px;margin-left:-170px;}
+.toback{width:150px;box-sizing:border-box;height:30px;border-radius:15px;background:#ff6b00;text-align:center;line-height:30px;color:#fff;cursor:pointer;}
+.countdown{width:150px;box-sizing:border-box;height:30px;border-radius:15px;background:#D6D6D6;text-align:center;line-height:30px;color:#fff;}

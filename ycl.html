@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Datahoop 2.0 数据加工</title>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+		<link rel="stylesheet" href="css/comment_lkw.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/ycl.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/ycl.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/json2.js?v=0.19.11.21.11"></script>
+    <!-- <script type="text/javascript" src="js/webim.js?v=0.19.11.21.11?v=1"></script> -->
+    <!-- <script type="text/javascript" src="js/demo_base.js?v=0.19.11.21.11"></script> -->
+    <!-- <script type="text/javascript" src="js/chat.js?v=0.19.11.21.11"></script> -->
+
+	<!--<link rel="stylesheet" type="text/css" href="css/personal_centerNew.css?v=0.19.11.21.11">-->
+	<style>
+		.yclR_c .clearBtn:hover{background: #0cf;}
+		.ycl_page input{min-height: 20px;}
+		.mu_ycl{width: 100%;height: 100%;background: rgba(0,0,0,0.7);position: fixed;left: 0;top: 0;display: none;z-index: 1024;}
+		.loading_lkw {width: 80px;height: 80px;background: url(img/loading.gif) no-repeat;background-size: 100%;position: fixed;left: 50%;top: 50%;margin: -40px 0 0 -40px;z-index: 1025;}
+		.msg-box-wraper .msg-box .msg-close{top: 10px;}
+	</style>
+</head>
+<body>
+    <nav></nav>
+    <!-- <div class="modelimg"><img src="img/modelbox.png"></div>
+    <div class="modelbox">
+        <iframe src="model.html" width="1349" height="662" scrolling="no" frameborder="0"> </iframe>
+    </div> -->
+
+
+	<div class="ycl_banner mb10">
+		<div class="bannerCont">
+			<h3>数据加工</h3>
+			<div class="ycl_tip relative personlShadow">
+				<div class="ycl_tipAjax">
+
+				</div>
+				<div class="ycl_tipSlide"><img src="img/todown3.png" class=""></div>
+			</div>
+		</div>
+	</div>
+	<div class="typeArea clearfix">
+		<!--左侧-->
+		<div class="yclL">
+			<div class="yclL_b plr10 personlShadow pt10">
+				<a href="data_list.html" target="_black">
+					<p class="yclL_t hand mb10 personlShadow">
+						<i class="ylcTopIcon"></i>
+						<span class="verticalM cBlue fz16">导入数据</span>
+					</p>
+				</a>
+				<h3>我的数据</h3>
+				<ul class="ajaxDivL">
+
+				</ul>
+			</div>
+		</div>
+		<div class="yclR">
+			<!--右上-->
+			<div class="yclR_t mb10 personlShadow hide">
+				<span>数据命名: </span>
+				<input type="text" class="yclR_tSearch">
+				<div class="fr pr10 pt10"><p class="btn-black saveBtn">保存</p></div>
+			</div>
+			<!--右中-->
+			<div class="yclR_c mb10 personlShadow">
+				<p class="noDrag" style="display: none;"><i>-手-</i>将左侧的数据拖入工作区</p>
+				<div class="ylcR_cCont">
+					<p class="inputP relative" data-item="1">
+						<input type="text" disabled style="border-radius: 15px">
+						<i style="display: none;"></i>
+					</p>
+					<div class="flowChart inlineBlock relative" data-item="2">
+						<span><img src="img/yuan1.png" alt="" class="isShowSlide" data-name="inner"></span>
+						<div class="flowChartSlide personlShadow hide">
+							<ul>
+								<li>
+									<p><img src="img/yuan1.png" alt=""></p>
+									<p><span data-name="inner">内部</span></p>
+								</li>
+								<li>
+									<p><img src="img/yuan2.png" alt=""></p>
+									<p><span data-name="left">左侧</span></p>
+								</li>
+								<li>
+									<p><img src="img/yuan3.png" alt=""></p>
+									<p><span data-name="right">右侧</span></p>
+								</li>
+								<li>
+									<p><img src="img/yuan4.png" alt=""></p>
+									<p><span data-name="outer">外侧</span></p>
+								</li>
+							</ul>
+							<div class="tx-center selFoo">
+								<select name="" id="" class="selL width100">
+
+								</select>
+								<select name="" id="" class="selR width100">
+
+								</select>
+								<div class="pt5 pb5"><p class="btn-black">确 定</p></div>
+							</div>
+						</div>
+					</div>
+					<p class="inputP relative" data-item="2">
+						<input type="text" disabled style="border-radius: 15px">
+						<i style="display: none;"></i>
+					</p>
+					<b class="ml10 hand backHand cOrange hide">*撤销对表格上一步的操作</b>
+					<div class="fr pr10"><p class="btn-black saveBtn">另存为</p></div>
+					<!--<div class="fr pr10"><p class="btn-black clearBtn">清空全部</p></div>-->
+				</div>
+			</div>
+			<!--右中隐藏域, 绝对定位时撑开盒子高度-->
+			<div class="yclR_c_hide hide" style="height: 60px;"></div>
+			<!--右下-->
+			<div class="yclR_b personlShadow pa10 relative">
+				<div class="tab2 relative">
+					<!--下拉列表-->
+					<div class="slideCont hide personlShadow docClick" style="box-shadow: rgba(15, 112, 197, 0.3) 0px 1px 8px 0px;">
+						<!-- <h4><i></i>编辑列</h4> -->
+						<h4 data-item="delete" class="slideContClick">删除此列</h4>
+						<h4 data-item="re_name" class="slideContClick">修改列名</h4>
+						<!-- <div class="slideDownCont">
+							<p data-item="delete">删除此列</p>
+							<p data-item="re_name">修改列名</p>
+						</div> -->
+						<h4><i></i>数据填充</h4>
+						<div class="slideDownCont">
+							<p data-item="prevfill" class="slideContClick">向前填充</p>
+							<p data-item="netxfill" class="slideContClick">向后填充</p>
+							<p data-item="de_value" class="slideContClick">去除缺失值</p>
+							<p data-item="meanfill" class="slideContClick">均值填充</p>
+							<p data-item="lingfill" class="slideContClick">0值填充</p>
+						</div>
+						<h4><i></i>数据转换</h4>
+						<div class="slideDownCont">
+							<p data-item="f_upper" class="slideContClick">首字母大写</p>
+							<p data-item="upper" class="slideContClick">全大写</p>
+							<p data-item="letter" class="slideContClick">全小写</p>
+							<p data-item="int" class="slideContClick">转数值型</p>
+							<p data-item="str" class="slideContClick">转字符型</p>
+						</div>
+						<h4><i></i>归类</h4>
+						<div class="slideDownCont">
+							<p data-item="classify" class="slideContClick">文本替换</p>
+						</div>
+					</div>
+					<table class="tbodyTable">
+						<thead>
+							<tr class="slideTab docClick ajaxDivHead">
+								<!--表头-->
+							</tr>
+						</thead>
+						<tbody class="aaa ajaxDivBody">
+							<!--表格-->
+						</tbody>
+					</table>
+				</div>
+				<div class="ycl_page tab_paging hide">
+					<!--<div class="first_page">首页</div>-->
+					<div class="pre_page pageClickDiv"><img src="img/weizuo.png"></div>
+					<span class="span left_dian">...</span>
+					<ul>
+						<li class="now_page pageClickDiv" data-num="1">1</li>
+						<li class="pageClickDiv">2</li>
+					</ul>
+					<span class="span last_dian">...</span>
+					<div class="next_page pageClickDiv"><img src="img/weiyou.png"></div>
+					<!--<div class="last_page">尾页</div>-->
+					<p>共 <span class="all_page"></span> 页</p>
+					<input type="text" class="will_page">
+					<div class="to_page pageClickDiv">跳转</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- msgbox -->
+	<div class="mu"></div>
+	<div class="mu_ycl"></div>
+	<div class="loading_lkw">
+
+	</div>
+
+	<div class="msgbox">
+		<img src="img/success.png" class="success on">
+		<img src="img/fail.png" class="fail">
+		<span></span>
+	</div>
+	<!-- 提示登录 -->
+	<div class="msg-box-wraper login-alert shade hide" data-to="back">
+
+	</div>
+
+	<!--提示信息-->
+	<div class="msg-box-wraper alertMsg hide">
+		<div class="msg-box">
+				<i class="msg-close">×</i>
+				<h6 class="msg-img"></h6>
+				<h2><span>提示信息</span></h2>
+		</div>
+	</div>
+
+	<!--保存-->
+	<div class="alertBoxCom" id="isSave" style="display: none">
+		<div class="alertBoxTit clearfix pt10 pr10">
+			<h2 class="cFff">
+				<!--确认删除吗-->
+				<i class="alertClose cFff">×</i>
+			</h2>
+		</div>
+		<div class="alertBoxCont pa0">
+			<h3 class="cFff tx-center mb10 fz14 mt5">是否覆盖原数据?</h3>
+			<div class="">
+				<div class="tx-center isSaveBtn mt20">
+					<span data-type="ok" class="ma5">保存</span>
+					<span data-type="no" class="ma5">数据另存为...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--另存为-->
+	<div class="alertBoxCom" id="isSaveAs" style="display: none">
+		<div class="alertBoxTit clearfix pt10 pr10">
+			<h2 class="pl20 cOrange">
+				* 点击确认后, 将为您生成一张新表保存当前数据
+				<i class="alertClose cFff">×</i>
+			</h2>
+		</div>
+		<div class="alertBoxCont pa0">
+			<h3 class="cFff tx-left mb10 fz14 plr20">
+				<p class=""></p>
+				<input type="text" placeholder="请输入文字、字母、数字、_或.">
+			</h3>
+			<div class="">
+				<div class="tx-center isSaveAsBtn">
+					<span data-type="ok" class="ma5">保存</span>
+					<span data-type="no" class="ma5">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!--表格重命名-->
+    <div class="alertBoxCom" id="reNameAlert" style="display: none">
+    	<div class="alertBoxTit clearfix pt10 pr10">
+    		<h2 class="cFff pl20">
+    			请输入名称
+    			<i class="alertClose cFff">×</i>
+    		</h2>
+    	</div>
+    	<div class="alertBoxCont pa0">
+    		<h3 class="cFff tx-left mb10 fz14 plr20">
+    			<p></p>
+    			<input type="text" placeholder="请输入文字、字母、数字、_或.">
+    		</h3>
+    		<div class="">
+    			<div class="tx-center reNameAlertBtn mt20">
+    				<span data-type="ok" class="ma5">保存</span>
+    				<span data-type="no" class="ma5">取消</span>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!--文本替换弹窗-->
+    <div class="alertBoxCom plr20 pt10 pb10" id="classfyAlert" style="display: none;">
+    	<div class="alertBoxTit clearfix">
+    		<h2 class="cFff">
+    			编辑<b class="pl20 cRed classfyAlert_err"></b>
+    			<i class="alertClose cFff">×</i>
+    		</h2>
+    	</div>
+    	<div class="alertBoxCont pa0">
+    		<div class="cont_list">
+    			<div class="cont_list_tit">
+    				<p class="plr10">文本</p>
+    				<p>数量</p>
+    				<p>操作</p>
+    			</div>
+    			<ul class="pt5 pb5 classfyAjaxDiv">
+    				<li class="plr5 clearfix mb5">
+    					<p><span class="relative inputFoo"><input type="text" value="是" disabled><i>确定</i></span></p>
+    					<p>是</p>
+    					<p><span class="hand edit">编辑</span></p>
+    				</li>
+
+    			</ul>
+    		</div>
+    		<div class="">
+    			<div class="tx-center classfyAlertBtn mt20">
+    				<span data-type="no" class="ma5">取消</span>
+    				<span data-type="ok" class="ma5">确定</span>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+	<!--左侧列表双击重命名-->
+	<div class="alertBoxCom" id="listNameAlert" style="display: none">
+		<div class="alertBoxTit clearfix pt10 pr10">
+			<h2 class="cFff pl20">
+				请输入名称
+				<i class="alertClose cFff">×</i>
+			</h2>
+		</div>
+		<div class="alertBoxCont pa0">
+			<h3 class="cFff tx-left mb10 fz14 plr20">
+				<p></p>
+				<input type="text" placeholder="文件名不能包含特殊字符、无需携带文件后缀">
+			</h3>
+			<div class="">
+				<div class="tx-center listNameAlertBtn mt20">
+					<span data-type="ok" class="ma5">保存</span>
+					<span data-type="no" class="ma5">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--tab双击重命名-->
+	<div class="alertBoxCom" id="tabDblNameAlert" style="display: none">
+		<div class="alertBoxTit clearfix pt10 pr10">
+			<h2 class="cFff pl20">
+				请输入要修改的名称
+				<i class="alertClose cFff">×</i>
+			</h2>
+		</div>
+		<div class="alertBoxCont pa0">
+			<h3 class="cFff tx-left mb10 fz14 plr20">
+				<p></p>
+				<input type="text" placeholder="请输入内容">
+			</h3>
+			<div class="">
+				<div class="tx-center tabDblNameAlertBtn mt20">
+					<span data-type="ok" class="ma5">保存</span>
+					<span data-type="no" class="ma5">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+		<!-- 购物车 -->
+    <div class="fixed_btn">
+
+    </div>
+
+</body>
+</html>

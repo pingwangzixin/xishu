@@ -1,0 +1,22 @@
+/*全局样式*/
+@charset"utf-8";
+*{margin:0;padding:0;list-style:none;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;outline:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+body{background:#fff;font-size:12px;font-family: "Microsoft YaHei", "微软雅黑", Tahoma, Geneva, sans-serif;}
+.clear{clear:both;}
+
+/*banner*/
+.banner{width:100%;position:absolute;overflow:hidden;top:50px;height:269px;min-width:1366px;}
+.banner_box{position:absolute;top:0;}
+.banner_box li{float:left;height:269px;text-align:center;width:100vw;background-image: linear-gradient(129deg, #11093A 0%, #0F0954 100%);}
+.banner_box li img{height:100%;}
+.banner_box li div{color:#fff;position:absolute;top:82px;left:189px;text-align:left;font-size:22px;line-height:40px;}
+.banner_btn{position:absolute;right:260px;bottom:20px;width:210px;height:6px;}
+.banner_btn li{width:24px;height:4px;float:left;background:#999;border-radius:5px;margin:0 5px;cursor:pointer;}
+.banner_btn li.on{background:#fff;}

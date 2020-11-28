@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 详情</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/comment.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/details.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xlPaging.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/details.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/comment.js?v=0.19.11.21.11"></script>
+    <!-- <script type="text/javascript" src="js/json2.js?v=0.19.11.21.11"></script> -->
+    <!-- <script type="text/javascript" src="js/webim.js?v=0.19.11.21.11?v=1"></script> -->
+    <!-- <script type="text/javascript" src="js/demo_base.js?v=0.19.11.21.11"></script> -->
+    <!-- <script type="text/javascript" src="js/chat.js?v=0.19.11.21.11"></script> -->
+    <style>
+        #page {
+            margin: 20px auto;
+            color: #666;
+            display: block;
+            text-align: center;
+        }
+
+        #page li {
+            display: inline-block;
+            min-width: 30px;
+            height: 28px;
+            cursor: pointer;
+            color: #666;
+            font-size: 13px;
+            line-height: 28px;
+            background-color: #f9f9f9;
+            border: 1px solid #dce0e0;
+            text-align: center;
+            margin: 0 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .xl-nextPage,
+        .xl-prevPage {
+            width: 60px;
+            color: #0073A9;
+            height: 28px;
+        }
+
+        #page li.xl-disabled {
+            opacity: .5;
+            cursor: no-drop;
+        }
+
+        #page li.xl-active {
+            background-color: #0073A9;
+            border-color: #0073A9;
+            color: #FFF
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mu"></div>
+    <nav></nav>
+    <div class="mu3"></div>
+    <div class="top_bg">
+        <div class="top_img"></div>
+    </div>
+    <div class="details_center">
+        <div class="details_title">
+            <b></b>
+            <ul></ul>
+        </div>
+        <div class="details_jiejian">
+            <p></p>
+        </div>
+        <div class="details_chaozuo">
+            <div class='details_right_up'>
+                <div><i><img src="img/touxiang.png"></i><span class="user_name"></span></div>
+                <div class="focus"><b>+关注</b></div>
+            </div>
+            <div class="details_left_cz">
+                <div class="details_guankan">
+                    <i><img src="img/icon/ck.png"></i>
+                    <span></span>
+                </div>
+                <div class="details_xiaoxi">
+                    <i><img src="img/icon/pl.png"></i>
+                    <span></span>
+                </div>
+                <div class="details_zan">
+                    <i><img src="img/icon/dz.png"></i>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <ul class="xx_btn">
+            <!-- <li name="power">算力</li> -->
+            <li name="msg" class="on">文档</li>
+            <li name="example">应用场景</li>
+            <li name="data" style="display:none;">数据详情</li>
+            <li name="comment" class="all_comment2">评论（<span>0</span>）</li>
+            <li id="goBack" style="position: absolute;right: 200px;"><input type="button">返回</li>
+            <script>
+                $("#goBack").click(function () {
+                    window.history.go(-1);
+                })
+            </script>
+            <!-- <div class="details_add_algo"><b>添加入收纳</b></div> -->
+            <!-- <div class="details_add_data"><b>添加入收纳</b></div> -->
+        </ul>
+        <div class="details_box">
+            <div class="details_power">
+                <div class="power_box">
+                    <div>成本计算器：(单价/秒：￥<span></span>)</div>
+                    <table>
+                        <tr>
+                            <td>样本计算/秒</td>
+                            <td></td>
+                            <td>调用次数/次</td>
+                            <td></td>
+                            <td>预估千次调用产生的费用</td>
+                        </tr>
+                        <tr class="tr2">
+                            <td class="td miao"></td>
+                            <td class="td2">×</td>
+                            <td class="td ci"></td>
+                            <td class="td2">=</td>
+                            <td class="td jia"></td>
+                        </tr>
+                    </table>
+                    <h3>请选择您需要购买的调用次数</h3>
+                    <ul></ul>
+                    <p>共计：<span>￥</span><b>0</b></p>
+                    <button><b>+</b>我的收纳</button>
+                </div>
+            </div>
+            <div class="details_msg on"></div>
+            <div class="details_example"></div>
+            <div class="details_data">
+                <div class="details_table">
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="page"></div>
+                <!-- <div class="ycl_page details_page">
+                    <div class="first_page">首页</div>
+                    <div class="pre_page"><img src="img/weizuo.png"></div>
+                    <span class="span left_dian">...</span>
+                    <ul>
+                        <li class="now_page">1</li>
+                    </ul>
+                    <span class="span last_dian">...</span>
+                    <div class="next_page"><img src="img/weiyou.png"></div>
+                    <div class="last_page">尾页</div>
+                    <p>共 <span class="all_page"></span> 页</p>
+                    <input type="text" class="will_page">
+                    <div class="to_page">跳转</div>
+                </div> -->
+            </div>
+            <div class="details_comment">
+                <div class="will_comment fl"><img src="img/write_comment.jpg">我要评论</div>
+                <!-- 发表评论 -->
+                <div class="pub_comment"></div>
+                <!-- 获取全部评论 -->
+                <div id="get_comments"></div>
+            </div>
+        </div>
+    </div>
+    <div class="black_bg">
+        <div class="prev"></div>
+        <div class="next"></div>
+        <div class="close"></div>
+    </div>
+    <!-- msgbox -->
+    <div class="mu2"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <!-- 购物车 -->
+    <div class="fixed_btn">
+
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide">
+        <!--登录提示-->
+    </div>
+</body>
+<script>
+    setTimeout(()=>{
+        $('img').each(function() {
+            if($(this)[0].src.indexOf('media') >= 0) {
+                var src = $(this)[0].src.substring($(this)[0].src.indexOf('media'), $(this)[0].src.length);
+                var newSrc = 'https://py.datahoop.cn/' + src;
+                $(this).attr('src', newSrc)
+            }
+        })
+    },1000)
+</script>
+</html>

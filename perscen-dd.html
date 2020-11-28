@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Datahoop 2.0 我的订单</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/reset.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        .mask_info {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mask_info1 {
+            /* display: flex; */
+            display: none;
+        }
+
+        .mask_info2 {
+            /* display: flex; */
+            display: none;
+        }
+
+        .mask_box_pad {
+            background: #fff;
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 20px 50px;
+        }
+
+        .mask_box_title {
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .mask_box_close,
+        .mask_box_close2 {
+            width: 11px;
+            height: 11px;
+            display: block;
+            background: url("img/close4.png");
+            background-size: cover;
+            position: absolute;
+            right: -30px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .mask_box > div {
+            display: none;
+        }
+
+        .mask_box > div.mask_box_show {
+            display: block;
+        }
+
+        .mask_box_type,
+        .mask_box_type2,
+        .mask_box_head,
+        .mask_box_name,
+        .mask_box_address {
+            padding-top: 25px;
+        }
+
+        .mask_box_taxnum,
+        .mask_box_taxnum2,
+        .mask_box_AT,
+        .mask_box_back,
+        .mask_box_user,
+        .mask_box_contact,
+        .mask_box_CI,
+        .mask_box_RM,
+        .mask_box_realname {
+            padding-top: 15px;
+        }
+
+        .mask_box_notice {
+            padding-top: 20px;
+        }
+
+        .mask_box_type_t,
+        .mask_box_head_t,
+        .mask_box_taxnum_t,
+        .mask_box_notice_t,
+        .mask_box_name_t,
+        .mask_box_taxnum2_t,
+        .mask_box_AT_t,
+        .mask_box_back_t,
+        .mask_box_user_t,
+        .mask_box_address_t,
+        .mask_box_contact_t,
+        .mask_box_CI_t,
+        .mask_box_RM_t,
+        .mask_box_realname_t {
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .mask_box_type_c,
+        .mask_box_head_c,
+        .mask_box_taxnum_c,
+        .mask_box_name_c,
+        .mask_box_taxnum2_c,
+        .mask_box_AT_c,
+        .mask_box_back_c,
+        .mask_box_user_c,
+        .mask_box_address_c,
+        .mask_box_contact_c,
+        .mask_box_CI_c,
+        .mask_box_RM_c,
+        .mask_box_realname_c {
+            display: inline-block;
+        }
+
+        .mask_box_notice_c2 {
+            display: inline-block;
+            margin-left: 10px;
+            padding-top: 5px;
+        }
+
+        .mask_box_type_c > span,
+        .mask_box_head_c > span {
+            margin-left: 15px;
+            display: inline-block;
+            border-radius: 2px;
+            border: 1px solid #e8e8e8;
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .mask_box_head_c > span {
+            padding: 0 45px;
+        }
+
+        .mask_box_type_c > span.active,
+        .mask_box_head_c > span.active {
+            color: #496fff;
+            border-color: #496fff;
+        }
+
+        .mask_box_type_c > span.mask_box_type_cpt,
+        .mask_box_head_c > span.mask_box_head_cpt {
+            margin-left: 10px;
+        }
+
+        .mask_box_head_ch,
+        .mask_box_taxnum_ct,
+        .mask_box_taxnum_cn,
+        .mask_box_taxnum2_ct,
+        .mask_box_AT_cA,
+        .mask_box_back_cb,
+        .mask_box_user_cu,
+        .mask_box_address_ca,
+        .mask_box_contact_cc,
+        .mask_box_CI_cC,
+        .mask_box_RM_ct,
+        .mask_box_realname_ct {
+            width: 300px;
+            height: 30px;
+            border: 1px solid #e8e8e8;
+            outline: none;
+            box-sizing: border-box;
+            padding-left: 10px;
+            color: #999;
+            margin-top: 15px;
+            margin-left: 10px;
+            border-radius: 2px;
+            font-size: 12px;
+        }
+
+        .mask_box_taxnum_ct,
+        .mask_box_taxnum_cn,
+        .mask_box_taxnum2_ct,
+        .mask_box_AT_cA,
+        .mask_box_back_cb,
+        .mask_box_user_cu,
+        .mask_box_address_ca,
+        .mask_box_contact_cc,
+        .mask_box_CI_cC,
+        .mask_box_RM_ct,
+        .mask_box_realname_ct {
+            margin-top: 0;
+        }
+
+        .mask_box_notice_c2p {
+            width: 310px;
+            color: #666;
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .mask_box_btn {
+            padding-top: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mask_box_btn > button {
+            width: 96px;
+            height: 30px;
+            border-radius: 2px;
+            background: #999;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .mask_box_btn > button.mask_box_btn_sure,
+        .mask_box_btn > button.mask_box_btn_next,
+        .mask_box_btn > button.mask_box_btn_sureinfo {
+            margin-left: 22px;
+            background: #496fff;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <nav></nav>
+    <div class="typeArea">
+        <div class="perscenL" data-item="dd">
+            <!--左侧内容区-->
+        </div>
+        <div class="personR personR_dd">
+            <div class="ddTop pb0 perscenBlock">
+                <ul class="ddTab clearfix">
+                    <li data-item="0" class="active">全部</li>
+                    <li data-item="1">未支付</li>
+                    <li data-item="2">已支付</li>
+                </ul>
+                <div class="ddHead">
+                    <table style="width: 100%">
+                        <tbody>
+                        <tr>
+                            <td width="45%">订单详情</td>
+                            <td width="13%">单价</td>
+                            <td width="13%">总额</td>
+                            <td width="13%">状态</td>
+                            <td>操作</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <ul class="ddCont hide">
+
+            </ul>
+            <div class="ycl_page alg_listPag hide">
+                <div class="pre_page"><img src="img/weizuo.png"></div>
+                <span class="span left_dian">...</span>
+                <ul>
+                    <li class="now_page" data-num="1">1</li>
+                    <li class="" data-num="2">2</li>
+                    <li class="" data-num="3">3</li>
+                    <li class="" data-num="4">4</li>
+                    <li class="" data-num="5">5</li>
+                </ul>
+                <span class="span last_dian">...</span>
+                <div class="next_page"><img src="img/weiyou.png"></div>
+                <p>共 <span class="all_page"></span> 页</p>
+                <input type="text" class="will_page">
+                <div class="to_page">跳转</div>
+            </div>
+            <div class="perscen_kong hide">
+                <h6>
+                    <img src="img/empty_order.png" alt="">
+                    <p>什么也没有...</p>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mu"></div>
+<!--提示信息-->
+<div class="msg-box-wraper alertMsg hide">
+    <div class="msg-box">
+        <i class="msg-close">×</i>
+        <h6 class="msg-img isOk"></h6>
+        <h2>tip</h2>
+    </div>
+</div>
+<!-- 发票弹窗1 -->
+<div class="mask_info mask_info1">
+    <div class="mask_box_pad">
+        <div>
+            <p class="mask_box_title">发票信息<i class="mask_box_close"></i></p>
+            <div>
+                <div class="mask_box_type">
+                    <p class="mask_box_type_t">发票类型:</p>
+                    <div class="mask_box_type_c">
+                        <span class="mask_box_type_cpt active">增值税普通发票</span>
+                        <span>增值税专用发票</span>
+                    </div>
+                </div>
+                <div class="mask_box">
+                    <div class="mask_box_show">
+                        <div>
+                            <div class="mask_box_head">
+                                <p class="mask_box_head_t">发票抬头:</p>
+                                <div class="mask_box_head_c">
+                                    <span class="active mask_box_head_cpt">单位</span>
+                                    <span>个人</span>
+                                    <div>
+                                        <input type="text" placeholder="请输入发票抬头" class="mask_box_head_ch">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mask_box_taxnum">
+                                <p class="mask_box_taxnum_t">单位税号:</p>
+                                <div class="mask_box_taxnum_c">
+                                    <div>
+                                        <input type="text" placeholder="请输入购买方纳税人识别号或统一社会信用代码"
+                                               class="mask_box_taxnum_ct">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mask_box_RM">
+                                <p class="mask_box_RM_t">接收邮箱:</p>
+                                <div class="mask_box_RM_c">
+                                    <div>
+                                        <input type="text" placeholder="请输入接收电子发票的邮箱地址" class="mask_box_RM_ct">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mask_box_realname">
+                                <p class="mask_box_realname_t">真实姓名:</p>
+                                <div class="mask_box_realname_c">
+                                    <div>
+                                        <input type="text" placeholder="请输入您的真实姓名" class="mask_box_realname_ct">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_notice">
+                            <p class="mask_box_notice_t">发票须知:</p>
+                            <div class="mask_box_notice_c2">
+                                <p class="mask_box_notice_c2p">1.发票金额为实际支付金额，不包含优惠券、折扣等；</p>
+                                <p class="mask_box_notice_c2p">
+                                    2.在订单完成后，电子发票将会在x个工作日内，以邮件形式发送到您填写的邮箱；增值税发票将会在x个工作日内寄送（到付）到您填写的地址，请注意查收。</p>
+                            </div>
+                        </div>
+                        <div class="mask_box_btn">
+                            <button class="mask_box_btn_cancel">取消</button>
+                            <button class="mask_box_btn_sure">确认信息</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mask_box_name">
+                            <p class="mask_box_name_t">单位名称:</p>
+                            <div class="mask_box_name_c">
+                                <div>
+                                    <input type="text" placeholder="请输入购买方单位名称" class="mask_box_taxnum_cn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_taxnum2">
+                            <p class="mask_box_taxnum2_t">税&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</p>
+                            <div class="mask_box_taxnum2_c">
+                                <div>
+                                    <input type="text" placeholder="请输入购买方纳税人识别号或统一社会信用代码" class="mask_box_taxnum2_ct">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_AT">
+                            <p class="mask_box_AT_t">地址电话:</p>
+                            <div class="mask_box_AT_c">
+                                <div>
+                                    <input type="text" placeholder="请输入工商局注册地址及电话" class="mask_box_AT_cA">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_back">
+                            <p class="mask_box_back_t">开&nbsp;&nbsp;户&nbsp;&nbsp;行:</p>
+                            <div class="mask_box_back_c">
+                                <div>
+                                    <input type="text" placeholder="请输入银行账户开户行" class="mask_box_back_cb">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_user">
+                            <p class="mask_box_user_t">开户账号:</p>
+                            <div class="mask_box_user_c">
+                                <div>
+                                    <input type="text" placeholder="请输入银行账户开户账号" class="mask_box_user_cu">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mask_box_btn">
+                            <button class="mask_box_btn_cancel">取消</button>
+                            <button class="mask_box_btn_next">下一步</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 发票弹窗2 -->
+<div class="mask_info mask_info2">
+    <div class="mask_box_pad">
+        <div>
+            <p class="mask_box_title">寄送地址信息<i class="mask_box_close2"></i></p>
+            <div class="mask_box_type2">
+                <p class="mask_box_type_t">发票类型:</p>
+                <div class="mask_box_type_c">
+                    <span class="active mask_box_type_cpt">增值税专用发票</span>
+                </div>
+            </div>
+            <div class="mask_box_address">
+                <p class="mask_box_address_t">接收地址:</p>
+                <div class="mask_box_address_c">
+                    <div>
+                        <input type="text" placeholder="请输入接收发票的地址" class="mask_box_address_ca">
+                    </div>
+                </div>
+            </div>
+            <div class="mask_box_contact">
+                <p class="mask_box_contact_t">联&nbsp;&nbsp;系&nbsp;&nbsp;人:</p>
+                <div class="mask_box_contact_c">
+                    <div>
+                        <input type="text" placeholder="请输入接收发票联系人" class="mask_box_contact_cc">
+                    </div>
+                </div>
+            </div>
+            <div class="mask_box_CI">
+                <p class="mask_box_CI_t">联系方式:</p>
+                <div class="mask_box_CI_c">
+                    <div>
+                        <input type="text" placeholder="请输入接收发票者联系方式" class="mask_box_CI_cC">
+                    </div>
+                </div>
+            </div>
+            <div class="mask_box_notice">
+                <p class="mask_box_notice_t">发票须知:</p>
+                <div class="mask_box_notice_c2">
+                    <p class="mask_box_notice_c2p">1.发票金额为实际支付金额，不包含优惠券、折扣等；</p>
+                    <p class="mask_box_notice_c2p">
+                        2.在订单完成后，电子发票将会在x个工作日内，以邮件形式发送到您填写的邮箱；增值税发票将会在x个工作日内寄送（到付）到您填写的地址，请注意查收。</p>
+                </div>
+            </div>
+            <div class="mask_box_btn">
+                <button class="mask_box_btn_closemdy">返回修改</button>
+                <button class="mask_box_btn_sureinfo">确认信息</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        console.log(location.hash)
+
+        $('.personR_dd .ddCont').html('');
+        var weikeguoqitime = '2019-01-24T12:00:00';
+        var weikeguoqishijianchuo = new Date(weikeguoqitime).getTime();
+
+        // 请求订单
+        ajaxOrder();
+
+        function ajaxOrder() {
+            $.GSHajax({
+                url: '/pay/myorder/',
+                success: function (res) {
+                    // console.log(eval("("+res+")"))
+                    // var res = JSON.parse(res)
+                    console.log(res)
+
+                    if (res.status) {
+                        if (res.data[0].length == 0 && res.data[1].length == 0) {
+                            $('.personR_dd .ddCont').hide().siblings('.perscen_kong').show();
+                        } else {
+                            $('.personR_dd .ddCont').show().siblings('.perscen_kong').hide();
+                        }
+                        for (var i = 0; i < res.data.length; i++) {
+                            for (var j = 0; j < res.data[i].length; j++) {
+                                var isZhifu = '已支付';
+                                var isPayNow = '发票信息';
+                                var isHide = 'hide';
+                                var dingdanshixiao = '';
+                                if (res.data[i][j].status == 1) {
+                                    isZhifu = '未支付';
+                                    var isHide = '';
+                                    var orderweiketime = res.data[i][j].time;
+                                    var orderweikeshijianchuo = new Date(orderweiketime).getTime();
+                                    if (weikeguoqishijianchuo > orderweikeshijianchuo) {
+                                        isPayNow = '订单失效';
+                                        dingdanshixiao = 'operate2';
+                                    } else {
+                                        isPayNow = '立即支付';
+                                    }
+                                }
+                                var oLi = '<li class="perscenBlock" data-classify="' + res.data[i][j].classify + '" data-id="' + res.data[i][j].id + '" data-status="' + res.data[i][j].status + '" data-time="' + res.data[i][j].time + '" data-paystatus="' + res.data[i][j].paystatus + '">' +
+                                    '<h3 class="clearfix">' +
+                                    '<span>' + res.data[i][j].time + ' &nbsp;订单编号: &nbsp;</span>' +
+                                    '<span class="spanOrderno">' + `<a href="javascript:void(0);" name="${res.data[i][j].num}">` + res.data[i][j].num + `</a>` + '</a></span>' +
+                                    '<i class="ddDel ' + isHide + '" data-status="1">删除</i>' +
+                                    '</h3>' +
+                                    '<table>' +
+                                    '<tbody>' +
+
+                                    '</tbody>' +
+                                    '</table>' +
+                                    '</li>';
+                                $('.personR_dd .ddCont').append(oLi);
+                                for (var k = 0; k < res.data[i][j].details.length; k++) {
+                                    var ddDetail = res.data[i][j].details[k];
+                                    var comSpan_mim2 = '';
+                                    var moneyOrScore = '¥ ';
+                                    if (ddDetail[0] == '微课' || ddDetail[0] == 'cpda') {
+                                        comSpan_mim2 = 'comSpan_mim2';
+                                        moneyOrScore = xs_bi_;
+                                    }
+                                    if (k == 0) {
+                                        console.log(res.data[i][j].paystatus)
+                                        if (res.data[i][j].paystatus == 1) {
+                                            var oTr = '<tr>' +
+                                                '<td width="45%">' +
+                                                '<div>' +
+                                                '<p class="ddImgFoo"><img src="' + url_ip + '/' + ddDetail[4] + '" alt="" width="100%" height="100%"></p>' +
+                                                '<div class="ellipsis contTitl" title="' + ddDetail[1] + '"><p class="c000"><a href="javascript:void(0)" class="get_detail_url">' + ddDetail[1] + '</a></p><span data-id="' + ddDetail[5] + '" class="comSpan_mim ' + comSpan_mim2 + '">' + ddDetail[0] + '</span></div>' +
+                                                '</div>' +
+                                                '</td>' +
+                                                '<td width="13%">' + moneyOrScore + ' ' + ddDetail[3] + '</td>' +
+                                                '<td width="13%" style="color:#b50000 ">' + moneyOrScore + ' ' + res.data[i][j].all_coin + '</td>' +
+                                                '<td width="13%"><span data-status="' + res.data[i][j].status + '">' + isZhifu + '</span></td>' +
+                                                '<td><span class="operate operate' + res.data[i][j].status + ' ' + dingdanshixiao + '" style="background:#adafb5">' + isPayNow + '</span></td>' +
+                                                '</tr>';
+                                            $('.personR_dd .ddCont li:last table tbody').append(oTr);
+                                        } else {
+                                            var oTr = '<tr>' +
+                                                '<td width="45%">' +
+                                                '<div>' +
+                                                '<p class="ddImgFoo"><img src="' + url_ip + '/' + ddDetail[4] + '" alt="" width="100%" height="100%"></p>' +
+                                                '<div class="ellipsis contTitl" title="' + ddDetail[1] + '"><p class="c000"><a href="javascript:void(0)" class="get_detail_url">' + ddDetail[1] + '</a></p><span data-id="' + ddDetail[5] + '" class="comSpan_mim ' + comSpan_mim2 + '">' + ddDetail[0] + '</span></div>' +
+                                                '</div>' +
+                                                '</td>' +
+                                                '<td width="13%">' + moneyOrScore + ' ' + ddDetail[3] + '</td>' +
+                                                '<td width="13%">' + moneyOrScore + ' ' + res.data[i][j].all_coin + '</td>' +
+                                                '<td width="13%"><span data-status="' + res.data[i][j].status + '">' + isZhifu + '</span></td>' +
+                                                '<td><span class="operate operate' + res.data[i][j].status + ' ' + dingdanshixiao + '">' + isPayNow + '</span></td>' +
+                                                '</tr>';
+                                            $('.personR_dd .ddCont li:last table tbody').append(oTr);
+                                        }
+                                    } else {
+                                        var oTr = '<tr>' +
+                                            '<td width="45%">' +
+                                            '<div>' +
+                                            '<p class="ddImgFoo"><img src="' + url_ip + '/' + ddDetail[4] + '" alt="" width="100%" height="100%"></p>' +
+                                            '<div class="ellipsis contTitl" title="' + ddDetail[1] + '"><p><a href="javascript:void(0)" class="get_detail_url">' + ddDetail[1] + '</a></p><span data-id="' + ddDetail[5] + '" class="comSpan_mim ' + comSpan_mim2 + '">' + ddDetail[0] + '</span></div>' +
+                                            '</div>' +
+                                            '</td>' +
+                                            '<td width="13%">' + moneyOrScore + ' ' + ddDetail[3] + '</td>' +
+                                            '<td width="13%"></td>' +
+                                            '<td width="13%"></td>' +
+                                            '<td></td>' +
+                                            '</tr>';
+                                        $('.personR_dd .ddCont li:last table tbody').append(oTr);
+                                    }
+                                }
+                            }
+                        }
+                        $(".get_detail_url").on("click", function () {
+                            var item_type = $(this).parent().next().html();
+                            var item_id = $(this).parent().next().attr('data-id');
+                            if (item_type == "微课") {
+                                sessionStorage.setItem("data_algo", 'algo');
+                                sessionStorage.setItem("form", 'index');
+                                window.location.href = `xssy_detail.html?${item_id}`;
+                            } else if (item_type == "数据") {
+                                sessionStorage.setItem("data_algo", 'data');
+                                window.location.href = `details.html?${item_id}`;
+                            } else if (item_type == "算法") {
+                                sessionStorage.setItem("model_id_index", item_id);
+                                window.location.href = `details.html?${item_id}`;
+                            }
+
+                        });
+                        for (var i = 0; i < $(".operate2").length; i++) {
+                            if ($(".operate2").eq(i).parents("li").attr("data-classify") == "1") {
+                                $(".operate2").eq(i).show();
+                            } else {
+                                $(".operate2").eq(i).hide();
+                            }
+                        }
+                        var countnum = location.hash.substring(1);
+                        if (countnum === 'null') {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: '您没有该订单',
+                                setTime: 2000
+                            });
+                        } else {
+                            setTimeout(() => {
+                                $(document).scrollTop($(`[name=${countnum}]`).offset().top)
+                            })
+                        }
+                    } else {
+
+                    }
+                }
+            });
+        }
+
+        //订单筛选
+        $('.ddTop .ddTab').on('click', 'li', function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var nowItem = $(this).attr('data-item');
+            if (nowItem == '0') {
+                $('.ddCont').children('li').show();
+            } else {
+                $('.ddCont').children('li').hide();
+                $('.ddCont').children('li[data-status="' + nowItem + '"]').show();
+            }
+        })
+        //去支付
+        $('.ddCont').on('click', '.operate', function () {
+            if ($(this).hasClass('operate2')) {
+                return
+            }
+            var obj = {};
+            var paystatus = $(this).closest('li').attr('data-paystatus');
+            obj.ststus = $(this).closest('li').attr('data-status') - 0;
+            obj.num = $(this).closest('li').find('.spanOrderno').text() - 0;
+            if (paystatus == 0) {
+                if (obj.ststus == 1) { //未支付, pay
+                    $.GSHajax({
+                        url: '/pay/pay/',
+                        data: obj,
+                        success: function (res) {
+                            if (res.status) {
+                                window.location.href = 'xshupay.html?xsord=' + obj.num;
+                            } else {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: res.msg,
+                                    setTime: 2000
+                                });
+                            }
+                        }
+                    })
+                } else { //已支付, share
+
+                }
+            } else {
+                confirm('犀术币不足，请充值')
+            }
+        })
+        //删除订单
+        $('.ddCont').on('click', '.ddDel', function () {
+            var obj = {};
+            obj.ststus = $(this).closest('li').attr('data-status') - 0;
+            // var num = $(this).closest('li').find('.spanOrderno').text();
+            obj.num = $(this).closest('li').find('.spanOrderno').text();
+            obj.classify = $(this).closest('li').attr("data-classify");
+            // console.log(obj);
+            // console.log(num);
+            var _this = this;
+            showConfirm(obj, _this)
+
+        })
+    })
+    $(function () {
+        var Email = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,5}$/;
+        var fp_id;
+        // 发票信息显示
+        $(".operate2").live("click", function (event) {
+            $(".mask_info1").css("display", "flex");
+            $(".mask_box_type_c>span").eq(0).addClass("active").siblings().removeClass("active");
+            $(".mask_box>div").eq($(this).index()).addClass("mask_box_show").siblings().removeClass("mask_box_show");
+            $(".mask_box_head_c>span").eq(0).addClass("active").siblings().removeClass("active");
+            $(".mask_box_taxnum").css("visibility", "visible");
+            $(".mask_box_pad").find("input").val("");
+            fp_id = $(this).parents("li").attr("data-id");
+        });
+        // 发票信息关闭
+        $(".mask_box_close").on("click", function () {
+            $(this).parents(".mask_info1").hide();
+        });
+        // 发票信息取消
+        $(".mask_box_btn_cancel").on("click", function () {
+            $(".mask_box_close").click();
+        });
+        // 发票信息确认信息
+        $(".mask_box_btn_sure").on("click", function () {
+            var fp_type;
+            if ($(".mask_info1 .mask_box_type_c>span.active").text() == "增值税普通发票") {
+                fp_type = 1;
+            } else {
+                fp_type = 2;
+            }
+            var fp_headtype;
+            var fp_utn = "";
+            if ($(".mask_box_head_c>span.active").text() == "单位") {
+                fp_headtype = 1;
+                fp_utn = $(".mask_box_taxnum_ct").val();
+            } else {
+                fp_headtype = 2;
+            }
+            var fp_head = $(".mask_box_head_ch").val();
+            var fp_email = $(".mask_box_RM_ct").val();
+            var fp_realname = $(".mask_box_realname_ct").val();
+            if (fp_head == "") {
+                alert("请输入发票抬头");
+            } else if (fp_utn == "" && fp_headtype == 1) {
+                alert("请输入单位税号");
+            } else if (fp_email == "") {
+                alert("请输入接收邮箱");
+            } else if (!Email.test(fp_email)) {
+                alert("请输入正确的邮箱");
+                return false;
+            } else if (fp_realname == "") {
+                alert("请输入真实姓名");
+            } else {
+                var content = {
+                    order: fp_id,
+                    classify: fp_type,
+                    invoicetitle: fp_headtype,
+                    content: fp_head,
+                    taxid: fp_utn,
+                    email: fp_email,
+                    contacts: fp_realname
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url_ip + "/pay/saveinvoice",
+                    data: {
+                        content: JSON.stringify(content)
+                    },
+                    dataType: "json",
+                    headers: {
+                        'Authorization': token
+                    },
+                    success: function (res) {
+                        // console.log(res);
+                        if (res.status) {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isOk',
+                                h2txt: "提交成功",
+                                setTime: 2000
+                            });
+                        } else {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: res.msg,
+                                setTime: 2000
+                            });
+                        }
+                        $(".mask_box_close").click();
+                    }
+                });
+            }
+        });
+        // 发票信息选择发票抬头
+        $(".mask_box_head_c>span").on("click", function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            if ($(this).text() == "单位") {
+                $(".mask_box_taxnum").css("visibility", "visible");
+            } else {
+                $(".mask_box_taxnum").css("visibility", "hidden");
+            }
+        });
+        // 发票信息选择发票类型
+        $(".mask_box_type .mask_box_type_c>span").on("click", function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".mask_box>div").eq($(this).index()).addClass("mask_box_show").siblings().removeClass("mask_box_show");
+        });
+        // 发票信息下一步
+        $(".mask_box_btn_next").on("click", function () {
+            if ($(".mask_box_taxnum_cn").val() == "") {
+                alert("请输入单位名称");
+            } else if ($(".mask_box_taxnum2_ct").val() == "") {
+                alert("请输入税号");
+            } else if ($(".mask_box_AT_cA").val() == "") {
+                alert("请输入地址电话");
+            } else if ($(".mask_box_back_cb").val() == "") {
+                alert("请输入开户行");
+            } else if ($(".mask_box_user_cu").val() == "") {
+                alert("请输入开户账号");
+            } else {
+                $(this).parents(".mask_info1").hide();
+                $(".mask_info2").css("display", "flex");
+            }
+        });
+        // 寄送地址信息关闭
+        $(".mask_box_close2").on("click", function () {
+            $(this).parents(".mask_info2").hide();
+        });
+        // 寄送地址信息返回修改
+        $(".mask_box_btn_closemdy").on("click", function () {
+            $(this).parents(".mask_info2").hide();
+            $(".mask_info1").css("display", "flex");
+        });
+        // 寄送地址信息确认信息
+        $(".mask_box_btn_sureinfo").on("click", function () {
+            var fp_type;
+            if ($(".mask_info1 .mask_box_type_c>span.active").text() == "增值税普通发票") {
+                fp_type = 1;
+            } else {
+                fp_type = 2;
+            }
+            var fp_name = $(".mask_box_taxnum_cn").val();
+            var fp_title = $(".mask_box_taxnum2_ct").val();
+            var fp_infophone = $(".mask_box_AT_cA").val();
+            var fp_bank = $(".mask_box_back_cb").val();
+            var fp_AOA = $(".mask_box_user_cu").val();
+            var fp_info = $(".mask_box_address_ca").val();
+            var fp_contact = $(".mask_box_contact_cc").val();
+            var fp_phone = $(".mask_box_CI_cC").val();
+            if (fp_info == "") {
+                alert("请输入接收地址");
+            } else if (fp_contact == "") {
+                alert("请输入联系人");
+            } else if (fp_phone == "") {
+                alert("请输入联系方式");
+            } else {
+                var content = {
+                    order: fp_id,
+                    classify: fp_type,
+                    company: fp_name,
+                    taxid: fp_title,
+                    phone: fp_infophone,
+                    bank_name: fp_bank,
+                    bank_num: fp_AOA,
+                    address: fp_info,
+                    contacts: fp_contact,
+                    contact_way: fp_phone
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url_ip + "/pay/saveinvoice",
+                    data: {
+                        content: JSON.stringify(content)
+                    },
+                    dataType: "json",
+                    headers: {
+                        'Authorization': token
+                    },
+                    success: function (res) {
+                        // console.log(res);
+                        if (res.status) {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isOk',
+                                h2txt: "提交成功",
+                                setTime: 2000
+                            });
+                        } else {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: res.msg,
+                                setTime: 2000
+                            });
+                        }
+                        $(".mask_box_close2").click();
+                    }
+                });
+            }
+        });
+    })
+
+    function showConfirm(obj, _this) {
+        var r = confirm('确定删除此条？')
+        if (r === true) {
+            console.log('here')
+            $.GSHajax({
+                url: '/pay/delorder/',
+                type: 'post',
+                data: obj,
+                success: function (res) {
+                    if (res.status) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isOk',
+                            h2txt: res.msg,
+                            setTime: 1500
+                        });
+                        $(_this).closest('li').remove();
+                        if ($('.ddCont').children('li').length == 0) {
+                            $('.personR_dd .ddCont').hide().siblings('.perscen_kong').show();
+                        }
+                        ajaxOrder()
+                    } else {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: res.msg,
+                            setTime: 1500
+                        });
+                    }
+                }
+            })
+        }
+    }
+
+</script>

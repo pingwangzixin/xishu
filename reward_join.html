@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏详情页面</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/reward_join.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/reward_join.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+    <nav></nav>
+    <div class="mu3"></div>
+    <div class="is_quit">
+        <p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+        <div class="sure_quit">确定退出</div>
+        <div class="no_quit">再想一想</div>
+    </div>
+    <div class="head_bg">
+        <div class="reward_header">
+            <h1>需求详情</h1>
+        </div>
+    </div>
+    <div class="reward_body" id="reward">
+        <div class="reward_detail">
+            <div class="reward_left">
+                <div class="detail_top">您的需求已提交,请勿线下交易,未经平台线上支付资金造成损失,平台将不承担任何法律责任。</div>
+                <div class="detail_content" ref="content">
+                    <h1>{{title}}</h1>
+                    <div class="reward_msg">
+                        <span>发布时间：</span><i>{{time | to_date}}</i>
+                        <span>所属分类；</span><b>{{select}}</b>
+                        <span>手机号码：</span><em>{{phone}}</em><s style="text-decoration:none;color:#0054FF;margin-left:5px;cursor:pointer;" @click="get_phone()">获取联系方式</s>
+                    </div>
+                    <h2>需求描述：</h2>
+                    <textarea readonly ref="xuqiu_html">{{xuqiu}}</textarea>
+                    <h2>场景描述</h2>
+                    <textarea readonly ref="scene_html">{{scene}}</textarea>
+                    <div class="reward_button" @click="joins()">我要参与</div>
+                </div>
+            </div>
+            <div class="reward_right">
+                <div class="reward_author">
+                    <img :src="img">发布人：<span>{{username}}</span>
+                </div>
+                <div class="right_xiaoxi" ref="xiaoxi">
+                    <dl>
+                        <dt>概况</dt>
+                        <dd>需求发布次数：<span></span></dd>
+                        <dd>完成交易次数：<span></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>最新</dt>
+                        <!-- <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd> -->
+                    </dl>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="msgBox" v-show="msgBox_show">
+            <div>
+                <i :class="'s'+num"></i><br>
+                <span>{{msg}}</span>
+            </div>
+        </div>
+        <!-- 提示登录 -->
+        <div class="shade" v-show="shade_show">
+            <div id="hint_login">
+                <img src="img/hint_logo_cancel.png" height="35" width="35" class="hint_logo_cancel" @click="close_shade()">
+                <img src="img/hint_logo_shadow.png" height="50" width="135" class="hint_logo_shadow">
+                <img src="img/hint_logo.png" height="162" width="210" class="hint_logo">
+                <p>{{shade_msg}}</p>
+                <div class="btn">
+                    <a href="register.html" v-show="register_show">注册</a>
+                    <a href="login.html?back">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

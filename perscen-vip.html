@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 会员体系</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen-vip.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeAreaFoo relative">
+            <div class="vipBanner">
+                <div class="bannerCont">
+                    <a href="javascript:;" class="vip_goBack"><i></i>返回</a>
+                    <div class="vip_bottom">
+                        <img src="img/perscen-vip/vip_head_Datahoop.png" alt="" width="144px; height:30px">
+                        <p class="system">会员体系</p>
+                    </div>
+                </div>
+            </div>
+            <main class="content">
+                <aside class="person-left">
+                    <dl class="basis">
+                        <dt class="left-common">基础功能</dt>
+                    </dl>
+                    <dl class="advanced">
+                        <dt class="left-common">高级功能</dt>
+                    </dl>
+                    <div class="icon"></div>
+                </aside>
+                <section class="vipBlock"></section>
+            </main>
+        </div>
+        <!-- 蒙层 -->
+        <div id="mask" class="hidden"></div>
+        <!-- 支付方式选择 -->
+        <div id="payment" class="hidden">
+            <h2 class="title">
+                支付方式
+                <i class="close">×</i>
+            </h2>
+            <div class="payDetail">
+                <p>开通会员:</p>
+                <div class="middle">
+                    <div class="type"></div>
+                    <div class="cost">￥<span></span>人/年</div>
+                </div>
+                <p class="day"></p>
+            </div>
+            <div class="method">
+                <p class="titlt2">支付方式</p>
+                <div class="payType">
+                    <p><i class="iCheck normal active"></i><img src="img/weixin.png" alt=""><span>微信支付</span></p>
+                    <p><i class="iCheck disabled"></i><img src="img/zhifubao.png" alt=""><span>支付宝支付</span></p>
+                    <p><i class="iCheck disabled"></i><img src="img/perscen-vip/xshu.png" alt=""><span>C币支付</span></p>
+                </div>
+            </div>
+            <div class="btn">确认购买</div>
+        </div>
+        <!-- 二维码页面 -->
+        <div id="wxerweimaMu" class="hidden">
+            <div id="wxerweima">
+                <i class="close">×</i>
+                <h2 class="title"></h2>
+                <div class="loader">
+                    <div class="loader-inner ball-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <img class="qrcode" src="" alt="">
+                <p class="paytip"></p>
+                <p class="reload"><i></i>刷新重新获取二维码</p>
+            </div>
+        </div>
+        <!-- 支付成功弹窗 -->
+        <div class="msg-box-wraper alertMsg hidden">
+            <div class="msg-box">
+                <i class="msg-close">×</i>
+                <h6 class="msg-img"></h6>
+                <h2><span>提示信息</span></h2>
+            </div>
+        </div>
+        <!-- cb支付弹窗 -->
+        <div id="xshuAlertMu">
+            <div id="xshuAlert">
+                <h2 class="titl">
+                    <p><span><i class="x_shu_Name"></i>支付</span></p><i class="close">×</i></h2>
+                <p class="tip">请输入您的支付密码</p>
+                <input type="password">
+                <p class="tip tip2"></p>
+                <div class="btn">立即支付</div>
+                <div class="forgetMmGoChange"><a href="perscen-mm.html">忘记密码?</a></div>
+            </div>
+        </div>
+</body>
+
+</html>
+<script>
+    $(function() {
+        let timeNum;
+        // 初始化全局变量
+        let vipname, vipid, price;
+        //请求页面数据
+        FetchContent();
+
+        function get_unix_time(dateStr) {
+            var newstr = dateStr.replace(/-/g, '/');
+            var date = new Date(newstr);
+            var time_str = date.getTime().toString();
+            return time_str;
+        }
+
+        function FetchContent() {
+            $('.vipBlock').empty();
+            $('.person-left dd').remove();
+            $.GSHajax({
+                url: '/vipshow/',
+                success: function(res) {
+                    const map = {
+                            '升级': {
+                                template: `<div class="normal updata">立即升级</div>`
+                            },
+                            '业务咨询': {
+                                template: `<div class="normal consult">业务咨询</div>
+              <div class="tel"><i></i><span></span>400-050-6600</div>`
+                            },
+                            '': {
+                                template: ''
+                            },
+                            'use': {
+                                template: `<div class="normal use">使用中</div>`
+                            },
+                            'renew': {
+                                template: `<div class="normal renew">续费</div>`
+                            }
+                        }
+                        // 功能
+                    let basis = [];
+                    let advanced = [];
+                    // 渲染左侧功能列表
+                    for (var i = 0; i < res.rightsname.length; i++) {
+                        if (res.rightsname[i].classify) {
+                            advanced.push(res.rightsname[i])
+                            $('.person-left .advanced').append(`<dd>${res.rightsname[i].name}</dd>`)
+                        } else {
+                            basis.push(res.rightsname[i]);
+                            $('.person-left .basis').append(`<dd>${res.rightsname[i].name}</dd>`)
+                        }
+                    }
+                    // 渲染每列头部
+                    for (var i = 0; i < res.levelnames.length; i++) {
+                        $('.vipBlock').append(`
+            <div class="vipCount" data-price="${res.levelnames[i].price}" data-status="${res.levelnames[i].status}" data-name="${res.levelnames[i].name}" data-id="${res.levelnames[i].id}">
+              <div class="vipHeader ${res.levelnames[i].id == res.IsMe ? 'active': ''}">
+                <div class="top">${res.levelnames[i].name}</div>
+                <div class="middle"><sup>￥</sup>${res.levelnames[i].price}<span>${res.levelnames[i].name=='高校用户'? '点': '人'}/年</span></div>
+              </div>
+            </div>
+          `);
+                    }
+                    // 渲染数据列表
+                    for (var i = 0; i < res.data.length; i++) {
+                        for (var j = 0; j < res.data[i].content.length; j++) {
+                            $('.vipBlock .vipCount').eq(i).append(`
+                <div class="vipBody">
+                  <ul>
+                    <li>${res.data[i].content[j].restrict}</li>
+                  </ul>
+                </div>
+            `);
+                        }
+                    }
+                    // 设置按钮样式
+                    $('.vipCount').each(function() {
+                            let attr = $(this).attr('data-status');
+                            let id = $(this).attr('data-id');
+                            // 续费
+                            if (+id === res.IsMe && !res.IsValid) {
+                                $(this).append(`${map['renew'].template}`)
+                                $(this).append(`<div class="nav_percenvip_xf"><span
+                                    class="nav_percenvip_xfl">当前会员等级已到期</span><span
+                class="nav_percenvip_xfl"> 请立即续费</span></div>`);
+                            }
+                            // 使用中
+                            else if (id == res.IsMe) {
+                                $(this).append(`${map['use'].template}`)
+                                $(this).append(`<div class="nav_percenvip_xf"><span
+                                    class="nav_percenvip_xfl"></span><span
+                class="nav_percenvip_xfr">立即续费</span></div>`);
+                                $.ajax({
+                                    type: "POST",
+                                    url: url_ip + '/personal/vipdeadlinedate/',
+                                    data: {},
+                                    dataType: "json",
+                                    async: false,
+                                    headers: {
+                                        'Authorization': token
+                                    },
+                                    success: function(res) {
+                                        if (res.status) {
+                                            // 当前时间
+                                            var timestamp = Date.parse(new Date());
+                                            // 到期时间
+                                            var timestamp2 = Number(get_unix_time(res.msg));
+                                            if (timestamp > timestamp2) {
+                                                $(".nav_percenvip_xfl").html("当前会员等级已到期");
+                                            } else {
+                                                var newDate = new Date(timestamp2);
+                                                var year = newDate.getFullYear();
+                                                var month = newDate.getMonth() + 1;
+                                                var date = newDate.getDate();
+                                                var time = year + "-" + month + "-" + date;
+                                                $(".nav_percenvip_xfl").html(time + "<b> 到期</b>");
+                                            }
+                                        }
+                                    },
+                                    error: function(err) {
+                                        // console.log(err)
+                                    }
+                                });
+                            } else {
+                                $(this).append(`${map[attr].template}`)
+                            }
+                        })
+                        // 补充样式
+                    $('.vipBlock .vipCount').each(function() {
+                        $(this).find('li').eq(0).addClass('firstTop');
+                        $(this).find('li').eq(basis.length - 1).after(`<div class="line"></div>`);
+                        $(this).find('li').eq(basis.length).addClass('secondTop');
+                    });
+                    $('.typeAreaFoo').width($('nav').width())
+                    var pd_left = (document.body.clientWidth - $('.vipBlock').width() - $('.person-left').width()) / 2;
+                    $('.bannerCont').css('padding-left', pd_left + 10 + 'px')
+                    $('.person-left').css('padding-left', pd_left + 'px')
+                    $('div[data-name=标准用户] .vipHeader').append('<p style="padding: 0 5px; font-size: 14px;position: absolute;bottom: 10px;color:rgba(255, 211, 128, 1);">此价格为CDA数据分析学员次年续费价格</p>')
+                    $('div[data-name=高级用户] .vipHeader').append('<p style="padding: 0 5px; font-size: 14px;position: absolute;bottom: 10px;color:rgba(255, 211, 128, 1);">此价格为CPDA数据分析学员次年续费价格</p>')
+                }
+            })
+        }
+        var classify = 1;
+        // 立即续费
+        $('body').on('click', '.nav_percenvip_xfr', function() {
+                $('#mask').fadeIn();
+                $('#payment').fadeIn();
+                vipname = $(".use").parent().attr('data-name');
+                vipid = $(".use").parent().attr('data-id');
+                price = $(".use").parent().attr('data-price');
+                $('.middle .type').html(vipname);
+                $('.middle .cost span').html(price);
+                $('.payDetail .day').html(`续费后到期日为：${xfFormatDate()}`);
+                classify = 0;
+            })
+            // 立即升级/续费按钮
+        $('body').on('click', '.renew,.updata', function() {
+                $('#mask').fadeIn();
+                $('#payment').fadeIn();
+                vipname = $(this).parent().attr('data-name');
+                vipid = $(this).parent().attr('data-id');
+                price = $(this).parent().attr('data-price');
+                $('.middle .type').html(vipname);
+                $('.middle .cost span').html(price);
+                $('.payDetail .day').html(`购买后到期日为：${FormatDate()}`);
+            })
+            // 支付-关闭
+        $('#payment').on('click', '.close', function() {
+                $('#payment').fadeOut();
+                $('#mask').fadeOut();
+            })
+            // 支付-选择支付方式
+        $('#payment .payType').on('click', 'p', function() {
+            $(this).children("i").addClass('normal').end().siblings().children("i").removeClass('normal');
+            $(this).children("i").removeClass('disabled').end().siblings().children("i").addClass('disabled');
+            $(this).children("i").addClass('active').end().siblings().children("i").removeClass('active');
+        });
+        var kaig;
+        // 支付-点击确认购买
+        $('#payment').on('click', '.btn', function() {
+                if ($('#payment .payType').find('p i').eq(2).hasClass('active')) {
+                    $('#xshuAlertMu').fadeIn();
+                    $('#xshuAlert .tip2').text('');
+                } else {
+                    loadQrcode();
+                    $('#wxerweima .title').html(`${($('#payment .payType').find('p i').eq(0).hasClass('active') ? '微信支付￥': '支付宝支付￥')+price}`);
+                    const beginTime = Date.parse(new Date());
+                    timeNum = setInterval(() => {
+                        payLx(beginTime);
+                    }, 5000);
+                    $(".loader").css("display", "flex");
+                    kaig = false;
+                    var paytest = `${$('#payment .payType').find('p i').eq(0).hasClass('active') ? '使用微信扫描二维码进行支付': '使用支付宝扫描二维码进行支付'}`;
+                    document.getElementsByClassName('paytip')[0].innerHTML = paytest;
+                    $('#payment').fadeOut();
+                    $('#wxerweimaMu').fadeIn();
+                }
+            })
+            // 支付-二维码关闭
+        $('#wxerweimaMu').on('click', '.close', function() {
+                $('#wxerweimaMu').fadeOut();
+                $('#payment').fadeIn();
+            })
+            // 点击咨询
+        $('body').on('click', '.consult', function() {
+            $(this).hide().next().fadeIn();
+        });
+        // 返回
+        $('.vip_goBack').on('click', function() {
+            window.history.go(-1);
+        });
+        // 续费后的日期时间
+        function xfFormatDate() {
+            var time;
+            $.ajax({
+                type: "POST",
+                url: url_ip + '/personal/vipdeadlinedate/',
+                data: {},
+                dataType: "json",
+                async: false,
+                headers: {
+                    'Authorization': token
+                },
+                success: function(res) {
+                    if (res.status) {
+                        var timestamp = Number(get_unix_time(res.msg));
+                        var newDate = new Date(timestamp);
+                        var year = newDate.getFullYear() + 1;
+                        var month = newDate.getMonth() + 1;
+                        var date = newDate.getDate();
+                        time = year + "年" + month + "月" + date + "日";
+                    }
+                }
+            });
+            return time;
+        }
+        // 购买后的日期时间
+        function FormatDate() {
+            var date = new Date();
+            var year = date.getFullYear() + 1;
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            // 闰年2月为28天
+            if (month === 2 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) && day > 28) {
+                return year + '年' + (month + 1) + '月' + 1 + '日';
+            }
+            return year + '年' + month + '月' + day + '日';
+        }
+        // 轮训查询订单号
+        function payLx(beginTime) {
+            let order = new Date().getTime();
+            $.GSHajax({
+                url: '/vip/vipcheck/',
+                data: {
+                    num: 'VIP' + order
+                },
+                success: function(res) {
+                    if (res.status) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isOk',
+                            h2txt: res.msg,
+                            setTime: 2000
+                        });
+                        $('#payment').fadeOut();
+                        $('#wxerweimaMu').fadeOut();
+                        $('#mask').fadeOut();
+                        clearInterval(timeNum);
+                        location.reload();
+                        return;
+                    }
+                    let nowTime = Date.parse(new Date());
+                    if (nowTime - beginTime >= 300000) {
+                        loadQrcode();
+                        $(".loader").css("display", "flex");
+                        kaig = false;
+                    }
+                }
+            })
+        }
+        // 刷新重新获取二维码
+        $('#wxerweima').on('click', '.reload', function() {
+            if (kaig) {
+                loadQrcode();
+                $(".loader").css("display", "flex");
+                kaig = false;
+            }
+        });
+        // 监听二维码是否加载完成
+        var wxerweima = document.getElementById("wxerweima");
+        wxerweima.addEventListener("load", function(event) {
+            var ev = event ? event : window.event;
+            var elem = ev.target;
+            if (elem.tagName.toLowerCase() == 'img') {
+                $(".loader").css("display", "none");
+                kaig = true;
+            }
+        }, true);
+        // 加载二维码图片
+        function loadQrcode() {
+            let order = new Date().getTime();
+            let channel = $(".method .payType p:eq(0)").find("i").hasClass("active") ? 'wechat_csb' : 'alipay_csb';
+            var NeedSrc = url_ip + '/vip/buyvip/?price=' + price + '&channel=' + channel + '&vipname=' + vipname +
+                '&vipid=' + vipid + '&num=' + 'VIP' + order + '&userid=' + token_id + '&classify=' + classify;
+            $('.qrcode').attr({
+                src: NeedSrc
+            });
+        }
+        // 关闭cb支付弹窗
+        $('#xshuAlert').on('click', '.close', function() {
+                $('#xshuAlertMu').fadeOut();
+                $('#xshuAlert .tip2').text('');
+            })
+            // 犀数币支付
+        $('#xshuAlert').on('click', '.btn', function() {
+            var password = $('#xshuAlert input').val();
+            if (password == '') {
+                $('#xshuAlert .tip2').text('请输入密码');
+                return;
+            } else {
+                $.GSHajax({
+                    url: '/pay/enter_password/',
+                    type: 'POST',
+                    data: {
+                        id: token_id,
+                        password: password
+                    },
+                    success: function(res) {
+                        // console.log(res);
+                        if (res.status) {
+                            let order = new Date().getTime();
+                            $.GSHajax({
+                                url: '/vip/buyvip/',
+                                data: {
+                                    price,
+                                    password,
+                                    channel: 'virtual',
+                                    vipname,
+                                    vipid,
+                                    num: 'VIP' + order,
+                                    userid: token_id,
+                                    classify: classify
+                                },
+                                success: function(res) {
+                                    // console.log(res);
+                                    if (res.status) {
+                                        $('.alertMsg').showMsg({
+                                            isImg: 'isOk',
+                                            h2txt: res.msg,
+                                            cllbackFn: FetchContent()
+                                        });
+                                        datarl();
+                                        $('#xshuAlertMu').hide();
+                                        $('#payment').fadeOut();
+                                        $('#mask').fadeOut();
+                                        $.ajax({
+                                            type: "POST",
+                                            url: url_ip + '/personal/vipdeadlinedate/',
+                                            data: {},
+                                            dataType: "json",
+                                            async: false,
+                                            headers: {
+                                                'Authorization': token
+                                            },
+                                            success: function(res) {
+                                                if (res.status) {
+                                                    var timestamp = Number(get_unix_time(res.msg));
+                                                    var newDate = new Date(timestamp);
+                                                    var year = newDate.getFullYear();
+                                                    var month = newDate.getMonth() + 1;
+                                                    var date = newDate.getDate();
+                                                    var time = year + "-" + month + "-" + date;
+                                                    $(".nav_percen_xfl").html(time + "<b> 到期</b>");
+                                                }
+                                            }
+                                        });
+                                        $(".nav_percen_xfl").html();
+                                    } else {
+                                        $('.alertMsg').showMsg({
+                                            isImg: 'isNo',
+                                            h2txt: res.msg
+                                        });
+                                    }
+                                }
+                            })
+                        } else {
+                            if (res.type == 0) {
+                                $('#xshuAlert .tip2').html('您还未设置支付密码, <a href="perscen-mm.html" style="color: #496FFF;">去设置</a>');
+                            } else {
+                                $('#xshuAlert .tip2').text(res.msg);
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    })
+</script>

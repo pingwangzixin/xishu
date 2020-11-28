@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 我的关注</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/page.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        .person_gzt {
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            padding-left: 10px;
+        }
+
+        .person_gzt>div {
+            line-height: 38px;
+            margin: 0 15px;
+            color: #999;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .person_gzt>div.active {
+            border-bottom: 2px solid #496fff;
+            color: #333;
+        }
+
+        .person_gzb {
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .focusBoX,
+        .fansBox {
+            padding: 0 20px 40px;
+            width: 100%;
+        }
+
+        .focusBoX ol,
+        .fansBox ol {
+            width: 100%;
+        }
+
+        .focusBoX ol li,
+        .fansBox ol li {
+            width: 100%;
+            padding: 15px 0;
+            overflow: hidden;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .focusBoX ol li s,
+        .fansBox ol li s {
+            height: 50px;
+            width: 50px;
+            float: left;
+            margin: 0 10px;
+        }
+
+        .focusBoX ol li s img,
+        .fansBox ol li s img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .focusBoX ol li .msg2,
+        .fansBox ol li .msg2 {
+            width: 160px;
+            height: 50px;
+            float: left;
+        }
+
+        .focusBoX ol li .msg2 h2,
+        .fansBox ol li .msg2 h2 {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .focusBoX ol li .msg2 h2 span,
+        .fansBox ol li .msg2 h2 span {
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 26px;
+            font-size: 16px;
+            color: #333;
+            max-width: 130px;
+        }
+
+        .focusBoX ol li .msg2 h2 b,
+        .fansBox ol li .msg2 h2 b {
+            width: 14px;
+            height: 14px;
+            margin: 6px;
+            background: url(img/nan.png);
+            display: inline-block;
+            vertical-align: top;
+            background-size: 100%;
+        }
+
+        .focusBoX ol li .msg2 h2 b.nv,
+        .fansBox ol li .msg2 h2 b.nv {
+            background: url(img/nv.png);
+            background-size: 100%;
+        }
+
+        .focusBoX ol li .msg2 h3,
+        .fansBox ol li .msg2 h3 {
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .focusBoX ol li p,
+        .fansBox ol li p {
+            width: calc(100% - 400px);
+            float: left;
+            line-height: 50px;
+            font-size: 14px;
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .focusBoX ol li .btn2,
+        .fansBox ol li .btn2 {
+            line-height: 30px;
+            color: #fff;
+            background: #496FFF;
+            float: right;
+            margin: 10px;
+            width: 66px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .focusBoX .emptyBox,
+        .fansBox .emptyBox {
+            height: calc(100vh - 235px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+        }
+
+        #foucsPage,
+        #fansPage {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="mm">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_mm">
+                <div class="person_gzt">
+                    <div class="fl active">我的关注</div>
+                    <div class="fl">我的粉丝</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="person_gzb">
+                    <div class="focusBoX box" data-type="foaus" data-height="81" data-top="0">
+                        <ol></ol>
+                        <div class="emptyBox">
+                            <img src="img/empty3.png"><br>
+                            <span>还没有关注过过任何人</span>
+                        </div>
+                        <div id="foucsPage" class="Page"></div>
+                    </div>
+                    <div class="fansBox box hide" data-type="fance" data-height="81" data-top="0">
+                        <ol></ol>
+                        <div class="emptyBox">
+                            <img src="img/empty3.png"><br>
+                            <span>还没有被任何人关注</span>
+                        </div>
+                        <div id="fansPage" class="Page"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    $(".person_gzt>div").on("click", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".person_gzb>div").eq($(this).index()).show().siblings().hide();
+        if ($(".person_gzb>div").eq($(this).index()).hasClass("focusBoX")) {
+            XrData(1, 6, "foaus");
+        } else if ($(".person_gzb>div").eq($(this).index()).hasClass("fansBox")) {
+            XrData(1, 6, "fance");
+        }
+    })
+    var owner = window.location.search.substr(1);
+    //401处理
+    function i_isGoLogin(err) {
+        if (err.status == 401) {
+            if (token == 'JWT undefined' || token == 'JWT null') {
+                $('.shade p').html('您目前还没有注册或登录~ ')
+                $('.shade').show();
+            } else {
+                $('.shade p').html('系统检测,您的账号存在风险异常,请重新登录。')
+                $('.shade').show();
+            }
+        }
+    }
+
+    function xrEmpty(obj, data) {
+        if (data.is_me == 0) {
+            obj.children('a').hide()
+        }
+        obj.show()
+    }
+
+    function xrSex(data) {
+        if (data == '男') {
+            return '<b class="nan"></b>'
+        } else if (data == '女') {
+            return '<b class="nv"></b>'
+        }
+    }
+
+    function xrGz(num, num2) {
+        if (num == 1) {
+            return '<div class="btn2 followed" style="background:#999;" data-id="' + num2 + '">已关注</div>'
+        } else if (num == 0) {
+            return '<div class="btn2 follow">关注</div>'
+        } else {
+            return '';
+        }
+    }
+
+    function xrIsme(num, sex) {
+        var who = '他';
+        if (sex == '女') {
+            who = '她';
+        }
+        if (num == 0) {
+            $('.person_gzt>div:eq(0)').html(who + '的关注');
+            $('.person_gzt>div:eq(1)').html(who + '的粉丝');
+        }
+    }
+    $.ajax({
+        url: url_ip + '/personal/homepage/',
+        type: 'GET',
+        data: {
+            other_id: owner
+        },
+        dataType: 'json',
+        headers: {
+            'Authorization': token
+        },
+        success: function(data) {
+            if (data.status) {
+                xrIsme(data.data.is_me, data.data.sex);
+            }
+        },
+        error: function(err) {
+            i_isGoLogin(err);
+        }
+    })
+    XrData(1, 6, "foaus");
+
+    function XrData(nowpage, pagenum, classify) {
+        $.ajax({
+            url: url_ip + '/personal/personal_info/',
+            type: 'GET',
+            data: {
+                page: nowpage,
+                pagenum: pagenum,
+                keyword: classify,
+                other_id: owner
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                // console.log(data)
+                if (data.status) {
+                    var res = data.data
+                    if (classify == 'foaus') {
+                        $('.focusBoX ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.focusBoX .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".focusBoX .emptyBox").hide();
+                            } else {
+                                $(".focusBoX .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                $('.focusBoX ol').append('<li data-id="' + res[i].id + '">' +
+                                    '<s><img src="' + url_ip + res[i].img + '" class="see"></s>' +
+                                    '<div class="msg2">' +
+                                    '<h2><span>' + res[i].name + '</span>' + xrSex(res[i].sex) + '</h2>' +
+                                    '<h3>' + res[i].job + '</h3>' +
+                                    '</div>' +
+                                    '<p>' + res[i].detail + '</p>' + xrGz(res[i].is_gz, res[i].author_id) +
+                                    '</li>')
+                            }
+                            if (data.num > pagenum) {
+                                xrPage($('#foucsPage'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'fance') {
+                        $('.fansBox ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.fansBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".fansBox .emptyBox").hide();
+                            } else {
+                                $(".fansBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                $('.fansBox ol').append('<li data-id="' + res[i].id + '">' +
+                                    '<s><img src="' + url_ip + res[i].img + '" class="see"></s>' +
+                                    '<div class="msg2">' +
+                                    '<h2><span>' + res[i].name + '</span>' + xrSex(res[i].sex) + '</h2>' +
+                                    '<h3>' + res[i].job + '</h3>' +
+                                    '</div>' +
+                                    '<p>' + res[i].detail + '</p>' + xrGz(res[i].is_gz, res[i].author_id) +
+                                    '</li>')
+                            }
+                            if (data.num > pagenum) {
+                                xrPage($('#fansPage'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    }
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    }
+    $('.follow').live('click', function() {
+        var nowpage = $(this).parents('ol').nextAll('.Page').children('dl').attr('data-nowpage') || 1
+        var pagenum = 6;
+        var classify = $(this).parents('ol').parent().attr('data-type')
+        var id = $(this).parent().attr('data-id')
+        $.ajax({
+            type: "GET",
+            url: url_ip + "/personal/add_focus",
+            data: {
+                file_user_id: id
+            },
+            dataType: "json",
+            headers: {
+                "Authorization": token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    XrData(nowpage, pagenum, classify)
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    })
+    $('.followed').live('mouseenter', function() {
+        $(this).css('background', '#496FFF')
+        $(this).html('取消关注')
+    })
+    $('.followed').live('mouseleave', function() {
+        $(this).css('background', '#999')
+        $(this).html('已关注')
+    })
+    $('.followed').live('click', function() {
+        var nowpage = $(this).parents('ol').nextAll('.Page').children('dl').attr('data-nowpage') || 1
+        var pagenum = 6
+        var classify = $(this).parents('ol').parent().attr('data-type')
+        $.ajax({
+            type: "POST",
+            url: url_ip + "/personal/delete_focus",
+            data: {
+                relation_id: $(this).attr('data-id')
+            },
+            dataType: "json",
+            headers: {
+                "Authorization": token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    XrData(nowpage, pagenum, classify)
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    });
+    /*查看*/
+    $('.see').live('click', function() {
+        var id = $(this).parent().parent().attr('data-id')
+        window.open('perscen-gz.html?' + id);
+    });
+    /*分页*/
+    $('.Page').live('click', function(evt) {
+        var id = $(this)[0].id
+        var target = evt.target
+        var className = target.className
+        var page = target.innerHTML
+        var pagenum = 6;
+        var classify = $(this).parent().attr('data-type')
+        if (classify) {
+            clickPage($('#' + id), className, page, XrData, pagenum, classify)
+        } else if (id == 'liuyanPage') {
+            clickPage($('#' + id), className, page, liuyan, pagenum, classify)
+        } else if (id.substr(0, 8) == 'lyerPage') {
+            var pagenum = $(this).parent().parent()
+            clickPage($('#' + id), className, page, liuyan2, pagenum, classify)
+        }
+    })
+</script>

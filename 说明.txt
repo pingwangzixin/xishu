@@ -1,0 +1,19 @@
+﻿一. css
+  1.z-index
+    nav: 99;
+    fixed_btn(右下收纳区域): 1024;
+    login-alert/shade(登录提示): 1031;
+    giveCb_MyGoldMu(赠送CB): 1032
+    algo_rule(自建算法说明): 101;
+    xssy_list_alertMu(微课您的选择相关信息): 1030
+    xieyi(注册协议): 1
+二. html
+
+三. js
+  1.获取url接参数具体值(nav.js)
+    使用: GetQueryString(param)
+  2.ajax二次封装(lajax.js)
+    GSHajax({}) 至少需要传个url, 不需要拼接baseUrl, 成功/失败默认打印值, type默认get, 接口默认有token
+
+四. 版本号
+  0.19.03.26.09 (第 0 次修改, 年, 月, 日, 时)

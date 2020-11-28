@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 算法</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jquery.min.js?v=0.19.11.21.11"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            height: 100%;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            display: flex;
+            width: 100%;
+            height: 2.2rem;
+            justify-content: space-between;
+        }
+        header a {
+            display: block;
+        }
+        header a>img {
+            padding-top: 0.35rem;
+            padding-left: 0.9rem;
+            width: 8.5rem;
+            height: 1.5rem;
+        }
+        header .right {
+            width: 5.5rem;
+            height: 0.9rem;
+            padding-top: 0.7rem;
+            padding-right: 0.9rem;
+        }
+        main {
+            flex: 1;
+        }
+        nav {
+            width: 100%;
+            height: 9.7rem;
+        }
+        nav img {
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            width: 15.95rem;
+            height: 7.6rem;
+            margin: 1.5rem auto 0;
+            border-radius: 0.2rem;
+            background: url('img/bm-2.png') center no-repeat;
+            background-size: cover;
+            padding: 0.75rem 0 0 0.7rem;
+            box-sizing: border-box;
+        }
+        .top {
+            font-size: 0.7rem;
+            color: #666666;
+        }
+        .middle {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0.3rem auto 2.15rem;
+        }
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            height:1.65rem;
+            line-height: 1.65rem;
+            padding-right: 0.3rem;
+        }
+        .bottom i {
+            color:#FA7B37;
+            font-style: normal;
+        }
+        .bottom span {
+            font-size: 1.2rem;
+            color:#FA7B37;
+        }
+        .bottom .right {
+            line-height: 1;
+        }
+        .sub {
+            font-size: 0.65rem;
+            color: #666666;
+            padding-top: 1rem;
+            margin: auto;
+            width: 15.95rem;
+        }
+        #btn {
+            width: 16.95rem;
+            height: 2.4rem;
+            background:rgba(246,120,41,1);
+            box-shadow: 0 .1rem .5rem 0 rgba(0,0,0,0.15);
+            border-radius: 8rem;
+            text-align: center;
+            line-height: 2.4rem;
+            margin: 0 auto 1.35rem;
+            font-size: 0.8rem;
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <a href="http://www.chinacpda.com"><img src="img/bm-CPDA.png" alt=""></a>
+        <img class="right" src="img/bm-phone.png" alt="">
+    </header>
+    <!-- 主体部分 -->
+    <main>
+        <!-- banner -->
+        <nav><img src="img/bm-banner.png" alt=""></nav>
+        <!-- 内容部分 -->
+        <section>
+            <div class="content">
+                <p class="top">北京犀数科技有限公司</p>
+                <p class="middle">数据分析人才集训营</p>
+                <div class="bottom">
+                    <p class="left">8月7日开课</p>
+                    <p class="right">团购价格：<i>￥</i><span></span></p>
+                </div>
+            </div>
+            <div class="sub">*支付完成后请联系微信客服了解更多信息</div>
+        </section>
+    </main>
+    <!-- 支付按钮 -->
+    <div id="btn">去支付</div>
+    <script>
+        var price;
+        $("#btn").on('click', () => {
+            $.ajax({
+                type: "GET",
+                url: url_ip + '/pay/h5apply',
+                datatype:'json',
+                data: {
+                    num: 'APPLYS'+Date.parse(new Date()),
+                    price
+                },
+                success: function(res) {
+                    window.location.href= res.data;
+                }
+            })
+        })
+        // #1面授 #2远程
+        $.ajax({
+            type: 'GET',
+            url: url_ip +'/pay/applyconfigshow/',
+            datatype: 'json',
+            data: {
+            },
+            success: function(res) {
+                if(window.location.hash === '#1') {
+                    // console.log(res.data)
+                    $('.left').html(formData(res.data[0].starttime)+'开课')
+                    $('.right span').html(res.data[0].firstprice)
+                    price = res.data[0].firstprice;
+                }
+                else {
+                    $('.left').html(formData(res.data[1].starttime)+'开课')
+                    $('.right span').html(res.data[1].firstprice)
+                    price = res.data[0].firstprice;
+                }
+            }
+        })
+        function formData(str) {
+            var d = new Date(str);
+            return (d.getMonth() + 1) +"月"+ d.getDate() +"日";
+        }
+    </script>
+</body>
+
+</html>

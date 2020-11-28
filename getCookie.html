@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/make_cookies.js"></script>
+</head>
+<body>
+<h2>子页面</h2>
+<div>
+    <h3>接收消息区域</h3>
+    <span id="message"></span>
+</div>
+<script>
+    // var user_info = {};
+    // user_info["token"] = cookie.get("token")
+    // user_info["membername"] = cookie.get("membername");
+    // user_info["token_id"] = cookie.get("token_id");
+    // user_info["user_img"] = cookie.get("user_img");
+    // console.log("文本cookie:",document.cookie)
+    // document.getElementById('message').innerHTML = document.cookie
+    cookie.set("why2","aaaaa")
+    var xx = null;
+    window.addEventListener('message', function (event) {
+        if (window.parent !== event.source) {
+            return
+        }
+        console.log(event);
+        document.getElementById('message').innerHTML = "收到"
+            + event.origin + "消息：" + event.data;
+        console.log("接收到了信息:", event.data)
+        cookie.set("why",event.data)
+        xx = event.data
+        cookie.set("why2","aaaaa")
+        //top.postMessage("哈哈", 'http://old.chinacpda.com')
+    }, false);
+    cookie.set("why",xx)
+</script>
+</body>
+</html>

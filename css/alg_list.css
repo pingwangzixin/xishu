@@ -1,0 +1,1039 @@
+.mr20 {
+    margin-right: 20px;
+}
+
+.listBan {
+    width: 100%;
+    min-width: 1024px;
+    height: 180px;
+    padding-top: 100px;
+    background: url(../img/pic/dataProc_baner.png) no-repeat center;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.listBan .listBan_txt {
+    width: 1024px;
+    text-align: center;
+    font-size: 19px;
+    color: #fff;
+    margin: 20px auto 0;
+}
+.olR .tips {
+    margin-top: 20px;
+}
+
+/* .listBan .algCont{
+    width: 1024px;margin: 0 auto 0;overflow:hidden;
+}
+.listBan .algCont h3{
+	width: 180px;height: 50px;line-height: 50px;font-size: 16px;padding-left: 15px;color: #fff;background: rgba(0,0,0,0.65);float: left;margin-top: 25px;
+}
+.listBan .algCont>div{
+	width: calc(100% - 190px);margin-top: 25px;float: right;
+}
+.listBan .algCont h4{
+	width: 90%;height: 50px;padding-left: 20px;background: rgba(0,0,0,0.65);border-radius: 0 10px 10px 0;
+}
+.listBan .algCont input{
+	width: 90%;height: 34px;margin-top: 8px;padding: 0 20px;border: 1px solid #09f;border-radius: 16px 0 0 16px;color: #09f;background: #000;float: left;
+}
+.listBan .algCont p{
+	width: calc(10% + 1px);height: 50px;line-height: 50px;text-align: center;margin-left: -1px;background: #09f;float: left;border-radius: 0 10px 0;cursor: pointer;
+}
+.listBan .algCont p i{
+	width: 26px;height: 26px;display: inline-block;margin-top: 12px;background: url(../img/sou.png) no-repeat center;background-size: 100%;
+} */
+
+
+/*最新动态*/
+
+.newRecentFoo {
+    background: #EBF1FF;
+}
+
+.newRecent {
+    width: 1024px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+
+/* .newRecent>div{
+	height: 70px;
+} */
+
+.newRecent h3 {
+    width: 100px;
+    height: 70px;
+    line-height: 70px;
+    color: #333;
+    font-size: 14px;
+    float: left;
+}
+
+.newRecent h3 i {
+    width: 16px;
+    height: 16px;
+    margin: 27px 0 0 10px;
+    background: url(../img/icon/msg.png) no-repeat center;
+    background-size: 100%;
+}
+
+.newRecent p {
+    width: calc(100% - 105px);
+    height: 70px;
+    line-height: 70px;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.newRecent p span {
+    margin-right: 20px;
+    color: #30b7e2;
+    cursor: pointer;
+}
+
+.newRecent p span:nth-last-child(1) {
+    margin-right: 0;
+}
+
+
+/*tab*/
+
+.algRank {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.algRankTab {
+    text-align: center;
+}
+
+.algRankTab h3 {
+    height: 100px;
+    line-height: 100px;
+    font-size: 24px;
+    color: #333;
+}
+
+.algRankTab p {
+    height: 51px;
+    line-height: 51px;
+}
+
+.algRankTab p span {
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 10px;
+    color: #474e53;
+    font-size: 14px;
+    background: #ebeff2;
+    border: 1px solid #f3f4f5;
+    display: inline-block;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.algRankTab p span:hover,
+.algRankTab p span.active {
+    color: #fff;
+    background-color: #00c1de;
+    border-color: #00c1de;
+}
+
+.algRankContFoo {
+    min-height: 188px;
+    padding-left: 112px;
+    position: relative;
+}
+
+.algRankContFoo img {
+    width: 155px;
+    height: 188px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.algRankCont li {
+    border-bottom: 1px solid #f7f7f7;
+    position: relative;
+    overflow: hidden;
+    clear: both;
+}
+
+.algRankCont .algRankCont_top {
+    padding-left: 60px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.algRankCont h3 {
+    width: 37%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #333;
+    float: left;
+}
+
+.algRankCont .algRankCont_top:hover h3 {
+    color: #03f;
+}
+
+.algRankCont .spanFoo {
+    width: 37%;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+
+.algRankCont .spanFoo span {
+    height: 22px;
+    line-height: 21px;
+    text-align: center;
+    margin-right: 7px;
+    padding: 0 6px;
+    border: 1px solid #e8e8e8;
+    color: #999;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.algRankCont .spanData {
+    height: 40px;
+    line-height: 40px;
+    color: #999;
+}
+
+.algRankCont .spanData span {
+    color: #999;
+}
+
+.algRankCont .spanData i {
+    margin-right: 20px;
+    color: #333;
+}
+
+.algRankCont .slideDown {
+    width: 13px;
+    height: 13px;
+    background: url(../img/icon/down_active.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    transition: all .5s;
+}
+
+.algRankCont li.active .slideDown {
+    transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    /* IE 9 */
+    -moz-transform: rotate(-180deg);
+    /* Firefox */
+    -webkit-transform: rotate(-180deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(-180deg);
+    /* Opera */
+}
+
+.algRankCont .slideCont {
+    line-height: 20px;
+    color: #999;
+    overflow: hidden;
+    clear: both;
+    display: none;
+}
+
+.algRankCont .slideCont h4 {
+    width: 120px;
+    height: 100%;
+    padding: 5px 0 0 60px;
+    float: left;
+}
+
+.algRankCont .slideCont>div {
+    width: calc(100% - 120px);
+    padding: 5px 60px 5px 0;
+    float: left;
+}
+
+
+/*自建算法-自建场景*/
+
+.selfBuildFoo {
+    width: 100%;
+    height: 249px;
+    padding-top: 30px;
+    background: #f5f8ff;
+}
+
+.selfBuild {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.selfBuild_alg,
+.selfBuild_cj {
+    width: 502px;
+    height: 189px;
+    overflow: hidden;
+    background: url(../img/pic/selfBuild_alg.png) no-repeat center;
+    background-size: 100% 100%;
+    box-shadow: 0 10px 30px 0 rgba(53, 67, 85, 0.10);
+    float: left;
+}
+
+.selfBuild_cj {
+    float: right;
+    background-image: url(../img/pic/selfBuild_cj.png);
+}
+
+.selfBuild h2 {
+    height: 24px;
+    line-height: 24px;
+    margin: 20px 0 35px;
+    padding-left: 20px;
+    color: #333;
+    font-size: 24px;
+    border-left: 0 solid transparent;
+    transition: all .3s;
+}
+
+.selfBuild>div:hover h2 {
+    border-left: 4px solid #496FFF;
+}
+
+.selfBuild .selfBuild_p {
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.selfBuild .selfBuild_p i {
+    width: 12px;
+    height: 12px;
+    margin: 4px 5px 0 0;
+    display: inline-block;
+    border: 1px solid #496FFF;
+}
+
+.selfBuild .selfBuild_p i.active {
+    background: url(../img/icon/alglist_yes.png) no-repeat center #496FFF;
+    background-size: 100%;
+}
+
+.selfBuild .selfBuild_p a {
+    color: #496FFF;
+}
+
+.selfBuild .selfBuild_btn {
+    width: 97px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 30px;
+    color: #fff;
+    background: #496FFF;
+    float: right;
+    cursor: pointer;
+}
+
+.selfBuild .selfBuild_btn i {
+    width: 16px;
+    height: 16px;
+    margin: 7px 5px 0 10px;
+    background: url(../img/icon/alglist_add.png) no-repeat center;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.selfBuild .selfBuild_btn.hasRead i {
+    background-image: url(../img/icon/alglist_upload.png);
+}
+
+
+/*列表页*/
+
+.alg_list {
+    width: 1024px;
+    min-height: 600px;
+    margin: 10px auto 0;
+}
+
+.alg_list h2 {
+    width: 100%;
+    height: 65px;
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+    clear: both;
+    position: relative;
+}
+
+.alg_list .modeSwitch {
+    width: 82px;
+    height: 30px;
+    /* position: absolute;
+    right: 0;
+    bottom: -1px; */
+    /* border: 1px solid #eee; */
+    float: right;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.alg_list .modeSwitch i {
+    width: 30px;
+    height: 100%;
+    border: 1px solid #eee;
+    background: url(../img/icon/alg_min.png) no-repeat center;
+    background-size: 20px;
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.alg_list .modeSwitch i:nth-child(2) {
+    /* border-right: 0; */
+    background-image: url(../img/icon/alg_max.png);
+}
+
+.alg_list .modeSwitch i:nth-child(1).active,
+.alg_list p i:nth-child(1):hover {
+    background-image: url(../img/icon/alg_min_active.png);
+}
+
+.alg_list .modeSwitch i:nth-child(2).active,
+.alg_list p i:nth-child(2):hover {
+    background-image: url(../img/icon/alg_max_active.png);
+}
+
+.alg_list h2 span {
+    height: 35px;
+    line-height: 25px;
+    margin: 15px 25px;
+    /* padding: 0 36px; */
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #474e53;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.alg_list h2 span.active,
+.alg_list h2 span:hover {
+    position: relative;
+    color: #496FFF;
+    border-bottom: 2px solid #496FFF;
+}
+
+.alg_listClass_type {
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    height: 65px;
+    overflow: hidden;
+    position: relative;
+}
+
+.alg_listClass_type:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.alg_listTap {
+    width: 810px;
+    /* height: 70px; */
+    /* padding-top: 15px; */
+    padding-bottom: 15px;
+    float: left;
+}
+
+.alg_listTap li {
+    /* width: 80px; */
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    /* margin-right: 10px;
+    margin-bottom: 10px; */
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #474e53;
+    background: #F5F7FF;
+    border: 1px solid #f3f4f5;
+    float: left;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.alg_listTap li:hover {
+    color: #496FFF;
+    background: #FAFBFF;
+}
+
+.alg_listTap li.active {
+    color: #fff;
+    background: #496FFF;
+}
+
+.alg_listClass_type>span {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    width: 66px;
+    height: 26px;
+    line-height: 24px;
+    color: #666;
+    text-align: center;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.alg_listClass_type>span>i {
+    width: 12px;
+    height: 12px;
+    background: url("../img/icon/xlan.png");
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+
+.alg_listSech {
+    height: 29px;
+    margin-top: 7px;
+    margin-right: 10px;
+    float: right;
+    transition: .3s all;
+    position: relative;
+}
+
+.alg_listSech i {
+    width: 30px;
+    height: 100%;
+    background: url(../img/icon/search.png) no-repeat center;
+    background-size: 14px 14px;
+    cursor: pointer;
+    float: left;
+    position: absolute;
+    right: 0;
+}
+
+.alg_listSech input {
+    width: 130px;
+    height: 100%;
+    line-height: 100%;
+    padding: 0 5px;
+    padding-right: 35px;
+    border: 1px solid #eee;
+    float: left;
+    transition: .3s all;
+    background: #F5F5F5;
+}
+
+.alg_listSech:hover input,
+.alg_listSech input:focus {
+    width: 170px;
+    border-color: #496FFF;
+}
+
+
+/*列表页-大*/
+
+.alg_listContMax {
+    overflow: hidden;
+    clear: both;
+}
+
+.alg_listContMax li {
+    width: 192.8px;
+    height: 183px;
+    margin: 0 15px 15px 0;
+    border: 1px solid #eee;
+    position: relative;
+    overflow: hidden;
+    float: left;
+}
+
+.alg_listContMax li:nth-child(5n) {
+    margin-right: 0;
+}
+
+.alg_listContMax li img {
+    width: 100%;
+    height: 78px;
+    display: inline-block;
+}
+
+.alg_listContMax li h3 {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+}
+
+.alg_listContMax li h3 span {
+    width: calc(100% - 46px);
+    height: 32px;
+    font-size: 14px;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.alg_listContMax li h3 b {
+    width: 36px;
+    height: 19px;
+    line-height: 17px;
+    text-align: center;
+    display: inline-block;
+}
+
+.alg_listContMax li h3 b {
+    color: #5d98e1;
+    border: 1px solid #b2d9ff;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.alg_listContMax li p {
+    height: 22px;
+    margin: 7px 10px 8px;
+    overflow: hidden;
+}
+
+.alg_listContMax li p span {
+    height: 22px;
+    line-height: 21px;
+    text-align: center;
+    margin-right: 7px;
+    padding: 0 6px;
+    border: 1px solid #e8e8e8;
+    color: #999;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.alg_listContMax li h4 {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.alg_listContMax li h4 span {
+    margin-right: 8px;
+}
+
+.alg_listContMax li h4 span i {
+    width: 14px;
+    height: 14px;
+    margin: 8px 5px 0;
+    background: url(../img/icon/algo_icon1.png) no-repeat center;
+    background-size: 100%;
+    display: inline-block;
+}
+
+.alg_listContMax li h4 span.msg i {
+    background: url(../img/icon/algo_icon2.png) no-repeat center;
+    background-size: 100%;
+}
+
+.alg_listContMax li h4 span.praise i {
+    background: url(../img/icon/algo_icon3.png) no-repeat center;
+    background-size: 100%;
+}
+
+.alg_listContMax .slideHide {
+    width: 192.8px;
+    height: 183px;
+    padding: 15px;
+    background: rgba(51, 51, 51, .8);
+    position: absolute;
+    left: -192.8px;
+    top: 0;
+    overflow: hidden;
+    /* transition: .2s all; */
+}
+
+.alg_listContMax .slideHide h5 {
+    width: 162.8px;
+    height: 128px;
+    line-height: 27px;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    text-indent: 2em;
+    text-align: justify;
+}
+
+
+/* .alg_listContMax li:hover .slideHide{
+	left: 0;
+} */
+
+.alg_listContMax .slideHide .addSn {
+    width: 36px;
+    height: 20px;
+    background: url(../img/icon/add_algo.png) no-repeat center;
+    position: absolute;
+    right: 3px;
+    bottom: 8px;
+    float: right;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.alg_listContMax .slideHide .addSn.active {
+    background: url(../img/icon/add_2.png) no-repeat center;
+}
+
+
+/*列表页-小*/
+
+.alg_listContMin {
+    overflow: hidden;
+    clear: both;
+}
+
+.alg_listContMin li {
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    overflow: hidden;
+}
+
+.alg_listContMin .alg_listShow {
+    width: 100%;
+    height: 56px;
+    overflow: hidden;
+    clear: both;
+}
+
+.alg_listContMin .alg_listShow .addSn {
+    width: 36px;
+    height: 20px;
+    background: url(../img/icon/add_algo.png) no-repeat center;
+    position: absolute;
+    right: -36px;
+    top: 18px;
+    float: right;
+    z-index: 0;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.alg_listContMin .alg_listShow .addSn.active {
+    background: url(../img/icon/add_2.png) no-repeat center;
+}
+
+.alg_listContMin li:hover .alg_listShow .addSn {
+    right: 3px;
+}
+
+.alg_listContMin .alg_listShow img {
+    width: 136px;
+    height: 56px;
+    float: left;
+    cursor: pointer;
+}
+
+.alg_listContMin .alg_listShow h3 {
+    width: 296px;
+    height: 56px;
+    float: left;
+    cursor: pointer;
+}
+
+.alg_listContMin .alg_listShow h3 span {
+    width: 220px;
+    height: 56px;
+    line-height: 28px;
+    padding: 0 10px 0 20px;
+    font-size: 14px;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.alg_listContMin li:hover .alg_listShow h3 span {
+    color: #03f;
+}
+
+.alg_listContMin .alg_listShow h3 b {
+    width: 36px;
+    height: 19px;
+    line-height: 17px;
+    text-align: center;
+    float: left;
+}
+
+.alg_listContMin .alg_listShow h3 b {
+    height: 22px;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 18.5px;
+    color: #5d98e1;
+    border: 1px solid #b2d9ff;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.alg_listContMin .alg_listShow p {
+    width: 296px;
+    height: 22px;
+    margin: 16px 10px 0;
+    overflow: hidden;
+    float: left;
+}
+
+.alg_listContMin .alg_listShow p span {
+    height: 22px;
+    line-height: 21px;
+    text-align: center;
+    margin-right: 7px;
+    padding: 0 6px;
+    border: 1px solid #e8e8e8;
+    color: #999;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.alg_listContMin .alg_listShow h4 {
+    height: 56px;
+    line-height: 56px;
+    float: left;
+}
+
+.alg_listContMin .alg_listShow h4 span {
+    margin-right: 15px;
+}
+
+.alg_listContMin .alg_listShow h4 span i {
+    width: 14px;
+    height: 14px;
+    margin: 20.5px 5px 0;
+    background: url(../img/icon/algo_icon1.png) no-repeat center;
+    background-size: 100%;
+    display: inline-block;
+}
+
+.alg_listContMin .alg_listShow h4 span.msg i {
+    background: url(../img/icon/algo_icon2.png) no-repeat center;
+    background-size: 100%;
+}
+
+.alg_listContMin .alg_listShow h4 span.praise i {
+    background: url(../img/icon/algo_icon3.png) no-repeat center;
+    background-size: 100%;
+}
+
+.alg_listContMin .slideHide {
+    display: none;
+    /* width: 100%;overflow: hidden;transition: .2s all; */
+}
+
+.alg_listContMin .slideHide h5 {
+    width: 100%;
+    padding: 0 10px 10px;
+    line-height: 25px;
+    overflow: hidden;
+    text-indent: 2em;
+    text-align: justify;
+}
+
+
+/*算法购买配置-隐藏*/
+
+.set_buy {
+    position: fixed;
+    width: 400px;
+    left: 50%;
+    top: 50%;
+    background: #000;
+    border-radius: 8px;
+    margin-left: -200px;
+    margin-top: -100px;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 0 5px #fff;
+    overflow: hidden;
+    display: none;
+}
+
+.set_buy i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.set_buy i img {
+    width: 14px;
+    height: 14px;
+}
+
+.set_buy h2 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 30px;
+    border-bottom: 1px solid #fff;
+}
+
+.set_buy div {
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.set_buy table {
+    color: #989898;
+    width: 100%;
+    text-align: center;
+    line-height: 26px;
+}
+
+.set_buy table .tr2 {
+    color: #fff;
+}
+
+.set_buy table .tr2 .td {
+    background: #fff;
+    color: #000;
+}
+
+.set_buy table .tr2 .td2 {
+    padding: 0 2px;
+}
+
+.set_buy h3 {
+    font-size: 14px;
+    color: #fff;
+    line-height: 40px;
+}
+
+.set_buy ul {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+    padding-left: 20px;
+}
+
+.set_buy li {
+    display: inline-block;
+    padding: 4px 8px;
+    color: #fff;
+    border: 1px solid #fff;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.set_buy li.on {
+    background: #00B7EF;
+    border-color: #00B7EF;
+}
+
+.set_buy p {
+    color: #fff;
+    float: right;
+    line-height: 28px;
+}
+
+.set_buy button {
+    border: 1px solid #00B7EF;
+    border-radius: 14px;
+    outline: 0;
+    background: #000;
+    color: #00B7EF;
+    line-height: 26px;
+    padding: 0 16px;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.set_buy button:hover {
+    background: #00B7EF;
+    color: #fff;
+}
+
+
+/*数据上传*/
+
+.dataUpLoadFoo {
+    width: 1024px;
+    margin: 0 auto;
+    height: 60px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.dataUpLoadFoo h2 {
+    height: 100%;
+    overflow: hidden;
+    float: left;
+}
+
+.dataUpLoadFoo h2 span {
+    height: 24px;
+    line-height: 24px;
+    margin-top: 18px;
+    padding-left: 10px;
+    color: #333;
+    font-size: 18px;
+    border-left: 4px solid #496FFF;
+    display: block;
+}
+
+.dataUpLoadFoo .dataUpLoad_oper {
+    float: right;
+}
+
+.dataUpLoadFoo .dataUpLoad_oper p {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 15px;
+    color: #fff;
+    background: #496FFF;
+    font-size: 14px;
+    float: left;
+    cursor: pointer;
+}
+
+.alg_listClass {
+    width: 100%;
+}
+
+.alg_listClass .alg_listClass_sy {
+    width: 100%;
+    height: 45px;
+    background: rgba(245, 245, 245, 1);
+    border: 1px solid rgba(232, 232, 232, 1);
+}
+
+.alg_listClass .alg_listClass_sy>span {
+    line-height: 45px;
+    padding-left: 20px;
+    color: #333;
+    font-size: 14px;
+}
+/* 弹框禁用 */
+.disabled {
+    background: #D9D9D9!important;
+    pointer-events:none;
+}

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 算法</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/uploading_algo.new.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/alg_list.css?v=0.19.11.21.11" />
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jquery.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/MyPage.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/uploading_algo.new.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/uploading_algo.new2.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .loadGif.algRankCont_loadGif {
+            height: 70px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            margin: -20px 0 0 -20px;
+            display: none;
+        }
+
+        .loadGif i {
+            width: 40px;
+            height: 40px;
+            background: url(img/icon/loading.gif) no-repeat center;
+            background-size: 100%;
+            display: inline-block;
+        }
+
+        .loadGif p {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        .loadGif.err i {
+            background-image: url(img/icon/war.png);
+        }
+
+        .loadGif.algList_loadGif {
+            height: 70px;
+            text-align: center;
+            display: none;
+        }
+
+        .scroll_div {
+            width: calc(100% - 100px);
+            height: 70px;
+            float: left;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .scroll_begin,
+        .scroll_end,
+        .scroll_begin ul,
+        .scroll_end ul {
+            display: inline;
+        }
+
+        .scroll_div li {
+            line-height: 70px;
+            margin-right: 20px;
+            display: inline;
+        }
+
+        .scroll_div li a {
+            color: #666;
+        }
+
+        .scroll_div li:hover a {
+            color: #496FFF;
+        }
+
+        .alg_listContMin .alg_listShow .imgFoo {
+            width: 136px;
+            height: 56px;
+            float: left;
+            cursor: pointer;
+            text-align: center;
+            padding-top: 11px;
+        }
+
+        .alg_listContMin .alg_listShow .imgFoo img {
+            width: 35px;
+            height: auto;
+            float: none;
+        }
+
+        .page,
+        .page2 {
+            margin-top: 10px;
+        }
+
+        .page ul,
+        .page2 ul {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page ul::after,
+        .page2 ul::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .page ul li,
+        .page2 ul li {
+            float: left;
+            width: auto;
+            min-width: 32px;
+            height: 30px;
+            line-height: 30px;
+            list-style: none;
+        }
+
+        .page a,
+        .page2 a {
+            color: #aaa;
+            font-family: "微软雅黑";
+            padding: 0 10px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+        }
+
+        .page ul li:first-child a,
+        .page2 ul li:first-child a {
+            border-left: 1px solid #ccc;
+        }
+
+        .page ul li a:hover,
+        .page2 ul li a:hover {
+            background-color: dodgerblue;
+        }
+
+        .page ul li a:hover,
+        .page2 ul li a:hover {
+            color: white;
+        }
+
+        .page .disabled a:hover,
+        .page2 .disabled a:hover {
+            background-color: white;
+            cursor: not-allowed;
+            color: #aaa;
+        }
+
+        .page .active a,
+        .page2 .active a {
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="indexApp">
+        <div class="indexTop relative">
+            <nav>
+
+            </nav>
+            <div class="listBan">
+                <div class="listBan_txt">人人都会用的数据分析平台</div>
+                <!-- <div class="algCont">
+					<h3>帮助中心</h3>
+					<div>
+						<h4 class="clearfix">
+							<input type="text" placeholder="请输入想要查询的问题" id="algSearch">
+							<p id="algSearchBtn"><i></i></p>
+						</h4>
+					</div>
+				</div> -->
+            </div>
+        </div>
+        <!-- <div class="newRecentFoo">
+
+            <div class="newRecent" id="index_msg" class="index_msg">
+                <h3>最新动态<i></i></h3>
+                <div id="scroll_div" class="scroll_div">
+                    <div id="scroll_begin" class="scroll_begin">
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div id="scroll_end" class="scroll_end"></div>
+                </div>
+            </div>
+
+        </div> -->
+        <div class="algRank hide">
+            <div class="algRankTab">
+                <h3>人工智能为您推荐</h3>
+                <p>
+                    <span class="active" data-name="算法" data-type="sf">算 法</span>
+                    <span data-name="数据" data-type="sj">数 据</span>
+                    <span data-name="模型" data-type="mx">模 型</span>
+                </p>
+            </div>
+            <div class="algRankContFoo relative">
+                <!-- <img src="img/pic/jqr.png" alt=""> -->
+                <ul class="algRankCont">
+
+                </ul>
+                <div class="loadGif algRankCont_loadGif">
+                    <i></i>
+                    <p>加载中</p>
+                </div>
+            </div>
+        </div>
+        <div class="selfBuildFoo">
+            <div class="selfBuild">
+                <div class="selfBuild_alg">
+                    <h2>自建算法</h2>
+                    <div class="selfBuild_p"><i class="hasCheck"></i>已阅读<a href="javascript:;" class="hasRead">《自建算法构建规则》</a></div>
+                    <div>
+                        <!-- <p class="selfBuild_btn jupyter" data-type="1"><i></i>交互式编辑</p> -->
+                        <p class="selfBuild_btn hasRead" data-type="2"><i></i>上传文件</p>
+                        <p class="selfBuild_btn creat_new" data-type="4"><i></i>在线新建</p>
+                    </div>
+                </div>
+                <div class="selfBuild_cj">
+                    <h2>自建场景</h2>
+                    <div class="selfBuild_p">使用平台的丰富算法，结合实际业务分析及展示需求，在分析工作台通过搭积木的拖拉拽形式建立业务分析场景。</div>
+                    <div>
+                        <p class="selfBuild_btn" data-type="3"><i></i>在线新建</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newRecentFoo hide">
+            <div class="newRecent">
+                <div>
+                    <h3>算例排行榜<i></i></h3>
+                    <p class="algo_rank">
+                        <!-- <span>基于项的协同过滤算法</span>
+						<span>词频统计算法</span>
+						<span>因子分析算法</span> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="alg_list">
+            <h2>
+                <!-- <p class="modeSwitch">
+					<i class="active" data-type="min"></i>
+					<i data-type="max"></i>
+				</p> -->
+                <span class="active" data-type="sf">已上传算法</span>
+                <span data-type="cj">我的场景</span>
+            </h2>
+            <div class="search_keyword">
+                <div class="alg_listSech">
+                    <input type="text">
+                    <i></i>
+
+                </div>
+            </div>
+            <div class="alg_list_sf clear">
+                <div class="loadGif algList_loadGif">
+                    <i></i>
+                    <p>加载中</p>
+                </div>
+                <style>
+                    .alg_listTitl {
+                        width: 100%;
+                        height: 60px;
+                        line-height: 60px;
+                        text-align: center;
+                        font-size: 16px;
+                    }
+
+                    .alg_listTitl li:nth-child(1) {
+                        width: 330px;
+                    }
+
+                    .alg_listTitl li:nth-child(2) {
+                        width: 140px;
+                    }
+
+                    .alg_listTitl li:nth-child(3) {
+                        width: 169px;
+                    }
+
+                    .alg_listTitl li:nth-child(4) {
+                        width: 230px;
+                    }
+
+                    .alg_listTitl li:nth-child(5) {
+                        width: 155px;
+                    }
+
+                    .alg_listCont {
+                        overflow: hidden;
+                        box-sizing: border-box;
+                        height: 600px;
+                    }
+
+                    .alg_listCont p {
+                        height: 100%;
+                        line-height: 60px;
+                        text-align: center;
+                        float: left;
+                    }
+
+                    .alg_listCont p.up_name {
+                        width: 330px;
+                        padding-left: 60px;
+                        text-align: left;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .alg_listCont p.up_name img {
+                        margin: 13px 13px 0 0;
+                        padding: 7px;
+                        box-shadow: 0 0 5px #F3F3F3;
+                    }
+
+                    .alg_listCont p.up_type {
+                        width: 140px;
+                    }
+
+                    .alg_listCont p.up_date {
+                        width: 169px;
+                    }
+
+                    .alg_listCont p.up_operate {
+                        width: 230px;
+                    }
+
+                    .alg_listCont p.up_operate span {
+                        margin: 0 15px;
+                        cursor: pointer;
+                    }
+
+                    .alg_listCont p.up_state {
+                        width: 155px;
+                    }
+
+                    .alg_listCont p.up_state span {
+                        line-height: 24px;
+                        margin: 18px 0;
+                        padding: 0 12px;
+                        color: #fff;
+                        border-radius: 2px;
+                        display: inline-block;
+                    }
+
+                    .alg_listCont p.up_state.status0 span {
+                        background: #FF0130;
+                    }
+
+                    .alg_listCont p.up_state.status1 span {
+                        background: #01DBA1;
+                    }
+
+                    .alg_listCont p.up_state.status2 span {
+                        background: #FF9901;
+                    }
+
+                    .alg_listCont p.up_state.status3 span {
+                        background: #0BF;
+                    }
+                </style>
+                <ul class="alg_listTitl">
+                    <li class="fl">算法名称</li>
+                    <li class="fl">许可方式</li>
+                    <li class="fl">添加时间</li>
+                    <li class="fl">操作</li>
+                    <li class="fl">状态</li>
+                </ul>
+                <ul class="alg_listCont"></ul>
+                <div class="page" id="Page"></div>
+            </div>
+            <div class="alg_list_cj clear">
+                <div class="loadGif algList_loadGif">
+                    <i></i>
+                    <p>加载中</p>
+                </div>
+                <style>
+                    .alg_listTitl2 {
+                        width: 100%;
+                        height: 60px;
+                        line-height: 60px;
+                        text-align: center;
+                        font-size: 16px;
+                    }
+
+                    .alg_listTitl2 li:nth-child(1) {
+                        width: 300px;
+                    }
+
+                    .alg_listTitl2 li:nth-child(2) {
+                        width: 200px;
+                    }
+
+                    .alg_listTitl2 li:nth-child(3) {
+                        width: 280px;
+                    }
+
+                    .alg_listTitl2 li:nth-child(4) {
+                        width: 240px;
+                    }
+
+                    .alg_listTitl2 li:nth-child(5) {
+                        width: 155px;
+                    }
+
+                    .alg_listCont2 {
+                        height: 600px;
+                        overflow: hidden;
+                        box-sizing: border-box;
+                    }
+
+                    .alg_listCont2 p {
+                        height: 100%;
+                        line-height: 60px;
+                        text-align: center;
+                        float: left;
+                    }
+
+                    .alg_listCont2 p.up_name {
+                        width: 300px;
+                        padding-left: 90px;
+                        text-align: left;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .alg_listCont2 p.up_name img {
+                        margin: 13px 13px 0 0;
+                        padding: 7px;
+                        box-shadow: 0 0 5px #F3F3F3;
+                    }
+
+                    .alg_listCont2 p.up_type {
+                        width: 200px;
+                    }
+
+                    .alg_listCont2 p.up_date {
+                        width: 280px;
+                    }
+
+                    .alg_listCont2 p.up_operate {
+                        width: 240px;
+                    }
+
+                    .alg_listCont2 p.up_operate span {
+                        margin: 0 15px;
+                        cursor: pointer;
+                    }
+                    /* .alg_listCont2 p.up_state {
+                        width: 155px;
+                    } */
+
+                    .alg_listCont2 p.up_state span {
+                        line-height: 24px;
+                        margin: 18px 0;
+                        padding: 0 12px;
+                        color: #fff;
+                        border-radius: 2px;
+                        display: inline-block;
+                    }
+
+                    .alg_listCont2 p.up_state.status0 span {
+                        background: #FF0130;
+                    }
+
+                    .alg_listCont2 p.up_state.status1 span {
+                        background: #01DBA1;
+                    }
+
+                    .alg_listCont2 p.up_state.status2 span {
+                        background: #FF9901;
+                    }
+
+                    .alg_listCont2 p.up_state.status3 span {
+                        background: #0BF;
+                    }
+                </style>
+                <ul class="alg_listTitl2">
+                    <li class="fl">算法名称</li>
+                    <li class="fl">许可方式</li>
+                    <li class="fl">添加时间</li>
+                    <li class="fl">功能</li>
+                </ul>
+                <ul class="alg_listCont2"></ul>
+                <div class="page2" id="Page2"></div>
+            </div>
+        </div>
+
+        <footer>
+
+        </footer>
+
+        <div class="lkw-fshadow"></div>
+        <div class="lkw-msg" style="top: -100%;">
+            <!--alert-message-->
+        </div>
+
+        <div class="fixed_btn">
+
+        </div>
+
+        <div class="mu"></div>
+        <div class="mu2"></div>
+
+        <div class="algo_rule">
+            <div>
+                <h2>平台算法标准 <span><img src="img/tanhao.png">请认真阅读算法标准</span></h2>
+                <div readonly class="textarea">
+                    1.DH2.0平台只能处理python3编写的算法代码,如果您用python2写的算法代码请您用python3的代码风格进行编写,请勿上传其他语言的算法,谢谢合作.<br /> 2.算法上传目前仅支持utf-8的文件,如用其他编码进行编写的算法文件,请用utf-8保存后在进行上传.
+                    <br /> 3.上传代码中不得包含有关对平台造成损坏或包含敏感词汇的代码,一经发现平台有删除的权力.
+                    <br /> 4.如果上传算法中需要用到数据的话,可以调用2.0的数据接口(nosupervision_read_data()/supervision_read_data())前者返回一个带有表头的多维数组,后者返回2个带有表头的多维数组,请根据实际情况进行选择.
+                    <br /> 5.在线编辑所使用的环境为python3.5,如想查看是否包含您算法运行的环境请到帮助中心进行查阅.
+                    <br /> 6.如果您上传的算法中需要展示图片的话,请将图片转换成bytes类型并存入到相应的字段中去,否则无法识别您的数据.
+                    <br /> 例:DataChart_xx是字典中的key,xx由您来定义结果返回是img形式的又如DataTable_yy也是字典中的key,yy同样也是由您来定义的,结果是以表格的形式返回的,如有多个请以此类推,更多具体支持的字段,请到帮助中心>自建算法中查看.
+                    <br /> 7.算法的结果展示在在线运行中是以数据的形式返回的,您需要提交通过审核之后,就可以在工作台中看到经过渲染后的数据,算法的审核期一般为1~5天,请您耐心等待.
+                    <br /> 8.算法的状态有4种:未提交、审核中、通过、未通过.
+                    <br /> 9.算法状态解释：未提交(算法暂保存到个人的账户下方，不能再工作台中运行，只能在线试运行)、审核中(由专门人员对您的算法进行评估，后续会返回2个状态，评估期间是不可修改内容的)、通过(您的算法已通过平台的审核，算法会添加到工作台中，算法分享等其余功能开放)、未通过(您的算法暂时不符合平台的规范，请您阅读平台自建算法的规范后再次提交)
+                    <br /> 10.算法修改：算法状态在未提交以及为通过下对算法进行操作，都是对算法进行的更新操作。算法的状态在审核中的话不允许您对此算法进行修改操作。算法状态在通过下，对算法的修改操作是另存为操作，并默认未提交状态。上传的算法默认是未提交状态.
+                    <br /> 11.算法审核的通过的成功率,可以通过完善算法的参数(既算法的标准化),符合平台的定义规则等方面入手.
+                    <br /> 12.平台在未通过您的允许下是不会泄露您的算法内容，保证您算法的保密性。
+                    <br /> 13.帮助中心列出了python3常用到的算法模块，以及平台是如何处理图片以及表格数据的实例.
+                    <br /> 14.如果您还有不清楚的地方请到帮助中心>自建算法模块中查看,谢谢阅读.
+                </div>
+                <div class="rule_btn">
+                    <div class="no" data-type="no">取消</div>
+                    <div class="ok" data-type="ok">同意</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading"></div>
+
+        <div class="up_algo2">
+            <div class="up_load2_box">
+                <h2>上传文件<i class="up_load2_boxClose"><img src="img/close.png" width="15" height="15"></i></h2>
+
+                <div class="upload_py">
+                    <div><img src="img/icon/upfile.png" alt="" style="margin: 5px 5px 0 0;">选择文件<input id="upFile" type="file" accept=".py" onchange="handleFile()"></div>
+                    <img src="img/icon/file.png" alt="" style="margin: 5px 5px 0 0;float: left;"><input id="upFileName" type="text" readonly placeholder="文件格式为.py">
+                    <!-- <span class="fl">.py</span> -->
+                </div>
+                <!-- <h3>请选择并设置上传算法的图标</h3> -->
+                <!-- <ul>
+                    <li name="ZJ_img1/ZJ1.fw.png"><img src="ZJ_img1/ZJ1.fw.png"></li>
+                    <li name="ZJ_img1/ZJ2.fw.png"><img src="ZJ_img1/ZJ2.fw.png"></li>
+                    <li name="ZJ_img1/ZJ3.fw.png"><img src="ZJ_img1/ZJ3.fw.png"></li>
+                    <li name="ZJ_img1/ZJ4.fw.png"><img src="ZJ_img1/ZJ4.fw.png"></li>
+                    <li name="ZJ_img1/ZJ5.fw.png"><img src="ZJ_img1/ZJ5.fw.png"></li>
+                    <li name="ZJ_img1/ZJ6.fw.png"><img src="ZJ_img1/ZJ6.fw.png"></li>
+                    <li name="ZJ_img1/ZJ7.fw.png"><img src="ZJ_img1/ZJ7.fw.png"></li>
+                    <li name="ZJ_img1/ZJ8.fw.png"><img src="ZJ_img1/ZJ8.fw.png"></li>
+                    <li name="ZJ_img1/ZJ9.fw.png"><img src="ZJ_img1/ZJ9.fw.png"></li>
+                    <li name="ZJ_img1/ZJ10.fw.png"><img src="ZJ_img1/ZJ10.fw.png"></li>
+                    <li name="ZJ_img1/ZJ11.fw.png"><img src="ZJ_img1/ZJ11.fw.png"></li>
+                    <li name="ZJ_img1/ZJ12.fw.png"><img src="ZJ_img1/ZJ12.fw.png"></li>
+                    <li name="ZJ_img1/ZJ13.fw.png"><img src="ZJ_img1/ZJ13.fw.png"></li>
+                    <li name="ZJ_img1/ZJ14.fw.png"><img src="ZJ_img1/ZJ14.fw.png"></li>
+                    <li name="ZJ_img1/ZJ15.fw.png"><img src="ZJ_img1/ZJ15.fw.png"></li>
+                    <li name="ZJ_img1/ZJ16.fw.png"><img src="ZJ_img1/ZJ16.fw.png"></li>
+                    <li name="ZJ_img1/ZJ17.fw.png"><img src="ZJ_img1/ZJ17.fw.png"></li>
+                    <li name="ZJ_img1/ZJ18.fw.png"><img src="ZJ_img1/ZJ18.fw.png"></li>
+                    <li name="ZJ_img1/ZJ19.fw.png"><img src="ZJ_img1/ZJ19.fw.png"></li>
+                    <li name="ZJ_img1/ZJ20.fw.png"><img src="ZJ_img1/ZJ20.fw.png"></li>
+                    <li name="ZJ_img1/ZJ21.fw.png"><img src="ZJ_img1/ZJ21.fw.png"></li>
+                    <li name="ZJ_img1/ZJ22.fw.png"><img src="ZJ_img1/ZJ22.fw.png"></li>
+                    <li name="ZJ_img1/ZJ23.fw.png"><img src="ZJ_img1/ZJ23.fw.png"></li>
+                    <li name="ZJ_img1/ZJ24.fw.png"><img src="ZJ_img1/ZJ24.fw.png"></li>
+                    <li name="ZJ_img1/ZJ25.fw.png"><img src="ZJ_img1/ZJ25.fw.png"></li>
+                    <li name="ZJ_img1/ZJ26.fw.png"><img src="ZJ_img1/ZJ26.fw.png"></li>
+                    <li name="ZJ_img1/ZJ27.fw.png"><img src="ZJ_img1/ZJ27.fw.png"></li>
+                    <li name="ZJ_img1/ZJ28.fw.png"><img src="ZJ_img1/ZJ28.fw.png"></li>
+                    <li name="ZJ_img1/ZJ29.fw.png"><img src="ZJ_img1/ZJ29.fw.png"></li>
+                    <li name="ZJ_img1/ZJ30.fw.png"><img src="ZJ_img1/ZJ30.fw.png"></li>
+                    <li name="ZJ_img1/ZJ31.fw.png"><img src="ZJ_img1/ZJ31.fw.png"></li>
+                    <li name="ZJ_img1/ZJ32.fw.png"><img src="ZJ_img1/ZJ32.fw.png"></li>
+                    <li name="ZJ_img1/ZJ33.fw.png"><img src="ZJ_img1/ZJ33.fw.png"></li>
+                    <li name="ZJ_img1/ZJ34.fw.png"><img src="ZJ_img1/ZJ34.fw.png"></li>
+                    <li name="ZJ_img1/ZJ35.fw.png"><img src="ZJ_img1/ZJ35.fw.png"></li>
+                    <li name="ZJ_img1/ZJ36.fw.png"><img src="ZJ_img1/ZJ36.fw.png"></li>
+                    <li name="ZJ_img1/ZJ37.fw.png"><img src="ZJ_img1/ZJ37.fw.png"></li>
+                    <li name="ZJ_img1/ZJ38.fw.png"><img src="ZJ_img1/ZJ38.fw.png"></li>
+                    <li name="ZJ_img1/ZJ39.fw.png"><img src="ZJ_img1/ZJ39.fw.png"></li>
+                    <li name="ZJ_img1/ZJ40.fw.png"><img src="ZJ_img1/ZJ40.fw.png"></li>
+                    <li name="ZJ_img1/ZJ41.fw.png"><img src="ZJ_img1/ZJ41.fw.png"></li>
+                    <li name="ZJ_img1/ZJ42.fw.png"><img src="ZJ_img1/ZJ42.fw.png"></li>
+                    <li name="ZJ_img1/ZJ43.fw.png"><img src="ZJ_img1/ZJ43.fw.png"></li>
+                    <li name="ZJ_img1/ZJ44.fw.png"><img src="ZJ_img1/ZJ44.fw.png"></li>
+                    <li name="ZJ_img1/ZJ45.fw.png"><img src="ZJ_img1/ZJ45.fw.png"></li>
+                    <li name="ZJ_img1/ZJ46.fw.png"><img src="ZJ_img1/ZJ46.fw.png"></li>
+                    <li name="ZJ_img1/ZJ47.fw.png"><img src="ZJ_img1/ZJ47.fw.png"></li>
+                    <li name="ZJ_img1/ZJ48.fw.png"><img src="ZJ_img1/ZJ48.fw.png"></li>
+                    <li name="ZJ_img1/ZJ49.fw.png"><img src="ZJ_img1/ZJ49.fw.png"></li>
+                    <li name="ZJ_img1/ZJ50.fw.png"><img src="ZJ_img1/ZJ50.fw.png"></li>
+                    <li name="ZJ_img1/ZJ51.fw.png"><img src="ZJ_img1/ZJ51.fw.png"></li>
+                    <li name="ZJ_img1/ZJ52.fw.png"><img src="ZJ_img1/ZJ52.fw.png"></li>
+                    <li name="ZJ_img1/ZJ53.fw.png"><img src="ZJ_img1/ZJ53.fw.png"></li>
+                    <li name="ZJ_img1/ZJ54.fw.png"><img src="ZJ_img1/ZJ54.fw.png"></li>
+                    <li name="ZJ_img1/ZJ55.fw.png"><img src="ZJ_img1/ZJ55.fw.png"></li>
+                    <li name="ZJ_img1/ZJ56.fw.png"><img src="ZJ_img1/ZJ56.fw.png"></li>
+                    <li name="ZJ_img1/ZJ57.fw.png"><img src="ZJ_img1/ZJ57.fw.png"></li>
+                    <li name="ZJ_img1/ZJ58.fw.png"><img src="ZJ_img1/ZJ58.fw.png"></li>
+                    <li name="ZJ_img1/ZJ59.fw.png"><img src="ZJ_img1/ZJ59.fw.png"></li>
+                    <li name="ZJ_img1/ZJ60.fw.png"><img src="ZJ_img1/ZJ60.fw.png"></li>
+                    <li name="ZJ_img1/ZJ61.fw.png"><img src="ZJ_img1/ZJ61.fw.png"></li>
+                    <li name="ZJ_img1/ZJ62.fw.png"><img src="ZJ_img1/ZJ62.fw.png"></li>
+                    <li name="ZJ_img1/ZJ63.fw.png"><img src="ZJ_img1/ZJ63.fw.png"></li>
+                    <li name="ZJ_img1/ZJ64.fw.png"><img src="ZJ_img1/ZJ64.fw.png"></li>
+                    <li name="ZJ_img1/ZJ65.fw.png"><img src="ZJ_img1/ZJ65.fw.png"></li>
+                    <li name="ZJ_img1/ZJ66.fw.png"><img src="ZJ_img1/ZJ66.fw.png"></li>
+                    <li name="ZJ_img1/ZJ67.fw.png"><img src="ZJ_img1/ZJ67.fw.png"></li>
+                    <li name="ZJ_img1/ZJ68.fw.png"><img src="ZJ_img1/ZJ68.fw.png"></li>
+                    <li name="ZJ_img1/ZJ69.fw.png"><img src="ZJ_img1/ZJ69.fw.png"></li>
+                    <li name="ZJ_img1/ZJ70.fw.png"><img src="ZJ_img1/ZJ70.fw.png"></li>
+                    <li name="ZJ_img1/ZJ71.fw.png"><img src="ZJ_img1/ZJ71.fw.png"></li>
+                    <li name="ZJ_img1/ZJ72.fw.png"><img src="ZJ_img1/ZJ72.fw.png"></li>
+                    <li name="ZJ_img1/ZJ73.fw.png"><img src="ZJ_img1/ZJ73.fw.png"></li>
+                    <li name="ZJ_img1/ZJ74.fw.png"><img src="ZJ_img1/ZJ74.fw.png"></li>
+                    <li name="ZJ_img1/ZJ75.fw.png"><img src="ZJ_img1/ZJ75.fw.png"></li>
+                    <li name="ZJ_img1/ZJ76.fw.png"><img src="ZJ_img1/ZJ76.fw.png"></li>
+                    <li name="ZJ_img1/ZJ77.fw.png"><img src="ZJ_img1/ZJ77.fw.png"></li>
+                    <li name="ZJ_img1/ZJ78.fw.png"><img src="ZJ_img1/ZJ78.fw.png"></li>
+                    <li name="ZJ_img1/ZJ79.fw.png"><img src="ZJ_img1/ZJ79.fw.png"></li>
+                    <li name="ZJ_img1/ZJ80.fw.png"><img src="ZJ_img1/ZJ80.fw.png"></li>
+                    <li name="ZJ_img1/ZJ81.fw.png"><img src="ZJ_img1/ZJ81.fw.png"></li>
+                    <li name="ZJ_img1/ZJ82.fw.png"><img src="ZJ_img1/ZJ82.fw.png"></li>
+                    <li name="ZJ_img1/ZJ83.fw.png"><img src="ZJ_img1/ZJ83.fw.png"></li>
+                    <li name="ZJ_img1/ZJ84.fw.png"><img src="ZJ_img1/ZJ84.fw.png"></li>
+                    <li name="ZJ_img1/ZJ85.fw.png"><img src="ZJ_img1/ZJ85.fw.png"></li>
+                    <li name="ZJ_img1/ZJ86.fw.png"><img src="ZJ_img1/ZJ86.fw.png"></li>
+                    <li name="ZJ_img1/ZJ87.fw.png"><img src="ZJ_img1/ZJ87.fw.png"></li>
+                    <li name="ZJ_img1/ZJ88.fw.png"><img src="ZJ_img1/ZJ88.fw.png"></li>
+                    <li name="ZJ_img1/ZJ89.fw.png"><img src="ZJ_img1/ZJ89.fw.png"></li>
+                    <li name="ZJ_img1/ZJ90.fw.png"><img src="ZJ_img1/ZJ90.fw.png"></li>
+                    <li name="ZJ_img1/ZJ91.fw.png"><img src="ZJ_img1/ZJ91.fw.png"></li>
+                    <li name="ZJ_img1/ZJ92.fw.png"><img src="ZJ_img1/ZJ92.fw.png"></li>
+                    <li name="ZJ_img1/ZJ93.fw.png"><img src="ZJ_img1/ZJ93.fw.png"></li>
+                    <li name="ZJ_img1/ZJ94.fw.png"><img src="ZJ_img1/ZJ94.fw.png"></li>
+                    <li name="ZJ_img1/ZJ95.fw.png"><img src="ZJ_img1/ZJ95.fw.png"></li>
+                    <li name="ZJ_img1/ZJ96.fw.png"><img src="ZJ_img1/ZJ96.fw.png"></li>
+                    <li name="ZJ_img1/ZJ97.fw.png"><img src="ZJ_img1/ZJ97.fw.png"></li>
+                    <li name="ZJ_img1/ZJ98.fw.png"><img src="ZJ_img1/ZJ98.fw.png"></li>
+                    <li name="ZJ_img1/ZJ99.fw.png"><img src="ZJ_img1/ZJ99.fw.png"></li>
+                    <li name="ZJ_img1/ZJ100.fw.png"><img src="ZJ_img1/ZJ100.fw.png"></li>
+                </ul> -->
+                <div class="upload_sure disabled">确定</div>
+            </div>
+        </div>
+
+        <div class="msgbox">
+            <img src="img/success.png" class="success on">
+            <img src="img/fail.png" class="fail">
+            <span></span>
+        </div>
+
+        <a href="javascript:;" class="backtop" title="返回顶部" style="display: block;">返回顶部</a>
+        <div class="lkw-fshadow"></div>
+        <div class="lkw-msg" style="top: -100%;">
+            <!--alert-message-->
+        </div>
+
+        <div class="msg-box-wraper login-alert shade hide">
+            <!--登录提示-->
+        </div>
+        <!--提示信息-->
+
+        <!-- 算法购买配置 -->
+        <div class="set_buy">
+            <i><img src="img/close.png"></i>
+            <h2>算法名称：<span></span></h2>
+            <div>成本计算器：(单价/秒：￥<span></span>)</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>样本计算/秒</td>
+                        <td></td>
+                        <td>调用次数</td>
+                        <td></td>
+                        <td>预估千次调用产生的费用</td>
+                    </tr>
+                    <tr class="tr2">
+                        <td class="td miao"></td>
+                        <td class="td2">×</td>
+                        <td class="td ci"></td>
+                        <td class="td2">=</td>
+                        <td class="td jia"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>请选择您需要购买的调用次数</h3>
+            <ul></ul>
+            <button>加入我的收纳</button>
+            <p>共计：<b>0</b>元</p>
+        </div>
+
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+</body>
+
+</html>

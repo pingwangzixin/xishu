@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="color3"/>
+    <title>Datahoop 2.0 资讯搜索</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <style>
+        *{box-sizing: border-box;}
+        .typearea{width: 1024px;margin: 0 auto;overflow: hidden;margin-top: 100px;}
+		.typearea .crumbs {margin-top: 25px; font-size: 14px; color: #666666;}
+		.typearea .crumbs a {margin-right: 5px;}
+		.typearea .crumbs a:visited {color: #666666;}
+		.typearea .crumbs .on {color: #333333;}
+        .typearea .crumbs .search {float: right; border: 1px solid #666666;}
+        .typearea .crumbs .search {padding: 2px 0 0 2px;}
+        .typearea .crumbs .search i {width: 14px; height:14px; margin-right: 2px;}
+        .result {font-size: 14px; color: #333333;margin: 15px 0 25px;}
+        .content {width: 1024px; margin: 0 auto;}
+        .dataContent {margin-left: 76px; margin-top: 20px;width: 872px; height: 115px;display: flex;justify-content: space-between;border-bottom: 1px solid #E8E8E8;}
+        .dataContent .left {width: 160px; height: 100px;}
+        .dataContent .left img {width: 100%;height: 100%;}
+        .dataContent .right {width: calc(100% - 180px);}
+        .dataContent .right h5 {font-size: 16px; color: #1A1A1A; text-overflow: ellipsis; white-space: nowrap;}
+        .dataContent .right p {margin: 15px 0 20px;font-size: 14px; color: #404E60; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+        .dataContent .right .source {display: flex; justify-content: space-between;font-size: 14px; color: #666666; text-overflow: ellipsis; white-space: nowrap;}
+        .dataContent .right .author {margin-left: 37px;}
+        .none {display: none;width: 1024px; margin: 0 auto;}
+        .no-img {width: 225px; height:177px; margin: 10px auto 40px;}
+        .no-img p {text-align: center;font-size: 14px;color: #666666}
+        .no-img img {width: 100%; height: 100%}
+        .none .dataContent {margin: 20px auto 0;}
+        .none main h4 {text-align: center;font-size:18px; color:#333333;padding: 20px 0 19px;border-top:1px solid #E8E8E8}
+        /* loading */
+        .loading1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            margin: auto;
+            height: 100%;
+            background: rgba(255,255,255,.8);
+            display: none;
+            z-index: 111111111111111111;
+        }
+        .loading1>div {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            left: 50%;
+            margin-left: -50px;
+            top: 50%;
+            margin-top: -50px;
+            text-align: center;
+        }
+        .loading1>div>img {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav></nav>
+    <div class="typearea">
+        <div class="crumbs">
+            <a href="Information_platform.html">Datahoop资讯平台</a>>
+            <a class="on" href="javascript:void(0);">搜索资讯列表</a>
+            <div class="search">
+                <input type="text" class="searchText" placeholder="Datahoop">
+                <i><img src="./img/icon/search.png" alt=""></i>
+            </div>
+        </div>
+    </div>
+    <section class="none">
+        <div class="no-img">
+            <img src="img/无结果.png" alt="">
+            <p>没有找到相关内容</p>
+        </div>
+        <main>
+            <div class="data">
+                <h4>为您推荐</h4>
+            </div>
+        </main>
+    </section>
+    <section class="content">
+        <p class="result"></p>
+        <main>
+            <div class="data"></div>
+        </main>
+    </section>
+    <!-- 页面加载完成之前的loading动画 -->
+    <div class="loading1">
+        <div>
+            <img src="/img/wait.gif" alt="">
+            <p>正在加载中，请耐心等待...</p>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+<script>
+    // 搜索
+    var keywords = window.location.search ? decodeURI(window.location.search.split('?')[1].split('=')[1]) : '';
+    var imgurl = 'http://py.datahoop.cn/';
+    if(keywords) {
+        getSearchList(keywords)
+        $('.searchText').val(keywords);
+    }
+    else {
+        $('.none').show();
+    }
+    // 搜索框绑定回车事件
+    $('.search input').on('keyup', function(e) {
+        if(e.keyCode === 13) {
+            $('.search img').click()
+        }
+    })
+    $('.search img').click(function() {
+        $('.loading1').show()
+        let keywords = $('.searchText').val();
+        getSearchList(keywords);
+    })
+    function getSearchList(keywords) {
+        $.ajax({
+            url: url_ip + '/news/search/',
+            type: 'GET',
+            data: {keywords},
+            cache:false,
+            async:false,
+            dataType: 'json',
+            success: function(res) {
+                setTimeout(() => {
+                    $('.loading1').hide()
+                },500)
+                $(`.content main .data`).empty();
+                $('.result').empty();
+                if(!res.data.length) {
+                    $('.none').show()
+                }else {
+                    $('.none').hide()
+                    $('.result').html(`搜索成功，为你找到相关结果${res.data.length}个`)
+                    for(var i = 0; i < res.data.length; i++) {
+                        var contentHtml = `
+                            <a class="dataContent" target="_blank" href="info_detail.html?id=${res.data[i].id}">
+                                <div class="left">
+                                    <img src="${imgurl+res.data[i].cover}"/>
+                                </div>
+                                <div class="right">
+                                    <h5>${res.data[i].title}</h5>
+                                    <p>${res.data[i].desc}</p>
+                                    <div class="source">
+                                        <span>文章来源：${res.data[i].source}<span class="author">作者：${res.data[i].author}</span></span>
+                                        <span>${res.data[i].add_time}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        `
+                        $(`.content main .data`).append(contentHtml);
+                    }
+                }
+            }
+        });
+    }
+    // 推荐内容
+    $.ajax({
+        url: url_ip + '/news/infobanner/',
+        type: 'GET',
+        cache:false,
+        async:false,
+        dataType: 'json',
+        data:{},
+        success:function(res) {
+            for(var i = 0; i < res.data.length; i++) {
+                var contentHtml = `
+                    <a class="dataContent" target="_blank" href="info_detail.html?id=${res.data[i].id}">
+                        <div class="left">
+                            <img src="${imgurl+res.data[i].img}"/>
+                        </div>
+                        <div class="right">
+                            <h5>${res.data[i].title}</h5>
+                            <p>${res.data[i].desc}</p>
+                            <div class="source">
+                                <span>文章来源：${res.data[i].source}<span class="author">作者：${res.data[i].author}</span></span>
+                                <span>${res.data[i].add_time}</span>
+                            </div>
+                        </div>
+                    </a>
+                `
+                $(`.none main .data`).append(contentHtml);
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>算法studio</title>
+    <link rel="icon" href="../img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <script type="text/javascript" charset="utf-8" src="changyan.js"></script>
+    <link rel="stylesheet" href="bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="../css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="../css/online.css?v=0.19.11.21.11">
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+
+        nav .data_hide {
+            left: -40px;
+        }
+
+        nav .resource_hide {
+            left: -40px;
+        }
+    </style>
+    <!-- codemirror基础样式 -->
+    <link rel="stylesheet" href="cm-css/codemirror.css">
+    <!-- codemirror主题 -->
+    <link rel="stylesheet" href="cm-css/monokai.css">
+    <!-- codemirror代码提示 -->
+    <link rel="stylesheet" href="cm-css/show-hint.css">
+    <!-- codemirror代码折叠 -->
+    <link rel="stylesheet" href="cm-css/foldgutter.css">
+    <!-- codemirror -->
+    <link rel="stylesheet" href="cm-css/lint.css">
+    <style>
+        .CodeMirror {
+            height: calc(100vh - 60px);
+            z-index: 1;
+            font-size: 18px;
+            font-family: "微软雅黑", monospace, monospace;
+        }
+    </style>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .lkw-fshadow {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0);
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: none;
+            z-index: 99998;
+        }
+
+        .lkw-msg {
+            min-width: 380px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ebeef5;
+            position: fixed;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            background-color: #edf2fc;
+            transition: opacity .3s, transform .4s;
+            overflow: hidden;
+            padding: 15px 15px 15px 20px;
+            /* display: flex; */
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .lkw-msg-success {
+            background-color: #f0f9eb;
+            border-color: #e1f3d8;
+        }
+
+        .lkw-msg-warning {
+            background-color: #fdf6ec;
+            border-color: #faecd8;
+        }
+
+        .lkw-msg-error {
+            background-color: #fef0f0;
+            border-color: #fde2e2;
+        }
+
+        .lkw-msg-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+        }
+
+        .lkw-icon-success {
+            background: url(../img/icon/ok.png) no-repeat center;
+            background-size: 100%;
+        }
+
+        .lkw-icon-info {
+            background: url(../img/icon/info.png) no-repeat center;
+            background-size: 100%;
+        }
+
+        .lkw-icon-warning {
+            background: url(../img/icon/war.png) no-repeat center;
+            background-size: 100%;
+        }
+
+        .lkw-icon-error {
+            background: url(../img/icon/err.png) no-repeat center;
+            background-size: 100%;
+        }
+
+        .lkw-msg-cont {
+            padding: 0;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .lkw-msg-success .lkw-msg-cont {
+            color: #67c23a;
+        }
+
+        .lkw-msg-box-wraper {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1031;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .lkw-msg-box-wraper:after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            vertical-align: middle;
+        }
+
+        .lkw-msg-box {
+            display: inline-block;
+            width: 420px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -84px 0 0 -210px;
+            padding-bottom: 10px;
+            vertical-align: middle;
+            background-color: #fff;
+            border-radius: 4px;
+            border: 1px solid #ebeef5;
+            font-size: 18px;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+            text-align: left;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        .lkw-msg-box h2 span {
+            font-size: 18px;
+            line-height: 1;
+            color: #303133;
+        }
+
+        .lkw-msg-box h2 i {
+            width: 14px;
+            height: 14px;
+            background: url(../img/icon/lkw-msg-box-close.png) no-repeat center;
+            background-size: 100%;
+            float: right;
+            cursor: pointer;
+        }
+
+        .lkw-msg-box h2 i.active,
+        .lkw-msg-box h2 i:hover {
+            background: url(../img/icon/lkw-msg-box-close-active.png) no-repeat center;
+            background-size: 100%;
+        }
+
+        .lkw-msg-box-cont {
+            position: relative;
+            padding: 10px 15px;
+            color: #606266;
+            font-size: 14px;
+        }
+
+        .lkw-msg-box-input {
+            padding-top: 15px;
+        }
+
+        .lkw-input {
+            position: relative;
+            font-size: 14px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .lkw-input-inner:hover {
+            border-color: #c0c4cc;
+        }
+
+        .lkw-input-inner {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 15px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            color: #606266;
+            display: inline-block;
+            font-size: inherit;
+            transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+            width: 100%;
+        }
+
+        .lkw-msg-box-btn {
+            padding-right: 15px;
+        }
+
+        .lkw-msg-box-btn span {
+            width: 58px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            border: 1px solid #e6e6e6;
+            border-radius: 4px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .lkw-msg-box-btn span.no {
+            margin-right: 5px;
+        }
+
+        .lkw-msg-box-btn span:hover {
+            background: #e7e7e7;
+            border: 1px solid #ddd
+        }
+
+        .lkw-msg-box-btn span:active {
+            color: #575757;
+            border: 1px solid #c6c6c6;
+            background: #dadada;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .3)
+        }
+
+        .mu3 {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+            top: 0;
+            left: 0;
+            z-index: 999
+        }
+
+        .is_quit {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 380px;
+            background: #fff;
+            margin-left: -210px;
+            color: #999;
+            border-radius: 5px;
+            padding: 20px;
+            display: none;
+            margin-top: -90px;
+            z-index: 9999;
+            box-sizing: border-box;
+            text-align: center;
+            height: 176px;
+        }
+
+        .is_quit p {
+            line-height: 40px;
+            padding: 0;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .is_quit p span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .is_quit div {
+            width: 80px;
+            height: 26px;
+            border-radius: 13px;
+            text-align: center;
+            line-height: 26px;
+            background: #00D1F7;
+            cursor: pointer;
+            margin: 0;
+            color: #fff;
+            display: inline-block;
+            margin: 20px 20px 10px;
+        }
+
+        .is_quit div:hover {
+            background: #000;
+        }
+        .btn_box i {
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            float: right;
+            cursor: pointer;
+            background: url(../img/tuichu.png);
+            background-size: 100% 100%;
+            margin: 10px;
+            border-radius: 50%;
+        }
+        .btn_box i:hover {
+            background: url(../img/close2.png);
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body style="background:#262822;position:relative;overflow:hidden;">
+    <!-- 加载背景 -->
+    <div class="loading_mask">
+        <div class="loading_bg">
+            <div id="panel">
+                <span id="loading1">
+                    <span id="outerCircle"></span>
+                <span id="innerCircle">
+                        <span id="center"></span>
+                </span>
+                </span>
+            </div>
+            <p>正在加载运行环境，请稍等</p>
+        </div>
+    </div>
+    <!-- 登录提示弹窗 -->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2 class="msg-title"></h2>
+            <p class="msg-content"></p>
+        </div>
+    </div>
+    <!-- 算法删除弹窗 -->
+    <div class="sf_delete_mask">
+        <div class="sf_delete_box">
+            <i></i>
+            <h2>删除算法</h2>
+            <p>算法删除后无法找回，确定删除吗？</p>
+            <div>
+                <button>取消</button>
+                <button>删除</button>
+            </div>
+        </div>
+    </div>
+    <!-- 草稿保存 -->
+    <div class="save_draft">
+        <div class="save_draft_box">
+            <i></i>
+            <h2>输入保存名字</h2>
+            <input id="draftid" type="text" style="height: 30px;width: 270px;color: #000000;border: 1px solid #0a1e31;margin-left: 47px;margin-top: 20px;margin-bottom: 20px;border-radius: 4px;text-align: center;">
+            <div>
+                <button>取消</button>
+                <button>确认</button>
+            </div>
+        </div>
+    </div>
+    <!-- 数据删除弹窗 -->
+    <div class="data_delete_mask">
+        <div class="data_delete_box">
+            <i></i>
+            <h2>删除数据</h2>
+            <p>数据删除后无法找回，确定删除吗？</p>
+            <div>
+                <button>取消</button>
+                <button>删除</button>
+            </div>
+        </div>
+    </div>
+    <!-- 算法查看弹窗 -->
+    <div class="data_look_mask">
+        <div class="data_look_box">
+            <i></i>
+            <p class="data_look_box_t"></p>
+            <div class="data_look_box_b">
+                <table cellspacing="0">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <p class="data_look_box_ts"><span>*</span>此处仅展示前100行数据作为预览！</p>
+        </div>
+    </div>
+    <!-- 算法暂存，提交弹窗 -->
+    <div class="sfzt_delete_mask">
+        <div class="sfzt_delete_box">
+            <i></i>
+            <h2>算法名重复</h2>
+            <p>继续保存将覆盖已有算法，是否继续？</p>
+            <div>
+                <button>取消保存</button>
+                <button>确认覆盖</button>
+            </div>
+        </div>
+    </div>
+    <!--参数删除弹窗-->
+    <div class="parmas_delete">
+        <div class="parmas_delete_box">
+            <i></i>
+            <h2>参数</h2>
+            <p>确定删除该参数吗？</p>
+            <div>
+                <button>取消</button>
+                <button>删除</button>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="online_index">
+        <div class="index_title">
+            <i><a href="../index.html"><img src="../img/online_logo.png"></a></i>
+            <span>欢迎使用自建算法</span>
+            <div class="index_close">
+                <b><img src="../img/close.png"></b>
+            </div>
+        </div>
+        <div class="index_inputBox">
+            <div class="index_input"><input type="text" placeholder="请输入您要搜索的内容"><img src="../img/search.png"></div>
+            <p>关键词：<i>监督学习</i><i>非监督学习</i><i>新建</i></p>
+        </div>
+        <div class="index_con">
+            <h2>请选择模板创建</h2>
+            <ul style="overflow-y: auto;padding: 20px 0">
+                <li>
+                    <div><img src="../img/online_new.png"></div>
+                    <span>新建空白模板</span>
+                    <b></b>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+    <div class="create_mask">
+        <div class="create_mb">
+            <div class="mb_title">
+                <p>请选择模板创建</p><i class="mb_title_close"></i>
+            </div>
+            <div class="mb_content">
+                <div class="mb_xj">
+                    <div>
+                        <img src="../img/sf_xj.png" alt="">
+                        <p>新建空白模板</p>
+                        <b></b>
+                    </div>
+                </div>
+                <div class="mb_yy"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mu"></div>
+    <nav style="background:#242833;height:60px !important;position: static;box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);">
+    </nav>
+    <div class="mu3"></div>
+    <div class="is_quit">
+        <p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+        <div class="sure_quit">确定退出</div>
+        <div class="no_quit">再想一想</div>
+    </div>
+    <div class="container">
+        <div class="starter-template">
+            <div class="btn_box">
+                <div class="online_btn online_btn2" id="new"><img src="../img/xj.png">新建</div>
+                <!-- <div class="online_btn online_btn2" id="yiyou"><img src="../img/online_mb.png">已保存</div> -->
+                <!-- <div class="online_btn online_btn2" id="txt"><img src="../img/online_mb.png">示例code</div> -->
+                <div class="online_btn online_btn2" id="btn"><img src="../img/syx.png">试运行</div>
+                <div class="online_btn online_btn2" id="select_canshu"><img src="../img/bzh.png">标准化</div>
+                <i></i>
+                <!-- <div class="online_btn online_btn2" id="baocun_suanfa"><img src="../img/online_bc.png">算法提交</div> -->
+            </div>
+            <div id="oldbox">
+                <p class="yicun_title">选择测试数据<i></i></p>
+                <div class="online_upload">
+                    <img src="../img/sc.png">上传测试数据
+                    <input type="file" accept=".csv,.xls,.xlsx">
+                </div>
+                <ul></ul>
+                <div class="shiyx_sx">
+                    <!-- <div class="look">查&nbsp;&nbsp;看</div> -->
+                    <div class="do">运&nbsp;&nbsp;行</div>
+                </div>
+                <!-- <div class="leftmove">
+                    <img src="../img/toright.png">
+                </div> -->
+            </div>
+            <div class="progress_box">
+                <div class="progress_c">
+                    <div>
+                        <i class="on"></i><b>编辑</b>
+                    </div>
+                    <span></span>
+                    <div>
+                        <i></i><b>提交</b>
+                    </div>
+                    <span></span>
+                    <div>
+                        <i></i><b>审核中</b>
+                    </div>
+                    <span></span>
+                    <div>
+                        <i></i><b id="is_tongguo"></b>
+                        <script>
+                            url = window.location.search;
+                            var arg = url.split("&")[0].split("?")[1];
+                            if (arg === "1"){
+                                document.getElementById('is_tongguo').innerText="通过";
+                            } else if(arg === "0"){
+                                document.getElementById('is_tongguo').innerText="未通过";
+                            } else {
+                                document.getElementById('is_tongguo').innerText="通过/未通过";
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="progress_r">
+                    <p id="yiyou">已保存算法</p>
+                    <p id="txt">示例code</p>
+                    <p id="draft">存草稿</p>
+                </div>
+            </div>
+            <!-- <div id="editor" class=" ace_editor ace-monokai ace_dark" draggable="false"></div> -->
+            <!-- <textarea rows="20" cols="100" id="editorBox" style="width: 100%; display: none;"></textarea> -->
+            <textarea id="editor" class="editor" name="code"></textarea>
+            <!-- <script src="hm.js"></script> -->
+            <script>
+                if (!document.addEventListener) {
+                    // IE6~IE8
+                    //document.write('<script src="../bower/ieBetter.js/ieBetter.js"><\/script>');
+                }
+            </script>
+            <script src="jquery_002.js"></script>
+            <!-- <script src="https://cdn.bootcss.com/jquery/1.2.3/jquery.min.js"></script> -->
+            <script src="jstorage.js"></script>
+            <script src="base64.js"></script>
+            <script>
+                var codetype = "python";
+                var unid = "5a39c9bb1160e";
+            </script>
+            <script src="runcode.js"></script>
+            <script src="jquery-ui.js"></script>
+            <script src="jquery_003.js"></script>
+			<script src="../js/jquery.nicescroll.js"></script>
+            <!-- <script>
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?9ca52cb36718c4a9ba90bc98d917c8bf";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script> -->
+            <script src="text.js"></script>
+            <!-- <script src="theme-monokai.js"></script> -->
+            <!-- <script src="mode-python.js"></script> -->
+            <!-- <script src="python.js?v=0.19.11.21.11"></script> -->
+            <script type="text/javascript" charset="UTF-8" src="version-v3.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cookie"></script>
+            <!-- <script type="text/javascript" charset="UTF-8" src="adapter.js"></script> -->
+            <script type="text/javascript" charset="UTF-8" src="cyqWg8E9J"></script>
+            <script type="text/javascript" charset="UTF-8" src="start.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="icp-tips.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-skin.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-header.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-box.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-list.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-av.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-footer.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="hot-topic.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="face.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-float-bar.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-page.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-info.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-avatar.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-view.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-task.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-prop.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-report.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-notice.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-feedback.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-user-set.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cmt-notice.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-grade.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-score.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="jump-url.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="disable-user-photo.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="sohu-treaty.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="cy-auto-recommand.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="phone-verify.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="first-login-prompt.js"></script>
+            <script type="text/javascript" src="jquery.js"></script>
+            <script type="text/javascript" src="../js/url_ip.js?v=0.19.11.21.11"></script>
+            <script type="text/javascript" src="../js/nav.js?v=0.19.11.21.11"></script>
+            <script type="text/javascript" src="../js/online.js?v=0.19.11.21.11"></script>
+            <!-- codemirror基础功能 -->
+            <script src="cm-js/codemirror.js"></script>
+            <!-- codemirror脚本编码 -->
+            <script src="cm-js/cmpython.js"></script>
+            <!-- codemirror快捷键 -->
+            <script src="cm-js/sublime.js"></script>
+            <!-- codemirror代码提示 -->
+            <script src="cm-js/show-hint.js"></script>
+            <!-- codemirror注释 -->
+            <script src="cm-js/comment.js"></script>
+            <!-- codemirror活动线 -->
+            <script src="cm-js/active-line.js"></script>
+            <!-- codemirror代码折叠 -->
+            <script src="cm-js/foldcode.js"></script>
+            <!-- codemirror折叠排水沟 -->
+            <script src="cm-js/foldgutter.js"></script>
+            <!-- codemirror括号折叠 -->
+            <script src="cm-js/brace-fold.js"></script>
+            <!-- codemirror缩进折叠 -->
+            <script src="cm-js/indent-fold.js"></script>
+            <!-- codemirror注释折叠 -->
+            <script src="cm-js/comment-fold.js"></script>
+            <!-- codemirror括号匹配小 -->
+            <script src="cm-js/closebrackets.js"></script>
+            <!-- codemirror括号匹配中大 -->
+            <script src="cm-js/matchbrackets.js"></script>
+            <script>
+                var editor = CodeMirror.fromTextArea($("#editor")[0], { // script_once_code为你的textarea的ID号
+                    mode: "python", // 默认脚本编码
+                    theme: "monokai", // 编辑器主题
+                    keyMap: "sublime", // 快捷键
+                    tabSize: 4, // tab的宽度
+                    lineNumbers: true, // 是否显示行号
+                    smartIndent: true, // 智能缩进
+                    indentUnit: 4, // 智能缩进单位为4个空格长度
+                    indentWithTabs: true, // 使用制表符进行智能缩进
+                    lineWrapping: false, // 是否换行
+                    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter",
+                        "CodeMirror-lint-markers"
+                    ], //在行槽中添加行号显示器、 折叠器、 语法检测器
+                    foldGutter: true, // 启用行槽中的代码折叠
+                    autofocus: true, // 自动聚焦
+                    matchBrackets: true, // 匹配结束符号，比如"]、}"
+                    autoCloseBrackets: true, // 自动闭合符号
+                    styleActiveLine: true, // 显示选中行的样式
+                    extraKeys: {
+                        Tab: (cm) => {
+                            if (cm.somethingSelected()) { // 存在文本选择
+                                cm.indentSelection('add'); // 正向缩进文本
+                            } else { // 无文本选择
+                                //cm.indentLine(cm.getCursor().line, "add"); // 整行缩进 不符合预期
+                                cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input"); // 光标处插入 indentUnit 个空格
+                            }
+                        },
+                        "Shift-Tab": (cm) => { // 反向缩进
+                            if (cm.somethingSelected()) {
+                                cm.indentSelection('subtract'); // 反向缩进
+                            } else {
+                                // cm.indentLine(cm.getCursor().line, "subtract"); // 直接缩进整行
+                                const cursor = cm.getCursor();
+                                cm.setCursor({
+                                    line: cursor.line,
+                                    ch: cursor.ch - 4
+                                }); // 光标回退 indexUnit 字符
+                            }
+                            return;
+                        },
+                    }
+                });
+                // 编辑器按键监听
+                editor.on("keypress", function() {
+                    // 显示智能提示
+                    editor.showHint();
+                });
+                // 右上角关闭
+                $('.btn_box i').on('click', function() {
+                    window.location.href = "https://ai.datahoop.cn/uploading_algo.new.html"
+                    // window.history.go(-1)
+                })
+            </script>
+            <!-- <script src="ace.js" type="text/javascript" charset="utf-8"></script> -->
+            <script src="ext-language_tools.js"></script>
+            <!-- <script>
+                var JQ = false;
+                if (ie_error()) {
+                    $('#editor').hide();
+                } else {
+                    $('#editorBox').hide();
+                    ace.require("ace/ext/language_tools");
+                    var editor = ace.edit("editor");
+                    editor.setOptions({
+                        enableBasicAutocompletion: true,
+                        enableSnippets: true,
+                        enableLiveAutocompletion: true
+                    });
+                    editor.setTheme("ace/theme/monokai");
+                    editor.getSession().setMode("ace/mode/python");
+                    editor.setFontSize(18);
+                    // document.getElementById('editor').style.fontFamily = '仿宋';
+                    editor.setOptions({
+                        maxLines: "1000px" //自适应高度
+                    });
+                }
+            </script> -->
+            <script type="text/javascript" src="jquery.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('#btncp').zclip({
+                        path: 'ZeroClipboard.swf',
+                        copy: function() {
+                            return getCodeTxt();
+                        },
+                        afterCopy: function() {
+                            $("<span id='msg'/>").insertAfter($('#btncp')).text('复制成功').fadeOut(2000);
+                        }
+                    });
+                    $('#copys').zclip({
+                        path: 'ZeroClipboard.swf',
+                        copy: function() {
+                            return $('#shareUrl').val();
+                        },
+                        afterCopy: function() {
+                            $("<span id='msgs'/>").insertAfter($('#copys')).text('复制成功').fadeOut(2000);
+                        }
+                    });
+                });
+
+                function getCodeTxt() {
+                    // if (typeof(editor) == "undefined") {
+                    //     return $('#editorBox').text();
+                    // } else {
+                    //     return editor.getValue();
+                    // }
+                    return editor.getValue();
+                }
+
+                function setCodeTxt(value) {
+                    editor.setValue(value, -1);
+                }
+
+                var code_default = getCodeTxt();
+                var storage = $.jStorage.get(codetype, null)
+                if (storage) {
+                    setCodeTxt(storage);
+                }
+
+                function textareachange() {
+                    var code = getCodeTxt();
+                    var storage = $.jStorage.get(codetype, null)
+                    if (storage != code) {
+                        $.jStorage.set(codetype, code);
+                    }
+                }
+                $('#stdindiv').hide();
+                $('#btninput').click(function() {
+                    $('#stdindiv').toggle();
+                });
+                $('#shareCode').click(function() {
+                    var code = getCodeTxt();
+                    $.ajax({
+                        type: "POST",
+                        url: "../shareCode.php",
+                        data: {
+                            "code": code
+                        },
+                        success: function(msg) {
+                            surl = window.location.href.split('#');
+                            var shareurl = surl[0] + '#id/' + msg
+                            var mmtxt = "分享网址：\n" + shareurl;
+                            var mmhtml = "分享网址：<br><a target='_blank' href='" + shareurl + "'>" + shareurl + "</a>";
+                            setHtml(mmhtml);
+                            setTextarea(mmtxt);
+                        },
+                        error: function() {
+
+                        }
+                    });
+                });
+                pp = window.location.hash.split('#id/');
+                if (pp.length == 2) {
+                    codeid = pp[1];
+                    $.ajax({
+                        type: "GET",
+                        url: "../shareCode.php?id=" + codeid,
+                        data: {},
+                        success: function(msg) {
+                            setCodeTxt(msg);
+                        },
+                        error: function() {
+
+                        }
+                    });
+                }
+            </script>
+            <div style="float:left;width: 100%;">
+                <script>
+                    // var token = "JWT " + window.sessionStorage.token;
+                    var test = window.location.search.substr(1);
+                    jQuery.support.cors = true;
+
+                    function runcodenew(file_name, cn_list) {
+                        $('.mu2,.lkw_loading_').show();
+                        // 123456
+                        ttt = setTimeout(setRun, 20000);
+                        // setTextarea("执行中......");
+                        var html = getCodeTxt();
+                        var stdin = $('#stdin').val();
+                        var langid = 20;
+                        $.ajax({
+                            type: "POST",
+                            url: url_ip + "/examine/onlineAlgo/",
+                            dataType: 'json',
+                            data: {
+                                code: html,
+                                file_name: file_name,
+                                cn_list: cn_list
+                            },
+                            headers: {
+                                "Authorization": token
+                            },
+                            success: function(result) {
+                                // console.log(result)
+                                $('#kk').val(result.console);
+                                // console.log(result.console)
+                                var data = result.output;
+                                // console.log(data)
+                                if (data.status == false) {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isNo',
+                                        h2txt: data.error,
+                                        ptxt: '',
+                                        setTime: 2000
+                                    });
+                                    $(".mu2,.lkw_loading_").hide();
+                                } else {
+                                    $('#lkw_trydo ul').empty()
+                                    $('#lkw_trydo ol').empty()
+                                    for (var item in data) {
+                                        var li = document.createElement('li')
+                                        var h3 = document.createElement('h3')
+                                        var div = document.createElement('div')
+                                        var table = document.createElement('table')
+                                        $(h3).html(item.substr(item.indexOf('_') + 1))
+                                        $(li).append(h3)
+                                        $(li).append(div)
+                                        if (item.substr(0, 4) == 'data') {
+                                            $(div).append(table)
+                                            for (var i = 0; i < data[item].length; i++) {
+                                                var tr = document.createElement('tr')
+                                                $(table).append(tr)
+                                                for (var j = 0; j < data[item][i].length; j++) {
+                                                    var td = document.createElement('td')
+                                                    td.innerHTML = data[item][i][j]
+                                                    $(tr).append(td)
+                                                }
+                                            }
+                                            $('#lkw_trydo ol').append(li)
+                                        } else if (item.substr(0, 3) == 'img') {
+                                            $(div).append('<img src="' + url_ip + '/model/pics/?type=' + data[item] + '&objID=' + data._id + '">')
+                                            $('#lkw_trydo ol').append(li)
+                                        }
+                                    }
+                                    $('.mu2,.lkw_loading_').hide();
+                                    $('#oldbox').find('.check0').removeClass('on');
+                                    $('#oldbox').find('.check1').removeClass('on');
+                                    $('#oldbox').find('.check2').removeClass('on');
+                                }
+                            },
+                            error: function(result) {
+                                console.log(result)
+                                $('#lkw_trydo ol').html('出了点小问题,请与我们联系');
+                                $('#kk').val('出了点小问题,请与我们联系');
+                                setTextarea('出了点小问题,请与我们联系');
+                                $('.mu2,.lkw_loading_').hide();
+                                $('#oldbox').find('.check1.on').removeClass('on');
+                            }
+                        });
+                    }
+                    var isrun = false;
+                    var htmlshow = true;
+                    var txtshow = true;
+
+                    function setHtml(html) {
+                        if (htmlshow == false) return;
+                        $('#cc').html(html);
+                    }
+
+                    function setTextarea(value) {
+                        if (txtshow == false) return;
+                        $('#kk').val(value);
+                    }
+                    var ttt;
+
+                    function setRun() {
+                        isrun = false;
+                    }
+                    var showtype = $.jStorage.get('showtype-' + codetype, 'txt');
+                    $('#Radios' + showtype).attr('checked', true);
+                    var showselect = function() {
+                        var selectedvalue = $("input:radio[name=optionsRadios]:checked").val();
+                        //alert($selectedvalue);
+                        $.jStorage.set('showtype-' + codetype, selectedvalue);
+                        if (selectedvalue == 'html') {
+                            htmlshow = true;
+                            txtshow = false;
+                            $('#cc').show();
+                            $('#kk').hide();
+
+                        } else if (selectedvalue == 'txt') {
+                            htmlshow = false;
+                            txtshow = true;
+                            $('#cc').hide();
+                            $('#kk').show();
+
+                        }
+                    }
+                    $("input[name=optionsRadios]:radio").change(showselect);
+                    showselect();
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="bootstrap.js"></script>
+    <script type="text/javascript">
+    </script>
+    <div style="display:none">
+        <script type="text/javascript">
+            var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        </script>
+        <span id="cnzz_stat_icon_1255194167"><a href="http://www.cnzz.com/stat/website.php?web_id=1255194167" target="_blank" title="站长统计">站长统计</a></span>
+        <script src="stat.js" type="text/javascript"></script>
+        <script src="core.js" charset="utf-8" type="text/javascript"></script>
+    </div>
+    <script>
+        (function() {
+            var appid = 'cyqWg8E9J',
+                conf = 'prod_4996dcc43b5be197b5887a4e60817b1c';
+            var doc = document,
+                s = doc.createElement('script'),
+                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+            s.type = 'text/javascript';
+            s.charset = 'utf-8';
+            s.src = 'http://assets.changyan.sohu.com/upload/changyan.js?conf=' + conf + '&appid=' + appid;
+            h.insertBefore(s, h.firstChild);
+        })()
+    </script>
+    <div class=" ace_editor ace_autocomplete ace_dark ace-monokai" style="top: 351.8px; height: 33.6px; left: 133.5px; display: none;">
+        <textarea class="ace_text-input" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;" wrap="off"></textarea>
+        <div class="ace_gutter" style="display: none;">
+            <div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px;"></div>
+            <div class="ace_gutter-active-line" style="display: none;"></div>
+        </div>
+        <div class="ace_scroller" style="left: 0px; right: 0px; bottom: 0px;">
+            <div class="ace_content" style="cursor: default; margin-top: 0px; width: 278px; height: 67.2px; margin-left: 0px;">
+                <div class="ace_layer ace_print-margin-layer">
+                    <div class="ace_print-margin" style="left: 484px; visibility: hidden;"></div>
+                </div>
+                <div class="ace_layer ace_marker-layer">
+                    <div class="ace_active-line" style="height:16.800003051757812px;top:0px;left:0;right:0;"></div>
+                </div>
+                <div class="ace_layer ace_text-layer" style="padding: 0px 4px;">
+                    <div class="ace_line ace_selected" style="height:16.800003051757812px"><span class="ace_completion-highlight">print</span><span class="ace_rightAlignedText">local</span>
+                    </div>
+                    <div class="ace_line" style="height:16.800003051757812px"><span class="ace_completion-highlight">p</span><span class="ace_">p</span><span class="ace_completion-highlight">rint</span><span class="ace_rightAlignedText">snippet</span>
+                    </div>
+                </div>
+                <div class="ace_layer ace_marker-layer"></div>
+                <div class="ace_layer ace_cursor-layer ace_hidden-cursors" style="opacity: 0;">
+                    <div class="ace_cursor" style="left: 4px; top: 0px; width: 6px; height: 16.8px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ace_scrollbar ace_scrollbar-v" style="width: 15px; bottom: 0px; display: none;">
+            <div class="ace_scrollbar-inner" style="width: 15px; height: 33.6px;"></div>
+        </div>
+        <div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 15px; left: 0px; right: 0px;">
+            <div class="ace_scrollbar-inner" style="height: 15px; width: 268px;"></div>
+        </div>
+        <div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;">
+            <div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div>
+            <div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-language-override: inherit; font-feature-settings: inherit; overflow: visible;">
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            </div>
+        </div>
+    </div>
+    <!-- 已保存算法弹窗 -->
+    <div class="yicun">
+        <p class="yicun_title">已保存算法<i></i></p>
+        <!-- <img src="../img/jiantou2.png"> -->
+        <div style="width:340px;height:calc(100vh - 110px);overflow:auto">
+            <table>
+                <tr>
+                    <td>算法名称</td>
+                    <td>保存时间</td>
+                    <td>当前状态</td>
+                    <td>操作</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- 监督学习示例弹窗 -->
+    <div class="code" id="code1">
+        <div class="yicun_title">
+            <p class="yicun_title_bt">示例code</p>
+            <div class="yicun_demo_xl">
+                <p>词云图<b></b></p>
+                <ul>
+                    <li>词云图</li>
+                    <li>监督学习</li>
+                    <li>无监督学习</li>
+                    <li>股票平均价格</li>
+                    <li>中位数</li>
+                </ul>
+            </div>
+            <i></i>
+        </div>
+        <!-- <img src="../img/jiantou2.png" class="code_img1"> -->
+        <div class="yicun_code">
+            <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+                <div class="yicun_code_hh">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span>32</span>
+                    <span>33</span>
+                    <span>34</span>
+                    <span>35</span>
+                    <span>36</span>
+                    <span>37</span>
+                    <span>38</span>
+                    <span>39</span>
+                    <span>40</span>
+                    <span>41</span>
+                    <span>42</span>
+                    <span>43</span>
+                </div>
+                <div class="yicun_code_cnt">
+                    <div>#encoding:utf-8</div>
+                    <div># 词云图示例</div>
+                    <div># 将文本(txt)文件所有内容复制到Excel表格的第一个单元格中，并另存为csv格式</div>
+                    <div>import jieba</div>
+                    <div># 导入用于制作词云图的wordcloud</div>
+                    <div>from wordcloud import WordCloud, ImageColorGenerator</div>
+                    <div>import matplotlib</div>
+                    <div>matplotlib.use('Agg')</div>
+                    <div>from matplotlib import pyplot as plt</div>
+                    <div>import pandas as pd</div>
+                    <div>from PIL import Image</div>
+                    <div>import numpy as np</div>
+                    <div>import io</div>
+                    <div>def wordcloud_func(datax):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 读入数据并处理</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;content = ""</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;for line in datax:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content = content + line[0]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 使用jieba模块对文本进行分词整理</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;content_after = " ".join(jieba.cut(content, cut_all=True))</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 使用WordCloud模块对刚刚整理好的分词信息进行处理</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# font_path用于调整字体</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# max_font_size参数是可以调整部分单个词语的最大尺寸</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# max_words是最大可以允许多少个词去组成这个词云图</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# height为高度，weight为宽度</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# background_color调整背景颜色</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;wc = WordCloud(font_path="simhei.ttf", background_color='black', max_words=100, max_font_size=300, width=3000, height=1500)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 生成词云</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;wc.generate(content_after)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;fig = plt.figure()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;plt.imshow(wc)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;canvas = fig.canvas</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;buffer = io.BytesIO()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;canvas.print_png(buffer)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;data = buffer.getvalue()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;buffer.close()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output = {}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output['img_词云图'] = data</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return output</div>
+                    <div>if __name__ == "__main__":</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax = nosupervision_read_data()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(wordcloud_func(datax))</div>
+                </div>
+            </div>
+            <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+                <div class="yicun_code_hh">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span>32</span>
+                    <span>33</span>
+                </div>
+                <div class="yicun_code_cnt">
+                    <div># 监督学习示例</div>
+                    <div># 运用逻辑回归算法进行分类</div>
+                    <div>import numpy as np</div>
+                    <div>import pandas as pd</div>
+                    <div>from sklearn.linear_model import LogisticRegression</div>
+                    <div>import matplotlib</div>
+                    <div>matplotlib.use('Agg')</div>
+                    <div>from sklearn import model_selection</div>
+                    <div>def LogisticRegression_func(datax, datay, test_size, random_state):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 将数据转化为DataFrame格式</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;xcol = datax[0]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;ycol = datay[0]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax = pd.DataFrame(datax[1:], columns=xcol)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datay = pd.DataFrame(datay[1:], columns=ycol)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 将数据按比例划分为测试集和训练集</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;X_train, X_test, y_train, y_test = model_selection.train_test_split(datax, datay, test_size=test_size, random_state=random_state)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 建立模型并训练</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;model = LogisticRegression()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;model.fit(X_train, y_train)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 对y值进行预测</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;y_pred = model.predict(X_test)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 查看测试结果</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data = X_test</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data.insert(X_test.shape[1], 'y_correct', y_test)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data.insert(X_test.shape[1], 'y_pred', y_pred)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 输出结果</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output = {}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output['data_测试集模型结果'] = [result_data.columns.tolist()] + result_data.values.tolist()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return output</div>
+                    <div>if __name__ == '__main__':</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax, datay = supervision_read_data()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(LogisticRegression_func(datax, datay, 0.2, 1))</div>
+                </div>
+            </div>
+            <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+                <div class="yicun_code_hh">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span>32</span>
+                    <span>33</span>
+                </div>
+                <div class="yicun_code_cnt">
+                    <div># 无监督学习示例</div>
+                    <div># 运用K均值算法进行聚类</div>
+                    <div>import pandas as pd</div>
+                    <div>import numpy as np</div>
+                    <div>from sklearn.cluster import KMeans</div>
+                    <div>from sklearn import metrics</div>
+                    <div>def KMeans_func(datax, cluster):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 将读入的数据转化为DataFrame格式</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;col = datax[0]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;data = pd.DataFrame(datax[1:], columns=col)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 建立K均值聚类模型，并用data进行训练</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;model = KMeans(n_clusters=cluster)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;model.fit(data)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 为每个样本标注所属类别</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;cluster_labels = pd.DataFrame(model.labels_, columns=['所属类别'])</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 求每个样本的轮廓系数并转化为DataFrame格式</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;silhouette_samples = metrics.silhouette_samples(data, model.labels_, metric='euclidean')</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;silhouette_labels = pd.DataFrame(silhouette_samples, columns=['轮廓系数'])</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 将原数据、所属类别、轮廓系数进行横向拼接得出结果数据1(DataFrame格式)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data1 = pd.concat([data, cluster_labels, silhouette_labels], axis=1)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 统计各个类别的数目</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;counts = pd.Series(model.labels_).value_counts()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 生成类别的DataFrame格式，加入样本个数一列，生成结果数据2</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data2 = pd.DataFrame({'类别': range(cluster)})</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;result_data2.insert(1, '样本个数', counts.sort_index())</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;# 将数据展示在页面上</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output = {}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output['data_模型结果1'] = [result_data1.columns.tolist()] + result_data1.values.tolist()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;output['data_模型结果2'] = [result_data2.columns.tolist()] + result_data2.values.tolist()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return output</div>
+                    <div>if __name__ == "__main__":</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax = nosupervision_read_data()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(KMeans_func(datax, 4))</div>
+                </div>
+            </div>
+            <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+                <div class="yicun_code_hh">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span>32</span>
+                    <span>33</span>
+                    <span>34</span>
+                    <span>35</span>
+                    <span>36</span>
+                    <span>37</span>
+                    <span>38</span>
+                    <span>39</span>
+                    <span>40</span>
+                    <span>41</span>
+                    <span>42</span>
+                    <span>43</span>
+                    <span>44</span>
+                    <span>45</span>
+                    <span>46</span>
+                    <span>47</span>
+                    <span>48</span>
+                    <span>49</span>
+                    <span>50</span>
+                    <span>51</span>
+                    <span>52</span>
+                    <span>53</span>
+                    <span>54</span>
+                    <span>55</span>
+                    <span>56</span>
+                    <span>57</span>
+                    <span>58</span>
+                    <span>59</span>
+                    <span>60</span>
+                    <span>61</span>
+                    <span>62</span>
+                    <span>63</span>
+                    <span>64</span>
+                    <span>65</span>
+                    <span>66</span>
+                    <span>67</span>
+                    <span>68</span>
+                    <span>69</span>
+                    <span>70</span>
+                    <span>71</span>
+                    <span>72</span>
+                    <span>73</span>
+                    <span>74</span>
+                    <span>75</span>
+                    <span>76</span>
+                    <span>77</span>
+                    <span>78</span>
+                    <span>79</span>
+                    <span>80</span>
+                    <span>81</span>
+                    <span>82</span>
+                    <span>83</span>
+                    <span>84</span>
+                    <span>85</span>
+                    <span>86</span>
+                    <span>87</span>
+                    <span>88</span>
+                    <span>89</span>
+                    <span>90</span>
+                </div>
+                <div class="yicun_code_cnt">
+                    <div>import matplotlib as mpl</div>
+                    <div>mpl.use('agg')</div>
+                    <div>from pylab import mpl</div>
+                    <div>mpl.rcParams['font.sans-serif'] = ['SimHei'] #中文显示</div>
+                    <div>import matplotlib.pyplot as plt</div>
+                    <div>import numpy as np</div>
+                    <div>import tushare as ts</div>
+                    <div>import talib</div>
+                    <div>import pandas as pd</div>
+                    <div>import io</div>
+                    <div>def get_AVGPRICE(datax,code='',start='',end=''):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;msg = {'status': True, 'error': None, 'success': None, 'data': None}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;try:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output = {}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#股票高开低收价格和日期</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df = ts.get_k_data('%s' % code,start=start,end=end)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#处理股票代码输入错误</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if len(df) == 0:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["status"] = False</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["error"] = '未找到该股票代码数据'</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return msg</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#提取数据,展示最近15天</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if len(df) > 15:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df = df.iloc[-15:-1]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close = df.close.values</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;low = df.low.values</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;high = df.high.values</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;open = df.open.values</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date = df.date.values</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#把日期设置为索引列</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df.set_index(df['date'], drop=True, inplace=True)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#股票均价</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;real = talib.AVGPRICE(open, high, low, close)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#在df中添加avgprice列</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;df['avgprice'] = real</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#获取df的标题</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = list(df.columns)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#把DataFrame格式转为列表格式</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = df.values.tolist()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 绘制K线图 </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 研究颜色的设置</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rise = close >= open</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 填充色:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color = np.array([('red' if x else 'green') \</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for x in rise])</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 边缘色:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ecolor = np.array([('red' if x else 'green') \</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for x in rise])</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#基本图表配置</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.figure(figsize=(15, 7))</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ax = plt.gca()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.title('%s 平均价格'%code, fontsize=18)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 绘制影线</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.vlines(date, low, high,</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color=ecolor, linewidth=0.8)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 绘制实体</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.bar(date, close-open, </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8, open, color=color, </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edgecolor=ecolor, zorder=3)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.plot(date, real, 'bo-',label = u'AVGPRICE', linewidth=2, markersize=1)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.legend(loc='best')</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#横坐标设置</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll = range(0, len(df), 1)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my_xticks = df.index[ll]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.xticks(ll,my_xticks)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.xticks(rotation=15)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#横纵坐标标签及其大小</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.xlabel('Date', fontsize=15)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.ylabel('Price', fontsize=15)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.tick_params(labelsize=12)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.grid(linestyle=':') </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plt.show()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#前端展示图形</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fig = ax.get_figure()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas = fig.canvas</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer = io.BytesIO()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canvas.print_png(buffer)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_img = buffer.getvalue()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer.close()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#输出图片和数据</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output['img_AVGPRICE'] = data_img</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output['data_AVGPRICE'] = [title]+data</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return output</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;except Exception as e:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["status"] = False</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["error"] = '执行失败：%s' % e</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return msg</div>
+                    <div>if __name__ == '__main__':</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax = nosupervision_read_data()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(get_AVGPRICE(datax,code='600519'))</div>
+                </div>
+            </div>
+            <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+                <div class="yicun_code_hh">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                    <span>31</span>
+                    <span>32</span>
+                </div>
+                <div class="yicun_code_cnt">
+                    <div># 数值计算示例</div>
+                    <div># 计算给定列的中位数</div>
+                    <div>import pandas as pd</div>
+                    <div>import numpy as np</div>
+                    <div>def median_func(datax):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;msg = {'status': True, 'error': None, 'success': None, 'data': None}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;try:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME = 'median_func'</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASS = 'Unsupervised_Learning'</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col = datax[0]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = pd.DataFrame(datax[1:len(datax)], columns=col)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = data.convert_objects(convert_numeric=True)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col.insert(0, '')</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''' BODY '''</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;median_Matrix = data.median()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''' MODEL RESULTS TABLEs'''</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result_data = median_Matrix</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output = {}</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output["function_name"] = NAME</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output["function_class"] = CLASS</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = [col, ['中位数'] + result_data.fillna('nan').values.tolist()]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output[u'data_模型结果'] = result</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# msg["data"] = output</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return output</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;except ValueError as v:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(v)</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["status"] = False</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg["error"] = '数据格式不正确:%s' % v</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return msg</div>
+                    <div>if __name__ == "__main__":</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;datax = nosupervision_read_data()</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(median_func(datax))</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 非监督学习弹窗 -->
+    <!-- <div class="code" id="code2">
+        <p class="yicun_title">示例code<i></i></p>
+        <img src="../img/jiantou2.png" class="code_img2">
+        <div style="overflow-y:auto;width:100%;height: calc(100vh - 110px);">
+            <div><span>1</span>
+                <p class="green"># 非监督学习模板</p>
+            </div>
+            <div><span>2</span>
+                <p><i class="red">import</i> pandas <i class="red">as</i> pd,io</p>
+            </div>
+            <div><span>3</span>
+                <p><i class="red">import</i> numpy <i class="red">as</i> np</p>
+            </div>
+            <div><span>4</span>
+                <p><i class="red">import</i> matplotlib</p>
+            </div>
+            <div><span>5</span>
+                <p>matplotlib.use(<i class="yellow">'Agg'</i>)</p>
+            </div>
+            <div><span>6</span>
+                <p><i class="red">import</i> matplotlib.pyplot <i class="red">as</i> plt</p>
+            </div>
+            <div><span>7</span>
+                <p><i class="red">import</i> scipy.spatial.distance <i class="red">as</i> dist</p>
+            </div>
+            <div><span>8</span>
+                <p><i class="red">import</i> scipy.cluster.hierarchy <i class="red">as</i> sch</p>
+            </div>
+            <div><span>9</span>
+                <p></p>
+            </div>
+            <div><span>10</span>
+                <p></p>
+            </div>
+            <div><span>11</span>
+                <p class="green"># 调用2.0的数据接口 </p>
+            </div>
+            <div><span>12</span>
+                <p>datax = nosupervision_read_data()</p>
+            </div>
+            <div><span>13</span>
+                <p></p>
+            </div>
+            <div><span>14</span>
+                <p class="green"># 主体函数 </p>
+            </div>
+            <div><span>15</span>
+                <p><i class="red">def</i> Hcluster(data1, metric, method):</p>
+            </div>
+            <div><span>16</span>
+                <p><b></b>NAME = <i class="yellow">'Hcluster_func'</i></p>
+            </div>
+            <div><span>17</span>
+                <p><b></b>CLASS = <i class="yellow">'Clustering'</i></p>
+            </div>
+            <div><span>18</span>
+                <p><b></b></p>
+            </div>
+            <div><span>19</span>
+                <p><b></b>data = pd.DataFrame(data1[<i class="blue">1</i>:], columns=data1[<i class="blue">0</i>])</p>
+            </div>
+            <div><span>20</span>
+                <p><b></b>dataMatrix = np.array(data.values)</p>
+            </div>
+            <div><span>21</span>
+                <p><b></b>distMatrix = dist.pdist(dataMatrix, metric, <i class="blue">2</i>)</p>
+            </div>
+            <div><span>22</span>
+                <p><b></b>distSquareMatrix = dist.squareform(distMatrix)</p>
+            </div>
+            <div><span>23</span>
+                <p><b></b>Z = sch.linkage(distSquareMatrix, method)</p>
+            </div>
+            <div><span>24</span>
+                <p><b></b>Dendrogram = plt.figure(figsize=(<i class="blue">10</i>, <i class="blue">5</i>))</p>
+            </div>
+            <div><span>25</span>
+                <p><b></b>sch.<i class="blue">dendrogram</i>(Z)</p>
+            </div>
+            <div><span>26</span>
+                <p><b></b>canvas = Dendrogram.canvas</p>
+            </div>
+            <div><span>27</span>
+                <p><b></b><i class="blue">buffer</i> = io.BytesIO()</p>
+            </div>
+            <div><span>28</span>
+                <p><b></b>canvas.print_png(<i class="blue">buffer</i>)</p>
+            </div>
+            <div><span>29</span>
+                <p><b></b>dendrogram_data = <i class="blue">buffer</i>.getvalue() <i class="green"># 训练集决策边界图</i></p>
+            </div>
+            <div><span>30</span>
+                <p><b></b><i class="blue">buffer</i>.close()</p>
+            </div>
+            <div><span>31</span>
+                <p class="green"><b></b># 根据linkage matrix Z得到聚类结果:</p>
+            </div>
+            <div><span>32</span>
+                <p><b></b>cluster = sch.fcluster(Z, t=<i class="blue">0.8</i>, criterion=<i class="yellow">'inconsistent'</i>)</p>
+            </div>
+            <div><span>33</span>
+                <p><b></b>data.insert(<i class="blue">1</i>, <i class="yellow">'cluster'</i>, cluster)</p>
+            </div>
+            <div><span>34</span>
+                <p><b></b>title = <i class="blue">list</i>(data.columns)</p>
+            </div>
+            <div><span>35</span>
+                <p></p>
+            </div>
+            <div><span>36</span>
+                <p><b></b>output = {}</p>
+            </div>
+            <div><span>37</span>
+                <p><b></b>output[<i class="yellow">u"DataChart_树状图"</i>] = dendrogram_data</p>
+            </div>
+            <div><span>38</span>
+                <p><b></b>output[<i class="yellow">u"DataTable_平方距离矩阵"</i>] = distSquareMatrix.tolist()</p>
+            </div>
+            <div><span>39</span>
+                <p><b></b>output[<i class="yellow">"DataTable_1"</i>] = title + data.values.tolist()</p>
+            </div>
+            <div><span>40</span>
+                <p><b></b>output[<i class="yellow">"function_name"</i>] = NAME</p>
+            </div>
+            <div><span>41</span>
+                <p><b></b>output[<i class="yellow">"function_class"</i>] = CLASS</p>
+            </div>
+            <div><span>42</span>
+                <p><b></b></p>
+            </div>
+            <div><span>43</span>
+                <p><b></b><i class="red">return</i> output</p>
+            </div>
+            <div><span>44</span>
+                <p><i class="red">print</i>(Hcluster(datax,<i class="yellow">'braycurtis'</i>,<i class="yellow">'single'</i>))</p>
+            </div>
+        </div>
+    </div> -->
+    <!-- 参数弹窗 -->
+    <div class="list">
+        <p class="yicun_title">标准化设置<i></i></p>
+        <div class="li_box">
+            <form class="list_con list_con1" style="display:block;">
+                <h2 class="list_title list_title1">输入数据设置</h2>
+                <div>
+                    <div style="height:26px;overflow:hidden;"><span>算法函数名：</span><img src="../img/ask.png" class="askImg" title="请与算法中函数名保持一致"></div>
+                    <input type="text" placeholder="请输入算法函数名" class="defname">
+                    <div style="width:100%;height:0;border:0.5px solid #73737c;margin:25px 0;"></div>
+                    <div style="height:26px;overflow:hidden;"><span>数值列X导入规则：</span><img src="../img/ask.png" class="askImg" title="此规则由开发者根据算法实际需求编写。将作为使用者在选择数据时的解释标注"><b title="数值列X的导入规则可包含以下部分内容：&#10;1：可明确数值列X导入的列数(exp：单列数据/双列数据/xx-xx列数据/不限列数据);&#10;2：可明确数值列X的数据类型(exp：数值型/浮点型/字符串型/布尔型等);&#10;3：可明确数值列X的数据中不可包含的元素(exp：NAN/空值/None等)">示例</b></div>
+                    <div style="width:100%;height:64px;border-radius:5px;overflow:hidden;margin-bottom:12px;">
+                        <textarea class="x_msg"></textarea>
+                    </div>
+                    <div style="overflow:hidden;">
+                        <input type="checkbox" id="is_jiandu">
+                        <label for="is_jiandu">是否需导入分组列y</label>
+                    </div>
+                    <div style="height:26px;overflow:hidden;"><span>分组列y导入规则：</span><img src="../img/ask.png" class="askImg" title="分组列y只适用于监督学习类算法,且y的数据导入只支持单列数据"><b title="分组列y的导入规则可包含以下部分内容：&#10;1：可明确分组列Y的数据类型(exp：数值型/浮点型/字符串型/布尔型等);&#10;2：可明确分组列Y的数据中不可包含的元素(exp：NAN/空值/None等);">示例</b></div>
+                    <div style="width:100%;height:64px;border-radius:5px;overflow:hidden;">
+                        <textarea class="y_msg"></textarea>
+                    </div>
+                </div>
+            </form>
+            <form class="list_con list_con2">
+                <h2 class="list_title list_title2">算法参数设置</h2>
+                <div>
+                    <i>No.<b>1</b></i>
+                    <div style="overflow:hidden;"><span>参数名设置 : </span><input type="text" placeholder="请输入算法参数名"><b class="marry">对应参数变量：<s>暂无</s></b></div>
+                    <div style="overflow:hidden;"><span>参数的说明 : </span><input type="text" placeholder="非必填项,可为空" class="long_input"></div>
+                    <div style="overflow:hidden;"><span>参数值类型 : </span><input type="radio" name="type1" value="string" checked id="string"><label for="string">string(字符型)</label> <input type="radio" name="type1" value="int" id="int"><label for="int">int(数值型)</label> <input type="radio"
+                            name="type1" value="float" id="float"><label for="float">float(浮点型)</label> <input type="radio" name="type1" value="boolean" id="boolean"><label for="boolean">boolean(布尔型)</label></div>
+                    <h3>参数值设置 : </h3>
+                    <div style="overflow:hidden;">
+                        <input type="radio" name="suanfa_type1" value="1001" checked><span>手动输入</span>
+                        <div class="list_zhi" id="1001">
+                            <input type="text" placeholder="设置默认参数值(可为空)">
+                            <p class="fanwei"><b>取值范围</b><s contenteditable="true"></s>—<s contenteditable="true"></s></p>
+                        </div>
+                    </div>
+                    <div style="overflow:hidden;">
+                        <input type="radio" name="suanfa_type1" value="1002"><span>下拉选择</span>
+                        <div class="list_zhi" id="1002">
+                            <div><input type="text" placeholder="设置参数值1(不可为空)"><em></em></div>
+                            <div><input type="text" placeholder="设置参数值2(不可为空)"><em></em></div>
+                            <img src="../img/add_input.png" class="add_zhi">
+                        </div>
+                    </div>
+                    <div style="overflow:hidden;">
+                        <input type="radio" name="suanfa_type1" value="1003"><span>条件输入</span>
+                        <div class="list_zhi" id="1003">
+                            <input type="text" placeholder="设置条件1">
+                            <input type="text" placeholder="设置条件1的默认值">
+                            <input type="text" placeholder="设置条件2">
+                            <input type="text" placeholder="设置条件2的默认值">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- <form class="list_con list_con3" style="overflow:visible;">
+                <h2 class="list_title list_title3">输出结果设置</h2>
+                <ul></ul>
+                <div class="paramSet">
+                    <div style="overflow:hidden;"><span>结果字段设置：</span><img src="../img/ask.png" class="askImg" title="包括输入相关字段和输入无关字段,作为算法场景设计态时字段选择的标准"></div>
+                    <div style="overflow:hidden;"><span>无关"输入列"字段设置(N)：</span></div>
+                    <input type="text" placeholder="设置该类字段列数,为数值型">
+                    <div style="overflow:hidden;"><span>相关"数值列x"字段设置(T)：</span><img src="../img/ask.png" class="askImg" title="相关“数值列x”字段应为关于x(数值列列数)的公式"></div>
+                    <input type="text" placeholder="设置该类字段列数">
+                    <div style="overflow:hidden;"><span>相关"分组列y"字段设置(T)：</span><img src="../img/ask.png" class="askImg" title="相关“分组列y”字段应为关于y(分组列列数)的公式"></div>
+                    <input type="text" placeholder="设置该类字段列数">
+                    <div class="button">
+                        <div class="button_qx">取消</div>
+                        <div class="button_qd">确定</div>
+                        <div class="button_yl">预览</div>
+                    </div>
+                </div>
+            </form> -->
+            <b style="width: calc(70% - 10px);height:31px;position:absolute;bottom:0;left:calc(30% + 10px);background:#3C4143;"><img src="../img/add_input.png" class="add_set"><h4>继续添加参数设置</h4></b>
+        </div>
+        <div class="list_btn">
+            <div class="list_ok fr">确定</div>
+            <div class="list_no fr">重置</div>
+        </div>
+        <!-- <div class="list_rightmove">
+            <img src="../img/toright.png">
+        </div> -->
+    </div>
+    <div class="ylTable">
+        <i><img src="../img/close.png"></i>
+        <div>
+            <table></table>
+        </div>
+    </div>
+    <!-- 算法保存弹窗 -->
+    <div class="cun_model">
+        <div class="cun_model_title">
+            <span class="fl">提交算法</span>
+            <i class="fr"><img src="../img/close.png"></i>
+        </div>
+        <div class="cun_modelT">
+            <div class="cun_modelTL">
+                <h2 class="cun_modelT_title" style="padding-left: 22px;">算法信息</h2>
+                <div class="cun_model_name">
+                    <input type="text" placeholder="请输入您要保存的算法名字...">
+                </div>
+                <!-- <div class="cun_model_title2">
+							<input type="text" placeholder="请输入您要保存的算法标题">
+					</div> -->
+                <ul class="cun_model_tab">
+                    <p>请选择算法图标</p>
+                    <li name="ZJ_img1/ZJ1.fw.png" class="on"><img src="../ZJ_img1/ZJ1.fw.png"></li>
+                    <!--lkw 20181030 append-->
+                </ul>
+                <select placeholder="请选择算法分类">
+                        <option selected style="color:#555;">请选择算法分类...</option>
+                        <option>文本分析</option>
+                        <option>机器学习</option>
+                        <option>计算机视觉</option>
+                        <option>深度学习</option>
+                </select>
+                <div class="cun_model_txt">
+                    <textarea placeholder="请输入对该算法的简单描述..."></textarea>
+                </div>
+            </div>
+            <div class="cun_modelTR" style="position: relative;">
+                <div class="cun_modelTR_t">
+                    <!-- <h2 class="cun_modelT_title"><span class="active">一级标签<i>&gt;</i></span><span>二级标签<i>&gt;</i></span><span>三级标签</span></h2> -->
+                    <h2 class="cun_modelT_title">选择标签</h2>
+                    <!-- <select>
+							<option value ="">一级</option>
+						</select>
+						<select style="margin-right: 0;width: 50%;">
+							<option value ="">二级</option>
+						</select> -->
+                    <div class="cun_modelTR_t3">
+                        <ul>
+                            <!-- <li>一级算法</li> -->
+                        </ul>
+                        <ul>
+                            <!-- <li>二级算法</li> -->
+                        </ul>
+                        <ul class="" style="width: calc(100% - 70px);height: auto;max-height: 220px;position: absolute;left: 25px;top: 0;display: block;background: #F2F9FF;box-shadow: rgba(195,195,195,1) 0px 1px 8px 0px;display: none;">
+                            <!-- <li>算法</li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="mine_spanDiv"><input type="text" placeholder="自定义标签，空格或回车添加标签" id="mine_spanDiv_keyDown"></div>
+                <div class="mine_spanDiv_chiose mine_spanDiv_chiose1" style="margin-bottom: 10px;">
+                    <h3>平台标签</h3>
+                    <ul>
+
+                    </ul>
+                </div>
+                <div class="mine_spanDiv_chiose mine_spanDiv_chiose2">
+                    <h3>自定义标签</h3>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <div class="cun_modelB">
+            <div class="cun_model_btn">
+                <div class="model_model">模板保存</div>
+                <div class="model_cun">算法暂存</div>
+                <div class="model_sure">算法提交</div>
+                <div class="model_nosure">取消编辑</div>
+            </div>
+        </div>
+    </div>
+    <div class="sf_save_mask">
+        <div class="sf_save_box">
+            <div class="sf_save_boxt"><span>提交算法</span><i></i></div>
+            <div class="sf_save_boxc">
+                <div class="sf_save_boxcd1">
+                    <div>
+                        <span>算法名称</span>
+                        <input type="text" class="sf_name" placeholder="请输入您要保存的算法名字">
+                    </div>
+                    <div style="padding-left: 40px;">
+                        <span>算法分类</span>
+                        <input type="text" value="文本分析" readonly="true">
+                        <i></i>
+                        <ul>
+                            <li>文本分析</li>
+                            <li>机器学习</li>
+                            <li>计算机视觉</li>
+                            <li>深度学习</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sf_save_boxcd2">
+                    <span>算法描述</span>
+                    <textarea placeholder="请输入对该算法的简单描述..."></textarea>
+                </div>
+                <div class="sf_save_boxcd3">
+                    <span>选择标签</span>
+                    <div class="sf_save_boxcd3_bq"></div>
+                </div>
+                <div class="sf_save_boxcd4">
+                    <p><span>自定义标签</span><input type="text" placeholder="输入自定义标签后，按回车或空格添加标签"><button>添加</button></p>
+                    <div class="sf_save_boxcd4_zbq"></div>
+                </div>
+            </div>
+            <div class="sf_save_boxb">
+                <span class="sf_save_boxb_qx">取消</span>
+                <span class="sf_save_boxb_zc sf_save_boxb_blue">算法暂存</span>
+                <span class="sf_save_boxb_tj sf_save_boxb_blue">算法提交</span>
+            </div>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide" data-dizhi="aa" data-to="back">
+
+    </div>
+    <!-- msgbox -->
+    <div class="mu2"></div>
+    <div class="lkw_loading_" style="position: absolute;left: 50%;top: 50%;z-index: 100;width: 70px;height: 70px;margin: -35px 0 0 -35px;display: none;">
+        <div id="panel">
+            <span id="loading1">
+                <span id="outerCircle"></span>
+            <span id="innerCircle">
+                    <span id="center"></span>
+            </span>
+            </span>
+        </div>
+    </div>
+    <div class="msgbox" style="z-index:10000;box-shadow: 0 0 6px rgba(0,0,0,.2);">
+        <img src="../img/success.png" class="success on">
+        <img src="../img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <!-- 文件上传完成之前的loading动画 -->
+    <div class="loading">
+        <div>
+            <img src="../img/wait.gif" alt="">
+            <p>文件上传中，请耐心等待...</p>
+        </div>
+    </div>
+    <style>
+        /* loading */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+            margin: auto;
+            height: 200px;
+            background: #fff;
+            border-radius: 100%;
+            display: none;
+            z-index: 111111111111111111;
+        }
+        .loading>div {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            left: 50%;
+            margin-left: -50px;
+            top: 50%;
+            margin-top: -50px;
+            text-align: center;
+        }
+        .loading>div>img {
+            width: 100px;
+        }
+    </style>
+    <style>
+        /*结果展示弹窗*/
+
+        #lkw_trydo {
+            width: 100%;
+            height: 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 99;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        .lkw_trydoCont {
+            width: 100%;
+            height: 100%
+        }
+
+        #lkw_trydo .shanghuoxia {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 50%;
+            margin-left: -15px;
+            top: 0;
+            background: red;
+            cursor: pointer;
+        }
+
+        #lkw_trydo .lkw_bottomDrag {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            cursor: s-resize;
+        }
+
+        #lkw_trydo .lkw_tab {
+            border-bottom: 1px solid #d8d4d4;
+        }
+
+        #lkw_trydo .lkw_tab p {
+            line-height: 22px;
+            margin: 0;
+            margin-right: 20px;
+            color: #666;
+            font-size: 14px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        #lkw_trydo .lkw_tab p.active,
+        #lkw_trydo .lkw_tab p:hover {
+            color: #333;
+            border-bottom: 1px solid #14151a;
+        }
+
+        #lkw_trydo h2 {
+            line-height: 22px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 0;
+        }
+
+        #lkw_trydo a {
+            padding: 4px 20px;
+            border-radius: 10px;
+            background: #3366FF;
+            line-height: 16px;
+            border-radius: 12px;
+            position: absolute;
+            right: 42px;
+            top: 7px;
+            color: #fff;
+        }
+
+        #lkw_trydo i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        #lkw_trydo #kk {
+            height: calc(100% - 64px);
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            display: none;
+        }
+
+        #lkw_trydo ul {
+            line-height: 36px;
+            height: 36px;
+            text-align: center;
+        }
+
+        #lkw_trydo ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        #lkw_trydo ul li b {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #AEAEAE;
+            display: inline-block;
+            vertical-align: top;
+            margin: 11px 5px;
+        }
+
+        #lkw_trydo ul li b.on {
+            background: url(../img/对勾.png);
+            background-size: 100% 100%;
+        }
+
+        #lkw_trydo ol {
+            height: calc(100% - 64px);
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #lkw_trydo ol li {
+            width: 98%;
+            max-height: 100%;
+            box-sizing: border-box;
+            border: 1px solid #EEE;
+            margin: 0 auto 50px;
+        }
+
+        #lkw_trydo ol li h3 {
+            height: 28px;
+            line-height: 28px;
+            font-size: 14px;
+            color: #333;
+            padding-left: 20px;
+        }
+
+        #lkw_trydo ol li div {
+            width: 100%;
+            max-height: calc(100vh - 200px);
+            overflow: auto;
+        }
+
+        #lkw_trydo ol li div img {
+            display: block;
+            max-height: calc(100vh - 200px);
+            margin: 0 auto;
+        }
+
+        #lkw_trydo ol li div table {
+            min-width: 100%;
+            line-height: 26px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        #lkw_trydo ol li div table tr:nth-child(odd) {
+            background: #F3F6F6;
+        }
+
+        #lkw_trydo ol li div table tr:nth-child(even) {
+            background: #F8FCFC;
+        }
+
+        #lkw_trydo ol li div table tr:first-child {
+            background: #D6DEE1;
+        }
+
+        #lkw_trydo ol li div table td {
+            text-align: left;
+            padding: 0 10px;
+            border: 1px solid #EEEAEA;
+            white-space: nowrap;
+            border-top: 0;
+            border-bottom: 0;
+        }
+		.mb_yy{
+			overflow-x: auto;
+		}
+    </style>
+    <!-- 123456 -->
+    <div id="lkw_trydo">
+        <div class="lkw_trydoCont">
+            <div class="shanghuoxia hide"></div>
+            <div class="lkw_bottomDrag"></div>
+
+            <h2>模型结果展示</h2>
+            <div class="lkw_tab">
+                <p data-item="div" class="active">结果展示</p>
+                <p data-item="text">Console输出</p>
+            </div>
+            <!-- <a class="drag">下载</a> -->
+            <i class="close"><img src="../img/close.png"></i>
+            <ul></ul>
+            <ol></ol>
+            <textarea rows="20" cols="100" readonly id="kk">
+						result ----- textarea
+				</textarea>
+        </div>
+
+    </div>
+    <script>
+        // 盒子顶部需要在鼠标移动处
+        var lkw_winH = $(window).height() - 0;
+        var lkw_noDragH = $('nav').outerHeight() + $('.progress_box').outerHeight(); //防止遮住顶部
+        var lkw_isSlideUp; //是否可滑动
+        $('#lkw_trydo').on('mousedown', '.lkw_bottomDrag', function(e) {
+                lkw_isSlideUp = true;
+                var _this = this;
+                $(document).on({
+                    mousemove: function(evt) {
+                        if (lkw_isSlideUp) {
+                            var evt = evt || window.event;
+                            var needY = evt.pageY - 0;
+                            // console.log(needY)
+                            if (needY >= lkw_noDragH) {
+                                var lkw_trydoH = lkw_winH - needY;
+                                $('#lkw_trydo').css({
+                                    height: lkw_trydoH
+                                });
+                                $(".CodeMirror").css({
+                                    height: "calc(100vh - 60px - " + lkw_trydoH + "px)"
+                                });
+                            } else {
+                                lkw_isSlideUp = false;
+                            }
+                        }
+                    },
+                    mouseup: function() {
+                        lkw_isSlideUp = false;
+                        // var zhs = editor.session.getLength();
+                        // editor.gotoLine(zhs);
+                    }
+                })
+            })
+            // 关闭弹窗
+        $('#lkw_trydo').on('click', '.close', function() {
+                $('#kk').val('')
+                $('#lkw_trydo ul').empty()
+                $('#lkw_trydo ol').empty()
+                $('#lkw_trydo').animate({
+                    height: 0
+                });
+                $(".CodeMirror").css({
+                    height: "calc(100vh - 60px)"
+                });
+            })
+            // 全屏
+        $('#lkw_trydo').on('click', '.shanghuoxia', function() {
+                var maxH = lkw_winH - lkw_noDragH + 15;
+                $('#lkw_trydo').animate({
+                    height: maxH
+                }, 30);
+            })
+            // 选项卡切换
+        $('#lkw_trydo .lkw_tab').on('click', 'p', function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            var nowItem = $(this).attr('data-item');
+            if (nowItem == 'div') {
+                $('#lkw_trydo  ol').show();
+                $('#lkw_trydo  textarea').hide();
+            } else if (nowItem == 'text') {
+                $('#lkw_trydo  ol').hide();
+                $('#lkw_trydo  textarea').show();
+            }
+        })
+        document.onreadystatechange = function() {　　
+            if (document.readyState == "complete") {
+                $(".loading_mask").hide();
+            }
+        }
+        $(".CodeMirror").on("click", function() {
+            if ($("#oldbox").css("right") != "-300px") {
+                $("#oldbox").css("right", "-300px");
+            }
+        })
+		
+		$('.mb_yy').niceScroll({
+		    cursorcolor: "#ccc",//#CC0071 光标颜色
+		    cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+		    touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+		    cursorwidth: "5px", //像素光标的宽度
+		    cursorborder: "0", // 游标边框css定义
+		    cursorborderradius: "5px",//以像素为光标边界半径
+		    autohidemode: false //是否隐藏滚动条
+		});
+    </script>
+</body>
+
+</html>

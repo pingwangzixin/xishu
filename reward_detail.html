@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏页面</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/reward_detail.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/base64.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/reward_detail.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+	<nav></nav>
+	<div class="mu3"></div>
+	<div class="is_quit">
+		<p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+		<div class="sure_quit">确定退出</div>
+		<div class="no_quit">再想一想</div>
+	</div>
+    <div class="head_bg">
+        <div class="reward_header">
+            <h1>需求详情</h1>
+        </div>
+    </div>
+    <div id="reward">
+        <div class="reward_body">
+            <div class="reward_detail">
+                <div class="reward_left">
+                    <div class="detail_top">您的需求已提交,请勿线下交易,未经平台线上支付资金造成损失,平台将不承担任何法律责任。</div>
+                    <div class="detail_content" ref="content">
+                        <h1>{{title}}</h1>
+                        <div class="reward_msg">
+                            <span>发布时间：</span><i>{{time | to_date}}</i>
+                            <span>所属分类；</span><b>{{classify}}</b>
+                            <span>手机号码：</span><em>{{phone}}</em>
+                        </div>
+                        <ul>
+                            <li @click="revise">修改需求</li>
+                            <li @click="tuoguan">托管赏金</li>
+                            <li @click="close">关闭需求</li>
+                        </ul>
+                        <div class="reward_progress">
+                            <span :class="{on:type_num>1,to_on:type_num==1}">1<i>提交需求</i><em>{{time1 | to_date}}</em></span><b :class="{on:type_num>1}"></b><span :class="{on:type_num>2,to_on:type_num==2}">2<i>托管赏金</i><em>{{time2 | to_date}}</em><s>{{time1_2 | dao_date}}</s></span><b :class="{on:type_num>3}"></b><span :class="{on:type_num>4,to_on:type_num==4}">3<i>平台公示</i><em>{{time3 | to_date}}</em><s>{{time3_4 | dao_date}}</s></span><b :class="{on:type_num>4}"></b><span :class="{on:type_num>5,to_on:type_num==5}">4<i>产生中标</i><em>{{time5 | to_date}}</em><s>{{time4_5 | dao_date}}</s></span><b :class="{on:type_num>5}"></b><span :class="{on:type_num>6,to_on:type_num==6}">5<i>卖方提交成果</i><em>{{time6 | to_date}}</em><s>{{time5_6 | dao_date}}</s></span><b :class="{on:type_num>6}"></b><span :class="{on:type_num>7,to_on:type_num==7}">6<i>赏金支付</i><em>{{time7 | to_date}}</em><s>{{time6_7 | dao_date}}</s></span>
+                        </div>
+                        <div class="reward_progress" id="close_progress" v-show="close_progress">
+                            <span class="on">1<i>提交需求</i><em>2018-02-06</em><s></s></span><b></b><b></b><b></b><b></b><span class="on">2<i>需求关闭</i><em>2018-02-06</em><s></s></span>
+                        </div>
+                        <h2>需求描述：</h2>
+                        <textarea readonly ref="xuqiu_html">{{xuqiu}}</textarea>
+                        <h2>场景描述</h2>
+                        <textarea readonly ref="scene_html">{{scene}}</textarea>
+                    </div>
+                </div>
+                <div class="reward_right">
+                    <div class="reward_author">
+                        <img :src="img">发布人：<span>{{username}}</span>
+                    </div>
+                    <div class="right_xiaoxi" ref="xiaoxi">
+                        <dl>
+                            <dt>概况</dt>
+                            <dd>需求发布次数：<span></span></dd>
+                            <dd>完成交易次数：<span></span></dd>
+                        </dl>
+                        <dl>
+                            <dt>最新</dt>
+                            <!-- <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                            <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                            <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                            <dd>Wang123已获得 <span>赏金￥6685</span></dd> -->
+                        </dl>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="toubiao_msg" v-show="toubiao">
+                <dl>
+                    <dt>投标服务商(<span>{{dd_length}}</span>)</dt>
+                    <dd v-for="item in dd_datas">
+                        <div>
+                            <i><img :src="url_ip + item.image"></i><span>{{item.username}}</span><b>{{item.create_time}}</b>
+                        </div>
+                        <p>{{item.content}}</p>
+                        <ul>
+                            <li v-for="ite in item.img"><img :src="url_ip + ite"></li>
+                        </ul>
+                        <div class="btn">
+                            <div :data-id="item.partin_id" @click="zbiao_click($event)" :class="{no:no_zb}">{{item.opt_for=='1'?'已中标':'中标'}}</div>
+                            <div :data-id="item.partin_id" @click="jbao_click($event)">举报</div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="zhongbiao_msg" v-show="zhongbiao">
+                <h2>中标成果</h2>
+                <div>
+                    <a ref="download"><img src="img/下载.png">下载</a>
+                </div>
+                <ul>
+                    <li @click="result_sure()">结果确认</li>
+                    <li @click="back()">退回修改</li>
+                </ul>
+            </div>
+        </div>
+        <div class="close_box" v-show="close_box">
+            <div class="close_box_center">
+                <h2>您确定要关闭需求吗？</h2>
+                <p> ●&nbsp;&nbsp;&nbsp;&nbsp;关闭后,已托管赏金将在1-4个工作日内用过托管渠道退还给您。<br/> ●&nbsp;&nbsp;&nbsp;&nbsp;关闭后订单将不能接受投标且不能再次开启。<br/> ●&nbsp;&nbsp;&nbsp;&nbsp;若您需要修改订单赏金或者需求内容,建议您在本页面进行修改,无需关闭订单。</p>
+                <ul>
+                    <li class="sure" @click="close_sure">确&nbsp;&nbsp;&nbsp;&nbsp;定</li>
+                    <li class="cancel" @click="close_no">取&nbsp;&nbsp;&nbsp;&nbsp;消</li>
+                </ul>
+            </div>
+        </div>
+        <div class="revise_box" v-show="revise_boxs">
+            <form>
+                <img src="img/close4.png" @click="revise_close">
+                <div><span>{{revise_title_type}}</span> <input type="text" placeholder="请输入算法名称,30字符以内" v-model="revise_title"></div>
+                <div><span>需求描述：</span> <textarea placeholder="请输入需求描述,500字符以内" v-model="revise_xuqiu"></textarea></div>
+                <div><span>场景描述：</span> <textarea placeholder="请输入场景描述,500字符以内" v-model="revise_scene"></textarea></div>
+                <span>所属分类：</span>
+                <select v-model="revise_select">
+                    <option v-for="item in algo_type">{{item}}</option>
+                </select>
+                <span>赏金：</span><input type="number" v-model="revise_money"> 元
+                <span style="margin-left:60px;">公示期限：</span><input type="number" v-model="revise_time">  日
+                <div><span style="padding-left:12px;">手机号：</span> <input type="text" class="reward_phone" v-model="revise_phone"><i @click="yanz($event)" :class="is_click">{{button_html}}</i></div>
+                <div><span style="padding-left:12px;">验证码：</span> <input type="text" class="yzm" v-model="revise_yzm"></div>
+                <div class="reward_button" @click="revise_sure">修改</div>
+            </form>
+        </div>
+        <div ref="zhifu_type" id="zhifu_type">
+            <div>
+                <h2>请选择支付方式</h2><i><img src="img/close.png" @click="close_zhifu()"></i>
+                <p>需要支付的金额： <span>￥{{money}}</span></p>
+                <ul>
+                    <li @click="weixin()">
+                        <img src="img/weixin.png"><br>
+                        <span>微信支付</span>
+                    </li>
+                    <li @click="zfb()">
+                        <img src="img/zhifubao.png"><br>
+                        <span>支付宝支付</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="erweima" ref="erweima"><img :src="src"><i><img src="img/close.png" @click="close_erweima()"></i></div>
+        <div class="zhongbiao_quit" v-show="zb_isSure">
+            <div>
+                <h2>确定将当前服务商选择为"中标"方吗？<br><span>温馨提示："中标"方一经确定则不可更改,请谨慎选择。</span></h2>
+                <ul>
+                    <li :data-id="zb_id" @click="zb_sure()" :data_e="zb_e">确定</li>
+                    <li @click="quit_zb()">取消</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jubao_box" v-show="jubao">
+            <div>
+                <h2>请尽可能详尽的告诉我们举报的原因：</h2>
+                <i @click="jubao_close()"><img src="img/close.png"></i>
+                <select v-model="reason_select">
+                    <option v-for="item in jb_reason">{{item}}</option>
+                </select>
+                <textarea v-model='reason_text'></textarea>
+                <div :data-id="jb_id" @click="jb_sure()">确定</div>
+            </div>
+        </div>
+        <div class="back_resive" v-show="back_resive">
+            <div>
+                <i @click="close_back()"><img src="img/close.png"></i>
+                <h2>修改建议( <span>*必填项</span> )</h2>
+                <textarea v-model="back_txt"></textarea>
+                <div @click="backsure">确认</div>
+            </div>
+        </div>
+        <div class="msgBox" v-show="msgBox_show">
+            <div>
+                <i :class="'s'+num"></i><br>
+                <span>{{msg}}</span>
+            </div>
+        </div>
+        <!-- 提示登录 -->
+        <div class="shade" v-show="shade_show">
+            <div id="hint_login">
+                <img src="img/hint_logo_cancel.png" height="35" width="35" class="hint_logo_cancel" @click="close_shade()">
+                <img src="img/hint_logo_shadow.png" height="50" width="135" class="hint_logo_shadow">
+                <img src="img/hint_logo.png" height="162" width="210" class="hint_logo">
+                <p>{{shade_msg}}</p>
+                <div class="btn">
+                    <a href="register.html" v-show="register_show">注册</a>
+                    <a href="login.html?back">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

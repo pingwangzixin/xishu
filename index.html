@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css?v=0.19.11.21.11" />
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jquery.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/base64.js?v=0.19.11.21.11"></script>
+    <!-- <script type="text/javascript" src="js/nav_json.js"></script> -->
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/index.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/swiper.min.js?v=0.19.11.21.11"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .swiper-pagination-bullet {
+            width: 24px;
+            height: 4px;
+            border: 1px solid #fff;
+            border-radius: 0;
+        }
+
+        .swiper-pagination-bullet-active {
+            border: 1px solid #fff;
+            background: #fff;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+        }
+
+        .swiper-slide-abs {
+            width: 1024px;
+            position: absolute;
+            left: 50%;
+            top: 228px;
+            margin-left: -512px;
+        }
+
+        .swiper-slide-abs h3 {
+            height: 60px;
+            line-height: 60px;
+            font-size: 40px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .swiper-slide-abs p {
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .dotting {
+            display: inline-block;
+            min-width: 2px;
+            min-height: 2px;
+            vertical-align: baseline;
+            box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor;
+            /* for IE9+, ..., 3个点 */
+            animation: dot 4s infinite step-start both;
+            /* for IE10+, ... */
+        }
+
+        .dotting:before {
+            content: '...';
+        }
+        /* for IE8. 若无需兼容IE8, 此行以及下一行删除*/
+
+        .dotting::before {
+            content: '';
+        }
+        /* for IE9+ 覆盖 IE8 */
+
+         :root .dotting {
+            margin-right: 8px;
+        }
+        /* for IE9+,FF,CH,OP,SF 占据空间*/
+
+        @keyframes dot {
+            25% {
+                box-shadow: none;
+            }
+            /* 0个点 */
+            50% {
+                box-shadow: 2px 0 currentColor;
+            }
+            /* 1个点 */
+            75% {
+                box-shadow: 2px 0 currentColor, 6px 0 currentColor;
+                /* 2个点 */
+            }
+        }
+
+        #scroll-box,
+        #scroll-box1,
+        #scroll-box2 {
+            height: 22px;
+            overflow: hidden;
+        }
+
+        #scroll-box div,
+        #scroll-box1 div,
+        #scroll-box2 div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        // 判断是否为谷歌浏览器
+        function judgeBrowser() {
+            var userAgent = navigator.userAgent;
+            var placeHtml = '<div class="prompt_main" id="zmain"><div class="zbrowser"><div class="zbrowser_box"><a onclick="closezoh();" title="关闭提示" href="javascript:void(0);" class="zbrowser_close"><img src="/img/关闭.png"></a><p class="zbrowser_txt">&nbsp;&nbsp;&nbsp;&nbsp;温馨提示：为了保证您能获得最佳的体验效果，建议使用<a href="http://www.fanya.chaoxing.com/base/chrome.zip">谷歌浏览器</a>、<a href="http://www.firefox.com.cn/download/">火狐浏览器</a>，是否下载？<span><a href="http://www.fanya.chaoxing.com/base/chrome.zip" class="zyes">是</a><a onclick="closezoh();" href="javascript:void(0);">否</a></span></p></div></div></div><div style="height:44px" id="topLayer"></div>';
+            // userAgent.toLowerCase().indexOf('chrome') === -1 ? $('nav').prepend(placeHtml) : ''
+            if (userAgent.toLowerCase().indexOf('chrome') === -1) {
+                $('body').prepend(placeHtml)
+            }
+        }
+        judgeBrowser();
+    </script>
+    <div id="indexApp">
+        <div class="indexTop relative">
+            <nav>
+
+            </nav>
+            <div class="indexBan">
+                <div class="swiper-container" id="swiper-container" style="height: 100%">
+                    <div class="swiper-wrapper">
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <div class="platfolmFoo">
+            <ul class="platfolm">
+                <li>
+                    <h2>
+                        <!-- <p>平台算法分析师</p><span>持续入驻中<i class="dotting"></i></span></h2> -->
+                        <p>平台算法分析师</p>
+                        <div id="scroll-box">
+                            <div class="box1">
+                                <span>持续入驻中<i class="dotting"></i></span>
+                                <span></span>
+                            </div>
+                            <div class="box2"></div>
+                        </div>
+                    </h2>
+                    <h3 class="platfolmNum">-</h3>
+                </li>
+                <li>
+                    <h2>
+                        <!-- <p>共享资源</p><span>持续更新中<i class="dotting"></i></span></h2> -->
+                        <p>共享资源</p>
+                        <div id="scroll-box1">
+                            <div class="box3">
+                                <span>持续更新中<i class="dotting"></i></span>
+                                <span></span>
+                            </div>
+                            <div class="box4"></div>
+                        </div>
+                    </h2>
+                    <h3>-</h3>
+                </li>
+                <li>
+                    <h2>
+                        <p>共享算法</p>
+                        <div id=scroll-box2>
+                            <div class="box5">
+                                <span>持续更新中<i class="dotting"></i></span>
+                                <span></span>
+                            </div>
+                            <div class="box6"></div>
+                        </div>
+                    </h2>
+                    <!-- <p>共享算法</p><span>持续更新中<i class="dotting"></i></span></h2> -->
+                    <h3>-</h3>
+                </li>
+
+
+                <!-- <h2 class="fl">
+					<span>平台注册分析师</span>
+					<span class="platfolmNum" style="font-size: 28px;">--</span>
+				</h2>
+				<ul class="fr">
+					<li>
+						<span>今日入住</span><b>--</b>
+					</li>
+					<li>
+						<span>共享算法</span><b>--</b>
+					</li>
+					<li>
+						<span>共享资源</span><b>--</b>
+					</li>
+				</ul> -->
+            </ul>
+        </div>
+        <div class="">
+
+        </div>
+        <div class="section section_one clearfix">
+            <div class="indexSlogan">
+                <h3>亮点功能</h3>
+                <p>简单 / 强大 / 资源丰富 / 业内领先</p>
+            </div>
+            <div class="sectionOneCont">
+                <div class="aside">
+                    <ul>
+                        <li class="on">
+                            <p><img src="img/icon/简单.png" alt=""><img class="on" src="img/icon/简单_选中.png" alt="">轻松入门</p>
+                            <p>国内领先的无编码的拖拽式数据分析平台</p>
+                        </li>
+                        <li>
+                            <p><img src="img/icon/分析.png" alt=""><img src="img/icon/分析_选中.png" alt="">百种算法免费用</p>
+                            <p>平台汇集了数百种算法，帮您解决各种分析难题</p>
+                        </li>
+                        <li>
+                            <p><img src="img/icon/数百种.png" alt=""><img src="img/icon/数百种_选中.png" alt="">自建算法无压力</p>
+                            <p>个性化的算法自建环境，全python脚本，一种语言搞定算法编辑</p>
+                        </li>
+                        <li>
+                            <p><img src="img/icon/首个.png" alt=""><img src="img/icon/首个_选中.png" alt="">国内首屈</p>
+                            <p>具备渐进式增长的算法资源</p>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="aside-img">
+                    <img style="display: block" src="img/1简单易用.png" alt="">
+                    <img src="img/2强大分析.png" alt="">
+                    <img src="img/3算法编辑.png" alt="">
+                    <img src="img/4国内首个.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="section section_two clearfix">
+            <div class="indexSlogan">
+                <h3>三步搭建个性化分析模型</h3>
+                <p>操作简单 个性定制 一次建模 多次使用</p>
+            </div>
+            <div class="sectionCont">
+                <ul>
+                    <li><img src="img/pic/index_step03.png" alt="" width="100%" height="100%"></li>
+                    <li><img src="img/pic/index_step01.gif" alt="" width="100%" height="100%"></li>
+                    <li><img src="img/pic/index_step02.png" alt="" width="100%" height="100%"></li>
+                </ul>
+                <div class="pcChassis"><img src="img/pic/pcChassis.png" width="100%" height="100%" alt=""></div>
+            </div>
+            <ul class="section_two_tab">
+                <li class="active">第一步 &nbsp;<span>选择数据</span></li>
+                <li>第二步 &nbsp;<span>搭建算法</span></li>
+                <li>第三步 &nbsp;<span>结果展示</span></li>
+            </ul>
+        </div>
+
+        <div class="section section_five clearfix">
+            <div class="indexSlogan indexSlogan2">
+                <h3>人工智能为您推荐</h3>
+                <p>大家都在使用的海量算法资源</p>
+                <h6 class="more"><a href="alg_list.html?sf">查看更多</a></h6>
+            </div>
+            <dl class="section_fiveCont section_fiveCont_sf" style="position: relative;">
+                <ul data-item="算法">
+                </ul>
+            </dl>
+            <img style="width: 100%; margin: 0 auto; position: absolute; bottom: 0;z-index: -1" src="img/色块.png" alt="">
+        </div>
+        <!-- <div class="section section_five clearfix">
+            <div class="indexSlogan indexSlogan2">
+                <p>大家都在使用的海量数据资源</p>
+                <h6 class="more"><a href="alg_list.html?sj">查看更多</a></h6>
+            </div>
+            <dl class="section_fiveCont section_fiveCont_sj" style="position: relative;">
+                <ul data-item="数据">
+                </ul>
+            </dl>
+            <img style="width: 100%; margin: 0 auto; position: absolute; bottom: 0;z-index: -1" src="img/色块.png" alt="">
+        </div> -->
+        <div class="section section_three clearfix">
+            <div class="indexSlogan indexSlogan2" style="padding-top: 30px;">
+                <h3>免费 · 丰富 · 开放式数据</h3>
+                <p>大家都在使用的海量数据资源</p>
+                <h6 class="more"><a href="alg_list.html?sj">查看更多</a></h6>
+            </div>
+            <ul>
+                <li><a href="javascript:;"><i></i><p>商业</p></a></li>
+                <li><a href="javascript:;"><i></i><p>文化</p></a></li>
+                <li><a href="javascript:;"><i></i><p>环境</p></a></li>
+                <li><a href="javascript:;"><i></i><p>生活</p></a></li>
+                <li><a href="javascript:;"><i></i><p>社会</p></a></li>
+                <li><a href="javascript:;"><i></i><p>体育</p></a></li>
+                <li><a href="javascript:;"><i></i><p>教育</p></a></li>
+                <li><a href="javascript:;"><i></i><p>科技</p></a></li>
+                <li><a href="javascript:;"><i></i><p>时政</p></a></li>
+            </ul>
+        </div>
+
+        <p><span></span><span></span><span></span><span></span><span></span></p>
+        <div class="section section_four">
+            <div class="indexSlogan indexSlogan2">
+                <a href="information_platform.html">
+                    <h3 style="margin-bottom: 30px;">发现丨社区</h3>
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="information_platform.html#datahoop">
+                        <img src="img/资讯-datahoop.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="information_platform.html#professional">
+                        <img src="img/资讯-专业资讯.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="information_platform.html#association">
+                        <img src="img/资讯-协会信息.png" alt="">
+                    </a>
+                </li>
+            </ul>
+            <!-- <div class="indexSlogan indexSlogan2">
+                <h3 style="margin-bottom: 30px;">行业资讯<a href="information_center.html">[更多精彩]</a></h3>
+            </div>
+            <ul>
+                <li>
+                    <h4></h4>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <h4></h4>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <h4></h4>
+                    <div>
+
+                    </div>
+                </li>
+            </ul> -->
+        </div>
+        <div class="section_six">
+            <h2>合作品牌</h2>
+            <div class="section_six_content">
+                <img src="img/品牌logo.png" alt="">
+            </div>
+        </div>
+        <footer style="margin-top: 0">
+
+        </footer>
+
+        <div class="fixed_btn">
+
+        </div>
+        <a href="javascript:;" class="backtop" title="返回顶部" style="display: block;">返回顶部</a>
+
+        <div class="lkw-fshadow"></div>
+        <div class="lkw-msg" style="top: -100%;">
+            <!--alert-message-->
+        </div>
+
+
+        <div class="msg-box-wraper login-alert shade hide">
+            <!--登录提示-->
+        </div>
+
+        <div class="msg-box-wraper alertMsg hide">
+            <div class="msg-box">
+                <i class="msg-close">×</i>
+                <h6 class="msg-img"></h6>
+                <h2><span>提示信息</span></h2>
+            </div>
+        </div>
+        <style>
+
+        </style>
+
+        <script>
+            $('.xs_bi_').text(xs_bi_)
+        </script>
+    </div>
+</body>
+
+</html>

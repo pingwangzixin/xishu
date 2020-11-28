@@ -1,0 +1,158 @@
+@charset "utf-8";
+/*.pages,.pages_1{
+	width:720px;
+	margin:40px auto 0 auto;
+}*/
+.personal_center_content .concrete_content .pages{
+
+}
+.pages #Pagination,.pages_1 #Paginations{
+  float: left;
+  overflow: hidden;
+}
+.pages #Pagination .pagination,.pages_1 #Paginations .pagination{
+  /*height: 40px;*/
+  text-align: right;
+  font-family: \u5b8b\u4f53,Arial;
+}
+.pages #Pagination .pagination a,
+.pages #Pagination .pagination span,
+.pages_1 #Paginations .pagination a,
+.pages_1 #Paginations .pagination span
+{
+  float: left;
+  display: inline;
+  padding: 3px 7px;
+  /*border: 1px solid #e6e6e6;*/
+  border-right: none;
+  /*background: #f6f6f6;*/
+  color: #666666;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right:2px;
+}
+
+.personal_center_content .concrete_content .pages #Pagination .pagination a,.personal_center_content .concrete_content .pages #Pagination .pagination span,.personal_center_content .concrete_content .pages_1 #Paginations .pagination a,.personal_center_content .concrete_content .pages_1 #Paginations .pagination span{
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.pages #Pagination .pagination .current,.pages_1 #Paginations .pagination .current{
+  background: #06415e;
+  color: #fff;
+}
+.personal_center_content .concrete_content .pages #Pagination .pagination .current,.personal_center_content .concrete_content .pages #Pagination .pagination .next,.personal_center_content .concrete_content .pages_1 #Paginations .pagination .current,.personal_center_content .concrete_content .pages_1 #Paginations .pagination .next{
+  background: #06415e;
+}
+.pages #Pagination .pagination .prev,
+.pages #Pagination .pagination .next
+{
+  float: left;
+  padding: 3px 3px;
+  /*border: 1px solid #e6e6e6;*/
+  background: #414040;
+  color: #fff;
+  cursor: pointer;
+}
+.personal_center_content .concrete_content .pages #Pagination .pagination .prev,.personal_center_content .concrete_content .pages #Pagination .pagination .next,.personal_center_content .concrete_content .pages_1 #Paginations .pagination .prev,.personal_center_content .concrete_content .pages_1 #Paginations .pagination .next{
+  background: #06415e;
+}
+
+.pages_1 #Paginations .pagination .prev,
+.pages_1 #Paginations .pagination .next{
+   padding: 3px 3px;
+  /*border: 1px solid #e6e6e6;*/
+  background: #414040;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pages #Pagination .pagination .prev,.pages_1 #Paginations .pagination .prev{margin-right:7px;}
+.pages #Pagination .pagination .next,.pages_1 #Paginations .pagination .next{margin-left:7px;}
+
+.pages #Pagination .pagination .prev:hover,
+.pages #Pagination .pagination .next:hover,
+.pages_1 #Paginations .pagination .prev:hover,
+.pages_1 #Paginations .pagination .next:hover{
+  background:#06415e;
+}
+
+
+.pages #Pagination .pagination .prev i,
+.pages #Pagination .pagination .next i, 
+.pages_1 #Paginations .pagination .prev i,
+.pages_1 #Paginations .pagination .next i
+{
+  display: inline-block;
+  width: 4px;
+  height: 11px;
+  margin-right: 5px;
+  background: url(../images/icon.fw.png) no-repeat;
+}
+.pages #Pagination .pagination .prev,.pages_1 #Paginations .pagination .prev {
+  border-right: none;
+}
+.pages #Pagination .pagination .prev i,.pages_1 #Paginations .pagination .prev i {
+  background-position: -144px -1px;
+  *background-position: -144px -4px;
+}
+.pages #Pagination .pagination .next i,.pages_1 #Paginations .pagination .next i{
+  background-position: -156px -1px;
+  *background-position: -156px -4px;
+}
+.pages #Pagination .pagination .pagination-break,.pages_1 #Paginations .pagination .pagination-break {
+  padding: 4px 5px;
+  border: none;
+  /*border-left: 1px solid #e6e6e6;*/
+  background: none;
+  cursor: default;
+}
+.pages .searchPage,.pages_1 .searchPage{
+  float: left;
+  margin-top:3px;
+  /*padding: 4px 0;*/
+}
+.pages .searchPage .page-sum,.pages_1 .searchPage .page-sum {
+  padding: 11px 13px;
+  color: #999999;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+}
+.pages .searchPage .page-go,.pages_1 .searchPage .page-go{
+  padding: 8px 0;
+  color: #999999;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+  padding: 10px 0\9;
+  *padding: 6px 0;
+}
+.pages .searchPage .page-go input,.pages_1 .searchPage .page-go input {
+  width: 27px;
+  height: 20px;
+  margin: 0 5px;
+  padding: 1px;
+  border: 1px solid #e4e4e4;
+  background:#fff;
+}
+.pages .searchPage .page-btn,.pages_1 .searchPage .page-btn {
+  margin: 9px 0 5px 5px;
+  padding: 2px 5px;
+  background: #06415e;
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: Arial, 'Microsoft YaHei';
+  font-size: 14px;
+  text-decoration: none;
+}
+.content .pages #Pagination .pagination .prev,.content .pages #Pagination .pagination .next{
+  background:none;
+  border:1px solid #06415e;
+  color:#06415e;
+}
+.content .pages #Pagination .pagination .prev:hover,.content .pages #Pagination .pagination .next:hover{
+   background:#06415e;
+  border:1px solid #06415e;
+  color:#fff;
+}
+.content .searchPage .page-sum{color:#06415e;}

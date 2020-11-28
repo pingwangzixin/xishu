@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="color3"/>
+	<title>Datahoop 2.0 资讯详情</title>
+	<link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/information_center.css?v=0.19.11.21.11">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+	<script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/jquerysession.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<!-- <script type="text/javascript" src="js/nav_json.js"></script> -->
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+	<!-- <script type="text/javascript" src="js/information_center.js"></script> -->
+	<style>
+		*{box-sizing: border-box;}
+		.typearea{width: 984px;margin: 0 auto;overflow: hidden;margin-top: 100px;}
+		.typearea .crumbs {margin-top: 25px; font-size: 14px; color: #666666;}
+		.typearea .crumbs a {margin-right: 5px;}
+		.typearea .crumbs a:visited {color: #666666;}
+		.typearea .crumbs .on {color: #333333;}
+		.newsTop{width: 100%;clear: both;overflow: hidden;}
+		.newsMain{width: 100%;padding: 15px;background: #fff;float: left;overflow: hidden;border-bottom: 1px solid #E8E8E8;}
+		.newsMain .newsTitl{min-height: 115px;border-bottom: 1px solid #f3f3f3;}
+		.newsMain .newsTitl h2{min-height: 75px;line-height: 75px;font-size: 30px;color: #333;}
+		.newsMain .newsTitl>div{clear: both;overflow: hidden;}
+		.newsMain .newsTitl>div p{height: 40px;line-height: 40px;color: #999;float: left;}
+		.newsMain .newsTitl>div p.addtime{float: right;}
+		.newsMain .newsTitl>div p span{color: #999;}
+		.newsMain .newsCont{padding: 15px;}
+		.newsMain .newsContFoot{text-align: right;margin-right: 37px;color: #999;}
+		/* .aside{width: 270px;height: 100%;padding: 15px;background: #fff;float: right;}
+		.aside h3{width: 100%;height: 16px;line-height: 16px;margin-bottom: 15px;padding-left: 8px;font-size: 15px;font-weight: bold;color: #000;border-left: 2px solid #1453d5;}
+		.aside li{width: 100%;height: 70px;margin: 0 10px;}
+		.aside li img{width: 100%;height: 100%;display: inline-block;cursor: pointer;}
+		.aside li p{width: calc(100% - 100px);height: 50px;line-height: 20px;margin: 0 5px;padding: 5px 5px;position: relative;float: left;overflow: hidden;cursor: pointer;}
+		.aside li p:after{content: '';width: 3px;height: 3px;background: #000;border-radius: 50%;position: absolute;left: 0;top: 13px;} */
+		.newsTurn{margin: 20px 0 0px;padding: 0 15px;width: 100%;}
+		.newsTurn p{font-size: 14px;color: #333;float: left;background:#F0F2F5; padding: 4px 0;}
+		.newsTurn p.goNext{float: right;}
+		.newsTurn p span.yesClick{font-size: 14px;color: #666;cursor: pointer;}
+		.newsTurn p:hover span.yesClick{color: #005699;}
+		img:hover{transform: scale(1);}
+	</style>
+</head>
+<body>
+	<nav></nav>
+	<div class="mu3"></div>
+	<!-- lkw 20181101 S -->
+	<!-- <div class="banner">
+		<ul class="banner_box"></ul>
+		<ul class="banner_btn"></ul>
+	</div> -->
+	<!-- lkw 20181101 N -->
+	<div class="typearea">
+		<div class="crumbs">
+			<a href="information_platform.html">Datahoop资讯平台</a>>
+			<a class="hashash" href="info_list.html">资讯列表&nbsp;></a>
+			<a class="on" href="javascript:void(0);">资讯详情</a>
+		</div>
+		<div class="newsTop">
+			<div class="newsMain">
+				<div class="newsTitl">
+					<h2>--</h2>
+					<div>
+						<p class="newsContFoot">文章来源: --</p>
+						<p class="author">作者: <span>--</span></p>
+						<p class="addtime"><span>0000-00-00</span></p>
+					</div>
+				</div>
+				<div class="newsCont">
+					<div class="newsContArea">
+					</div>
+					<div ></div>
+				</div>
+			</div>
+			<!-- <div class="aside">
+				<h3>最新推荐</h3>
+				<ul>
+
+				</ul>
+			</div> -->
+		</div>
+		<div class="newsTurn">
+			<p class="goPrev">上一篇: <span></span></p>
+			<p class="goNext">下一篇: <span></span></p>
+		</div>
+	</div>
+	<div class="msg-box-wraper login-alert shade hide"></div>
+	<footer>
+
+	</footer>
+</body>
+</html>
+<script>
+	var hasHash = window.location.hash;
+    if (hasHash && hasHash === '#home') {
+        $('.hashash').remove()
+    }
+function formateTime(date) {
+	var odate = new Date(date);
+	var oyear = odate.getFullYear()
+	var omonth = ((odate.getMonth()+1 < 9)? ('0' + (odate.getMonth()+1)): (odate.getMonth()+1));
+	var oday = (odate.getDate() < 9)? ('0' + odate.getDate()): odate.getDate();
+	return oTime = oyear + '-' + omonth + '-' + oday;
+}
+$(function () {
+	var needId = (window.location.search? window.location.search.split('?')[1].split('=')[1]: 29)
+	$.ajax({
+		url:urlip + '/news/infoshow/',
+		type:'GET',
+		cache:false,
+		async:false,
+		data:{id: needId},
+		dataType:'json',
+		success: function (res) {
+			if(res.status) {
+				$('.newsTitl h2').text(res.data.title);
+				$('.newsTitl p.author span').text(res.data.author);
+				$('.newsTitl p.addtime span').text(formateTime(res.data.add_time));
+				$('.newsContArea').html(res.data.content);
+				$('.newsContFoot').text('来源: ' + res.data.source);
+				// for(var i = 0;i < res.random_posts.length;i++) {
+				// 	var oHtml = '<li data-id="'+res.random_posts[i].id+'">'+
+				// 		'<div style="width: 80px;height: 50px;overflow: hidden;float: left;"><img src="'+ url_ip + res.random_posts[i].cover+'" alt=""></div>'+
+				// 		'<p>'+res.random_posts[i].title+'</p>'+
+				// 	'</li>';
+				// 	$('.aside ul').append(oHtml);
+				// }
+				if($.isEmptyObject(res.last_article)) {
+					var prevTxt = '没有了';
+					var prevId = '';
+					var prevClick = 'noClick';
+				} else {
+					var prevTxt = res.last_article.title;
+					var prevId = res.last_article.id;
+					var prevClick = 'yesClick';
+				}
+
+				if($.isEmptyObject(res.next_article)) {
+					var nextTxt = '没有了';
+					var nextId = '';
+					var nextClick = 'noClick';
+				} else {
+					var nextTxt = res.next_article.title;
+					var nextId = res.next_article.id;
+					var nextClick = 'yesClick';
+				}
+
+				$('.newsTurn .goPrev span').html(prevTxt).attr('data-id', prevId).addClass(prevClick);
+				$('.newsTurn .goNext span').html(nextTxt).attr('data-id', nextId).addClass(nextClick);
+			}
+			// console.log(res)
+		},
+		error: function (data) {
+			// console.log(data)
+		}
+	})
+	// 上一篇-下一篇
+	$('.newsTurn').on('click', '.yesClick', function () {
+		window.location.href = 'info_detail.html?id=' + $(this).attr('data-id');
+	})
+	// 热门点击
+	// $('.aside ul').on('click', 'li img,li p', function () {
+	// 	var nowId = $(this).closest('li').attr('data-id');
+	// 	if(nowId) {
+	// 		window.location.href = 'info_detail.html?id=' + nowId;
+	// 	}
+	// })
+})
+</script>

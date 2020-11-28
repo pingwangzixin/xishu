@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/url_ip.js"></script>
+    <script type="text/javascript" src="js/make_cookies.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    cookie.delete('token')
+    cookie.delete('membername')
+    cookie.delete('token_id')
+    cookie.delete('user_img')
+    if (location.search.search('www.cpda.cn') !== -1) {
+        window.location.href = `http://www.cpda.cn/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    } else if (location.search.search('www.chinacpda.com') !== -1) {
+        window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    } else {
+        window.location.href = `http://www.chinacpda.com/login/?useinfo={"username":"","token":"","user_img": "not_login","token_id": ""}&${location.search.substr(1)}`;
+    }
+</script>
+</html>

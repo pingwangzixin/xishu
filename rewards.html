@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/rewards.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/rewards.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+	<nav></nav>
+	<div class="mu3"></div>
+	<div class="is_quit">
+		<p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+		<div class="sure_quit">确定退出</div>
+		<div class="no_quit">再想一想</div>
+	</div>
+    <div id="reward">
+        <div class="head_bg">
+            <div class="reward_header">
+                <h1>悬赏详情</h1>
+                <div><input type="text" placeholder="请输入要查询的内容" v-model="keyword"><i class="public_search" @click="public_search()"><img src="img/sou.png"></i></div>
+            </div>
+        </div>
+        <div class="reward_body">
+            <div class="list">
+                <dl>
+                    <dt>按分类查找</dt>
+                    <dd>
+                        <div v-for="item in type_arr" @click="type_search($event)">{{item}}</div>
+                    </dd>
+                </dl>
+                <ul>
+                    <li v-for="item in rank_list">
+                        <div>
+                            <img :src="url + item.image" class="fl">
+                            <dl class="fl">
+                                <dt>{{item.title}}</dt>
+                                <dd>发布：<span>{{item.username}}</span></dd>
+                                <dd>投标：<span>{{item.count}}</span></dd>
+                            </dl>
+                        </div>
+                        <p>需求描述：<span>{{item.need_describe}}</span><br>场景描述：<span>{{item.scene_describe}}</span></p>
+                        <i>赏金：<span>{{item.money}}</span></i>
+                        <b :data-id="item.id" :data-user="item.user_id" @click="detail($event)">查看详情</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

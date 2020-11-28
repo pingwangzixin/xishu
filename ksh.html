@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Datahoop 2.0 数据展示</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/ksh.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/echarts.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/chart_js.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+		<!-- <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script> -->
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/ksh.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/json2.js?v=0.19.11.21.11"></script>
+    <!-- <script type="text/javascript" src="js/webim.js?v=1"></script> -->
+    <!-- <script type="text/javascript" src="js/demo_base.js"></script> -->
+    <!-- <script type="text/javascript" src="js/chat.js"></script> -->
+	<style>
+		/* lkw 20181031 S */
+		*{box-sizing: border-box;}
+		.ksh_banner{width: 100%;height: 180px;background: url(img/dataProc_baner.png) no-repeat left top;background-size: 100% 100%;min-width:1024px;}
+		.ksh_banner #place_title {width: 17%;height: 50px;line-height: 50px;font-size: 16px;padding-left: 15px;color: #fff;background: rgba(0,0,0,0.65);float: left;margin-top: 110px;}
+		.ksh_banner .msgbox2 {width: calc(100% - 17% - 10px);height: 50px;margin-top: 110px;padding: 0 10px;background: rgba(0,0,0,0.65);float: right;position: relative;overflow:hidden;}
+		.ksh_banner .msgbox2 p{color: #fff;}
+		/* lkw 20181031 N */
+	</style>
+</head>
+<body>
+    <div class="mu"></div>
+    <div class="loading"></div>
+    <nav></nav>
+    <div class="mu3"></div>
+	<!-- lkw 20181031 S -->
+	<div class="ksh_banner">
+		<div style="width: 74.964vw;margin: 0 auto;">
+			<div id="place_title">数据展示</div>
+			<!-- msgbox2 -->
+			<div class="msgbox2">
+				<div>
+					<img src="img/todown.png">
+					<img src="img/cancle3.png">
+				</div>
+                <div class="msgbox3"></div>
+			</div>
+		</div>
+	</div>
+	<!-- lkw 20181031 N -->
+    <!-- 可视化布局 -->
+    <div class="ksh_context">
+        <div class="gzb"></div>
+        <div class="left">
+            <div class="file_name">
+                <span></span>
+                <i class="xuanze"><img src="img/file.fw.png"></i>
+                <!-- 选择文件弹窗 -->
+                <div id="file_box">
+                    <div class="file_box_top">
+                        <i><img src="img/file2.fw.jpg"></i>
+                        <span>选择文件</span>
+                        <div class="file_close"><img src="img/close.png"></div>
+                    </div>
+                    <dl></dl>
+                </div>
+            </div>
+            <div class="left_search">
+                <input type="text" placeholder="字段搜索"><img src="img/search.png">
+            </div>
+            <div class="left_ul_title"><i><img src="img/y.jpg"></i>字段</div>
+            <ul></ul>
+        </div>
+        <div class="plot">图表生成</div>
+        <div class="middle">
+            <div class="table_title">数据可视化配置（指定表格各列选择配置为X轴,Y轴,指标项,标题等可视化项）</div>
+            <p class="kong">数<br>据</p>
+            <table class="weidu">
+                <tr id="weidu1"></tr>
+            </table>
+            <table class="weidu weidu2">
+                <tr id="weidu2"></tr>
+            </table>
+            <div class="middle_box0" id="middle_box"></div>
+            <div class="middle_box0" id="middle_box2"><table></table></div>
+            <div class="middle_box0" id="middle_box3"></div>
+            <div class="middle_box0" id="middle_box4"></div>
+            <div class="middle_box0" id="middle_box5"></div>
+            <div class="middle_box0" id="middle_box6"></div>
+            <div class="middle_box0" id="middle_box7"></div>
+            <div class="middle_box0" id="middle_box8"></div>
+            <div class="middle_box0" id="middle_box9"></div>
+            <div class="middle_box0" id="middle_box10"></div>
+            <div class="middle_box0" id="middle_box11"></div>
+            <div class="middle_box0" id="middle_box12"></div>
+            <div class="middle_box0" id="middle_box13"></div>
+            <div class="middle_box0" id="middle_box14"></div>
+            <div class="middle_box0" id="middle_box15"></div>
+            <div class="middle_box0" id="middle_box16"></div>
+            <div class="big"><img src="img/tobig.png"></div>
+        </div>
+        <div class="right">
+            <div class="right_top">
+                <div class="right_btn">可视化图表</div>
+            </div>
+            <div class="right_context">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+    <!-- msgbox -->
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <div class="sumtype_box">
+        <p>计算方式</p>
+        <div>sum</div>
+        <div>max</div>
+        <div>min</div>
+    </div>
+    <div class="bigger_box">
+        <i><img src="img/close.png"></i>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide" data-to="back">
+
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <!-- 购物车 -->
+    <div class="fixed_btn">
+
+    </div>
+</body>
+</html>

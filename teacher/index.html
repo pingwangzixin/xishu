@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="./img/title.jpg" type="image/x-icon">
+    <title>2019年数据分析讲师培养计划报名表</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/city-picker.css">
+    <script src="./js/city-picker.data.js"></script>
+    <script src="./js/city-picker.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <img class="pcImg" src="./img/bm-banner-01.jpg" alt="">
+            <img class="mobileImg" src="./img/bm-banner-02.jpg" alt="">
+        </header>
+        <h1 class="title">2019年数据分析讲师培养计划报名表</h1>
+        <section class="basic">
+            <h4>基础信息</h4>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="name">姓名<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="name" type="text" required name="name" class="form-control" placeholder="请输入姓名">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="nation">民族<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                        <input id="nation" name="nation" required type="text" class="form-control" placeholder="请输入民族">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label>性别<span>*</span></label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" id="optionsRadios3" value="男" checked> 男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" id="optionsRadios4"  value="女"> 女
+                    </label>
+                </div>
+                <div class="form-group fr">
+                    <label for="birthday">出生年月<span>*</span></label>
+                    <div class="input-group">
+                        <div class="all-out">
+                            <input type="text" required class="all-in year">年<input required type="text" class="all-in mounth">月<input type="text" required class="day all-in">日
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="edu">学历<span>*</span></label>
+                    <div class="input-group">
+                        <input id="edu" type="text" required class="form-control" placeholder="请输入学历">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="major">专业<span>*</span></label>
+                    <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <input id="major" type="text" required class="form-control" placeholder="请输入专业">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="tel">联系电话1<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input id="tel" type="text" required class="form-control" placeholder="请输入联系电话">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="tel_s">联系电话2</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input id="tel_s" type="text" class="form-control" placeholder="请输入其他联系方式">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="email">邮箱<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input id="email" type="email" required class="form-control" placeholder="请输入邮箱">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="wechat">微信号</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input id="wechat" type="text" class="form-control" placeholder="请输入微信号">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label>婚姻状况<span>*</span></label>
+                    <label class="radio-inline">
+                        <input type="radio" name="marriage" id="optionsRadios4"  value="未婚" checked>未婚
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="marriage" id="optionsRadios3" value="已婚">已婚
+                    </label>
+                </div>
+                <div class="form-group fr">
+                    <label for="work_year">工作年限<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                        <input id="work_year" type="text" required class="form-control" placeholder="请输入工作年限">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label>听课方式<span>*</span></label>
+                    <label class="radio-inline">
+                        <input type="radio" name="jieye" id="optionsRadios4"  value="面授" checked>面授
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="jieye" id="optionsRadios3" value="远程">远程
+                    </label>
+                </div>
+                <div id="distpicker">
+                    <div class="form-group">
+                        <div style="position: relative;">
+                            <input id="city-picker3" class="form-control" readonly type="text" data-toggle="city-picker">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-warning" id="reset" type="button">重置</button>
+                        <button class="btn btn-danger" id="destroy" type="button">确定</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_card">身份证号<span>*</span></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                    <input id="id_card" type="text" required class="form-control" placeholder="请输入身份证号码">
+                </div>
+            </div>
+            <!-- <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label>申请结业证书<span>*</span></label>
+                    <label class="radio-inline">
+                        <input type="radio" name="jieye" id="optionsRadios3" value="是" checked>是
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="jieye" id="optionsRadios4"  value="否">否
+                    </label>
+                </div>
+                <div class="form-group fr">
+                    <label>申请参加考试<span>*</span></label>
+                    <label class="radio-inline">
+                        <input type="radio" name="exam" id="optionsRadios3" value="是" checked>是
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="exam" id="optionsRadios4"  value="否">否
+                    </label>
+                </div>
+            </div> -->
+            <hr>
+        </section>
+        <section class="basic duty">
+            <h4>工作信息</h4>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="industry">所属行业<span>*</span></label>
+                    <div class="input-group">
+                        <input id="industry" type="text" required class="form-control" placeholder="请输入所属行业">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="duty">职务<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="duty" type="text" required class="form-control" placeholder="请输入职务">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <div class="form-group">
+                    <label for="company">单位名称<span>*</span></label>
+                    <div class="input-group">
+                        <input id="company" type="text" required class="form-control" placeholder="请输入单位名称">
+                    </div>
+                </div>
+                <div class="form-group fr">
+                    <label for="section">所在部门<span>*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+                        <input id="section" type="text" required class="form-control" placeholder="请输入所在部门">
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline clearfix">
+                <h5>一寸蓝底照片一张<span>*</span></h5>
+                <label for="photo" class="imgChange"><img class="file-img" src="./img/default.png" alt=""></label>
+                <p class="tips">(请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png)</p>
+                <input type="file" id="photo" onchange="previewFile(0)" class="hidden" accept="image/*"><br>
+            </div>
+            <!-- <div class="form-inline clearfix">
+                <h5>一寸蓝底照片一张<span>*</span></h5>
+                <img class="file-img" height="100">
+                <div class="img-box">
+                    <label for="photo" class="img-text"><span style="color: #ccc">+</span>请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png、gif。</label>
+                </div>
+                <input type="file" id="photo" onchange="previewFile(0)" class="hidden" accept="image/*"><br>
+            </div> -->
+            <div class="form-inline clearfix">
+                <h5>学历学位证书<span>*</span></h5>
+                <label for="diploma" class="imgChange"><h5>学历证书</h5><img class="file-img" src="./img/default.png" alt=""></label>
+                <label for="diploma2" class="imgChange"><h5>学位证书</h5><img class="file-img" src="./img/default.png" alt=""></label>
+                <p class="tips">(请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png)</p>
+                <input type="file" id="diploma" onchange="previewFile(1)" class="hidden" accept="image/*"><br>
+                <input type="file" id="diploma2" onchange="previewFile(2)" class="hidden" accept="image/*"><br>
+            </div>
+            <div class="form-inline clearfix">
+                <h5>身份证电子档</h5>
+                <label for="id_card_photo" class="imgChange"><h5>身份证正面</h5><img class="file-img" src="./img/default.png" alt=""></label>
+                <label for="id_card_photo2" class="imgChange"><h5>身份证背面</h5><img class="file-img" src="./img/default.png" alt=""></label>
+                <p class="tips">(请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png)</p>
+                <input type="file" id="id_card_photo" onchange="previewFile(3)" class="hidden" accept="image/*"><br>
+                <input type="file" id="id_card_photo2" onchange="previewFile(4)" class="hidden" accept="image/*"><br>
+            </div>
+            <!-- <div class="form-inline clearfix">
+                <h5>学历学位证<span>*</span></h5>
+                <div id="xueli"></div>
+                <div class="img-box">
+                    <label for="diploma" class="img-text two-msg"><span style="color: #ccc">+</span>请上传学历与学位证证书（共2张，请同时上传，不要分开上传）请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png。</label>
+                </div>
+                <input type="file" id="diploma" multiple="multiple" onchange="previewFile(1)" class="hidden" accept="image/*"><br>
+            </div>
+            <div class="form-inline clearfix">
+                <h5>身份证电子档<span>*</span></h5>
+                <div id="identity"></div>
+                <div class="img-box">
+                    <label for="id_card_photo" class="img-text two-msg"><span style="color: #ccc">+</span>请上传身份证正反面（共2张，请同时上传，不要分开上传），请选择或拖拽上传文件、限制每个1.0MB以内。仅支持：jpg、jpeg、png。</label>
+                </div>
+                <input type="file" multiple="multiple" id="id_card_photo" onchange="previewFile(2)" class="hidden" accept="image/*"><br>
+            </div> -->
+        </section>
+        <button type="button" class="btn btn-info" id="submit" disabled="disabled">提交</button>
+        <!-- <button type="button" class="btn btn-info" id="submit" >提交</button> -->
+    </main>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <!-- 页面加载完成之前的loading动画 -->
+    <div class="loading">
+        <div>
+            <img src="./img/wait.gif" alt="">
+            <p>图片上传中，请耐心等待...</p>
+        </div>
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.2/vconsole.min.js"></script> -->
+    <script>
+        // var vConsole = new VConsole();
+        var photo, diploma, diploma2, id_card_photo = '', id_card_photo2 = '';
+        function previewFile(num) {
+            var preview = document.querySelectorAll('.file-img')[num];
+            var file = document.querySelectorAll('input[type=file]')[num].files;
+            var reader  = new FileReader();
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                if(num == 0) {
+                    photo = reader.result;
+                }
+                else if(num == 1){
+                    diploma = reader.result;
+                }
+                else if(num == 2) {
+                    diploma2 = reader.result;
+                }
+                else if(num == 3) {
+                    id_card_photo = reader.result || "";
+                }
+                else if(num == 4) {
+                    id_card_photo2 = reader.result || "";
+                }
+                if(!isOk()) {
+                    $("#submit").attr("disabled",true);
+                }else {
+                    $("#submit").attr("disabled",false);
+                }
+            }
+            // if (file.length == 1) {
+            //     reader.readAsDataURL(file[0]);
+            // } 
+            // else if(file.length > 2) {
+            //     $('.alertMsg').showMsg({ isImg: 'isNo', h2txt: '只可以传2张图片'});
+            //     setTimeout(() => {
+            //         $('.alertMsg').hide()
+            //     },1000)
+            // }
+            // else {
+            //     [].forEach.call(file, readAndPreview);
+            // }
+            if(file) {
+                // console.log(file)
+                reader.readAsDataURL(file[0]);
+            }
+            else {
+                preview.src = ''
+            }
+            // function readAndPreview(file) {
+            // // 确保 `file.name` 符合我们要求的扩展名
+            //     if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+            //     var reader = new FileReader();
+            //     reader.addEventListener("loadend", function () {
+            //         var image = new Image();
+            //         image.height = 100;
+            //         image.title = file.name;
+            //         image.src = this.result;
+            //         if(preview.children.length == 2) {
+            //             $(preview).empty()
+            //         }
+            //         preview.appendChild( image );
+            //         if(!isOk()) {
+            //         $("#submit").attr("disabled",true);
+            //         }else {
+            //             $("#submit").attr("disabled",false);
+            //         }
+            //     }, false);
+            //         reader.readAsDataURL(file);
+            //     }
+            // }
+        }
+        $('input').blur(function() {
+            if(!$(this).val() && $(this)[0].required && !$(this).parent().parent().find('.error').length) {
+                $(this).parent().parent().append('<p class="error">请输入必填项</p>')
+            }else if($(this).val()){
+                $(this).parent().parent().find('.error').remove();
+            }
+        })
+        $('input').bind('input propertychange', function(){
+            event.preventDefault();
+                if(!isOk()) {
+                    $("#submit").attr("disabled",true);
+                }
+                else {
+                    $("#submit").attr("disabled",false);
+                }
+        })
+        $('#submit').click(function() {
+            $('.loading').show();
+            event.preventDefault();
+            var name = $('#name').val();
+            var gender = $('input[name="gender"]:checked').val();
+            var nation = $('#nation').val();
+            var birthday = $('.year').val()+'年'+$('.mounth').val()+'月'+$('.day').val()+'日';
+            var edu = $('#edu').val();
+            var major = $('#major').val();
+            var tel = $('#tel').val();
+            var tel_s = $('#tel_s').val();
+            var email = $('#email').val();
+            var wechat = $('#wechat').val();
+            var marriage = $('input[name="marriage"]:checked').val();
+            var jieye = $('input[name="jieye"]:checked').val();
+            // var jieye = $('input[name="jieye"]:checked').val();
+            // var exam = $('input[name="exam"]:checked').val();
+            var duty = $('#duty').val();
+            var work_year = $('#work_year').val();
+            var province = $('#city-picker3').val();
+            var id_card = $('#id_card').val();
+            var industry = $('#industry').val();
+            var company = $('#company').val();
+            var section = $('#section').val();
+            // var photo = $('.file-img')[0].src;
+            // var diploma = $('#xueli img')[0].src;
+            // var diploma2 = $('#xueli img')[1].src;
+            // var id_card_photo = $('#identity img')[0].src;
+            // var id_card_photo2 = $('#identity img')[1].src;
+            // var url_ip ='http://211.159.168.247:9003';
+            // $('.alertMsg').showMsg({ isImg: 'isOk', h2txt: 'ok'});
+            var url_ip ='https://py.datahoop.cn';
+            $.ajax({
+                type: 'POST',
+                url: url_ip + '/teacher/',
+                data: {
+                    name,gender,nation,birthday,edu,major,tel,tel_s,jieye,email,marriage,wechat,marriage,duty,work_year,province,id_card,industry,company,section,photo,diploma,diploma2,id_card_photo,id_card_photo2
+                },
+                dataType: 'json',
+                success: function(res) {
+                    $('.loading').hide();
+                    if(res.status) {
+                        $('.alertMsg').showMsg({ isImg: 'isOk', h2txt: res.msg});
+                    }
+                    else {
+                        $('.alertMsg').showMsg({ isImg: 'isNo', h2txt: res.msg});
+                    }
+                }
+            })
+            // 关闭弹窗
+            $('.msg-box-wraper').on('click', '.msg-close', function() {
+                $(this).closest('.msg-box-wraper').fadeOut();
+            })
+            
+        })
+
+        // 判断必填项是否都填了
+        function isOk() {
+            if(!$('#name').val() ||
+                    !$('input[name="gender"]:checked').val() ||
+                    !$('#nation').val() ||
+                    !$('.year').val() ||
+                    !$('.mounth').val() ||
+                    !$('.day').val() ||
+                    !$('#edu').val() ||
+                    !$('#major').val() ||
+                    !$('#tel').val() ||
+                    !$('#email').val() ||
+                    !$('input[name="marriage"]:checked').val() ||
+                    !$('input[name="jieye"]:checked').val() ||
+                    // !$('input[name="jieye"]:checked').val() ||
+                    // !$('input[name="exam"]:checked').val() ||
+                    !$('#duty').val() ||
+                    !$('#work_year').val() ||
+                    !$('#city-picker3').val() ||
+                    !$('#id_card').val() ||
+                    !$('#company').val() ||
+                    !$('#section').val() ||
+                    !photo || !diploma || !diploma2 || 
+                    // !id_card_photo || !id_card_photo2 ||
+                    // !$('.file-img')[0]['src'] ||
+                    // !$('#xueli img').length ||
+                    // !$('#identity img').length ||
+                    !$('#industry').val()) {
+                   return false;
+                }else {
+                    return true;
+                }
+        }
+    </script>
+</body>
+</html>

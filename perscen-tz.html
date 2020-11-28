@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 我的消息</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/page.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        body {
+            background: #f5f8ff;
+        }
+
+        .perscen_xxt {
+            padding-left: 10px;
+            width: 100%;
+            height: 40px;
+            background: #fff;
+        }
+
+        .perscen_xxt>div {
+            margin: 0 15px;
+            font-size: 16px;
+            line-height: 38px;
+            cursor: pointer;
+            box-sizing: border-box;
+            color: #999;
+        }
+
+        .perscen_xxt>div.active {
+            border-bottom: 2px solid #496fff;
+            color: #333;
+        }
+
+        .personR_tz_t {
+            width: 100%;
+            height: 40px;
+            /* background: #fff; */
+        }
+
+        .personR_tz_t ul {
+            padding-left: 10px;
+        }
+
+        .personR_tz_t ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .personR_tz_t ul li {
+            float: left;
+            font-size: 12px;
+            color: #999;
+            height: 40px;
+            line-height: 40px;
+            box-sizing: border-box;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .personR_tz_t ul li.active {
+            font-size: 14px;
+            color: #333;
+            /* border-bottom: 2px solid #496fff; */
+        }
+
+        .personR_tz_c {
+            height: 50px;
+            margin: 0 20px;
+        }
+
+        .personR_tz_cl {
+            padding: 0 30px 0 22px;
+            margin: 18px 0;
+            line-height: 14px;
+            position: relative;
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            border-right: 1px solid #e8e8e8;
+        }
+
+        .personR_tz_cl .personR_tz_cls {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 2px;
+            left: 0px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .personR_tz_cl>span.active {
+            background: url("img/icon/alglist_yes.png") no-repeat center #496FFF;
+            background-size: 100%;
+        }
+
+        .personR_tz_cr {
+            /* display: inline-block; */
+            margin: 15px 0;
+            display: none;
+        }
+
+        .personR_tz_cr>span {
+            display: inline-block;
+            margin-left: 30px;
+            border: 1px solid #496fff;
+            padding: 0 10px;
+            height: 20px;
+            line-height: 20px;
+            color: #496fff;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .personR_tz_b {
+            width: 100%;
+            background: #fff;
+        }
+
+        .personR_tz_b>div {
+            display: none;
+        }
+
+        .personR_tz_b>div.personR_tz_btz {
+            margin: 0 20px;
+            display: block;
+        }
+
+        .personR_tz_btzmb {
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 30px;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp1 {
+            padding-top: 20px;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp1>i {
+            width: 5px;
+            height: 5px;
+            background: #496fff;
+            position: absolute;
+            top: 29px;
+            left: -10px;
+            border-radius: 50%;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp1 .personR_tz_btzmbpzt {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 25px;
+            left: -30px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp1 .active {
+            background: url("img/icon/alglist_yes.png") no-repeat center #496FFF;
+            background-size: 100%;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp1>b {
+            font-size: 12px;
+            color: #999;
+            padding-left: 10px;
+        }
+
+        .personR_tz_btzmb p.personR_tz_btzmbp2 {
+            position: relative;
+            margin: 20px 0;
+            color: #666;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .personR_tz_btzmb>a {
+            padding-left: 10px;
+            color: #496fff;
+            position: absolute;
+            right: 39px;
+            bottom: 20px;
+        }
+
+        .personR_mm {
+            position: relative;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: max-content;
+            background: #ffffff;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .liuyan {
+            background: rgb(255, 255, 255);
+            margin-top: 10px;
+        }
+
+        .liuyan ol {
+            padding-top: 10px;
+            margin-bottom: 60px;
+        }
+
+        .liuyan ol .liuyanTitle {
+            line-height: 26px;
+            padding: 0 20px;
+            border-right: 1px solid #E8E8E8;
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .liuyan ol .huifu1 {
+            margin-left: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .liuyan ol .huifu1 textarea {
+            padding: 10px 15px;
+            line-height: 26px;
+            resize: none;
+            color: #333;
+            font-size: 14px;
+            outline: none;
+            width: 100%;
+            border: 0;
+            height: 88px;
+            border-radius: 4px;
+        }
+
+        .liuyan ol .huifu1 h2 {
+            background: #F8F8F8;
+            height: 50px;
+        }
+
+        .liuyan ol .huifu1 h2 span {
+            float: left;
+            background: #496FFF;
+            color: #fff;
+            line-height: 30px;
+            padding: 0 20px;
+            margin: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing {
+            float: left;
+            padding: 16px 5px;
+            position: relative;
+            display: none;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing img {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing:hover ul {
+            display: block;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing ul {
+            position: absolute;
+            top: 5px;
+            left: 28px;
+            background: #fff;
+            z-index: 1;
+            overflow: hidden;
+            width: 278px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing ul#bqBox li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin: 6px;
+            padding: 0;
+            border: 0;
+        }
+
+        .liuyan ol .huifu1 h2 .biaoqing ul#bqBox li img {
+            width: 100%;
+            height: 100%
+        }
+
+        .liuyan ol .huifu1 h2 p {
+            float: right;
+            margin-right: 20px;
+            color: #999;
+            line-height: 50px;
+        }
+
+        .liuyan ol li {
+            margin-bottom: 15px;
+        }
+
+        .liuyan .grade1 {
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .liuyan .grade1 i {
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin: 20px 15px 20px 20px;
+        }
+
+        .liuyan .grade1 i img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .liuyan .grade1 h2 {
+            line-height: 16px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            height: 16px;
+            margin-bottom: 8px;
+        }
+
+        .liuyan .grade1 h2 b {
+            font-size: 14px;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .liuyan .grade1 p {
+            line-height: 24px;
+            width: calc(100% - 120px);
+            float: left;
+            margin-bottom: 20px;
+            font-size: 14px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .liuyan .grade1 h3 {
+            font-size: 14px;
+            color: #999;
+            line-height: 16px;
+            height: 16px;
+            width: calc(100% - 100px);
+            position: absolute;
+            left: 75px;
+            bottom: 0;
+            cursor: pointer;
+        }
+
+        .liuyan .grade1 h3 img {
+            width: 14px;
+            height: 14px;
+            margin: 1px 2px 1px 1px;
+        }
+
+        .liuyan .grade2_box {
+            width: calc(100% - 75px);
+            margin-left: 75px;
+            background: #F8F8F8;
+            padding-bottom: 15px;
+            display: none;
+        }
+
+        .liuyan .grade2_box .grade2 {
+            overflow: hidden;
+            font-size: 14px;
+            display: inline-block;
+            width: 100%;
+            position: relative;
+        }
+
+        .liuyan .grade2_box .grade2 i {
+            width: 30px;
+            height: 30px;
+            float: left;
+            margin: 15px 15px 10px;
+        }
+
+        .liuyan .grade2_box .grade2 i img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .liuyan .grade2_box .grade2 p {
+            line-height: 24px;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            float: left;
+            width: calc(100% - 120px);
+        }
+
+        .liuyan .grade2_box .grade2 p span {
+            display: inline-block;
+            vertical-align: top;
+            line-height: 24px;
+            margin-right: 5px;
+        }
+
+        .liuyan .grade2_box .grade2 p span a {
+            color: #8590A6;
+            padding: 0 5px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+        .liuyan .grade2_box .grade2 h3 {
+            color: #999;
+            font-size: 14px;
+            position: absolute;
+            bottom: 0;
+            left: 60px;
+        }
+
+        .liuyan .grade2_box .grade2 h3 b {
+            margin-right: 20px;
+        }
+
+        .liuyan .grade2_box .grade2 h3 a {
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+        .liuyan .grade2_box .huifu2 {
+            width: 100%;
+            padding: 15px 108px 0 20px;
+            position: relative;
+        }
+
+        .liuyan .grade2_box .huifu2 textarea {
+            width: 100%;
+            border: 1px solid #E8E8E8;
+            line-height: 26px;
+            padding: 3px 10px;
+            max-height: 58px;
+            resize: none;
+        }
+
+        .liuyan .grade2_box .huifu2 span {
+            padding: 0 15px;
+            line-height: 28px;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 14px;
+            color: #fff;
+            background: #496FFF;
+            cursor: pointer;
+        }
+
+        .liuyan .grade2_box .huifu3 {
+            width: 100%;
+            padding: 15px 108px 0 60px;
+            position: relative;
+        }
+
+        .liuyan .grade2_box .huifu3 textarea {
+            width: 100%;
+            border: 1px solid #E8E8E8;
+            line-height: 26px;
+            padding: 0 10px;
+            max-height: 28px;
+            resize: none;
+        }
+
+        .liuyan .grade2_box .huifu3 span {
+            padding: 0 15px;
+            line-height: 28px;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 14px;
+            color: #fff;
+            background: #496FFF;
+        }
+
+        #liuyanPage {
+            padding-bottom: 40px;
+        }
+
+        #liuyanPage input {
+            min-height: 20px;
+        }
+
+        .liuyan .emptyBox {
+            height: calc(100vh - 235px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="tz">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_mm">
+                <div class="perscen_xxt">
+                    <div class="fl active">系统通知</div>
+                    <!-- <div class="fl">留言板</div> -->
+                    <div class="clear"></div>
+                </div>
+                <div class="perscen_xxb">
+                    <div>
+                        <div class="personR_tz_t">
+                            <ul>
+                                <li class="active" data-id="">全部通知</li>
+                                <li data-id="0">资源内容</li>
+                                <li data-id="1">服务消息</li>
+                                <li data-id="2">系统通知</li>
+                            </ul>
+                        </div>
+                        <div class="personR_tz_c">
+                            <div class="personR_tz_cl"><span class="personR_tz_cls"></span>全选</div>
+                            <div class="personR_tz_cr">
+                                <span>标记已读</span>
+                                <span>删除</span>
+                            </div>
+                        </div>
+                        <div class="personR_tz_b">
+                            <div class="personR_tz_btz"></div>
+                            <div class="personR_tz_btz"></div>
+                            <div class="personR_tz_btz"></div>
+                            <div class="personR_tz_btz"></div>
+                        </div>
+                        <div class="mask hidden"></div>
+                    </div>
+                    <div class="liuyan hide">
+                        <ol>
+                            <div class="liuyanTitle">给他留言</div>
+                            <div class="huifu1">
+                                <textarea></textarea>
+                                <h2>
+                                    <span id="liuyan">留言</span>
+                                    <div class="biaoqing">
+                                        <img src="img/biaoqing.png">
+                                        <ul style="padding:10px;" id="bqBox">
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                            <li><img src="img/MR0.png"></li>
+                                        </ul>
+                                    </div>
+                                    <p>您还可以输入 <b>500</b> / 500</p>
+                                </h2>
+                            </div>
+                        </ol>
+                        <div class="emptyBox">
+                            <img src="img/empty4.png"><br>
+                            <span>没有任何留言</span>
+                        </div>
+                        <h6 id="liuyanPage" class="Page" style="display:block;"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="mu"></div> -->
+
+        <!--提示信息-->
+        <!-- <div class="msg-box-wraper alertMsg hide">
+            <div class="msg-box">
+                <i class="msg-close">×</i>
+                <h6 class="msg-img"></h6>
+                <h2><span>提示信息</span></h2>
+            </div>
+        </div> -->
+</body>
+
+</html>
+<script>
+    $(function() {
+        // 默认加载全部信息
+        getList('');
+        var backup;
+        // 获取站内信列表
+        function getList(id) {
+            $.GSHajax({
+                url: '/push/messages/',
+                data: {
+                    classify: id
+                },
+                success: function(res) {
+                    backup = res.data;
+                    if (id === '') {
+                        id = 0;
+                    } else {
+                        id = +id + 1;
+                    }
+                    $(`.personR_tz_btz:eq(${id})`).empty();
+                    for (var i = 0; i < res.data.length; i++) {
+                        $('.personR_tz_btz').eq(id).append(`<div class="personR_tz_btzmb" data-num="${i}"><p class="personR_tz_btzmbp1"><span data-id="${res.data[i].id}" class="personR_tz_btzmbpzt"></span>${res.data[i].title}<b>${res.data[i].createtime}</b></p><p class="personR_tz_btzmbp2">${replace(res.data[i].content)}</p><a href="javascript:void(0);">查看</a></div>`)
+                        if (res.data[i].status) {
+                            $(".personR_tz_btzmbp1").eq(i).prepend(`<i class="readSign"></i>`);
+                        }
+                    }
+                }
+            })
+        }
+        // 站内信操作
+        function operation(ids, classify) {
+            $.GSHajax({
+                url: '/push/operationmessage/',
+                data: {
+                    ids, //放要操作 数据的id
+                    classify //1 删除 2 标记已读
+                },
+                success: function(res) {}
+            })
+        }
+        // 去除html标签
+        function replace(str) {
+            var test = str.replace(/<\/?.+?>/g, "");
+            var result = test.replace(/ /g, "");
+            return result;
+        }
+        // 通知类型切换
+        $(".personR_tz_t ul li").on("click", function() {
+            $(this).addClass("active").siblings().removeClass("active");
+            // $(".personR_tz_b>div").eq($(this).index()).show().siblings().hide();
+            $(".personR_tz_b .personR_tz_btz").eq($(this).index()).show().siblings().hide()
+            getList($(this).attr('data-id'))
+        });
+        // 单选是否选中
+        $("body").on("click", '.personR_tz_btzmbpzt', function() {
+            if ($(this).hasClass("active")) {
+                $(this).removeClass("active");
+                !$('.personR_tz_btzmbpzt.active').length && $(".personR_tz_cr").css("display", "none");
+            } else {
+                $(this).addClass("active");
+                $(".personR_tz_cr").css("display", "inline-block");
+            }
+            if ($(".personR_tz_btzmbp1>span.active").length == $(".personR_tz_btzmbpzt").length) {
+                $(".personR_tz_cls").addClass("active");
+            } else {
+                $(".personR_tz_cls").removeClass("active");
+            }
+        });
+        // 全选是否选中
+        $(".personR_tz_cls").on("click", function() {
+            if ($(this).hasClass("active")) {
+                $(this).removeClass("active");
+                $(".personR_tz_btzmbpzt").removeClass("active");
+                $(".personR_tz_cr").hide();
+            } else {
+                $(this).addClass("active");
+                $(".personR_tz_btzmbpzt").addClass("active");
+                $(".personR_tz_cr").css("display", "inline-block");
+            }
+        });
+        // 标记已读操作
+        $(".personR_tz_cr>span:eq(0)").on("click", function() {
+            var ids = [];
+            $('.personR_tz_btz').find('.readSign').each(function() {
+                $(this).next().hasClass('active') && ids.push($(this).next().attr('data-id'));
+            });
+            operation(JSON.stringify(ids), 2);
+            $(".personR_tz_b>div").each(function() {
+                if ($(this).css("display") == "block") {
+                    if ($(this).find(".personR_tz_btzmbpzt").hasClass("active")) {
+                        $(this).find(".active").prev().remove();
+                        $(this).find(".personR_tz_btzmbpzt").removeClass("active");
+                    }
+                }
+            })
+        });
+        // 删除操作
+        $(".personR_tz_cr>span:eq(1)").on("click", function() {
+            var ids = [];
+            $('.personR_tz_btz').find('.active').each(function() {
+                ids.push($(this).attr('data-id'));
+            });
+            operation(JSON.stringify(ids), 1);
+            $(".personR_tz_b>div").each(function() {
+                if ($(this).css("display") == "block") {
+                    if ($(this).find(".personR_tz_btzmbpzt").hasClass("active")) {
+                        $(this).find(".active").parents(".personR_tz_btzmb").remove();
+                    }
+                }
+            })
+        });
+        $('body').on('click', '.personR_tz_btzmb', function() {
+            $('.mask').show();
+            $('.mask').html(backup[$(this).attr('data-num')].content)
+        })
+    })
+    $(".perscen_xxt>div").on("click", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".perscen_xxb>div").eq($(this).index()).show().siblings().hide();
+    })
+</script>
+<script>
+    var owner = window.location.search.substr(1);
+    //401处理
+    function i_isGoLogin(err) {
+        if (err.status == 401) {
+            if (token == 'JWT undefined' || token == 'JWT null') {
+                $('.shade p').html('您目前还没有注册或登录~ ')
+                $('.shade').show();
+            } else {
+                $('.shade p').html('系统检测,您的账号存在风险异常,请重新登录。')
+                $('.shade').show();
+            }
+        }
+    }
+    /*渲染主页个人信息*/
+    function xrIsme(num, sex) {
+        var who = '他';
+        if (sex == '女') {
+            who = '她';
+        }
+        if (num == 0) {
+            $('.liuyanTitle').html('给' + who + '留言')
+        }
+    }
+
+    function xrName(id1, id2, name) {
+        if (id1 == id2) {
+            return ''
+        } else {
+            return name
+        }
+    }
+    $.ajax({
+        url: url_ip + '/personal/homepage/',
+        type: 'GET',
+        data: {
+            other_id: owner
+        },
+        dataType: 'json',
+        headers: {
+            'Authorization': token
+        },
+        success: function(data) {
+            if (data.status) {
+                xrIsme(data.data.is_me, data.data.sex);
+                if (data.data.is_me == '1') {
+                    $('.liuyanTitle').hide()
+                    $('.huifu1').hide()
+                } else if (data.data.is_me == '0' && data.data.is_gz == '0') {
+                    $('.liuyanTitle').show()
+                    $('.huifu1').show()
+                } else if (data.data.is_me == '0' && data.data.is_gz == '1') {
+                    $('.liuyanTitle').show()
+                    $('.huifu1').show()
+                }
+            }
+        },
+        error: function(err) {
+            i_isGoLogin(err);
+        }
+    })
+    liuyan(1);
+    /*留言*/
+    function liuyan(page) {
+        $.ajax({
+            url: url_ip + '/model/liuyan/',
+            type: 'GET',
+            data: {
+                owner: owner,
+                page: page
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                // console.log(data)
+                if (data.status) {
+                    $('.liuyan ol>li').remove();
+                    var res = data.data;
+                    if (res.length > 0) {
+                        $(".liuyan .emptyBox").hide();
+                    } else {
+                        $(".liuyan .emptyBox").show();
+                    }
+                    for (var i = 0; i < res.length; i++) {
+                        $('.liuyan ol').append('<li data-id="' + res[i].plid + '">' +
+                            '<div class="grade1">' +
+                            '<i data-id="' + res[i].hfqid + '" class="to_i"><img src="' + url_ip + res[i].hfqtx + '"></i>' +
+                            '<h2><span data-id="' + res[i].hfqid + '" class="to_i">' + res[i].hfqname + '</span><b>' + res[i].time + '</b></h2>' +
+                            '<p>' + res[i].liuyan + '</p>' +
+                            '<h3 class="re_yiji"><img src="img/icon_msg_reply.png">回复 (' + res[i].erji_count + ')</h3>' +
+                            '</div>' +
+                            '<div class="grade2_box">' +
+                            '<div id="lyerPage' + res[i].plid + '" class="Page" style="position:static;"></div>' +
+                            '<div class="huifu2"><textarea></textarea><span data-id="' + res[i].plid + '" data-id2="' + res[i].hfqid + '">回复</span></div>' +
+                            '</div>' +
+                            '</li>')
+                    }
+                    if (data.amount > 15) {
+                        xrPage($('#liuyanPage'), Math.ceil(data.amount / 15), page)
+                    }
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    }
+
+    function liuyan2(page, obj) {
+        var yijiid = Number(obj.attr('data-id'))
+        var userid = obj.children('.grade1').children('h2').children('span').attr('data-id')
+            //console.log(obj,yijiid,userid,page)
+        $.ajax({
+            url: url_ip + '/model/liuyaner',
+            type: 'GET',
+            data: {
+                owner: owner,
+                first_id: yijiid,
+                page: page
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    var res = data.data
+                    obj.children('.grade1').children('.re_yiji').html('<img src="img/icon_msg_reply.png">回复 (' + data.amount + ')')
+                    obj.children('.grade2_box').children('.grade2').remove()
+                    obj.children('.grade2_box').show()
+                    for (var i = res.length - 1; i > -1; i--) {
+                        obj.children('.grade2_box').prepend('<div class="grade2" data-id="' + res[i].plid + '">' +
+                            '<i data-id="' + res[i].hfqid + '" class="to_i"><img src="' + url_ip + res[i].hfqtx + '"></i>' +
+                            '<p><span><a data-id="' + res[i].hfqid + '" class="to_i">' + res[i].hfqname + '</a>回复<a>' + xrName(userid, res[i].hfhid, res[i].hfhname) + '</a> :</span>' + res[i].liuyan + '</p>' +
+                            '<h3><b>' + res[i].time + '</b><a class="re_erji">回复</a></h3>' +
+                            '</div>')
+                    }
+                    if (data.amount > 6) {
+                        xrPage($('#lyerPage' + yijiid), Math.ceil(data.amount / 6), page)
+                    }
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    }
+    /*一级留言*/
+    $('#liuyan').live('click', function() {
+        var html = $('.huifu1 textarea').val()
+        $.ajax({
+            url: url_ip + '/model/liuyan/',
+            type: 'POST',
+            data: {
+                owner: owner,
+                text: html
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    $('.huifu1 b').html('500')
+                    $('.huifu1 textarea').val('')
+                    liuyan(1)
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    });
+    /*跳个人主页*/
+    $('.to_i').live('click', function() {
+        var id = $(this).attr('data-id');
+        window.location.href = 'perscen-tz.html?' + id;
+    });
+    /*回复二级*/
+    $('.re_erji').live('click', function() {
+        var id = $(this).parent().parent().parent().parent().attr('data-id')
+        var name = $(this).parent().prev().children('span').children('a:eq(0)').html()
+        var id2 = $(this).parent().prev().children('span').children('a:eq(0)').attr('data-id')
+        $(this).parents('.grade2_box').children('.huifu2').children('textarea').attr('placeholder', '回复 ' + name + ':')
+        $(this).parents('.grade2_box').children('.huifu2').children('span').attr('data-id', id)
+        $(this).parents('.grade2_box').children('.huifu2').children('span').attr('data-id2', id2)
+    });
+    /*二级回复按钮点击*/
+    $('.huifu2 span').live('click', function() {
+        var html = $(this).prev().val()
+        var that = $(this)
+            //console.log(owner,html,$(this).attr('data-id'),$(this).attr('data-id2'))
+        $.ajax({
+            url: url_ip + '/model/liuyan/',
+            type: 'POST',
+            data: {
+                owner: owner,
+                text: html,
+                parent_id: $(this).attr('data-id'),
+                hf_user: $(this).attr('data-id2')
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    that.prev().val('')
+                    var obj = that.parent().parent().parent();
+                    var page = obj.children('.grade2_box').children('.Page').children('dl').attr('data-nowpage')
+                    liuyan2(page, obj)
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    });
+    /*回复一级*/
+    $('.re_yiji').live('click', function() {
+        var obj = $(this).parent().parent()
+        var page = obj.children('.grade2_box').children('.page').children('dl').attr('data-nowpage') || 1
+        liuyan2(page, obj)
+    });
+    /*留言框长度检测*/
+    $('.huifu1 textarea').on('input propertychange change', function() {
+        if ($(this).val().length >= 500) {
+            $(this).val($(this).val().substr(0, 500))
+            $('.huifu1 b').html(0)
+        } else {
+            $('.huifu1 b').html(Number($('.huifu1 b').html()) - 1)
+        }
+    });
+    /*分页*/
+    $('.Page').live('click', function(evt) {
+        var id = $(this)[0].id
+        var target = evt.target
+        var className = target.className
+        var page = target.innerHTML
+        var pagenum = $(this).parent().attr('data-num')
+        var classify = $(this).parent().attr('data-type')
+        if (classify) {
+            clickPage($('#' + id), className, page, XrData, pagenum, classify)
+        } else if (id == 'liuyanPage') {
+            clickPage($('#' + id), className, page, liuyan, pagenum, classify)
+        } else if (id.substr(0, 8) == 'lyerPage') {
+            var pagenum = $(this).parent().parent()
+            clickPage($('#' + id), className, page, liuyan2, pagenum, classify)
+        }
+    });
+</script>

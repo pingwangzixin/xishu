@@ -1,0 +1,88 @@
+/*全局样式*/
+@charset"utf-8";
+*{margin:0;padding:0;list-style:none;box-sizing:border-box;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;outline:none;}
+h2,h3,h4,h5,h6{font-weight:normal;}
+body{background:#fff;font-size:12px;font-family: "Microsoft YaHei", "微软雅黑", Tahoma, Geneva, sans-serif;}
+.clear{clear:both;}
+
+
+
+.type_area{width:1024px;margin:0 auto;overflow:hidden;}
+#type_areas{width:390px;float:right;border-bottom:1px solid #dcecfb;}
+.personal_algorithm_details_box{width:1024px;margin:0 auto;}
+.personal_algorithm_details_box .top_nav{margin:15px 0 0 0;position:relative;}
+.personal_algorithm_details_box .top_nav .top{overflow:hidden;}
+.personal_algorithm_details_box .top_nav .top i{width:10px;height:16px;background:url(../img/icon_2.png)no-repeat -14px -280px;float:left;margin:1px 10px 0 0;} 
+.personal_algorithm_details_box .top_nav p{float:left;color:#999;}
+
+.personal_algorithm_details_box .top_nav .btn{width:220px;height:30px;background:linear-gradient(90deg,#070707,#ededed);margin:5px 0 0 0;}
+.personal_algorithm_details_box .top_nav .btn i{width:0px;height:0px;border-left:14px solid #0068b7;border-bottom:14px solid transparent;border-right:14px solid transparent;}
+.personal_algorithm_details_box .top_nav .btn h3{color:#fff;margin:-8px 0 0 20px;}
+
+.personal_algorithm_details_box .content{margin-top:-8px;overflow:hidden;}
+.personal_algorithm_details_box .content section{width:600px;height:535px;border:1px solid #dcecfb;margin:0 15px;float:left;}
+.personal_algorithm_details_box .content section .top{margin:20px 15px;overflow:hidden;}
+.personal_algorithm_details_box .content section .top h3{float:left;margin-right:10px;color:#033e67;font-size:16px;}
+.personal_algorithm_details_box .content section .top ol{float:left;margin-top:2px;}
+.personal_algorithm_details_box .content section .top ol li{float:left;padding:1px 3px;border:1px solid #d2d2d2;margin-right:10px;line-height:17px;text-align:center;border-radius:3px;color:#666;}
+/*算法示例*/
+.personal_algorithm_details_box .content section .example{width:570px;height:380px;border-top:1px solid #eef0f0;border-left:1px solid #eef0f0;margin: 0 auto;background:#f9fbfb;overflow-x:hidden;padding:20px;color:#033e67;line-height:20px;}
+/*隐藏滚动条*/
+.personal_algorithm_details_box .content section .example::-webkit-scrollbar{width:0px;}
+
+.personal_algorithm_details_box .content section .btn{margin:10px 15px 0;overflow:hidden;}
+.personal_algorithm_details_box .content section .btn .reveal{float:left;margin-top:15px;}
+.personal_algorithm_details_box .content section .btn .reveal li{margin-right:20px;float:left;}
+.personal_algorithm_details_box .content section .btn .reveal li i{width:19px;height:12px;background:url(../img/icon_2.png) no-repeat -189px -280px;margin-top:2px;}
+.personal_algorithm_details_box .content section .btn .reveal li:nth-child(2) i{background-position:-228px -278px;}
+.personal_algorithm_details_box .content section .btn .reveal li:nth-child(3) i{background-position:-260px -280px;}
+
+.personal_algorithm_details_box .content section .btn .reveal li span{color:#9a9a9a;}
+.personal_algorithm_details_box .content section .btn .else{float:right;margin-top:8px;}
+.personal_algorithm_details_box .content section .btn .else li{float:left;padding:3px 5px;background:#a5a6a6;color:#fff;margin-left:8px;border-radius:3px;}
+.personal_algorithm_details_box .content section .btn .else li i{width:18px;height:15px;background:url(../img/icon_2.png)no-repeat -303px -278px;}
+.personal_algorithm_details_box .content section .btn .else li:nth-child(3) i{background-position:-340px -278px;}
+.personal_algorithm_details_box .content section .btn .else li:nth-child(4) i{background-position:-371px -278px;}
+.personal_algorithm_details_box .content section .btn .else li:hover{background:#036eb7;cursor:pointer;}
+
+.personal_algorithm_details_box .content aside{width:390px;height:500px;float:right;}
+.personal_algorithm_details_box .content aside .people{width:390px;height:100px;border:1px solid #dcecfb;margin-bottom:15px;overflow:hidden;}
+.personal_algorithm_details_box .content aside .people .head{margin:15px 20px 0 10px;width:68px;height:68px;border-radius:50%;float:left;}
+.personal_algorithm_details_box .content aside .people .head img{width:68px;height:68px;border-radius:50%;}
+.personal_algorithm_details_box .content aside .people .right{float:left;margin:25px 0 0 0;}
+.personal_algorithm_details_box .content aside .people .right .man{margin-bottom:10px;}
+.personal_algorithm_details_box .content aside .people .right .man span:nth-child(1){color:#297bbc;}
+.personal_algorithm_details_box .content aside .people .right .man span:nth-child(2){color:#013b63;}
+.personal_algorithm_details_box .content aside .people .right .attention{width:50px;height:22px;border:1px solid #7ecef4;border-radius:3px;color:#52bdf5;line-height:18px;}
+.personal_algorithm_details_box .content aside .people .right .attention i{width:17px;height:15px;background:url(../img/icon_2.png) no-repeat -133px -278px;margin-top:2px;}
+
+.personal_algorithm_details_box .content aside .introduce{width:390px;height:385px;border:1px solid #dcecfb;}
+.personal_algorithm_details_box .content aside .introduce .title{margin:10px 0 20px 20px;}
+.personal_algorithm_details_box .content aside .introduce .title h2{font-size:16px;line-height:32px;color:#275071;}
+.personal_algorithm_details_box .content aside .introduce .title h4{font-size:14px;color:#222323;}
+
+.personal_algorithm_details_box .content aside .introduce .intro{margin:10px 0 20px 20px;}
+.personal_algorithm_details_box .content aside .introduce .intro h2{font-size:16px;line-height:32px;color:#275071;}
+.personal_algorithm_details_box .content aside .introduce .intro p{font-size:14px;color:#222323;text-indent:2em;margin-right:6px;}
+.personal_algorithm_details_box #t{float:right;margin:5px 0;}
+.personal_algorithm_details_box #t li{float:left;width:60px;height:23px;border:1px solid #06415e;line-height:20px;text-align:center;margin-left:13px;border-radius:3px;color:#06415e;}
+.personal_algorithm_details_box #t li:hover{background:#06415e;color:#fff;cursor:pointer;}
+
+.all_comment{margin-left:15px;line-height:46px;cursor:pointer;}
+.all_comment img{margin:16px 5px 0 0;}
+.will_comment{margin-left:45px;line-height:46px;cursor:pointer;}
+.will_comment img{margin:16px 5px 0 0;}
+
+/*退出登录*/
+.shade_tc{width:100%;height:100%;background:rgba(0,0,0,0.8);position:absolute;top:0;left:0;z-index:1000;display:none;}
+.is_quit{position:absolute;top:40%;left:45%;width:200px;height:80px;background:#000;border-radius:5px;color:#fff;display:block;z-index:1000;}
+.is_quit p{padding:10px 0 0 35px;}
+.is_quit div{margin:20px 0 0 20px;}
+.is_quit div span{width:66px;height:26px;background:#878787;float:left;margin-left:10px;text-align:center;line-height:26px;color:#fff;border-radius:3px;cursor:pointer;}
+.is_quit div span:nth-child(2){background:#06415e;}

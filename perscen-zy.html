@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 我的资源</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/reset.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/page.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        .person_zyt {
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            padding-left: 10px;
+        }
+
+        .person_zyt>div {
+            line-height: 38px;
+            margin: 0 15px;
+            color: #999;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .person_zyt>div.active {
+            border-bottom: 2px solid #496fff;
+            color: #333;
+        }
+
+        .person_zyb {
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .person_zyb>div {
+            padding: 0 20px 50px;
+        }
+
+        .person_zyb ul {
+            height: 40px;
+        }
+
+        .person_zyb ul li {
+            line-height: 20px;
+            float: left;
+            padding: 0 15px;
+            margin: 10px 0;
+            font-size: 14px;
+            border-right: 1px solid #E8E8E8;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .person_zyb ul li.active {
+            color: #000;
+            font-weight: bold;
+        }
+
+        .person_zyb ul li::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .buyDataBox .emptyBox,
+        .uploadDataBoX .emptyBox,
+        .buyAlgoBox .emptyBox,
+        .uploadAlgoBoX .emptyBox,
+        .buySceneBox .emptyBox,
+        .uploadSceneBoX .emptyBox {
+            height: calc(100vh - 235px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+        }
+
+        .buyDataBox .emptyBox a,
+        .uploadDataBoX .emptyBox a,
+        .buyAlgoBox .emptyBox a,
+        .uploadAlgoBoX .emptyBox a,
+        .buySceneBox .emptyBox a,
+        .uploadSceneBoX .emptyBox a {
+            margin-left: 10px;
+            color: #496fff;
+        }
+
+        .buyDataBox ol,
+        .buyAlgoBox ol,
+        .buySceneBox ol {
+            width: 100%;
+        }
+
+        .buyDataBox ol>li,
+        .buyAlgoBox ol>li,
+        .buySceneBox ol>li {
+            width: 100%;
+            padding: 15px 0;
+            overflow: hidden;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .buyDataBox ol>li i,
+        .buyAlgoBox ol>li i,
+        .buySceneBox ol>li i {
+            height: 56px;
+            width: 136px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .buyDataBox ol>li i img,
+        .buyAlgoBox ol>li i img,
+        .buySceneBox ol>li i img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .buyDataBox ol>li .msg,
+        .buyAlgoBox ol>li .msg,
+        .buySceneBox ol>li .msg {
+            width: 200px;
+            height: 56px;
+            float: left;
+        }
+
+        .buyDataBox ol>li .msg h2,
+        .buyAlgoBox ol>li .msg h2,
+        .buySceneBox ol>li .msg h2 {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 24px;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .buyDataBox ol>li .msg .label,
+        .buyAlgoBox ol>li .msg .label,
+        .buySceneBox ol>li .msg .label {
+            width: 100%;
+            overflow: hidden;
+            height: 28px;
+        }
+
+        .buyDataBox ol>li .msg .label b,
+        .buyAlgoBox ol>li .msg .label b,
+        .buySceneBox ol>li .msg .label b {
+            line-height: 18px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            float: left;
+            margin: 5px 10px 5px 0;
+        }
+
+        .buyDataBox ol>li .abs,
+        .buyAlgoBox ol>li .abs,
+        .buySceneBox ol>li .abs {
+            width: calc(100% - 720px);
+            float: left;
+            height: 56px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 28px;
+            font-size: 14px;
+            margin: 0 20px;
+        }
+
+        .buyDataBox ol>li .abs.on,
+        .buyAlgoBox ol>li .abs.on,
+        .buySceneBox ol>li .abs.on {
+            line-height: 50px;
+        }
+
+        .buyDataBox ol>li .zt,
+        .buyAlgoBox ol>li .zt,
+        .buySceneBox ol>li .zt {
+            float: left;
+            line-height: 20px;
+            width: 40px;
+            margin: 18px 30px;
+            color: #fff;
+            background: #666;
+            text-align: center;
+        }
+
+        .buyDataBox ol>li .btn2,
+        .buyAlgoBox ol>li .btn2,
+        .buySceneBox ol>li .btn2 {
+            width: 234px;
+            float: right;
+            text-align: center;
+            height: 56px;
+        }
+
+        .buyDataBox ol>li .btn2>div,
+        .buyAlgoBox ol>li .btn2>div,
+        .buySceneBox ol>li .btn2>div {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 56px;
+            margin: 0 10px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .uploadDataBoX ol,
+        .uploadAlgoBoX ol,
+        .uploadSceneBoX ol {
+            width: 100%;
+        }
+
+        .uploadDataBoX ol>table,
+        .uploadAlgoBoX ol>table,
+        .uploadSceneBoX ol>table {
+            line-height: 50px;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            color: #333;
+        }
+
+        .uploadDataBoX ol>table tr,
+        .uploadAlgoBoX ol>table tr,
+        .uploadSceneBoX ol>table tr {
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .uploadDataBoX ol>table tr:first-child,
+        .uploadAlgoBoX ol>table tr:first-child,
+        .uploadSceneBoX ol>table tr:first-child {
+            background: #F4F7FE;
+            color: #333;
+            line-height: 59px;
+            height: 60px;
+        }
+
+        .uploadDataBoX ol>table tr td:first-child,
+        .uploadAlgoBoX ol>table tr td:first-child,
+        .uploadSceneBoX ol>table tr td:first-child {
+            text-align: left;
+            padding-left: 40px;
+        }
+
+        .uploadDataBoX ol>table tr td>b,
+        .uploadAlgoBoX ol>table tr td>b,
+        .uploadSceneBoX ol>table tr td>b {
+            color: #fff;
+            line-height: 20px;
+            padding: 0 8px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 15px 5px;
+        }
+
+        .uploadDataBoX ol>table tr td>b.zt,
+        .uploadAlgoBoX ol>table tr td>b.zt,
+        .uploadSceneBoX ol>table tr td>b.zt {
+            background: #666;
+        }
+
+        .uploadAlgoBoX ol>table tr td>b.status0 {
+            background: #FF0130;
+        }
+
+        .uploadAlgoBoX ol>table tr td>b.status1 {
+            background: #01DBA1;
+        }
+
+        .uploadAlgoBoX ol>table tr td>b.status2 {
+            background: #FF9901;
+        }
+
+        .uploadAlgoBoX ol>table tr td>b.status3 {
+            background: #00BBFF;
+        }
+
+        .uploadDataBoX ol>table tr td>span,
+        .uploadAlgoBoX ol>table tr td>span,
+        .uploadSceneBoX ol>table tr td>span {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .Page {
+            padding-top: 25px;
+        }
+        /* gobtn */
+        .gobtn a {
+            display: block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            padding-left: 15px;
+            color: #496FFF;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        /*设置*/
+
+        .setBg {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            display: none;
+        }
+
+        .setBg .setBox {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: #fff;
+            border-radius: 3px;
+            box-shadow: 0 0 50px #000;
+            width: 800px;
+            height: 500px;
+            margin-top: -250px;
+            margin-left: -400px;
+            padding: 60px 40px 70px;
+        }
+
+        .setBg .setBox>.setCenter {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .setBg .setBox>.setCenter h2 {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+            background: #c6c6e9;
+            color: #fff;
+            border-radius: 0 15px 15px 0;
+            font-size: 14px;
+        }
+
+        .setBg .setBox>.setCenter h3 {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .setBg .setBox>.setCenter div {
+            line-height: 30px;
+            margin-bottom: 26px;
+            float: left;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .setBg .setBox>.setCenter div:last-child {
+            margin-bottom: 0;
+        }
+
+        .setBg .setBox>.setCenter div input {
+            width: 600px;
+            border: 1px solid #c6c6e9;
+            border-radius: 3px;
+            padding-left: 10px;
+            margin: 0 20px;
+            height: 30px;
+        }
+
+        .setBg .setBox>.setCenter div select {
+            width: 220px;
+            height: 30px;
+            border: 1px solid #c6c6e9;
+            border-radius: 3px;
+            text-align: center;
+            margin: 0 20px;
+            padding-left: 10px;
+        }
+
+        .setBg .setBox>.setCenter div p {
+            display: inline-block;
+            vertical-align: top;
+            line-height: 20px;
+            overflow: hidden;
+            width: 640px;
+            padding: 0 15px;
+        }
+
+        .setBg .setBox>.setCenter div p b {
+            padding: 0 8px;
+            border: 1px solid #c6c6e9;
+            margin: 4px 5px;
+            float: left;
+        }
+
+        .setBg .setBox>.setCenter div p i {
+            float: left;
+            padding: 0 8px;
+            line-height: 20px;
+            border: 1px solid #c6c6e9;
+            margin: 4px 5px;
+            color: #999;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .setBg .setBox>.setCenter div textarea {
+            vertical-align: top;
+            width: 600px;
+            padding: 0 10px;
+            margin: 0 20px;
+            border: 1px solid #c6c6e9;
+            border-radius: 3px;
+            resize: none;
+            height: 150px;
+            line-height: 28px;
+            font-size: 14px;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold {
+            border: 1px solid #c6c6e9;
+            width: calc(100% - 100px);
+            padding: 0 2px;
+            display: none;
+            margin-left: 68px;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold h5 {
+            text-align: right;
+            padding-right: 10px;
+            line-height: 20px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold b {
+            float: left;
+            padding: 0 12px;
+            position: relative;
+            border: 1px solid transparent;
+            transition: all .5s;
+            line-height: 20px;
+            cursor: default;
+            margin: 2px 0;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold b span {
+            position: absolute;
+            right: 0;
+            color: #999;
+            display: none;
+            top: 0px;
+            cursor: pointer;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold b:hover {
+            border-color: #333;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold b:hover>span {
+            display: block;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold .labelEr {
+            width: 100%;
+            margin-bottom: 0;
+            background: #f5f5f5;
+            border-top: 2px solid #c6c6e9;
+            display: none;
+            min-height: 28px;
+        }
+
+        .setBg .setBox>.setCenter div.labelfold .labelThree {
+            position: absolute;
+            width: 580px;
+            box-shadow: 0 0 5px #c6c6e9;
+            display: none;
+            top: 21px;
+            overflow: hidden;
+            background: #fff;
+            z-index: 10;
+            padding: 0 2px;
+        }
+
+        .setBg .setBox div.bc {
+            width: 200px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            background: #496FFF;
+            margin-left: -100px;
+            font-size: 14px;
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            margin-bottom: 0;
+        }
+
+        .setBg .setBox div.bc s {
+            width: 20px;
+            display: inline-block;
+            height: 30px;
+            vertical-align: top;
+        }
+
+        .bq_del {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            background: url(img/关闭.png);
+            background-size: cover;
+            cursor: pointer;
+            margin-left: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="zy">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_mm">
+                <div class="person_zyt">
+                    <div class="fl active">我的数据</div>
+                    <div class="fl">我的算法</div>
+                    <div class="fl">我的场景</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="person_zyb">
+                    <div>
+                        <ul>
+                            <li data-to="buyDataBox" class="active">购买数据</li>
+                            <li data-to="uploadDataBoX">上传数据</li>
+                        </ul>
+                        <div class="buyDataBox box" style="display:block;" data-type="buydata" data-height="87" data-top="0">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有购买过数据</span><a href="alg_list.html?sj">去看看</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="buyPage_d" class="Page"></div>
+                        </div>
+                        <div class="uploadDataBoX box hide" data-type="updata" data-height="51" data-top="60">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有上传过数据</span><a href="data_list.html">去上传</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="uploadPage_d" class="Page"></div>
+                        </div>
+                    </div>
+                    <div class="hide">
+                        <ul>
+                            <li data-to="buyAlgoBox" class="myalgo active">购买算法</li>
+                            <li data-to="uploadAlgoBoX">自建算法</li>
+                        </ul>
+                        <div class="buyAlgoBox box" data-type="buyalg" data-height="87" data-top="0">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有购买过算法</span><a href="alg_list.html?sf">去看看</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="buyPage_a" class="Page"></div>
+                        </div>
+                        <div class="uploadAlgoBoX box hide" data-type="myalg" data-height="51" data-top="60">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有自建过算法</span><a href="python3/python_online.html">去自建</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="uploadPage_a" class="Page"></div>
+                        </div>
+                    </div>
+                    <div class="hide">
+                        <ul>
+                            <li data-to="buySceneBox" class="active">购买模型</li>
+                            <li data-to="uploadSceneBoX">自建模型</li>
+                        </ul>
+                        <div class="buySceneBox box" data-type="addscene" data-height="87" data-top="0">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有购买过模型</span><a href="alg_list.html?cj">去看看</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="buyPage_s" class="Page"></div>
+                        </div>
+                        <div class="uploadSceneBoX box hide" data-type="myscene" data-height="51" data-top="60">
+                            <ol></ol>
+                            <div class="emptyBox">
+                                <img src="img/empty1.png"><br>
+                                <p><span>还没有创建过模型</span><a href="hmodel2.html">去创建</a></p>
+                            </div>
+                            <div class="gobtn">
+                            </div>
+                            <div id="uploadPage_s" class="Page"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="setBg">
+        <div class="setBox">
+            <div class="setCenter">
+                <h2>基本信息设置</h2>
+                <h3><img src="img/close.png"></h3>
+                <div><span class="classify">数据</span>名: <input type="text" class="name"></div>
+                <div>
+                    分&nbsp;&nbsp;&nbsp;类:
+                    <select style="margin-right:90px;" class="lei"></select> 状&nbsp;&nbsp;&nbsp;态:
+                    <select class="zhuangt"></select>
+                </div>
+                <div>
+                    算法等级:
+                    <select class="levellabel" style="margin-top: 0!important"></select>
+                </div>
+                <div>
+                    标&nbsp;&nbsp;&nbsp;签:
+                    <p class="lab"><i> + 添加新标签</i></p>
+                </div>
+                <div class="labelfold">
+                    <h5>收起</h5>
+                    <input type="text" placeholder="按空格键自定义标签,6字以内" style="width:98%;margin:2px 1%;float:left;">
+                    <div class="labelEr"></div>
+                </div>
+                <div>
+                    简&nbsp;&nbsp;&nbsp;介: <textarea class="set_abstrac"></textarea>
+                </div>
+            </div>
+            <div class="bc">保<s></s>存</div>
+        </div>
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img isOk"></h6>
+            <h2>tip</h2>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide" data-to="back"></div>
+</body>
+
+</html>
+<script>
+    var index = 0;
+    $(".person_zyt>div").on("click", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".person_zyb>div").eq($(this).index()).show().siblings().hide();
+        index = $(this).index();
+    });
+    $(".person_zyb>div>ul>li").on("click", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".person_zyb>div:eq(" + index + ")>div").eq($(this).index()).show().siblings("div").hide();
+        boxShow($(this));
+    });
+    //401处理
+    function i_isGoLogin(err) {
+        if (err.status == 401) {
+            if (token == 'JWT undefined' || token == 'JWT null') {
+                $('.shade p').html('您目前还没有注册或登录~ ')
+                $('.shade').show();
+            } else {
+                $('.shade p').html('系统检测,您的账号存在风险异常,请重新登录。')
+                $('.shade').show();
+            }
+        }
+    }
+    var owner = window.location.search.substr(1);
+
+    function xrLabel(data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+            html += '<b data-id="' + data[i].id + '">' + data[i].name + '<span class="bq_del"></span></b>'
+        }
+        return html
+    }
+
+    function xrLabel2(data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+            html += '<b data-id="' + data[i].id + '">' + data[i].name + '</b>'
+        }
+        return html
+    }
+
+    function xrLabel3(data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+            html += '<b>' + data[i] + '</b>'
+        }
+        return html
+    }
+    var xr_label;
+
+    function xrOperat(num) {
+        if (num == 1) {
+            return '<div class="see">查看</div><div class="cancle">删除</div><div class="set">设置</div>'
+        } else {
+            return '<div class="see">查看</div>'
+        }
+    }
+
+    function xrOperat2(num1, idata) {
+        if (num1 == 1) {
+            if (idata == 2) {
+                return '<span class="see">查看</span><span class="cancle">删除</span><span class="set">设置</span><span class="export"><a>导出</a></span>'
+            } else {
+                return '<span class="see">查看</span><span class="cancle">删除</span><span class="set">设置</span>'
+            }
+        } else {
+            return '<span class="see">查看</span>'
+        }
+    }
+
+    function xrZt(num) {
+        if (num == 0) {
+            return '公开';
+        } else {
+            return '私有';
+        }
+    }
+
+    function xrEmpty(obj, data) {
+        if (data.is_me == 0) {
+            obj.children('a').hide()
+        }
+        obj.show()
+    }
+    /*数据中选项卡点击*/
+    function boxShow(obj) {
+        var name = obj.attr('data-to')
+        var classify = $('.' + name).attr('data-type')
+        var pagenum = 10
+        XrData(1, pagenum, classify)
+    }
+    XrData(1, 10, 'buydata');
+    XrData(1, 10, 'buyalg');
+    XrData(1, 10, 'addscene');
+    var custom = [];
+    var statu = ['未通过', '已通过', '审核中', '未提交'];
+
+    function XrData(nowpage, pagenum, classify) {
+        $.ajax({
+            url: url_ip + '/personal/personal_info/',
+            type: 'GET',
+            data: {
+                page: nowpage,
+                pagenum: pagenum,
+                keyword: classify,
+                other_id: owner
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                // console.log(data)
+                if (data.status) {
+                    var res = data.data
+                    if (classify == 'buydata') {
+                        $('.buyDataBox ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.buyDataBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".buyDataBox .emptyBox").hide();
+                            } else {
+                                $(".buyDataBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                xr_label = xrLabel(res[i].label);
+                                $('.buyDataBox ol').append('<li data-id="' + res[i].id + '" data-lei="' + res[i].classify + '">' +
+                                    '<i><img src="' + url_ip + res[i].img + '"></i>' +
+                                    '<div class="msg">' +
+                                    '<h2>' + res[i].name + '</h2>' +
+                                    '<div class="label">' + xrLabel2(res[i].label) + '</div>' +
+                                    '</div>' +
+                                    '<div class="abs"><span>' + res[i].abstract + '</span></div>' +
+                                    '<div class="zt">公开</div>' +
+                                    '<div class="btn2">' + xrOperat(data.is_me) + '</div>' +
+                                    '</li>')
+                            }
+                            $('.buyDataBox .gobtn').empty().append(`
+                                <a href="alg_list.html?sj">继续购买</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#buyPage_d'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'updata') {
+                        var idata = "2";
+                        $('.uploadDataBoX ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.uploadDataBoX .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".uploadDataBoX .emptyBox").hide();
+                            } else {
+                                $(".uploadDataBoX .emptyBox").show();
+                            }
+                            $('.uploadDataBoX ol').append('<table>' +
+                                '<tr>' +
+                                '<td>数据名称</td>' +
+                                '<td>添加时间</td>' +
+                                '<td>状态</td>' +
+                                '<td>功能</td>' +
+                                '</tr>' +
+                                '</table>')
+                            for (var i = 0; i < res.length; i++) {
+                                $('.uploadDataBoX ol table').append("<tr data-id='" + res[i].id + "' data-label='" + JSON.stringify(res[i].label) + "' data-abs='" + res[i].abstract + "' data-lei='" + res[i].classify + "'>" +
+                                    "<td>" + res[i].name + "</td>" +
+                                    "<td>" + res[i].time.substr(0, res[i].time.indexOf('T')) + "</td>" +
+                                    "<td><b class='zt'>" + xrZt(res[i].is_share) + "</b></td>" +
+                                    "<td>" + xrOperat2(data.is_me, idata) + "</td>" +
+                                    "</tr>")
+                            }
+                            $('.uploadDataBoX .gobtn').empty().append(`
+                                <a href="data_list.html">继续上传</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#uploadPage_d'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'buyalg') {
+                        var idata = 1;
+                        $('.buyAlgoBox ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.buyAlgoBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".buyAlgoBox .emptyBox").hide();
+                            } else {
+                                $(".buyAlgoBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                xr_label = xrLabel(res[i].label);
+                                $('.buyAlgoBox ol').append('<li data-id="' + res[i].id + '" data-lei="' + res[i].classify + '" data-level="' + res[i].levellabel.id + '">' +
+                                    '<i><img src="' + url_ip + res[i].img + '"></i>' +
+                                    '<div class="msg">' +
+                                    '<h2>' + res[i].name + '</h2>' +
+                                    '<div class="label">' + xrLabel2(res[i].label) + '</div>' +
+                                    '</div>' +
+                                    '<div class="abs"><span>' + res[i].abstract + '</span></div>' +
+                                    '<div class="zt">公开</div>' +
+                                    '<div class="btn2">' + xrOperat(data.is_me, idata) + '</div>' +
+                                    '</li>')
+                            }
+                            $('.buyAlgoBox .gobtn').empty().append(`
+                                <a href="alg_list.html?sf">继续购买</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#buyPage_a'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'myalg') {
+                        var idata = 1;
+                        $('.uploadAlgoBoX ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.uploadAlgoBoX .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".uploadAlgoBoX .emptyBox").hide();
+                            } else {
+                                $(".uploadAlgoBoX .emptyBox").show();
+                            }
+                            $('.uploadAlgoBoX ol').append('<table>' +
+                                '<tr>' +
+                                '<td>算法名称</td>' +
+                                '<td>添加时间</td>' +
+                                '<td>状态</td>' +
+                                '<td>功能</td>' +
+                                '</tr>' +
+                                '</table>')
+                            for (var i = 0; i < res.length; i++) {
+                                var num = res[i].type
+                                $('.uploadAlgoBoX ol table').append("<tr data-id='" + res[i].id + "' data-adopt='" + res[i].type + "' data-label='" + JSON.stringify(res[i].label) + "' data-abs='" + res[i].abstract + "' data-lei='" + res[i].classify + "' data-level='" + res[i].levellabel.id + "'>" +
+                                    "<td>" + res[i].name + "</td>" +
+                                    "<td>" + res[i].time.substr(0, res[i].time.indexOf('T')) + "</td>" +
+                                    "<td><b class='status" + res[i].type + "'>" + statu[res[i].type] + "</b><b class='zt'>" + xrZt(res[i].is_share) + "</b></td>" +
+                                    "<td>" + xrOperat2(data.is_me, idata) + "</td>" +
+                                    "</tr>")
+                            }
+                            $('.uploadAlgoBoX .gobtn').empty().append(`
+                                <a href="python3/python_online.html">继续上传</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#uploadPage_a'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'addscene') {
+                        $('.buySceneBox ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.buySceneBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".buySceneBox .emptyBox").hide();
+                            } else {
+                                $(".buySceneBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                xr_label = xrLabel(res[i].label);
+                                $('.buySceneBox ol').append('<li data-id="' + res[i].id + '" data-objid="' + res[i].objid + '" data-is="' + res[i].is_new + '" data-lei="' + res[i].classify + '">' +
+                                    '<i><img src="' + (res[i].is_new == 1 ? res[i].img : url_ip + res[i].img) + '" style="background:#000"></i>' +
+                                    '<div class="msg">' +
+                                    '<h2>' + res[i].name + '</h2>' +
+                                    '<div class="label">' + xrLabel2(res[i].label) + '</div>' +
+                                    '</div>' +
+                                    '<div class="abs"><span>' + res[i].abstract + '</span></div>' +
+                                    '<div class="zt">公开</div>' +
+                                    '<div class="btn2">' + xrOperat(data.is_me) + '</div>' +
+                                    '</li>')
+                            }
+                            $('.buySceneBox .gobtn').empty().append(`
+                                <a href="alg_list.html?cj">继续购买</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#buyPage_s'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'myscene') {
+                        $('.uploadSceneBoX ol').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.uploadSceneBoX .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".uploadSceneBoX .emptyBox").hide();
+                            } else {
+                                $(".uploadSceneBoX .emptyBox").show();
+                            }
+                            $('.uploadSceneBoX ol').append('<table>' +
+                                '<tr>' +
+                                '<td>数据名称</td>' +
+                                '<td>添加时间</td>' +
+                                '<td>状态</td>' +
+                                '<td>功能</td>' +
+                                '</tr>' +
+                                '</table>')
+                            for (var i = 0; i < res.length; i++) {
+                                $('.uploadSceneBoX ol table').append("<tr data-id='" + res[i].id + "' data-objid='" + res[i].objid + "' data-is='" + res[i].is_new + "' data-label='" + JSON.stringify(res[i].label) + "' data-abs='" + res[i].abstract + "' data-lei='" + res[i].classify + "'>" +
+                                    "<td>" + res[i].name + "</td>" +
+                                    "<td>" + res[i].time.substr(0, res[i].time.indexOf('T')) + "</td>" +
+                                    "<td><b class='zt'>" + xrZt(res[i].is_share) + "</b></td>" +
+                                    "<td>" + xrOperat2(data.is_me) + "</td>" +
+                                    "</tr>")
+                            }
+                            $('.uploadSceneBoX .gobtn').empty().append(`
+                                <a href="hmodel2.html">继续上传</a>
+                            `)
+                            if (data.num > pagenum) {
+                                xrPage($('#uploadPage_s'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    }
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    }
+    /*查看*/
+    $('.see').live('click', function() {
+        var classify = $(this).parents('ol').parent().attr('data-type')
+        // console.log(classify)
+        var id = $(this).parent().parent().attr('data-id')
+        if (classify == 'buydata' || classify == 'updata') {
+            window.sessionStorage.setItem("form", "index")
+            window.sessionStorage.setItem("data_algo", "data")
+            window.open('details.html?' + id)
+        } else if (classify == 'buyalg') {
+            window.sessionStorage.setItem("form", "personal")
+            window.sessionStorage.setItem("data_algo", "algo")
+            window.open('details.html?' + id)
+        } else if (classify == 'myalg') {
+            limit('算法自建')
+                .then(res => {
+                    if (res) {
+                        var type = $(this).parent().prev().children('b')[0].className.substr(6)
+                        window.open('python3/python_online.html?' + type + '&' + id)
+                    }
+                })
+        } else if (classify == 'addscene') {
+            var isnew = $(this).parent().parent().attr('data-is')
+            var title = encodeURI($(this).parents('li').children('.msg').children('h2').html())
+            var obj_id = $(this).parent().parent().attr('data-objid')
+            // console.log(isnew)
+            if (isnew == 1) {
+                window.open('hmodel2.html?' + obj_id + '&' + title)
+            } else {
+                sessionStorage.setItem("model_id_index", id)
+                window.open('model.html')
+            }
+        } else if (classify == 'myscene') {
+            var isnew = $(this).parent().parent().attr('data-is')
+            var title = encodeURI($(this).parent().prev().prev().html())
+            var obj_id = $(this).parent().parent().attr('data-objid')
+            // console.log(isnew)
+            if (isnew == 1) {
+                limit('场景自建')
+                    .then(res => {
+                        if (res) {
+                            window.open('hmodel2.html?' + obj_id + '&' + title)
+                        }
+                    })
+            } else {
+                limit('场景自建')
+                    .then(res => {
+                        if (res) {
+                            sessionStorage.setItem("model_id_index", id)
+                            window.open('model.html')
+                        }
+                    })
+            }
+        }
+    });
+    /*删除*/
+    $('.cancle').live('click', function() {
+        var classify = $(this).parents('ol').parent().attr('data-type')
+        var pagenum = 10
+        var nowpage = $(this).parents('ol').nextAll('.Page').children('dl').attr('data-nowpage') || 1
+        var id = $(this).parent().parent().attr('data-id')
+        var objid = $(this).parent().parent().attr('data-objid');
+        if (classify == 'buydata' || classify == 'updata') {
+            $.ajax({
+                url: url_ip + '/personal/delete_data',
+                type: 'GET',
+                data: {
+                    file_id: id,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status) {
+                        XrData(nowpage, pagenum, classify)
+                    }
+                },
+                error: function(err) {
+                    i_isGoLogin(err);
+                }
+            })
+        } else if (classify == 'buyalg' || classify == 'myalg') {
+            var sf_type = $(this).parent().parent().attr('data-adopt');
+            var sf_name = $(this).parents("tr").children("td:first").text();
+            if($(this).parents('.buyAlgoBox').prev().children('li.active').html() === '购买算法') {
+                var sf_name = $(this).parents('li').find('.msg').children('h2').html();
+            }
+            var sf_type2;
+            switch (sf_type) {
+                case "0":
+                    sf_type2 = "未通过";
+                    break;
+                case "1":
+                    sf_type2 = "已通过";
+                    break;
+                case "2":
+                    sf_type2 = "审核中";
+                    break;
+                case "3":
+                    sf_type2 = "未提交";
+                    break;
+            }
+            $.ajax({
+                type: "GET",
+                url: url_ip + "/examine/delete_func",
+                data: {
+                    algoname: sf_name,
+                    id: id,
+                    type: '已通过'
+                },
+                dataType: "json",
+                headers: {
+                    "Authorization": token
+                },
+                success: function(res) {
+                    // console.log(res);
+                    if (res.status) {
+                        XrData(nowpage, pagenum, classify)
+                    }
+                },
+                error: function(err) {
+                    i_isGoLogin(err);
+                }
+            });
+        } else if (classify == 'addscene' || classify == 'myscene') {
+            if ($(this).parent().parent().attr('data-is') == '1') {
+                $.ajax({
+                    url: url_ip + '/model/chuanimg/',
+                    type: 'delete',
+                    data: {
+                        scene_id: objid
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        //console.log(data)
+                        if (data.status) {
+                            XrData(nowpage, pagenum, classify)
+                        }
+                    },
+                    error: function(err) {
+                        i_isGoLogin(err);
+                    }
+                })
+            } else {
+                $.ajax({
+                    url: url_ip + '/personal/model_delete',
+                    type: 'get',
+                    data: {
+                        file_id: id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        //console.log(data)
+                        if (data.status) {
+                            XrData(nowpage, pagenum, classify)
+                        }
+                    },
+                    error: function(err) {
+                        i_isGoLogin(err);
+                    }
+                })
+            }
+        }
+    });
+    /*设置*/
+    $('.set').live('click', function() {
+        $('.labelfold').hide()
+        $('.labelfold .labelEr').empty()
+        $('.labelfold .labelEr').hide()
+        var classify = $(this).parents('.box').attr('data-type')
+        var id = $(this).parent().parent().attr('data-id')
+        var arr = ["商业", "文化", "环境", "生活", "社会", "体育", "教育", "科技", "时政"]
+        var art = ["机器学习", "文本分析", "计算机视觉", "文本分析"]
+        var ary = ["场景"]
+        if (classify == 'buydata') {
+            var name = $(this).parent().parent().children('.msg').children('h2').html()
+            var index = $(this).parent().parent().attr('data-lei') - 1
+            var label = xr_label;
+            var abstrac = $(this).parent().parent().children('.abs').children('span').html()
+            var levellabel = $(this).parent().parent().attr('data-level')
+            $('.setCenter .classify').html('数据')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < arr.length; i++) {
+                $('.setCenter .lei').append('<option>' + arr[i] + '</option>')
+            }
+            $('.setCenter .lei').val(arr[index])
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option>')
+            $('.setCenter .lab b').remove()
+            $('.setCenter .lab').prepend(label)
+            $('.setCenter .levellabel').val(levellabel)
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBg').show()
+        } else if (classify == 'updata') {
+            var name = $(this).parent().prev().prev().prev().html()
+            var index = $(this).parent().parent().attr('data-lei') - 1
+            var zt = $(this).parent().prev().children('b').html()
+            var label1 = $(this).parent().parent().attr('data-label')
+                //console.log(label1)
+            var label = JSON.parse(label1)
+            var abstrac = $(this).parent().parent().attr('data-abs')
+            var levellabel = $(this).parent().parent().attr('data-level')
+            $('.setCenter .classify').html('数据')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < arr.length; i++) {
+                $('.setCenter .lei').append('<option>' + arr[i] + '</option>')
+            }
+            $('.setCenter .lei').val(arr[index])
+            $('.seetCenter .levellabel').val(levellabel)
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option><option>私有</option>')
+            $('.setCenter .zhuangt').val(zt)
+            $('.setCenter .levellabel').val(levellabel)
+            $('.setCenter .lab b').remove()
+            for (var i = 0; i < label.length; i++) {
+                $('.setCenter .lab i').before('<b data-id="' + label[i].id + '">' + label[i].name + '<span class="bq_del"></span></b>')
+            }
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBg').show()
+        } else if (classify == 'buyalg') {
+            var name = $(this).parent().parent().children('.msg').children('h2').html()
+            var index = $(this).parent().parent().attr('data-lei')
+            var label = xr_label;
+            var abstrac = $(this).parent().parent().children('.abs').children('span').html()
+            var levellabel = $(this).parent().parent().attr('data-level')
+            $('.setCenter .classify').html('算法')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < art.length; i++) {
+                $('.setCenter .lei').append('<option>' + art[i] + '</option>')
+            }
+            $('.setCenter .lei').val(index)
+            $('.setCenter .levellabel').val(levellabel)
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option>')
+            $('.setCenter .lab b').remove()
+            $('.setCenter .lab').prepend(label)
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBox .bc').attr('data-new', 'pass')
+            $('.setBg').show()
+        } else if (classify == 'myalg') {
+            var name = $(this).parent().prev().prev().prev().html()
+            var index = $(this).parent().parent().attr('data-lei')
+            var zt = $(this).parent().prev().children('b:eq(1)').html()
+            var ispass = $(this).parent().prev().children('b:eq(0)').html()
+            var label1 = $(this).parent().parent().attr('data-label')
+            var label = JSON.parse(label1)
+            var abstrac = $(this).parent().parent().attr('data-abs')
+            var levellabel = $(this).parent().parent().attr('data-level')
+            if (ispass == '已通过') {
+                $('.setBox .bc').attr('data-new', 'pass')
+            } else {
+                $('.setBox .bc').attr('data-new', 'nopass')
+            }
+            $('.setCenter .classify').html('算法')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < art.length; i++) {
+                $('.setCenter .lei').append('<option>' + art[i] + '</option>')
+            }
+            $('.setCenter .lei').val(index)
+            $('.seetCenter .levellabel').val(levellabel)
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option><option>私有</option>')
+            $('.setCenter .zhuangt').val(zt)
+            $('.setCenter .lab b').remove()
+            for (var i = 0; i < label.length; i++) {
+                $('.setCenter .lab i').before('<b data-id="' + label[i].id + '">' + label[i].name + '<span class="bq_del"></span></b>')
+            }
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBg').show()
+        } else if (classify == 'addscene') {
+            var name = $(this).parent().parent().children('.msg').children('h2').html()
+            var index = $(this).parent().parent().attr('data-lei')
+            var label = xr_label;
+            var abstrac = $(this).parent().parent().children('.abs').children('span').html()
+            var isnew = $(this).parent().parent().attr('data-is')
+            if (isnew == 1) {
+                $('.setBox .bc').attr('data-new', 'new')
+            } else {
+                $('.setBox .bc').attr('data-new', 'old')
+            }
+            $('.setCenter .classify').html('场景')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < ary.length; i++) {
+                $('.setCenter .lei').append('<option>' + ary[i] + '</option>')
+            }
+            $('.setCenter .lei').val(index)
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option>')
+            $('.setCenter .lab b').remove()
+            $('.setCenter .lab').prepend(label)
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBg').show()
+        } else if (classify == 'myscene') {
+            var name = $(this).parent().prev().prev().prev().html()
+            var index = $(this).parent().parent().attr('data-lei')
+            var zt = $(this).parent().prev().children('b').html()
+            var label1 = $(this).parent().parent().attr('data-label')
+            var label = JSON.parse(label1)
+            var abstrac = $(this).parent().parent().attr('data-abs')
+            var levellabel = $(this).parent().parent().attr('data-level')
+            var isnew = $(this).parent().parent().attr('data-is')
+            if (isnew == 1) {
+                $('.setBox .bc').attr('data-new', 'new')
+            } else {
+                $('.setBox .bc').attr('data-new', 'old')
+            }
+            $('.setCenter .classify').html('场景')
+            $('.setCenter .name').val(name)
+            $('.setCenter .lei').empty()
+            for (var i = 0; i < ary.length; i++) {
+                $('.setCenter .lei').append('<option>' + ary[i] + '</option>')
+            }
+            $('.setCenter .lei').val(ary[index])
+            $('.seetCenter .levellabel').val(levellabel)
+            $('.setCenter .zhuangt').empty()
+            $('.setCenter .zhuangt').append('<option>公开</option><option>私有</option>')
+            $('.setCenter .zhuangt').val(zt)
+            $('.setCenter .lab b').remove()
+            for (var i = 0; i < label.length; i++) {
+                $('.setCenter .lab i').before('<b data-id="' +
+                    label[i].id + '">' + label[i].name + '<span class="bq_del"></span></b>')
+            }
+            $('.setCenter .set_abstrac').val(abstrac)
+            $('.setBox').attr('data-type', classify)
+            $('.setBox .bc').attr('data-id', id)
+            $('.setBg').show()
+        }
+    });
+    // 导出
+    $('.export').live("click", function() {
+        var id = $(this).parents("tr").attr("data-id");
+        $('.export a').attr('href', url_ip + "/dispose/download?click_file=" + id);
+    });
+    // 等级标签
+    $.ajax({
+        type: 'GET',
+        url: url_ip + '/labels/showalg',
+        data: {
+            classify: 5
+        },
+        dataType: 'json',
+        async: false,
+        success: function(res) {
+            if (res.status) {
+                for (var i = 0; i < res.data.length; i++) {
+                    $('.levellabel').append(`<option value="${res.data[i].id}">${res.data[i].label_name}</option>`)
+                }
+            }
+        }
+    });
+    /*设置弹窗标签*/
+    $('.setCenter .lab i').click(function() {
+        $(this).parent().parent().css('margin-bottom', '10px')
+        var type = $('.setBox').attr('data-type')
+        if (type == 'buydata' || type == 'updata' || type == 'addscene' || type == 'myscene') {
+            $.ajax({
+                url: url_ip + '/labels/data_labels/',
+                type: 'GET',
+                data: {},
+                dataType: 'json',
+                success: function(data) {
+                    //console.log(data)
+                    if (data.status) {
+                        $('.labelfold>b').remove()
+                        for (var i = 0; i < data.data.length; i++) {
+                            $('.labelfold .labelEr').before("<b data-label='" + JSON.stringify(data.data[i].next) + "' data-id='" + data.data[i].id + "'>" + data.data[i].name + "<span> + </span></b>")
+                        }
+                    }
+                },
+                error: function(data) {
+                    // console.log(data)
+                }
+            })
+        } else if (type == 'buyalg' || type == 'myalg') {
+            $.ajax({
+                url: url_ip + '/labels/alg_labels/',
+                type: 'GET',
+                data: {},
+                dataType: 'json',
+                success: function(data) {
+                    // console.log(data)
+                    if (data.status) {
+                        $('.labelfold>b').remove()
+                        for (var i = 0; i < data.data.length; i++) {
+                            $('.labelfold .labelEr').before("<b data-label='" + JSON.stringify(data.data[i].next) + "' data-id='" + data.data[i].id + "'>" + data.data[i].name + "<span> + </span></b>")
+                        }
+                    }
+                },
+                error: function(data) {
+                    // console.log(data)
+                }
+            })
+        }
+        $('.labelfold').show()
+    });
+    $('.labelfold h5').click(function() {
+        $(this).parent().parent().css('margin-bottom', '26px')
+        $('.labelfold').hide()
+    })
+    $('.labelfold>b').live('click', function() {
+        $('.labelEr').empty()
+        if ($(this).attr('data-label')) {
+            var label = $(this).attr('data-label')
+            var arr = JSON.parse(label)
+            for (var i = 0; i < arr.length; i++) {
+                $('.labelEr').append("<b data-label='" + JSON.stringify(arr[i].next) + "' data-id='" + arr[i].id + "'>" + arr[i].name + "<span> + </span><div class='labelThree'></div></b>")
+            }
+        }
+        $('.labelEr').show()
+    });
+    $('.labelEr>b').live('mouseenter', function() {
+        var left = -$(this)[0].offsetLeft + 115
+        $(this).children('.labelThree').css('left', left + 'px')
+        var label = $(this).attr('data-label')
+        var arr = JSON.parse(label)
+        $(this).children('.labelThree').empty()
+        for (var i = 0; i < arr.length; i++) {
+            $(this).children('.labelThree').append("<b data-id='" + arr[i].id + "'>" + arr[i].name + "<span> + </span></b>")
+        }
+        $(this).children('.labelThree').show()
+    });
+    $('.labelEr>b').live('mouseleave', function() {
+        $(this).children('.labelThree').hide()
+    });
+    $('.labelfold b span').live('click', function() {
+        var name = $(this).parent()[0].textContent
+        var id = $(this).parent().attr("data-id")
+        name = name.substr(0, name.indexOf(' + '))
+        $('.setCenter .lab i').before('<b data-id="' + id + '">' + name + '<span class="bq_del"></span></b>')
+    });
+    $('.labelfold input').keydown(function(event) {
+        if (event.keyCode == 32) {
+            if ($(this).val() != '' && $(this).val() != ' ') {
+                var name = $(this).val()
+                $('.setCenter .lab i').before('<b>' + name + '<span class="bq_del"></span></b>')
+                custom.push($(this).val());
+            }
+            $(this).val('')
+        }
+    });
+    // 标签删除
+    $(".bq_del").live("click", function() {
+        $(this).parent("b").remove();
+    });
+    /*设置弹窗关闭*/
+    $('.setBox h3').click(function() {
+        $('.setBg').hide()
+    });
+    /*设置弹窗保存*/
+    $('.setBg .bc').click(function() {
+        var id = $(this).attr('data-id')
+        var way = $(this).attr('data-new')
+        var classify = $('.setBox').attr('data-type')
+        var name = $('.setBg .name').val()
+        var lei = $('.setBg .lei').val()
+        var zhuangt = $('.setBg .zhuangt').val() == '公开' ? 1 : 0
+        var label = [];
+        for (var i = 0; i < $('.lab b').length; i++) {
+            if ($('.lab b').eq(i).attr("data-id")) {
+                label.push($('.lab b').eq(i).attr("data-id"))
+            }
+        }
+        var abs = $('.setBg .set_abstrac').val()
+            // console.log(id, way, classify, name, lei, zhuangt, label, abs)
+        if (classify == 'buydata' || classify == 'updata') {
+            var type = '数据'
+        } else if (classify == 'buyalg' || classify == 'myalg') {
+            var type = '算法'
+        } else if (classify == 'addscene' || classify == 'myscene') {
+            var type = '场景'
+        }
+        if ($('.zhuangt').val() == '公开') {
+            if (name == '' || abs == '' || (label.length == 0 && custom.length == 0)) {
+                $('.alertMsg').showMsg({
+                    isImg: 'isOk',
+                    h2txt: '若要公开' + type + ',请完善基本信息',
+                    setTime: 2000
+                });
+            } else {
+                bcSet(type, id, way, name, lei, zhuangt, label, abs, custom)
+            }
+        } else {
+            bcSet(type, id, way, name, lei, zhuangt, label, abs, custom)
+        }
+    });
+
+    function bcSet(type, id, way, name, lei, zhuangt, label, abs, custom) {
+        if (type == '数据') {
+            $.ajax({
+                url: url_ip + '/personal/data_share/',
+                type: 'POST',
+                data: {
+                    data_id: id,
+                    abstract: abs,
+                    name: name,
+                    label: JSON.stringify(label),
+                    custom: JSON.stringify(custom),
+                    classify: lei,
+                    is_share: zhuangt
+                },
+                dataType: 'json',
+                headers: {
+                    'Authorization': token
+                },
+                success: function(data) {
+                    if (data.status) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isOk',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                        $('.setBg').hide()
+                        setTimeout(function() {
+                            window.location.reload(); //页面刷新
+                        }, 1000);
+                    } else {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                    }
+                },
+                error: function(err) {
+                    i_isGoLogin(err);
+                }
+            })
+        } else if (type == '算法') {
+            var json = {}
+            if (way == 'pass') {
+                json.alg_id = id
+                json.alg2_id = ''
+            } else {
+                json.alg_id = ''
+                json.alg2_id = id
+            }
+            json.name = name;
+            json.abstract = abs;
+            json.label = JSON.stringify(label);
+            json.custom = JSON.stringify(custom);
+            json.classify = lei;
+            json.is_share = zhuangt;
+            json.levellabel = $('.levellabel').val();
+            $.ajax({
+                url: url_ip + '/personal/alg_share/',
+                type: 'POST',
+                data: json,
+                dataType: 'json',
+                headers: {
+                    'Authorization': token
+                },
+                success: function(data) {
+                    if (data.status) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isOk',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                        $('.setBg').hide()
+                        setTimeout(function() {
+                            window.location.reload(); //页面刷新
+                        }, 1000);
+                    } else {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                    }
+                },
+                error: function(err) {
+                    i_isGoLogin(err);
+                }
+            })
+        } else if (type == '场景') {
+            var json = {}
+            if (way == 'new') {
+                json.scene_id = id
+                json.model_id = ''
+            } else {
+                json.scene_id = ''
+                json.model_id = id
+            }
+            json.name = name;
+            json.abstract = abs;
+            json.label = JSON.stringify(label);
+            json.custom = JSON.stringify(custom);
+            json.classify = lei;
+            json.is_share = zhuangt;
+            $.ajax({
+                url: url_ip + '/personal/scene_share/',
+                type: 'POST',
+                data: json,
+                dataType: 'json',
+                headers: {
+                    'Authorization': token
+                },
+                success: function(data) {
+                    //console.log(data)
+                    if (data.status) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isOk',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                        $('.setBg').hide()
+                        setTimeout(function() {
+                            window.location.reload(); //页面刷新
+                        }, 1000);
+                    } else {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: data.msg,
+                            setTime: 2000
+                        });
+                    }
+                },
+                error: function(err) {
+                    i_isGoLogin(err);
+                }
+            })
+        }
+    }
+    /* 分页 */
+    $('.Page').live('click', function(evt) {
+        var id = $(this)[0].id
+        var target = evt.target
+        var className = target.className
+        var page = target.innerHTML
+        var pagenum = 10
+        var classify = $(this).parent().attr('data-type')
+        if (classify) {
+            clickPage($('#' + id), className, page, XrData, pagenum, classify)
+        } else if (id == 'liuyanPage') {
+            clickPage($('#' + id), className, page, liuyan, pagenum, classify)
+        } else if (id.substr(0, 8) == 'lyerPage') {
+            var pagenum = $(this).parent().parent()
+            clickPage($('#' + id), className, page, liuyan2, pagenum, classify)
+        }
+    })
+</script>

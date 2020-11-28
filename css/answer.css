@@ -1,0 +1,433 @@
+* {
+    box-sizing: border-box;
+}
+.disabled {
+    pointer-events:none;
+}
+.banner {
+    margin-top: 100px;
+    width: 100%;
+    /* height: 240px; */
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.process {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 14px 0;
+}
+.part1 {
+    box-shadow:0px 2px 10px 0px rgba(0,0,0,0.1);
+}
+.process .circle {
+    display: block;
+    margin-left: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+    color: #A0A2AD;
+    border-radius: 100%;
+    border: 1px solid #A0A2AD;
+}
+.process li:nth-child(1) .circle{
+    margin-left: 25px;
+}
+.process li .circle.ok {
+    background: url('../img/icon/next-step-item.png');
+    border: none;
+    color: transparent;
+}
+.process li .circle.ing {
+    background: #5584FF;
+    color:#ffffff;
+    border: none;
+}
+.process .line {
+    width: 267px;
+    height: 1px;
+    background: #DCDEE3;
+    margin: 14px 11px;
+}
+.process .line.on {
+    background: #5584FF;
+}
+.process .detail {
+    text-align: center;
+    margin-top: 10px;
+}
+.textarea {
+    width: 1100px;
+    margin: 0 auto;
+}
+.rule {
+    cursor: pointer;
+}
+.ruledes {
+    display: none;
+    position: absolute;
+    width: 300px;
+    top: 25px;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow:0px 3px 15px 0px rgba(9,17,48,0.15);
+    z-index: 2;
+}
+.ruledes p {
+    margin-bottom: 5px;
+}
+/* .part2 {
+    display: none;
+} */
+.part2,
+.current {
+    margin-top: 20px;
+}
+.current {
+    display: none;
+    margin-bottom: 20px;
+}
+.part2 header,
+.current header {
+    display: flex;
+    justify-content: space-between;
+}
+.part2 aside,
+.current aside {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    color: #496FFF;
+    position: relative;
+}
+.part2 .review {
+    display: none;
+    position: absolute;
+    width: 300px;
+    top: 45px;
+    left: -123px;
+    padding: 15px;
+    background: #FFFFFF;
+    box-shadow:0px 3px 15px 0px rgba(9,17,48,0.15);
+}
+.part2 .review::after {
+    content:'';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    left: 50%;
+    margin-left: -10px;
+    width:20px;
+    height: 10px;
+    background: url('../img/icon/三角.png');
+}
+.part2 .review li {
+    width: 270px;
+    height: 30px;
+    padding: 5px 7px;
+    cursor: pointer;
+    background: #ffffff;
+    border: 1px solid #E8E8E8;
+    margin-bottom: 5px;
+}
+.part2 .review li:hover {
+    background: #F2F6FA;
+}
+.part2 header h2,
+.current header h2 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+/* 题目 */
+.out .answerul{
+    display: flex;
+    flex-direction:column;
+}
+.out .hideStem {
+    background:rgba(250,250,250,1);
+    border-radius:2px;
+    border:1px solid rgba(232,232,232,1);
+    margin-bottom: 20px;
+    padding: 20px 40px;
+}
+.hideStem .title {
+    font-size:18px;
+    margin-bottom: 15px;
+    color: #333333;
+}
+.hideStem .check-choice,
+.hideStem .radio-choice {
+    width: 1024px;
+    height: 40px;
+    font-size:14px;
+    color: #333333;
+    border:1px solid rgba(219,219,219,1);
+    padding: 10px 11px;
+    margin-bottom: 15px;
+}
+.hideStem .analysis {
+    width: 100%;
+    padding: 20px;
+    background: #F2F6FA;
+    font-size: 14px;
+}
+.answer_show {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 20px;
+}
+.answer_show span:nth-child(1) {
+    color: #2DBF47;
+}
+.answer_show span:nth-child(2) {
+    color: #4D7EFF;
+}
+input[type=checkbox],
+input[type=radio] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.part2 .submit {
+    width:120px;
+    height:36px;
+    background:rgba(73,111,255,1);
+    box-shadow:0px 3px 10px 0px rgba(0,0,0,0.12);
+    margin: 0 auto 30px;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+}
+input[type=checkbox],input[type=radio] {
+    -webkit-appearance: none; /*这个属性是将input标签变成一个可修改样式的普通标签，目前有谷歌和火狐浏览器支持*/
+    -moz-appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 2px;
+    background-color: transparent;
+    border: 1px solid #DBDBDB;
+    position: relative;
+    top: -2px;
+
+}
+input[type=radio] {
+    border: 2px solid #DBDBDB;
+    border-radius: 100%;
+}
+.check-choice input[type=checkbox]:checked,
+.radio-choice input[type=radio]:checked{
+    background: #4A90FF;
+}
+.show-right input[type=checkbox],
+.show-right input[type=checkbox]:checked,
+.show-right input[type=radio],
+.show-right input[type=radio]:checked {
+    background: url(../img/icon/对.png);
+    background-size: contain;
+}
+.show-false input[type=checkbox],
+.show-false input[type=checkbox]:checked,
+.show-false input[type=radio],
+.show-false input[type=radio]:checked {
+    background: url(../img/icon/错.png);
+    background-size: contain;
+}
+.check-choice-on {
+    border: 1px solid #4A90FF!important;
+}
+.radio-choice-on {
+    border: 1px solid #4A90FF!important;
+}
+/* 本期结果 */
+.testResult {
+    border-radius:2px;
+    border:1px solid rgba(232,232,232,1);
+    padding: 18px 20px;
+}
+.testResult .content {
+    display: flex;
+    justify-content: space-between;
+}
+.testResult h5 {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 25px;
+}
+.testResult h5 span {
+    font-size: 14px;
+}
+.testResult .asideleft .top img {
+    width:27px;
+    height:26px;
+    vertical-align: bottom;
+}
+.testResult .asideleft .top {
+    margin-left: 10px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333333;
+}
+.testResult .asideleft .top span:nth-child(3) {
+    color: #FF9D1E;
+}
+.testResult .asideleft .middle {
+    display: flex;
+    padding: 0px 30px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    width:477px;
+    height:40px;
+    background:rgba(77,126,255,1);
+    border-radius:0px 100px 0px 0px;
+}
+.testResult .asideleft .middle div:nth-child(1) {
+    margin-right: 55px;
+}
+.testResult .asideleft .middle b {
+    width: 1px;
+    background: #ffffff;
+    margin-top: 10px;
+    height: 22px;
+}
+.testResult .asideleft .middle div:nth-child(3) {
+    margin-left: 55px;
+}
+.testResult .asideleft .bottom {
+    font-size: 14px;
+    color:#999999;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.testResult .asideright .rf{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 10px;
+    left: -70px;
+}
+.testResult .asideright .rf span {
+    display: inline-block;
+    vertical-align: sub;
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background: #4D7EFF;
+}
+.testResult .asideright .rf .true {
+    margin-right: 40px;
+}
+.testResult .asideright .rf .false span {
+    background: #EBECF0;
+}
+/* 圆环占比 */
+.con {
+    width: 116px;
+    height: 116px;
+    position: relative;
+    right: 35px;
+    bottom: 30px;
+}
+.con .circle {
+    width: 58px;
+    height: 100%;
+    position: absolute;
+    border-radius: 0 100px 100px 0;
+    background: #EBECF0;
+    overflow: hidden;
+}
+.con .circle-left {
+    border-radius: 100px 0 0 100px;
+    left: 0;
+}
+.con .circle-right {
+    right: 0;
+    /* transform: rotate(180deg) */
+}
+.con .cover {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    background: #ffffff;
+    color: #666666;
+    border-radius: 100%;
+    font-size: 24px;
+    padding-top: 20px;
+    left: 50%;
+    top: 50%;
+    line-height: 1.3;
+    text-align: center;
+    transform: translate(-50%,-50%);
+}
+.con .cover .zql {
+    font-size: 14px;
+}
+.con .left {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background: #4D7EFF;
+    transform-origin:right center;
+    transform: rotate(0deg);
+    border-radius: 100px 0 0 100px;
+    transition: .5s all;
+    
+}
+.con .right {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background: #4D7EFF;
+    transform-origin:left center;
+    transform: rotate(0deg);
+    border-radius: 0 100px 100px 0;
+    transition: .5s all;
+}
+/* 往期回顾顶部 */
+.formerly {
+    display: none;
+    margin-bottom: 20px;
+}
+.formerly .asideright {
+    margin-top: -20px;
+    margin-right: 50px;
+    width: 292px;
+    height: 140px;
+    background: url(../img/icon/部分界面.png);
+    position: relative;
+}
+.formerly .content .asideleft .middle {
+    display: flex;
+    background: unset;
+    color: #333333;
+}
+.formerly .middle span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background: #4D7EFF;
+}
+.formerly .middle .false span {
+    background: #EBECF0;
+}
+.formerly .statistics {
+    position: absolute;
+    font-size:24px;
+    color: #FFFFFF;
+    bottom: 40px;
+    left: 20px;
+    display: flex;
+}

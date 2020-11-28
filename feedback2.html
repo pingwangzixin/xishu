@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 建议反馈</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/bootstrapx.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/summernote.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/feedback.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jqueryx.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/bootstrapx.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/summernote.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/summernote-zh-CN.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/feedback.js?v=0.19.11.21.11"></script>
+
+
+    <style>
+        nav {
+            display: none;
+        }
+        .note-editable {
+            color: #FFFFFF !important;
+            background-color: #262830 !important;
+        }
+        .note-btn {
+            background: #262830;
+            border: none;
+            color: #FFFFFF;
+        }
+        .note-editor.note-frame {
+            border: none;
+        }
+        .panel-default>.panel-heading {
+            border: none;
+        }
+        .note-statusbar {
+            display: none;
+        }
+        .note-toolbar {
+            background-color: #262830 !important;
+        }
+        .slimScrollBar {
+            width: 5px !important;
+            background: #000000 !important;
+        }
+        .back_box .quiz h2 {
+            color: #FFFFFF;
+        }
+        .fadeTitle {
+            margin: 0;
+        }
+        .back_box::-webkit-scrollbar {
+            width: 0 !important;
+        }
+        .ycl_page input {
+            min-height: 20px;
+        }
+        .body_width {
+            width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .back_box {
+            background: #373A47;
+            color:#FFFFFF;
+        }
+        .modal-title {
+            color: #373A47;
+        }
+        .ckin {
+            float: left;
+            width: 50px;
+            position: relative
+        }
+
+        .doun {
+            float: left;
+            width: 50px;
+            padding-top: 6px
+        }
+
+        .pel {
+            overflow: hidden;
+        }
+
+        .pol {
+            padding-top: 10px
+        }
+
+        .wid {
+            width: 882px
+        }
+
+        .nie {
+            width: 2px;
+            height: 12px;
+            background: #496FFF;
+            float: left;
+            margin-top: 4px;
+        }
+
+        .jiaru {
+            float: left;
+            padding-left: 7px;
+            font-size: 16px
+        }
+
+        .nice {
+            width: 882px;
+            margin: 0 auto;
+        }
+
+        .zhon {
+            width: 43px;
+            height: 19px;
+            float: left;
+            margin: 3px 5px;
+            border-radius: 3px;
+            text-align: center;
+            border: 1px solid #FF6B63;
+        }
+
+        .riqi {
+            /* float: right; */
+            color: #666;
+            padding-left: 10px;
+        }
+        .back_box .quiz input {
+            padding-left: 10px;
+            width: 100%;
+            border: none;
+        }
+        .zhichang {
+            width: 100%;
+            float: left;
+            font-size: 12px;
+            color: #606266;
+            margin-left: 10px
+        }
+
+        .zhichang img {
+            width: 160px !important;
+            height: 80px !important;
+            margin: 10px;
+        }
+
+        .cont {
+            width: 882px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .xiangqing {
+            /* float: right; */
+            color: blue;
+        }
+
+        .xiangqing a {
+            color: blue;
+            padding-left: 20px;
+        }
+
+        .xianq {
+            width: 875px;
+            border: 1px solid rgba(232, 232, 232, 1);
+            margin: 30px 7px
+        }
+
+        .den {
+            margin-top: 30px;
+        }
+
+        .gath {
+            margin-top: 12px
+        }
+
+        .back_box>p {
+            width: 210px;
+            margin: 0 auto
+        }
+
+        body {
+            background: #FFFFFF;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .plaes {
+            overflow: hidden
+        }
+
+        .no_btn {
+            font-size: 14px;
+            color: #FFFFFF;
+            float: left
+        }
+
+        .sure_btn {
+            font-size: 14px;
+            color: #FFFFFF;
+            float: left;
+            margin-left: 52px
+        }
+
+        .btn {
+            margin: 0 auto;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .navTop h1 {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .fadeTitle {
+            font-weight: bold;
+        }
+
+        .back_box .quiz .bottom_btn {
+            display: flex;
+            align-items: center;
+        }
+        .back_box .quiz .btn {
+            margin-top: 0;
+            /* border-radius:2px; */
+        }
+        .back_box .quiz .btn div {
+            float: left;
+            margin-left: 3px;
+            background:rgba(75,79,97,1);
+
+        }
+        .back_box .quiz .bottom_btn .btn {
+            margin-top: 0;
+        }
+
+        .back_box .quiz h2 {
+            margin-top: 0;
+        }
+
+        .navHide>div .navHide_tabR.fxgzt p {
+            margin-bottom: 0;
+        }
+        /* .note-style,
+        .note-font,
+        .note-fontname,
+        .note-color,
+        .note-para,
+        .note-table,
+        .note-view {
+            display: none;
+        } */
+        /* .note-toolbar>div {
+            display: none;
+        } */
+        .panel {
+            margin-bottom: 0;
+        }
+        .note-editable {
+            height: 158px !important;
+        }
+        .note-insert {
+            display: inline-block !important;
+        }
+
+        .note-insert>button:nth-child(2) {
+            display: block !important;
+        }
+
+        .m .form-group>input {
+            width: 100%;
+        }
+
+        .note-group-image-url {
+            display: none;
+        }
+
+        .zhichang {
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        .zhichang_text {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .zhichang_text>p:nth-child(0) {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .sure_btn {
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body style="overflow-x:hidden">
+    <!-- <nav></nav> -->
+    <div class="mu3"></div>
+    <div class="back_box back_box2 body_width">
+        <div class="clearfix quiz" data-item="0">
+            <h2 style="position: relative;padding-left: 15px;"><span style="color:red;font-size:21px;position: absolute;left: 1px; top: 3px;">*</span>请对您遇到的问题拟定一个简单的题目，方便我们分类解决:</h2>
+            <input type="txt" style="border-color:#E8E8E8;background: #262830; margin-top: 0;">
+            <h2 style="position:relative"><span style="color:red;position: absolute;left: 1px;font-size:21px;top: 5px;">*</span><span style="font-size:12px;margin-left:13px">问题描述:</span></h2>
+            <div class="m">
+                <div class="summernote" prl>请输入你想要的反馈的问题</div>
+            </div>
+            <div style="position:relative">
+                <p style="margin-top:20px;font-size: 12px;"><span style="color:red;font-size:21px;position: absolute;left: 1px; top: 0px;">*</span><span style="margin-left:13px;font-size:12px">邮箱地址:</span></p>
+            </div>
+            <input type="tel" name="tel" id="contact" style="border-color:#E8E8E8;background: #262830;">
+            <span class="Alltip" style="color:red;position:absolute;top:315px;left:20px;"></span>
+            <div class="bottom_btn">
+                <div class="btn">
+                    <div class="iframe_btn">取消</div>
+                    <div class="sure_btn">确定</div>
+                </div>
+            </div>
+        </div>
+        <div id="div_feedback" style="display: none;" class="record hide" data-item="1">
+        </div>
+
+
+    </div>
+
+    <!-- msgbox -->
+    <div class="mu"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide">
+        <!--登录提示-->
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <div class="fadeBack_footer"></div>
+    <script>
+        $(function() {
+            $('.summernote').summernote({
+                height: 200,
+                tabsize: 2,
+                lang: 'zh-CN'
+            });
+            $('.iframe_btn').on('click', function() {
+                window.parent.postMessage('close', '*');
+            })
+        });
+    </script>
+</body>
+
+</html>

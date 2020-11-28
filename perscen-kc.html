@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 账户安全</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/page.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <style>
+        .ke>ul {
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            padding-left: 10px;
+        }
+
+        .ke>ul li {
+            line-height: 38px;
+            margin: 0 15px;
+            color: #999;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .ke>ul li.active {
+            border-bottom: 2px solid #496fff;
+            color: #333;
+        }
+
+        .Page {
+            padding-top: 25px;
+        }
+
+        .allKeBox,
+        .txKeBox,
+        .txKeBox2 {
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .allKeBox .emptyBox,
+        .txKeBox .emptyBox,
+        .txKeBox2 .emptyBox {
+            height: calc(100vh - 235px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+        }
+
+        .allKeBox .emptyBox a,
+        .txKeBox .emptyBox a,
+        .txKeBox2 .emptyBox a {
+            margin-left: 10px;
+            color: #496fff;
+        }
+
+        .allKeBox .allke,
+        .txKeBox .allke,
+        .txKeBox2 .allke {
+            width: calc(100% + 20px);
+            overflow: hidden;
+        }
+
+        .allKeBox .allke::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .allKeBox .allke dd {
+            float: left;
+            width: 173px;
+            height: 164px;
+            margin: 0 20px 20px 0;
+            padding: 0;
+            border: 0;
+            position: relative;
+        }
+
+        .allKeBox .allke dd .operat {
+            position: absolute;
+            width: 173px;
+            height: 102px;
+            background: rgba(9, 11, 15, 0.6);
+            text-align: center;
+            display: none;
+            top: 0;
+            left: 0;
+            padding: 11px 0;
+            overflow: hidden;
+        }
+
+        .allKeBox .allke dd .operat div {
+            display: inline-block;
+            line-height: 30px;
+            padding: 0 15px;
+            vertical-align: middle;
+            margin: 5px 0;
+            color: #fff;
+        }
+
+        .allKeBox .allke dd .operat a {
+            display: inline-block;
+            line-height: 30px;
+            padding: 0 15px;
+            vertical-align: middle;
+            margin: 5px 0;
+            background: #496FFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .allKeBox .allke dd img {
+            width: 173px;
+            height: 102px;
+            margin-bottom: 5px;
+        }
+
+        .allKeBox .allke dd h2 {
+            font-size: 14px;
+            line-height: 14px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .allKeBox .allke dd .label {
+            border-bottom: 1px solid #E8E8E8;
+            overflow: hidden;
+            margin-bottom: 5px;
+            height: 23px;
+        }
+
+        .allKeBox .allke dd .label b {
+            line-height: 22px;
+            font-size: 12px;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .allKeBox .allke dd p {
+            color: #999;
+            font-size: 12px;
+            line-height: 12px;
+        }
+
+        .txKeBox .allke dt,
+        .txKeBox2 .allke dt {
+            line-height: 18px;
+            padding: 20px 0 15px;
+            width: 100%;
+            font-size: 14px;
+            border-top: 1px solid #E8E8E8;
+            float: left;
+        }
+
+        .txKeBox .allke dt:nth-child(1),
+        .txKeBox2 .allke dt:nth-child(1) {
+            padding: 10px 0 15px;
+            border: 0;
+        }
+
+        .txKeBox .allke dd,
+        .txKeBox2 .allke dd {
+            float: left;
+            width: 173px;
+            height: 164px;
+            margin: 0 20px 20px 0;
+            padding: 0;
+            border: 0;
+            position: relative;
+        }
+
+        .txKeBox .allke dd .operat,
+        .txKeBox2 .allke dd .operat {
+            position: absolute;
+            width: 173px;
+            height: 102px;
+            background: rgba(9, 11, 15, 0.6);
+            text-align: center;
+            display: none;
+            top: 0;
+            left: 0;
+            padding: 11px 0;
+            overflow: hidden;
+        }
+
+        .txKeBox .allke dd .operat a,
+        .txKeBox2 .allke dd .operat a {
+            display: inline-block;
+            line-height: 30px;
+            padding: 0 15px;
+            vertical-align: middle;
+            margin: 25px 0;
+            background: #496FFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .txKeBox .allke dd img,
+        .txKeBox2 .allke dd img {
+            width: 173px;
+            height: 102px;
+            margin-bottom: 5px;
+        }
+
+        .txKeBox .allke dd h2,
+        .txKeBox2 .allke dd h2 {
+            font-size: 14px;
+            line-height: 14px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .txKeBox .allke dd .label,
+        .txKeBox2 .allke dd .label {
+            border-bottom: 1px solid #E8E8E8;
+            overflow: hidden;
+            margin-bottom: 5px;
+            height: 23px;
+        }
+
+        .txKeBox .allke dd .label b,
+        .txKeBox2 .allke dd .label b {
+            line-height: 22px;
+            font-size: 12px;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .txKeBox .allke dd p,
+        .txKeBox2 .allke dd p {
+            color: #999;
+            font-size: 12px;
+            line-height: 12px;
+        }
+
+        .ke .allke dd .gq0 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 173px;
+            height: 102px;
+            background: url(img/pic/out_time.png);
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="kc">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_mm">
+                <div class="ke">
+                    <ul>
+                        <li data-to="allKeBox" class="fl active">全部课程</li>
+                        <li data-to="txKeBox" class="fl">CPDA课程体系</li>
+                        <li data-to="txKeBox2" class="fl">CDA课程体系</li>
+                        <li class="clear"></li>
+                    </ul>
+                    <div class="allKeBox box" style="padding:10px 20px 50px;" data-type="all" data-height="184" data-top="0">
+                        <dl class="allke"></dl>
+                        <div class="emptyBox">
+                            <img src="img/empty3.png"><br>
+                            <p><span>还没有购买过课程</span><a href="xssy_index.html">去看看</a></p>
+                        </div>
+                        <div id="allPage_k" class="Page"></div>
+                    </div>
+                    <div class="txKeBox box hide" style="padding:10px 20px 50px;" data-type="cpda" data-height="1" data-top="0">
+                        <dl class="allke"></dl>
+                        <div class="emptyBox">
+                            <img src="img/empty3.png"><br>
+                            <p><span>还没有建立CPDA课程体系</span><a href="cpda_selsource.html">去选课</a></p>
+                        </div>
+                    </div>
+                    <div class="txKeBox2 box hide" style="padding:10px 20px 50px;" data-type="cda" data-height="1" data-top="0">
+                        <dl class="allke"></dl>
+                        <div class="emptyBox">
+                            <img src="img/empty3.png"><br>
+                            <p><span>还没有建立CDA课程体系</span><a href="cpda_selsource.html">去选课</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    $(".ke>ul li").on("click", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".ke>div").eq($(this).index()).show().siblings("div").hide();
+        var classes = ["all", "cpda", "cda"];
+        XrData(1, 15, classes[$(this).index()]);
+    })
+    $(".allke").on("mouseover", "dd", function() {
+        $(this).find(".operat").show();
+    })
+    $(".allke").on("mouseleave", "dd", function() {
+        $(this).find(".operat").hide();
+    })
+
+    function xrOperat3(num1, num2) {
+        if (num1 == 1 && num2 == 0) {
+            return '<div class="operat"><div class="suggest">课程介绍</div><br><a class="study" target="_blank">开始学习</a></div>'
+        } else if (num1 == 1 && num2 == 1) {
+            return '<div class="operat"><a style="margin:25px 0;" class="study" target="_blank">课程学习</a></div>'
+        } else if (num1 == 0 && num2 == 0) {
+            return '<div class="operat"><div style="margin:25px 0;" class="suggest">课程介绍</div></div>'
+        } else {
+            return ''
+        }
+    }
+
+    function xrLabel3(data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+            html += '<b>' + data[i] + '</b>'
+        }
+        return html
+    }
+    var owner = window.location.search.substr(1);
+    XrData(1, 15, "all");
+
+    function XrData(nowpage, pagenum, classify) {
+        $.ajax({
+            url: url_ip + '/personal/personal_info/',
+            type: 'GET',
+            data: {
+                page: nowpage,
+                pagenum: pagenum,
+                keyword: classify,
+                other_id: owner
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': token
+            },
+            success: function(data) {
+                // console.log(data)
+                if (data.status) {
+                    var res = data.data
+                    if (classify == 'all') {
+                        $('.allKeBox dl').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.allKeBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".allKeBox .emptyBox").hide();
+                            } else {
+                                $(".allKeBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                $('.allKeBox dl').append('<dd data-id="' + res[i].id + '" data-mid="' + res[i].mid + '">' + xrOperat3(data.is_me, res[i].is_cpda) +
+                                    '<div class="gq' + res[i].status + '"></div>' +
+                                    '<img src="' + url_ip + res[i].img + '">' +
+                                    '<h2>' + res[i].name + '</h2>' +
+                                    '<div class="label">' + xrLabel3(res[i].label) + '</div>' +
+                                    '<p><span>' + res[i].end_time.substr(0, res[i].end_time.indexOf('T')) + '</span>到期</p>' +
+                                    '</dd>')
+                            }
+                            if (data.num > pagenum) {
+                                xrPage($('#allPage_k'), Math.ceil(data.num / pagenum), nowpage)
+                            }
+                        }
+                    } else if (classify == 'cpda') {
+                        $('.txKeBox dl').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.txKeBox .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".txKeBox .emptyBox").hide();
+                            } else {
+                                $(".txKeBox .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                $('.txKeBox dl').append('<dt>' + res[i].title + '</dt>')
+                                for (var j = 0; j < res[i].data.length; j++) {
+                                    $('.txKeBox dl').append('<dd data-id="' + res[i].data[j].id + '" data-mid="' + res[i].data[j].mid + '">' + xrOperat3(data.is_me, 1) +
+                                        '<div class="gq' + res[i].data[j].status + '"></div>' +
+                                        '<img src="' + url_ip + res[i].data[j].img + '">' +
+                                        '<h2>' + res[i].data[j].name + '</h2>' +
+                                        '<div class="label">' + xrLabel3(res[i].data[j].label) + '</div>' +
+                                        '<p><span>' + res[i].data[j].end_time.substr(0, res[i].data[j].end_time.indexOf('T')) + '</span>到期</p>' +
+                                        '</dd>')
+                                }
+                            }
+                        }
+                    } else if (classify == 'cda') {
+                        $('.txKeBox2 dl').empty()
+                        if (res.length == 0) {
+                            if (nowpage > 1) {
+                                nowpage--;
+                                XrData(nowpage, pagenum, classify)
+                            } else {
+                                xrEmpty($('.txKeBox2 .emptyBox'), data)
+                            }
+                        } else {
+                            if (res.length > 0) {
+                                $(".txKeBox2 .emptyBox").hide();
+                            } else {
+                                $(".txKeBox2 .emptyBox").show();
+                            }
+                            for (var i = 0; i < res.length; i++) {
+                                $('.txKeBox2 dl').append('<dt>' + res[i].title + '</dt>')
+                                for (var j = 0; j < res[i].data.length; j++) {
+                                    $('.txKeBox2 dl').append('<dd data-id="' + res[i].data[j].id + '" data-mid="' + res[i].data[j].mid + '">' + xrOperat3(data.is_me, 1) +
+                                        '<div class="gq' + res[i].data[j].status + '"></div>' +
+                                        '<img src="' + url_ip + res[i].data[j].img + '">' +
+                                        '<h2>' + res[i].data[j].name + '</h2>' +
+                                        '<div class="label">' + xrLabel3(res[i].data[j].label) + '</div>' +
+                                        '<p><span>' + res[i].data[j].end_time.substr(0, res[i].data[j].end_time.indexOf('T')) + '</span>到期</p>' +
+                                        '</dd>')
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    }
+    /*课程介绍*/
+    $('.suggest').live('click', function() {
+        var id = $(this).parent().parent().attr('data-id')
+        window.open('xssy_detail.html?' + id)
+    });
+    /*开始学习*/
+    $('.study').live('mousedown', function() {
+        var id = $(this).parent().parent().attr('data-mid')
+        var that = $(this)
+        $.ajax({
+            url: url_ip + "/chaox/",
+            type: "GET",
+            data: {
+                course_id: id
+            },
+            dataType: "json",
+            headers: {
+                "Authorization": token
+            },
+            success: function(data) {
+                //console.log(data)
+                if (data.status) {
+                    that.attr('href', 'http://chinacpda.fanya.chaoxing.com/sso/login3?uid=' + data.uid + '&d=' + data.d + '&backurl=' + 'http://mooc1.chaoxing.com/course/' + data.cxid + '.html')
+                }
+            },
+            error: function(err) {
+                i_isGoLogin(err);
+            }
+        })
+    });
+    /*分页*/
+    $('.Page').live('click', function(evt) {
+        var id = $(this)[0].id
+        var target = evt.target
+        var className = target.className
+        var page = target.innerHTML
+        var pagenum = 15
+        var classify = $(this).parent().attr('data-type')
+        if (classify) {
+            clickPage($('#' + id), className, page, XrData, pagenum, classify)
+        } else if (id == 'liuyanPage') {
+            clickPage($('#' + id), className, page, liuyan, pagenum, classify)
+        } else if (id.substr(0, 8) == 'lyerPage') {
+            var pagenum = $(this).parent().parent()
+            clickPage($('#' + id), className, page, liuyan2, pagenum, classify)
+        }
+    })
+</script>

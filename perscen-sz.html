@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 设置</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/perscen.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/perscen.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lkw_scroll.js?v=0.19.11.21.11"></script>
+
+    <style>
+        .zhaohui {
+            display: inline-block !important;
+            line-height: 30px;
+            cursor: pointer;
+            color: #496FFF;
+            margin-right: 20px;
+        }
+
+        .zh,
+        .xg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            display: none;
+        }
+
+        .zh_box,
+        .xg_box {
+            width: 360px;
+            height: 294px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -147px;
+            margin-left: -180px;
+            background: #fff;
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            padding: 20px 30px;
+        }
+
+        .xg_box {
+            height: 250px;
+            margin-top: -125px;
+        }
+
+        .zh_box h2,
+        .xg_box h2 {
+            width: 100%;
+            height: 27px;
+            line-height: 27px;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .zh_box img,
+        .xg_box img {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            width: 12px;
+            height: 12px;
+        }
+
+        .zh_box input,
+        .xg_box input {
+            width: 300px;
+            height: 28px;
+            box-sizing: border-box;
+            border: 1px solid #E8E8E8;
+            padding-left: 15px;
+        }
+
+        .zh_box p,
+        .xg_box p {
+            font-size: 12px;
+            line-height: 15px;
+            color: red;
+            opacity: 0;
+        }
+
+        .zh_box span,
+        .xg_box span {
+            width: 90px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: #fff;
+            background: #496fff;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .zh_box span:hover,
+        .xg_box span:hover {
+            background: #ccc;
+        }
+
+        .zhaohui_sure,
+        .xiugai_sure {
+            width: 100px;
+            height: 30px;
+            background: #496FFF;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+            margin-left: 100px;
+            cursor: pointer;
+        }
+
+        .no {
+            position: fixed;
+            display: none;
+            width: 360px;
+            height: 253px;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5555;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .no-content {
+            width: 360px;
+            height: 253px;
+            text-align: center;
+        }
+
+        .no-close {
+            font-size: 30px;
+            font-weight: 200;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .no .title {
+            font-size: 20px;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+            line-height: 20px;
+            margin: 15px 0;
+        }
+
+        .no .tips {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(102, 102, 102, 1);
+            line-height: 28px;
+            margin-bottom: 25px;
+        }
+
+        .no img {
+            margin-top: 35px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .no .btn {
+            cursor: pointer;
+            width: 96px;
+            height: 30px;
+            background: rgba(73, 111, 255, 1);
+            border-radius: 2px;
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav></nav>
+        <div class="typeArea">
+            <div class="perscenL" data-item="sz">
+                <!--左侧内容区-->
+            </div>
+            <div class="personR personR_sz">
+                <dl>
+                    <dt class="sz_head">
+            <span data-item="zl" class="active">主页资料</span>
+            <span data-item="qt">其他信息</span>
+            <span data-item="qx">隐私权限</span>
+            <span data-item="aq" >账户安全</span>
+            <!-- <span data-item="bq">标签管理</span> -->
+          </dt>
+                    <dd class="perscenBlock sz_zl" data-item="zl">
+                        <div class="szChoiceFoo">
+                            <h3>账户</h3>
+                            <h4>：</h4>
+                            <p class="tabContDetail szParames" data-item="username">.</p>
+                        </div>
+                        <div class="szChoiceFoo">
+                            <h3>注册日期</h3>
+                            <h4>：</h4>
+                            <p class="tabContDetail szParames" data-item="date">0000-00-00</p>
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>姓名</h3>
+                            <h4>：</h4><input type="text" class="szParames form-control noradius  " value="" disabled="" data-item="name">
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>性别</h3>
+                            <h4>：</h4>
+                            <p class="tabContDetail szSexFoo">
+                                <label for="xb_m"><input id="xb_m" type="radio" value="男" name="chose_xb" disabled="" checked>男</label>
+                                <label for="xb_w"><input id="xb_w" type="radio" value="女" name="chose_xb" disabled="">女</label>
+                            </p>
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>生日</h3>
+                            <h4>：</h4><input type="date" class="szParames form-control noradius " value="" disabled="" data-item="birthday">
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>省份</h3>
+                            <h4>：</h4>
+                            <div class="tabContDetail">
+                                <p class="inlineBlock mr20">
+                                    <select class="province szParames" disabled="" data-item="province">
+
+                  </select><span>省</span>
+                                </p>
+                                <p class="inlineBlock ">
+                                    <select class="city szParames" disabled="" data-item="city">
+
+                  </select><span>市</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>手机号</h3>
+                            <h4>：</h4>
+                            <p class="tabContDetail szParames" data-item="phone"></p>
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>微信</h3>
+                            <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="wechat">
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>Q Q号</h3>
+                            <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="qq">
+                        </div>
+                        <div class="szChoiceFoo szChoiceFooS">
+                            <h3>微博</h3>
+                            <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="weibo">
+                        </div>
+
+                        <div class="szChoiceFoo" style="height: auto;">
+                            <h3>个人介绍</h3>
+                            <h4>：</h4>
+                            <textarea class="szParames" style="width: 100%;" placeholder="请填写内容" value="" disabled="" data-item="detail"></textarea>
+                            <div class="mySayDiv"></div>
+                        </div>
+                        <div class="szChoiceFoo sz_spanFoo" style="height: auto;margin-top: 10px;">
+                            <h3>标签</h3>
+                            <h4>：</h4>
+                            <div class="spanDiv_keyDown_prev szParames" data-item="label"></div>
+                            <!-- <span class="comSpan_mim">算法</span><span class="comSpan_mim">算法</span><span class="comSpan_mim">算法</span> -->
+                            <textarea class=" hide" style="width: 100%;" placeholder="请添加标签，空格或回车添加" value="" disabled="" id="spanDiv_keyDown"></textarea>
+                        </div>
+                        <div class="editSublimFoo szSubmit">
+                            <p class="btn" data-item="1">编辑信息</p>
+                            <p class="btn hide" data-item="2">取消</p>
+                            <p class="btn hide" data-item="3">保存</p>
+                            <!-- <p class="no" data-type="no">取 消</p> -->
+                        </div>
+                    </dd>
+                    <dd class="perscenBlock sz_qt hide" data-item="qt">
+                        <div class="qx_top">
+                            <div class="qx_titl">个人资料</div>
+                            <div>
+                                <div class="szChoiceFoo">
+                                    <h3>详细住址</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="address">
+                                </div>
+                                <div class="szChoiceFoo">
+                                    <h3>电子邮箱</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="email">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>证件类型</h3>
+                                    <h4>：</h4>
+                                    <select class="sz_certificate_type szParames" disabled="" data-item="certificate_type">
+                    <option value="0">----</option>
+                    <option value="居民身份证">居民身份证</option>
+                    <option value="士官证">士官证</option>
+                    <option value="学生证">学生证</option>
+                    <option value="驾驶证">驾驶证</option>
+                    <option value="护照">护照</option>
+                    <option value="港澳通行证">港澳通行证</option>
+                  </select>
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>证件号</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " placeholder="请填写证件号" value="" disabled="" data-item="identity_card">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>学历</h3>
+                                    <h4>：</h4>
+                                    <select class="szParames" disabled="" data-item="grade">
+                                      <option value="3">本科</option>
+                                      <option value="5">专科</option>
+                                      <option value="2">硕士</option>
+                                      <option value="1">博士</option>
+                                      <option value="4">高中</option>
+                                      <option value="6">其他</option>
+                                    </select>
+                                    <!-- <input type="text" class="szParames form-control noradius " value="" disabled="" data-item="grade"> -->
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>毕业院校</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="graduate_school">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>一级行业</h3>
+                                    <h4>：</h4><select class="szParames szHangye joblevel" disabled="" data-item="industyfirst"></select>
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>二级行业</h3>
+                                    <h4>：</h4><select class="szParames szHangye jobclassify" disabled="" data-item="industy"></select>
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>职位</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="web前端" disabled="" data-item="job">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>工作单位</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="company">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>工作年限</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="work_years">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3>紧急联系人</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="emergency_contact">
+                                </div>
+                                <div class="szChoiceFoo szChoiceFooS">
+                                    <h3 style="width: 130px;">紧急联系人电话</h3>
+                                    <h4>：</h4><input type="text" class="szParames form-control noradius " value="" disabled="" data-item="emergency_contact_phone">
+                                </div>
+                                <div class="btnFoo">
+                                    <div class="btn" data-item="1">编辑信息</div>
+                                    <div class="btn hide" data-item="2">取消</div>
+                                    <div class="btn hide" data-item="3">保存</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="qx_botm">
+                            <div class="qx_titl">职业充电标签</div>
+                            <ul class="qx_botmSpan">
+                                <li>我使用的工具：<span class="tools"></span></li>
+                                <li>我所在的行业：<span class="industry"></span></li>
+                                <li>我的职业：<span class="profession"></span></li>
+                            </ul>
+                            <div class="btn">修改标签</div>
+                        </div>
+                    </dd>
+                    <dd class="perscenBlock sz_qx hide" data-item="qx">
+                        <div class="sz_qxTab">
+                            <div>
+                                <h5>个人资料</h5>
+                                <ul class="data">
+                                    <li><label for="grzl1"><input id="grzl1" type="radio" name="grzl" data-val="1" checked />所有人可见</label></li>
+                                    <li><label for="grzl2"><input id="grzl2" type="radio" name="grzl" data-val="2" />仅粉丝可见</label></li>
+                                    <li><label for="grzl3"><input id="grzl3" type="radio" name="grzl" data-val="3" />所有人不可见</label></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5>个人动态</h5>
+                                <ul class="dynamic">
+                                    <li><label for="grdt1"><input id="grdt1" type="radio" name="grdt" data-val="1" checked />所有人可见</label></li>
+                                    <li><label for="grdt2"><input id="grdt2" type="radio" name="grdt" data-val="2" />仅粉丝可见</label></li>
+                                    <li><label for="grdt3"><input id="grdt3" type="radio" name="grdt" data-val="3" />所有人不可见</label></li>
+                                </ul>
+                            </div>
+                            <div class="btnFoo">
+                                <!-- <div class="btn" data-item="1">编辑信息</div> -->
+                                <div class="btn" data-item="2">取消</div>
+                                <div class="btn" data-item="3">保存</div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="sz_aq hide" data-item="aq">
+                        <div class="personR personR_mm">
+                            <div class="perscenBlock">
+                                <div class="zfMm">
+                                    <h2 class="mmTitl">支付密码<span class="isSet"></span></h2>
+                                    <div class="mmChoiceFoo hide mmChoiceFoo_old">
+                                        <h3>原始密码</h3>
+                                        <h4>：</h4>
+                                        <input type="text" class="form-control noradius mmOld" data-item="原始密码">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="mmChoiceFoo hide">
+                                        <h3>新密码</h3>
+                                        <h4>：</h4>
+                                        <input type="password" class="form-control noradius mmNew" data-item="密码">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="mmChoiceFoo hide">
+                                        <h3>确认密码</h3>
+                                        <h4>：</h4>
+                                        <input type="password" class="form-control noradius mmConfirm" data-item="密码确认">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="btnFoo">
+                                        <span class="zhaohui" data-type="zf">找回密码</span>
+                                        <p class="btn hide btn_clickshow" data-type="qx">取消</p>
+                                        <p class="btn hide btn_clickshow" data-type="bc">保存</p>
+                                        <p class="btn hide btn_morenshow" data-type="re">修改密码</p>
+                                        <p class="btn hide btn_morenshow" data-type="sz">设置密码</p>
+                                    </div>
+                                </div>
+                                <div class="logMm">
+                                    <h2 class="mmTitl">登录密码<span class="isSet">已设置</span></h2>
+                                    <div class="mmChoiceFoo hide mmChoiceFoo_old">
+                                        <h3>原始密码</h3>
+                                        <h4>：</h4>
+                                        <input type="text" class="form-control noradius old_pwd" data-item="原始密码">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="mmChoiceFoo hide">
+                                        <h3>新密码</h3>
+                                        <h4>：</h4>
+                                        <input type="password" class="form-control noradius pwd1" data-item="密码">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="mmChoiceFoo hide">
+                                        <h3>确认密码</h3>
+                                        <h4>：</h4>
+                                        <input type="password" class="form-control noradius pwd2" data-item="密码确认">
+                                        <span class="cRed verticalM"></span>
+                                    </div>
+                                    <div class="btnFoo">
+                                        <span class="zhaohui" data-type="dl">找回密码</span>
+
+                                        <p class="btn hide" data-type="qx">取消</p>
+                                        <p class="btn hide" data-type="bc">保存</p>
+                                        <p class="btn" data-type="re">修改密码</p>
+                                    </div>
+                                </div>
+                                <div class="sjHm">
+                                    <h2 class="mmTitl">手机号码<span class="isSet">已设置</span></h2>
+                                    <div class="btnFoo">
+                                        <p class="btn xiugai">修改手机号</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd class="perscenBlock hide" data-item="bq">
+
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="mu"></div>
+
+    <!--标签弹窗-->
+    <div class="xssy_list_alertMu">
+        <div class="xssy_list_alert">
+            <h2 class="titl" style="overflow: hidden;">
+                <span>选择您的相关信息</span><i class="close">×</i>
+                <p>我们会根据您的选择向您推送符合您个人喜好的信息！</p>
+            </h2>
+            <ul class="xssy_list_alertUl">
+                <li data-item="gj">
+                    <h3><img src="img/icon/xssy_list_alert01.png">
+                        <p>我使用的工具</p>
+                    </h3>
+                    <p class="spanFoo">
+
+                    </p>
+                </li>
+                <li data-item="hy">
+                    <h3><img src="img/icon/xssy_list_alert02.png">
+                        <p>我所在的行业</p>
+                    </h3>
+                    <p class="spanFoo">
+
+                    </p>
+                </li>
+                <li data-item="zy">
+                    <h3><img src="img/icon/xssy_list_alert03.png">
+                        <p>我的职业</p>
+                    </h3>
+                    <p class="spanFoo spanFoo_zy">
+
+                    </p>
+                </li>
+            </ul>
+            <div class="btn">确定选择</div>
+        </div>
+    </div>
+
+    <div class="msg-box-wraper login-alert shade hide"></div>
+
+    <!-- 首次使用支付密码 -->
+    <div class="no alertMsg1">
+        <i class="no-close">×</i>
+        <div class="no-content">
+            <img src="img/弹窗／正确.png">
+            <p class="title">支付密码设置成功</p>
+            <p class="tips">你可以继续完成支付</p>
+            <div class="btn">继续支付</div>
+        </div>
+    </div>
+    <!--提示信息-->
+
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img isOk"></h6>
+            <h2>tip</h2>
+        </div>
+    </div>
+    <div class="zh">
+        <div class="zh_box">
+            <h2>找回密码</h2><img src="img/close4.png">
+            <input type="text" placeholder="手机号码">
+            <p>*请输入手机号码</p>
+            <input type="text" placeholder="验证码" style="width:195px;margin-right:15px;"><span>获取验证码</span>
+            <p>*请输入验证码</p>
+            <input type="text" placeholder="输入新密码">
+            <p>*请输入新密码</p>
+            <input type="text" placeholder="确认新密码">
+            <p>*请再次输入新密码</p>
+            <div class="zhaohui_sure">确认</div>
+        </div>
+    </div>
+
+    <div class="xg">
+        <div class="xg_box">
+            <h2>修改手机号</h2><img src="img/close4.png">
+            <input class="isphoneNum" type="text" placeholder="请输入旧的手机号码">
+            <p>*请输入旧的手机号码</p>
+            <input class="isphoneNum" type="text" placeholder="请输入新的手机号码">
+            <p>*请输入新的手机号码</p>
+            <input type="text" placeholder="验证码" style="width:195px;margin-right:15px;"><span>获取验证码</span>
+            <p>*请输入验证码</p>
+            <div class="xiugai_sure">确认</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 判断有误hash值动态添加class属性
+    if (location.hash) {
+        $('.sz_head [data-item=aq]').addClass('active').siblings().removeClass('active');
+        $('.personR_sz dd[data-item=aq]').show().siblings('dd').hide();
+    }
+    //行业标签内容
+    function guessSpanFn() {
+        $('.xssy_list_alertMu').fadeIn();
+        $.GSHajax({
+            url: '/files/profession/',
+            success: function(res) {
+                if (res.status) {
+                    var guessSpan_gjHtml = '';
+                    for (var i = 0; i < res.data.weike_info.length; i++) {
+                        guessSpan_gjHtml += '<span data-item="gj">' + res.data.weike_info[i] + '</span>';
+                    }
+                    $('.xssy_list_alertUl li[data-item="gj"] .spanFoo').html(guessSpan_gjHtml);
+                    var guessSpan_hyHtml = '';
+                    var guessSpan_zyHtml = '';
+                    for (var i = 0; i < res.data.weike_industry.length; i++) {
+                        guessSpan_hyHtml += '<span data-item="hy">' + res.data.weike_industry[i].name + '</span>';
+                        for (var j = 0; j < res.data.weike_industry[i].list.length; j++) {
+                            guessSpan_zyHtml += '<span data-item="zy" data-foo="' + res.data.weike_industry[i].name + '">' + res.data.weike_industry[i].list[j] + '</span>';
+                        }
+                    }
+                    $('.xssy_list_alertUl li[data-item="hy"] .spanFoo').html(guessSpan_hyHtml);
+                    $('.xssy_list_alertUl li[data-item="zy"] .spanFoo').html(guessSpan_zyHtml);
+                } else {
+                    $('.xssy_list_alertMu').hide();
+                }
+            },
+            error: function() {
+                $('.xssy_list_alertMu').hide();
+            }
+        })
+        guessSpanScrollFn();
+    }
+    //行业标签滚动条
+    function guessSpanScrollFn() {
+        var guessSpanScrollH = $('.xssy_list_alert').outerHeight() - $('.xssy_list_alert .titl').outerHeight(true) - $('.xssy_list_alert .btn').outerHeight(true) - 20; //ul上下padding、btn底部20
+        $('.xssy_list_alert .xssy_list_alertUl').slimScroll({
+            height: guessSpanScrollH,
+            borderRadius: "0px"
+        });
+    }
+    //地区三级联动
+    function changeCity(val, cityClass, defaultCity) {
+        var nowVal = 0;
+        switch (val) {
+            case '北京':
+                nowVal = 1;
+                break;
+            case '上海':
+                nowVal = 2;
+                break;
+            case '天津':
+                nowVal = 3;
+                break;
+            case '重庆':
+                nowVal = 4;
+                break;
+            case '河北':
+                nowVal = 5;
+                break;
+            case '山西':
+                nowVal = 6;
+                break;
+            case '内蒙古':
+                nowVal = 7;
+                break;
+            case '辽宁':
+                nowVal = 8;
+                break;
+            case '吉林':
+                nowVal = 9;
+                break;
+            case '黑龙江':
+                nowVal = 10;
+                break;
+            case '江苏':
+                nowVal = 11;
+                break;
+            case '浙江':
+                nowVal = 12;
+                break;
+            case '安徽':
+                nowVal = 13;
+                break;
+            case '福建':
+                nowVal = 14;
+                break;
+            case '江西':
+                nowVal = 15;
+                break;
+            case '山东':
+                nowVal = 16;
+                break;
+            case '河南':
+                nowVal = 17;
+                break;
+            case '湖北':
+                nowVal = 18;
+                break;
+            case '湖南':
+                nowVal = 19;
+                break;
+            case '广东':
+                nowVal = 20;
+                break;
+            case '广西':
+                nowVal = 21;
+                break;
+            case '海南':
+                nowVal = 22;
+                break;
+            case '四川':
+                nowVal = 23;
+                break;
+            case '贵州':
+                nowVal = 24;
+                break;
+            case '云南':
+                nowVal = 25;
+                break;
+            case '西藏':
+                nowVal = 26;
+                break;
+            case '山西':
+                nowVal = 27;
+                break;
+            case '甘肃':
+                nowVal = 28;
+                break;
+            case '宁夏':
+                nowVal = 29;
+                break;
+            case '青海':
+                nowVal = 30;
+                break;
+            case '新疆':
+                nowVal = 31;
+                break;
+            case '香港':
+                nowVal = 32;
+                break;
+            case '澳门':
+                nowVal = 33;
+                break;
+            case '台湾':
+                nowVal = 34;
+                break;
+                defaule: nowVal = 0;
+        }
+
+        var cityArr = arr[nowVal].split(",");
+        $(cityClass).html('');
+        for (var i = 0; i < cityArr.length; i++) {
+            var optionHtml = new Option(cityArr[i], cityArr[i]);
+            $(cityClass).append(optionHtml);
+        }
+        if (defaultCity) {
+            $(cityClass).val(defaultCity);
+        }
+    }
+    //数据
+    var provinceArr = ["----", "北京", "上海", "天津", "重庆", "河北", "山西", "内蒙古", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建", "江西", "山东", "河南", "湖北", "湖南", "广东", "广西", "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "宁夏", "青海", "新疆", "香港", "澳门", "台湾"]
+    var arr = new Array();
+    arr[0] = "----";
+    arr[1] = "----,东城,西城,崇文,宣武,朝阳,丰台,石景山,海淀,门头沟,房山,通州,顺义,昌平,大兴,平谷,怀柔,密云,延庆";
+    arr[2] = "----,黄浦,卢湾,徐汇,长宁,静安,普陀,闸北,虹口,杨浦,闵行,宝山,嘉定,浦东,金山,松江,青浦,南汇,奉贤,崇明";
+    arr[3] = "----,和平,东丽,河东,西青,河西,津南,南开,北辰,河北,武清,红挢,塘沽,汉沽,大港,宁河,静海,宝坻,蓟县";
+    arr[4] = "----,万州,涪陵,渝中,大渡口,江北,沙坪坝,九龙坡,南岸,北碚,万盛,双挢,渝北,巴南,黔江,长寿,綦江,潼南,铜梁,大足,荣昌,壁山,梁平,城口,丰都,垫江,武隆,忠县,开县,云阳,奉节,巫山,巫溪,石柱,秀山,酉阳,彭水,江津,合川,永川,南川";
+    arr[5] = "----,石家庄,邯郸,邢台,保定,张家口,承德,廊坊,唐山,秦皇岛,沧州,衡水";
+    arr[6] = "----,太原,大同,阳泉,长治,晋城,朔州,吕梁,忻州,晋中,临汾,运城";
+    arr[7] = "----,呼和浩特,包头,乌海,赤峰,呼伦贝尔盟,阿拉善盟,哲里木盟,兴安盟,乌兰察布盟,锡林郭勒盟,巴彦淖尔盟,伊克昭盟";
+    arr[8] = "----,沈阳,大连,鞍山,抚顺,本溪,丹东,锦州,营口,阜新,辽阳,盘锦,铁岭,朝阳,葫芦岛";
+    arr[9] = "----,长春,吉林,四平,辽源,通化,白山,松原,白城,延边";
+    arr[10] = "----,哈尔滨,齐齐哈尔,牡丹江,佳木斯,大庆,绥化,鹤岗,鸡西,黑河,双鸭山,伊春,七台河,大兴安岭";
+    arr[11] = "----,南京,镇江,苏州,南通,扬州,盐城,徐州,连云港,常州,无锡,宿迁,泰州,淮安";
+    arr[12] = "----,杭州,宁波,温州,嘉兴,湖州,绍兴,金华,衢州,舟山,台州,丽水";
+    arr[13] = "----,合肥,芜湖,蚌埠,马鞍山,淮北,铜陵,安庆,黄山,滁州,宿州,池州,淮南,巢湖,阜阳,六安,宣城,亳州";
+    arr[14] = "----,福州,厦门,莆田,三明,泉州,漳州,南平,龙岩,宁德";
+    arr[15] = "----,南昌市,景德镇,九江,鹰潭,萍乡,新馀,赣州,吉安,宜春,抚州,上饶";
+    arr[16] = "----,济南,青岛,淄博,枣庄,东营,烟台,潍坊,济宁,泰安,威海,日照,莱芜,临沂,德州,聊城,滨州,菏泽";
+    arr[17] = "----,郑州,开封,洛阳,平顶山,安阳,鹤壁,新乡,焦作,濮阳,许昌,漯河,三门峡,南阳,商丘,信阳,周口,驻马店,济源";
+    arr[18] = "----,武汉,宜昌,荆州,襄樊,黄石,荆门,黄冈,十堰,恩施,潜江,天门,仙桃,随州,咸宁,孝感,鄂州";
+    arr[19] = "----,长沙,常德,株洲,湘潭,衡阳,岳阳,邵阳,益阳,娄底,怀化,郴州,永州,湘西,张家界";
+    arr[20] = "----,广州,深圳,珠海,汕头,东莞,中山,佛山,韶关,江门,湛江,茂名,肇庆,惠州,梅州,汕尾,河源,阳江,清远,潮州,揭阳,云浮";
+    arr[21] = "----,南宁,柳州,桂林,梧州,北海,防城港,钦州,贵港,玉林,南宁地区,柳州地区,贺州,百色,河池";
+    arr[22] = "----,海口,三亚";
+    arr[23] = "----,成都,绵阳,德阳,自贡,攀枝花,广元,内江,乐山,南充,宜宾,广安,达川,雅安,眉山,甘孜,凉山,泸州";
+    arr[24] = "----,贵阳,六盘水,遵义,安顺,铜仁,黔西南,毕节,黔东南,黔南";
+    arr[25] = "----,昆明,大理,曲靖,玉溪,昭通,楚雄,红河,文山,思茅,西双版纳,保山,德宏,丽江,怒江,迪庆,临沧";
+    arr[26] = "----,拉萨,日喀则,山南,林芝,昌都,阿里,那曲";
+    arr[27] = "----,西安,宝鸡,咸阳,铜川,渭南,延安,榆林,汉中,安康,商洛";
+    arr[29] = "----,银川,石嘴山,吴忠,固原";
+    arr[28] = "----,兰州,嘉峪关,金昌,白银,天水,酒泉,张掖,武威,定西,陇南,平凉,庆阳,临夏,甘南";
+    arr[30] = "----,西宁,海东,海南,海北,黄南,玉树,果洛,海西";
+    arr[31] = "----,乌鲁木齐,石河子,克拉玛依,伊犁,巴音郭勒,昌吉,克孜勒苏柯尔克孜,博 尔塔拉,吐鲁番,哈密,喀什,和田,阿克苏";
+    arr[32] = "----,香港";
+    arr[33] = "----,澳门";
+    arr[34] = "----,台北,高雄,台中,台南,屏东,南投,云林,新竹,彰化,苗栗,嘉义,花莲,桃园,宜兰,基隆,台东,金门,马祖,澎湖";
+
+    function getYsqxFn() {
+        $.GSHajax({
+            url: '/personal/powersetting/',
+            data: {
+                userid: token_id
+            },
+            success: function(res) {
+                if (res.status) {
+                    for (var key in res.data) {
+                        $('.personR_sz .sz_qx .' + key).find('input[data-val="' + res.data[key] + '"]').attr('checked', 'checked');
+                    }
+                } else {
+
+                }
+            }
+        })
+    }
+    //其他信息-职业充电标签
+    function getzhiyeSpanFn() {
+        var getzhiyeSpan = get('_span_related_', 1000 * 60 * 60 * 24 * 30); //过期时间为30天
+        if (getzhiyeSpan != '') {
+            for (var key in getzhiyeSpan) {
+                $('.qx_botm .qx_botmSpan .' + key).html(getzhiyeSpan[key])
+            }
+        }
+    }
+    $(function() {
+
+        //  首次使用支付密码弹框
+        $('.no .btn').click(function() {
+                window.location.href = 'xshupay.html?' + location.hash.substr(1)
+            })
+            // 标签弹窗
+        $('.qx_botm').on('click', '.btn', function() {
+                guessSpanFn(); //渲染行业标签
+                $('.xssy_list_alertMu').fadeIn();
+            })
+            // 标签选择
+        $('.xssy_list_alertUl .spanFoo').on('click', 'span', function() {
+                var nowItem = $(this).attr('data-item');
+                if (nowItem == 'gj') {
+                    $(this).toggleClass('active')
+                } else {
+                    $(this).addClass('active').siblings().removeClass('active');
+                    if (nowItem == 'hy') {
+                        $('.xssy_list_alertUl .spanFoo_zy span').css({
+                            display: 'none'
+                        });
+                        $('.xssy_list_alertUl .spanFoo_zy span[data-foo="' + $(this).text() + '"]').css({
+                            display: 'inline-block'
+                        });
+                    }
+                }
+            })
+            // 标签选择-确认
+        $('.xssy_list_alert .btn').on('click', function() {
+            var tools = [];
+            $('.xssy_list_alertUl li[data-item="gj"] .spanFoo span.active').each(function(i, ele) {
+                var nowChoise = $(ele).text();
+                if (nowChoise)
+                    tools.push(nowChoise);
+            })
+            var industry = $('.xssy_list_alertUl li[data-item="hy"] .spanFoo span.active').text() || '';
+            var profession = $('.xssy_list_alertUl li[data-item="zy"] .spanFoo span.active').text() || '';
+            if (tools.length != 0 && industry != '' && profession != '') {
+                set('_span_related_', '{"tools":"' + tools + '", "industry":"' + industry + '", "profession":"' + profession + '"}');
+                $('.xssy_list_alertMu').fadeOut();
+                //其他信息-职业充电标签
+                getzhiyeSpanFn();
+            } else {
+                $('.alertMsg').showMsg({
+                    isImg: 'isNo',
+                    h2txt: '请从每组标签中至少选择一个',
+                    setTime: 1500
+                });
+            }
+        })
+        $('.xssy_list_alertMu .titl .close').on('click', function() {
+                $('.xssy_list_alertMu').fadeOut();
+            })
+            //顶部tab点击
+        $('.sz_head').on('click', 'span', function() {
+                $(this).addClass('active').siblings().removeClass('active');
+                var nowItem = $(this).attr('data-item');
+                $('.personR_sz dd[data-item="' + nowItem + '"]').show().siblings('dd').hide();
+            })
+            //主页资料-其他资料
+        $.GSHajax({
+                url: '/personal/userprofile',
+                success: function(res) {
+                    //主页省市二联
+                    var province = res.data.data_0.province || '';
+                    var city = res.data.data_0.city || '';
+                    for (var i = 0; i < provinceArr.length; i++) {
+                        var optionHtml = new Option(provinceArr[i], provinceArr[i]);
+                        $('.personR_sz .sz_zl .province').append(optionHtml);
+                    }
+                    $('.personR_sz .sz_zl .province').val(province)
+                    changeCity(province, '.personR_sz .sz_zl .city', city);
+                    //主页资料
+                    $('.personR_sz .sz_zl .szParames').each(function(i, ele) {
+                        var nowItem = $(ele).attr('data-item');
+                        if (nowItem == 'label') {
+                            var spanHtml = '';
+                            for (var i = 0; i < res.data.data_0.label.length; i++) {
+                                spanHtml += '<span class="comSpan_mim" data-txt="' + res.data.data_0.label[i] + '">' + res.data.data_0.label[i] + '</span>'
+                            }
+                            $('.spanDiv_keyDown_prev').html(spanHtml);
+                        } else {
+                            if (ele.nodeName == 'P') {
+                                $(ele).html(res.data.data_0[nowItem]);
+                            } else {
+                                $(ele).val(res.data.data_0[nowItem])
+                            }
+                        }
+                    })
+                    if (res.data.data_0.sex == '男') {
+                        $('.szSexFoo input#xb_m').attr('checked', 'checked');
+                    } else {
+                        $('.szSexFoo input#xb_w').attr('checked', 'checked');
+                    }
+                    //其他资料
+                    $('.personR_sz .sz_qt .szParames').each(function(i, ele) {
+                        var nowItem = $(ele).attr('data-item');
+                        if (nowItem == 'label') {
+                            var spanHtml = '';
+                            for (var i = 0; i < res.data.data_1.label.length; i++) {
+                                spanHtml += '<span class="comSpan_mim" data-txt="' + res.data.data_1.label[i] + '">' + res.data.data_1.label[i] + '</span>'
+                            }
+                            $('.spanDiv_keyDown_prev').html(spanHtml);
+                        } else if (nowItem == 'industyfirst') {
+                            industyAjax();
+                            setTimeout(() => {
+                                $('.joblevel option').each(function() {
+                                    if (+$(this).val() === +res.data.data_1['industy'][0].id) {
+                                        $(this).attr('selected', true)
+                                    }
+                                })
+                            }, 500)
+                        } else if (nowItem == 'industy') {
+                            console.log('here')
+                            levelTwoAjax(res.data.data_1['industy'][0].id);
+                            setTimeout(() => {
+                                $('.jobclassify option').each(function() {
+                                    console.log($(this))
+                                    if (+$(this).val() === +res.data.data_1['industy'][1].id) {
+                                        $(this).attr('selected', true)
+                                    }
+                                })
+                            }, 500);
+                        } else {
+                            if (ele.nodeName == 'P') {
+                                $(ele).html(res.data.data_1[nowItem]);
+                            } else {
+                                $(ele).val(res.data.data_1[nowItem])
+                            }
+                        }
+                    })
+                }
+            })
+            //主页设置
+        $('.personR_sz .sz_zl .szSubmit').on('click', '.btn', function() {
+                var nowItem = $(this).attr('data-item') - 0;
+                switch (nowItem) {
+                    case 1: //编辑
+                        $(this).hide().siblings().show();
+                        $('.personR_sz .sz_zl').find('input, select, textarea').addClass('active').attr({
+                            'disabled': false
+                        }); //可编辑
+                        $('#spanDiv_keyDown').show();
+                        break;
+                    case 2: //取消
+                        window.location.href = "perscen-sz.html?cm=zl";
+                        break;
+                    case 3: //保存
+                        if ($('#spanDiv_keyDown').val()) {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isOk',
+                                h2txt: '您有未保存的标签, 请先添加标签或清空未输入的标签',
+                                setTime: 1500
+                            });
+                            return;
+                        }
+
+                        var obj = {
+                            type: 0
+                        };
+                        $('.personR_sz .sz_zl .szParames').each(function() {
+                            //参数在此
+                            if ($(this).attr('data-item') == 'label') {
+
+                                var labelStr = '';
+                                var labelL = $('.spanDiv_keyDown_prev').children('span').length;
+                                if (labelL == 0) {
+
+                                } else if (labelL == 1) {
+                                    labelStr = $('.spanDiv_keyDown_prev').children('span').attr('data-txt');
+                                } else {
+                                    for (var i = 0; i < labelL; i++) {
+                                        if (i == 0) {
+                                            labelStr += $('.spanDiv_keyDown_prev').children('span').eq(i).attr('data-txt');
+                                        } else {
+                                            labelStr += (',' + $('.spanDiv_keyDown_prev').children('span').eq(i).attr('data-txt'));
+                                        }
+                                    }
+                                }
+                                obj[$(this).attr('data-item')] = labelStr;
+                            } else {
+                                obj[$(this).attr('data-item')] = $(this).val() || $(this).text();
+                            }
+                        })
+                        obj.sex = $('.personR_sz .sz_zl .szSexFoo input:checked').val();
+                        $.GSHajax({
+                            url: '/personal/userprofile',
+                            type: 'POST',
+                            data: obj,
+                            success: function(res) {
+                                if (res.status) {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isOk',
+                                        h2txt: '修改成功',
+                                        setTime: 1500
+                                    });
+                                    $('.personR_sz .sz_zl').find('input, select, textarea').removeClass('active').attr({
+                                        'disabled': true
+                                    }); //不可编辑
+                                    $('#spanDiv_keyDown').hide();
+                                    $('.personR_sz .sz_zl .btn[data-item="1"]').show().siblings().hide();
+                                }
+                            },
+                            error: function(err) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: '更改异常, 请重试',
+                                    setTime: 1500
+                                });
+                            }
+                        })
+                        break;
+                }
+            })
+            //省市二联点击
+        $('.personR_sz .sz_zl').on('change', '.szParames[data-item="province"]', function() {
+                var val = $(this).val();
+                changeCity(val, '.personR_sz .sz_zl .city')
+            })
+            //回车-空格添加标签
+        $('#spanDiv_keyDown').keydown(function(e) {
+                var e = e || window.event;
+                if (e.keyCode == 13 || e.keyCode == 32) { //回车-空格
+                    e.preventDefault();
+                    var goTxt2 = $('#spanDiv_keyDown').val().trim();
+                    if (goTxt2 == '') {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: '标签输入不能为空',
+                            setTime: 1500
+                        });
+                    } else if (goTxt2.length > 10) {
+                        $('.alertMsg').showMsg({
+                            isImg: 'isNo',
+                            h2txt: '标签长度不超过10',
+                            setTime: 1500
+                        });
+                    } else {
+                        var regTest = new RegExp(/^[A-Za-z0-9\u4e00-\u9fa5]{1,10}$/);
+                        if (regTest.test(goTxt2)) {
+                            if ($('.spanDiv_keyDown_prev').children('span').length != 0 && $('.spanDiv_keyDown_prev').children('span[data-txt="' + goTxt2 + '"]').length != 0) { //有添加过
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: '标签不能重复',
+                                    setTime: 2000
+                                });
+                            } else {
+                                var spanHtml = '<span class="comSpan_mim" data-txt="' + goTxt2 + '">' + goTxt2 + '</span>';
+                                $('.spanDiv_keyDown_prev').append(spanHtml);
+                            }
+                            $('#spanDiv_keyDown').val('');
+                        } else {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: '请输入输入文字、数字或字母',
+                                setTime: 1500
+                            });
+                        }
+                    }
+                }
+            })
+            //其他设置
+        $('.personR_sz .sz_qt .qx_top').on('click', '.btn', function() {
+                var nowItem = $(this).attr('data-item') - 0;
+                switch (nowItem) {
+                    case 1: //编辑
+                        $(this).hide().siblings().show();
+                        $('.personR_sz .sz_qt .qx_top .szChoiceFoo').find('input, select').addClass('active').attr({
+                            'disabled': false
+                        }); //可编辑
+                        break;
+                    case 2: //取消
+                        window.location.href = "perscen-sz.html?cm=qt";
+                        break;
+                    case 3: //保存
+                        var obj = {
+                            type: 1
+                        };
+                        $('.personR_sz .sz_qt .qx_top .szParames').each(function() {
+                            //参数在此
+                            obj[$(this).attr('data-item')] = $(this).val() || $(this).text() || '';
+                        })
+                        $.GSHajax({
+                            url: '/personal/userprofile',
+                            type: 'POST',
+                            data: obj,
+                            success: function(res) {
+                                // console.log(res)
+                                if (res.status) {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isOk',
+                                        h2txt: '修改成功',
+                                        setTime: 1500
+                                    });
+                                    $('.personR_sz .sz_qt .qx_top .szChoiceFoo').find('input, select').removeClass('active').attr({
+                                        'disabled': true
+                                    }); //不可编辑
+                                    $('.personR_sz .sz_qt .qx_top .btn[data-item="1"]').show().siblings().hide();
+                                }
+                            },
+                            error: function(err) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: '更改异常, 请重试',
+                                    setTime: 1500
+                                });
+                            }
+                        })
+
+                        break;
+                }
+            })
+            //其他信息-职业充电标签
+        getzhiyeSpanFn();
+        //获取隐私权限
+        getYsqxFn();
+        //设置隐私权限
+        $('.personR_sz .sz_qx .btnFoo').on('click', '.btn', function() {
+            var nowItem = $(this).attr('data-item') - 0;
+            switch (nowItem) {
+                case 2: //取消
+                    getYsqxFn();
+                    break;
+                case 3: //保存
+                    var obj = {};
+                    obj.data = $('.personR_sz .data input:checked').attr('data-val') - 0;
+                    obj.dynamic = $('.personR_sz .dynamic input:checked').attr('data-val') - 0;
+                    $.GSHajax({
+                        url: '/personal/powersetting/',
+                        type: 'POST',
+                        data: obj,
+                        success: function(res) {
+                            if (res.status) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isOk',
+                                    h2txt: res.msg,
+                                    setTime: 1500
+                                });
+                            } else {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: res.msg,
+                                    setTime: 1500
+                                });
+                            }
+                        }
+                    })
+                    break;
+            }
+        })
+    })
+</script>
+<script>
+    //犀数币密码是否初始
+    function havesecretFn() {
+        $.GSHajax({
+            url: '/personal/havesecret/',
+            success: function(res) {
+                if (res.status) {
+                    $('.zfMm .isSet').text('已设置');
+                    $('.zfMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                } else {
+                    $('.zfMm .isSet').text('未设置');
+                    $('.zfMm .btnFoo .btn[data-type="sz"]').show().siblings().hide();
+
+                }
+            }
+        })
+    }
+    $(function() {
+            // 关闭支付弹窗
+            $('.no .no-close').click(function() {
+                    $('.no').css('display', 'none')
+                })
+                //犀数币密码是否初始
+            havesecretFn();
+            //犀数币密码
+            $('.zfMm .btnFoo').on('click', '.btn', function() {
+                var nowType = $(this).attr('data-type');
+                $('.zfMm input').next().text('');
+                switch (nowType) {
+                    case 'sz':
+                        $('.zfMm .btnFoo .btn_morenshow').hide();
+                        $('.zfMm .btnFoo .btn_clickshow').show();
+                        $('.zfMm .mmChoiceFoo').show().siblings('.mmChoiceFoo_old').hide();
+                        break;
+                    case 're':
+                        $('.zfMm .btnFoo .btn_morenshow').hide();
+                        $('.zfMm .btnFoo .btn_clickshow').show();
+                        $('.zfMm .mmChoiceFoo').show();
+                        break;
+                    case 'qx':
+
+                        $('.zfMm .btnFoo .btn_clickshow').hide();
+                        if ($('.zfMm .isSet').text() == '已设置') {
+                            $('.zfMm .btnFoo .btn_morenshow[data-type="re"]').show();
+                        } else {
+                            $('.zfMm .btnFoo .btn_morenshow[data-type="sz"]').show();
+                        }
+                        $('.zfMm .mmChoiceFoo').hide();
+                        $('.zfMm input').val('');
+                        break;
+                    case 'bc':
+                        var obj = {};
+                        if ($('.zfMm .isSet').text() == '已设置') {
+                            obj.mmOld = $('.zfMm .mmOld').val();
+                        }
+                        obj.mmNew = $('.zfMm .mmNew').val();
+                        obj.mmConfirm = $('.zfMm .mmConfirm').val();
+                        for (let key in obj) {
+                            if (!obj[key]) {
+                                $('.zfMm .' + key).next().text($('.zfMm .' + key).attr('data-item') + '不允许为空');
+                                return;
+                            }
+                        }
+                        obj.mmOld = $('.zfMm .mmOld').val();
+                        if (obj.mmNew != obj.mmConfirm) {
+                            $('.zfMm .mmConfirm').next().text('密码不一致, 请重新输入');
+                            return;
+                        }
+                        $.GSHajax({
+                            url: '/personal/changepayment/',
+                            type: 'POST',
+                            data: {
+                                old_sec: obj.mmOld,
+                                new_sec: obj.mmConfirm
+                            },
+                            success: function(res) {
+                                if (res.status) {
+                                    //  首次使用支付密码
+                                    if (location.hash) {
+                                        $('.no').show()
+                                    } else {
+
+                                        $('.alertMsg').showMsg({
+                                            isImg: 'isOk',
+                                            h2txt: res.msg,
+                                            setTime: 2000
+                                        });
+                                        $('.zfMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                                        $('.zfMm .mmChoiceFoo').hide();
+                                        $('.zfMm input').val('');
+                                        //犀数币密码是否初始
+                                        havesecretFn();
+                                    }
+                                } else {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isNo',
+                                        h2txt: res.msg,
+                                        setTime: 2000
+                                    });
+                                }
+                            }
+                        })
+                        break;
+                }
+            })
+            $('.zhaohui').click(function() {
+                var type = $(this).attr('data-type')
+                if (type == 'zf') {
+                    $('.zh input').val('')
+                    $('.zh').show()
+                } else {
+                    window.location.href = 'forget.html'
+                }
+            })
+            $('.zh img').click(function() {
+                    $('.zh').hide()
+                })
+                //平台密码修改
+            $('.logMm .btnFoo').on('click', '.btn', function() {
+                    $('.logMm input').next().text('');
+                    var nowType = $(this).attr('data-type');
+                    var  b = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+                    switch (nowType) {
+                        case 're':
+                            $('.logMm .mmChoiceFoo').show();
+                            $(this).hide().siblings().show();
+                            break
+                        case 'qx':
+                            $('.logMm .mmChoiceFoo').hide();
+                            $('.logMm input').val('');
+                            $('.logMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                            break
+                        case 'bc':
+                            var obj = {
+                                old_pwd: $('.logMm .old_pwd').val(),
+                                pwd1: $('.logMm .pwd1').val(),
+                                pwd2: $('.logMm .pwd2').val()
+                            };
+                            for (let key in obj) {
+                                if (!obj[key]) {
+                                    $('.logMm .' + key).next().text($('.logMm .' + key).attr('data-item') + '不允许为空');
+                                    return;
+                                }
+                            }
+                            if(!b.test($('.logMm .pwd1').val())){
+                                $('.logMm .pwd1').next().text('请输入6-16位的数字与字母的组合');
+                                return;
+                            }
+                            if (obj.pwd1 != obj.pwd2) {
+                                $('.logMm .pwd2').next().text('密码不一致, 请重新输入');
+                                return;
+                            }
+                            $.GSHajax({
+                                url: '/personal/change_pwd/',
+                                type: 'POST',
+                                data: obj,
+                                success: function(res) {
+                                    if (res.status) {
+                                        $('.logMm .mmChoiceFoo').hide();
+                                        $('.alertMsg').showMsg({
+                                            isImg: 'isOk',
+                                            h2txt: '密码修改成功',
+                                            setTime: 2000
+                                        });
+                                        $('.logMm .btnFoo .btn[data-type="re"]').show().siblings().hide();
+                                        $('.logMm input').val('');
+                                        sessionStorage.removeItem('token');
+                                        $.GSHajax({
+                                            url: "/login/",
+                                        });
+                                        window.location.href = 'login.html?back';
+                                    } else {
+                                        $('.alertMsg').showMsg({
+                                            isImg: 'isNo',
+                                            h2txt: '原始密码错误, 请重新输入',
+                                            setTime: 2000
+                                        });
+                                        $('.logMm input.old_pwd').val('');
+                                    }
+                                }
+                            })
+                            break
+                    }
+                })
+                // 修改手机号显示
+            $(".xiugai").on("click", function() {
+                $(".xg").show();
+            });
+            // 修改手机号关闭
+            $('.xg img').click(function() {
+                $('.xg').hide()
+                $('.xg_box input:eq(0)').val("")
+                $('.xg_box input:eq(1)').val("")
+                $('.xg_box input:eq(2)').val("")
+            });
+            // 获取验证码
+            $('.xg_box span').click(function() {
+                if ($('.xg_box input:eq(0)').val() == '') {
+                    $('.xg_box p:eq(0)').html('请输入旧的手机号码')
+                    $('.xg_box p:eq(0)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(0)'))
+                } else if (!a.test($('.xg_box input:eq(0)').val())) {
+                    $('.xg_box p:eq(0)').html('手机号码不存在')
+                    $('.xg_box p:eq(0)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(0)'))
+                } else {
+                    if ($('.xg_box span').html() == '获取验证码') {
+                        if (!$('.xg_box input:eq(1)').val()) {
+                            $('.alertMsg').showMsg({
+                                isImg: 'isNo',
+                                h2txt: '请输入新手机号',
+                                setTime: 2000
+                            });
+                        } else {
+                            timeout3(60)
+                            $.ajax({
+                                url: url_ip + '/send_code/',
+                                type: 'POST',
+                                data: {
+                                    mobile: $('.xg_box input:eq(1)').val(),
+                                    type: 2
+                                },
+                                datatype: 'json',
+                                success: function(data) {
+                                    console.log(data)
+                                },
+                                error: function(data) {
+                                    console.log(data)
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            $('.xg_box input:eq(0)').blur(function() {
+                if ($(this).val() && !a.test($(this).val())) {
+                    $(this).next().html('手机号码不存在')
+                    $(this).next().css('opacity', 1)
+                } else if (!$(this).val()) {
+                    $(this).next().html('手机号码不能为空')
+                    $(this).next().css('opacity', 1)
+                } else {
+                    $(this).next().css('opacity', 0)
+                    $.ajax({
+                        url: url_ip + '/admins/checkmobile/',
+                        type: 'GET',
+                        data: {
+                            mobile: $(this).val(),
+                            classify: 1
+                        },
+                        datatype: 'json',
+                        headers: {
+                            'Authorization': token
+                        },
+                        success: function(res) {
+                            if (!res.status) {
+                                $('.alertMsg').showMsg({
+                                    isImg: 'isNo',
+                                    h2txt: res.msg,
+                                    setTime: 1500
+                                });
+                            }
+                        }
+                    })
+                }
+            })
+            $('.xg_box input:eq(1)').blur(function() {
+                    if ($(this).val() && !a.test($(this).val())) {
+                        $(this).next().html('手机号码不存在')
+                        $(this).next().css('opacity', 1)
+                    } else if (!$(this).val()) {
+                        $(this).next().html('手机号码不能为空')
+                        $(this).next().css('opacity', 1)
+                    } else {
+                        $(this).next().css('opacity', 0)
+                        $.ajax({
+                            url: url_ip + '/admins/checkmobile/',
+                            type: 'GET',
+                            data: {
+                                mobile: $(this).val(),
+                                classify: 2
+                            },
+                            datatype: 'json',
+                            headers: {
+                                'Authorization': token
+                            },
+                            success: function(res) {
+                                if (!res.status) {
+                                    $('.alertMsg').showMsg({
+                                        isImg: 'isNo',
+                                        h2txt: res.msg,
+                                        setTime: 1500
+                                    });
+                                }
+                            }
+                        })
+                    }
+                })
+                // 修改手机号确认
+            $('.xiugai_sure').click(function() {
+                if ($('.xg_box input:eq(0)').val() == '') {
+                    $('.xg_box p:eq(0)').html('请输入旧的手机号码')
+                    $('.xg_box p:eq(0)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(0)'))
+                } else if (!a.test($('.xg_box input:eq(0)').val())) {
+                    $('.xg_box p:eq(0)').html('手机号码不存在')
+                    $('.xg_box p:eq(0)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(0)'))
+                } else if ($('.xg_box input:eq(1)').val() == '') {
+                    $('.xg_box p:eq(1)').html('请输入新的手机号码')
+                    $('.xg_box p:eq(1)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(1)'))
+                } else if (!a.test($('.xg_box input:eq(1)').val())) {
+                    $('.xg_box p:eq(1)').html('手机号码不存在')
+                    $('.xg_box p:eq(1)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(1)'))
+                } else if ($('.xg_box input:eq(2)').val() == '') {
+                    $('.xg_box p:eq(2)').html('验证码不能为空')
+                    $('.xg_box p:eq(2)').css('opacity', 1)
+                    timeout($('.xg_box p:eq(2)'))
+                } else {
+                    $.ajax({
+                        url: url_ip + '/admins/changemobile/',
+                        type: 'POST',
+                        data: {
+                            old_mobile: $('.xg_box input:eq(0)').val(),
+                            new_mobile: $('.xg_box input:eq(1)').val(),
+                            code: $('.xg_box input:eq(2)').val()
+                        },
+                        datatype: 'json',
+                        headers: {
+                            'Authorization': token
+                        },
+                        success: function(res) {
+                            $('.xg_box input:eq(0)').val("")
+                            $('.xg_box input:eq(1)').val("")
+                            $('.xg_box input:eq(2)').val("")
+                            var data = $.parseJSON(res);
+                            // console.log(data);
+                            if (data.status) {
+                                alert('手机号修改成功')
+                                $('.xg').hide()
+                            } else {
+                                if (data.msg == '验证码已过期') {
+                                    $('.xg_box p:eq(2)').html(data.msg)
+                                    $('.xg_box p:eq(2)').css('opacity', 1)
+                                    timeout($('.xg_box p:eq(2)'))
+                                } else if (data.msg == "验证码错误") {
+                                    $('.xg_box p:eq(2)').html(data.msg)
+                                    $('.xg_box p:eq(2)').css('opacity', 1)
+                                    timeout($('.xg_box p:eq(2)'))
+                                } else if (data.msg == '用户查找失败') {
+                                    $('.xg_box p:eq(1)').html(data.msg)
+                                    $('.xg_box p:eq(1)').css('opacity', 1)
+                                    timeout($('.xg_box p:eq(1)'))
+                                }
+                            }
+                        },
+                        error: function(data) {
+                            // console.log(data)
+                        }
+                    })
+                }
+            });
+
+            function timeout(obj) {
+                var timeout
+                clearTimeout(timeout)
+                timeout = setTimeout(function() {
+                    obj.css('opacity', 0)
+                }, 2000)
+            }
+
+            function timeout2(time) {
+                var intervel = setInterval(function() {
+                    if (time > 0) {
+                        time--;
+                        $('.zh_box span').css('background', '#ccc')
+                        $('.zh_box span').html('重新发送' + time + 's')
+                    } else {
+                        $('.zh_box span').css('background', '#496fff')
+                        $('.zh_box span').html('获取验证码')
+                        clearInterval(intervel)
+                    }
+                }, 1000)
+            }
+
+            function timeout3(time) {
+                var intervel = setInterval(function() {
+                    if (time > 0) {
+                        time--;
+                        $('.xg_box span').css('background', '#ccc')
+                        $('.xg_box span').html('重新发送' + time + 's')
+                    } else {
+                        $('.xg_box span').css('background', '#496fff')
+                        $('.xg_box span').html('获取验证码')
+                        clearInterval(intervel)
+                    }
+                }, 1000)
+            }
+            // 找回密码
+            // var a = /^((13[0-9])|(14[579])|(15([0-3]|[5-9]))|(16[0-9])|(17[0-9])|(18[0-9])|(19[89]))\d{8}$/;
+            var a = /^1(?:3[0-9]|4[5-9]|5[0-9]|6[12456]|7[0-8]|8[0-9]|9[0-9])[0-9]{8}$/
+            $('.zh_box span').click(function() {
+                if ($('.zh_box input:eq(0)').val() == '') {
+                    $('.zh_box p:eq(0)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(0)'))
+                } else if (!a.test($('.zh_box input:eq(0)').val())) {
+                    $('.zh_box p:eq(0)').html('手机号码不存在')
+                    $('.zh_box p:eq(0)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(0)'))
+                } else {
+                    if ($('.zh_box span').html() == '获取验证码') {
+                        timeout2(60)
+                        $.ajax({
+                            url: url_ip + '/send_code/',
+                            type: 'POST',
+                            data: {
+                                mobile: $('.zh_box input:eq(0)').val(),
+                                type: 2
+                            },
+                            datatype: 'json',
+                            success: function(data) {
+                                // console.log(data);
+                            },
+                            error: function(data) {
+                                // console.log(data);
+                            }
+                        })
+                    }
+                }
+            })
+            $('.zhaohui_sure').click(function() {
+                if ($('.zh_box input:eq(0)').val() == '') {
+                    $('.zh_box p:eq(0)').html('请输入手机号码')
+                    $('.zh_box p:eq(0)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(0)'))
+                } else if (!a.test($('.zh_box input:eq(0)').val())) {
+                    $('.zh_box p:eq(0)').html('手机号码不存在')
+                    $('.zh_box p:eq(0)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(0)'))
+                } else if ($('.zh_box input:eq(1)').val() == '') {
+                    $('.zh_box p:eq(1)').html('验证码不能为空')
+                    $('.zh_box p:eq(1)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(1)'))
+                } else if ($('.zh_box input:eq(2)').val() == '') {
+                    $('.zh_box p:eq(2)').html('请输入新密码')
+                    $('.zh_box p:eq(2)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(2)'))
+                } else if ($('.zh_box input:eq(2)').val().length > 20 || $('.zh_box input:eq(2)').val().length < 6) {
+                    $('.zh_box p:eq(2)').html('密码长度为6-20位')
+                    $('.zh_box p:eq(2)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(2)'))
+                } else if ($('.zh_box input:eq(3)').val() == '') {
+                    $('.zh_box p:eq(3)').html('请再次输入密码')
+                    $('.zh_box p:eq(3)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(3)'))
+                } else if ($('.zh_box input:eq(3)').val() != $('.zh_box input:eq(2)').val()) {
+                    $('.zh_box p:eq(3)').html('两次密码输入不一致')
+                    $('.zh_box p:eq(3)').css('opacity', 1)
+                    timeout($('.zh_box p:eq(3)'))
+                } else {
+                    $.ajax({
+                        url: url_ip + '/forget2/' + token_id + '/',
+                        type: 'put',
+                        data: {
+                            user: token_id,
+                            secret: $('.zh_box input:eq(2)').val(),
+                            code: $('.zh_box input:eq(1)').val(),
+                            mobile: $('.zh_box input:eq(0)').val()
+                        },
+                        datatype: 'json',
+                        success: function(data) {
+                            // console.log(data);
+                            if (data.status) {
+                                alert('支付密码重设成功')
+                                $('.zh').hide()
+                                    // console.log(data.msg.substr(0, 3))
+                            } else {
+                                if (data.msg.substr(0, 3) == '验证码') {
+                                    $('.zh_box p:eq(1)').html(data.msg)
+                                    $('.zh_box p:eq(1)').css('opacity', 1)
+                                    timeout($('.zh_box p:eq(1)'))
+                                } else if (data.msg.substr(0, 3) == '手机号') {
+                                    $('.zh_box p:eq(0)').html(data.msg)
+                                    $('.zh_box p:eq(0)').css('opacity', 1)
+                                    timeout($('.zh_box p:eq(0)'))
+                                }
+                            }
+                        },
+                        error: function(data) {
+                            // console.log(data)
+                        }
+                    })
+                }
+            })
+        })
+        // 行业一级二级分类
+    industyAjax();
+    // 请求一级分类
+    function industyAjax() {
+        $.ajax({
+            url: url_ip + '/labels/showalg/?classify=6',
+            type: 'GET',
+            data: {},
+            datatype: 'json',
+            success: function(res) {
+                var optionHtml = ''
+                for (var i = 0; i < res.data.length; i++) {
+                    optionHtml += `<option value='${res.data[i].id}'>${res.data[i].label_name}</option>`;
+                }
+                $('.joblevel').empty().append(optionHtml);
+                // levelTwoAjax(res.data[0].id);
+            }
+        })
+    }
+    $('.joblevel').on('change', function() {
+            console.log($(this).val())
+            var id = $(this).val()
+            levelTwoAjax(id)
+        })
+        // 请求二级分类
+    function levelTwoAjax(id) {
+        $.ajax({
+            url: url_ip + `/labels/all_labels/`,
+            type: 'GET',
+            data: {
+                id
+            },
+            datatype: 'json',
+            success: function(res) {
+                var optionHtml = ''
+                for (var i = 0; i < res.data.length; i++) {
+                    optionHtml += `<option value='${res.data[i].id}'>${res.data[i].label_name}</option>`;
+                }
+                $('.jobclassify').empty().append(optionHtml)
+            }
+        })
+    }
+</script>

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 职业充电</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/xssy_index.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xssy_index.js?v=0.19.11.21.11"></script>
+    <style>
+        .loadGif {
+            height: 70px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .loadGif i {
+            width: 40px;
+            height: 40px;
+            background: url(img/loading.gif) no-repeat center;
+            background-size: 100%;
+            display: inline-block;
+        }
+
+        .loadGif p {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+        }
+        .tips {
+            display: flex;
+            padding-bottom: 15px;
+        }
+        .tips h3 {
+            padding-bottom: 15px;
+            margin-right: 15px;
+        }
+        .tips .active {
+            border-bottom: 1px solid #fff;
+        }
+        .tipsContent p {
+            display: none;
+        }
+        .tipsContent p.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="slect_source">
+        <div class="slect_sourceCont slect_sourceCont1">
+            <div class="divL">
+                <div class="tips">
+                    <h3 class="active" data-item="1">CPDA 网课中心</h3>
+                    <h3 data-item="2">CDA 网课中心</h3>
+                </div>
+                <!-- <h4></h4> -->
+                <div class="tipsContent">
+                    <p class="active">此平台是专门为全国CPDA学员量身打造的网课学习平台，平台中的内容由中数委合作机构北京犀数科技公司出品，致力于为CPDA网课保驾护航、为广大学子提供更丰富、实用的数据分析专业网课选择，让数据分析学习更容易。</p>
+                    <p>此平台是为全国CDA数据分析员学员打造的网络学习平台，平台中的内容由中数委合作机构北京犀数科技公司出品，致力于为广大学子提供基础、实用的数据分析专业网课，帮助学员掌握基础数据分析技能。</p>
+                </div>
+            </div>
+            <div class="divR">
+                <div class="imgFoo hide">
+                    <!-- <p><i></i><span>标准化认证课程</span></p>
+					<h6>＋</h6>
+					<p><i></i><span>个性化延展课程</span></p> -->
+                </div>
+                <!-- <div class="botm">
+					<p>全面提升个人数据分析能力</p>
+					<p class="btn">开始选课&gt;&gt;</p>
+				</div> -->
+                <p class="btn choicebtn">开始选课<img src="img/icon/slect_source_more.png" alt="" style="margin-top: -4px;vertical-align: middle;"></p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="slect_source slect_source2">
+        <div class="slect_sourceCont slect_sourceCont2">
+            <div class="divL">
+                <h3>CDA 网课中心</h3>
+                <h4></h4>
+                <p>此平台是为全国CDA数据分析员学员打造的网络学习平台，平台中的内容由中数委合作机构北京犀数科技公司出品，致力于为广大学子提供基础、实用的数据分析专业网课，帮助学员掌握基础数据分析技能。</p>
+            </div>
+            <div class="divR">
+                <div class="imgFoo hide">
+
+                </div>
+
+                <p class="btn">开始选课<img src="img/icon/slect_source_more.png" alt="" style="margin-top: -4px;vertical-align: middle;"></p>
+            </div>
+        </div>
+    </div> -->
+    <div style="height: 25px;background: #F5F8FF;"></div>
+    <div class="xssy_banner">
+        <h3>用数据说话 做理性决策</h3>
+        <div class="inputFoo">
+            <input type="text" placeholder="请输入您要搜索的课程">
+            <span></span>
+        </div>
+    </div>
+    <div class="xssy_illustrate">
+        <ul>
+            <li><span>垂直化学习社群<br />开启共享新时代</span></li>
+            <li><span>专业研发团队<br />保障课程品质</span></li>
+            <li><span>系统化课程体系<br />引领行业标准</span></li>
+        </ul>
+    </div>
+    <div class="xssy_guesslove">
+        <h4><span></span></h4>
+        <h5>精品推荐</h5>
+        <h4><span></span></h4>
+        <div class="loadGif guesslove_load"><i></i>
+            <p>加载中</p>
+        </div>
+        <ul class="xssy_source">
+            <!--彩泥喜欢-->
+        </ul>
+        <br>
+        <br>
+<!--        <div class="replaces"><i></i>换一批</div>-->
+    </div>
+    <div class="hot_source">
+        <h2><span>热门课程</span>
+            <p>资源共享</p>
+        </h2>
+        <div class="loadGif hotsource_load" style="display: none;"><i></i>
+            <p>加载中</p>
+        </div>
+        <ul class="xssy_source">
+            <!--热门课程--->
+        </ul>
+        <div class="lookMore clear"><a href="xssy_list.html">查看更多&gt;&gt;</a></div>
+    </div>
+    <div class="xssy_list_alertMu" style="display: none;">
+        <div class="xssy_list_alert">
+            <h2 class="titl" style="overflow: hidden;">
+                <span>选择您的相关信息</span><i class="close">×</i>
+                <p>我们会根据您的选择向您推送符合您个人喜好的信息！</p>
+            </h2>
+            <ul class="xssy_list_alertUl">
+                <li data-item="gj">
+                    <h3><img src="img/icon/xssy_list_alert01.png">
+                        <p>我使用的工具</p>
+                    </h3>
+                    <p class="spanFoo">
+
+                    </p>
+                </li>
+                <li data-item="hy">
+                    <h3><img src="img/icon/xssy_list_alert02.png">
+                        <p>我所在的行业</p>
+                    </h3>
+                    <p class="spanFoo">
+
+                    </p>
+                </li>
+                <li data-item="zy">
+                    <h3><img src="img/icon/xssy_list_alert03.png">
+                        <p>我的职业</p>
+                    </h3>
+                    <p class="spanFoo spanFoo_zy">
+
+                    </p>
+                </li>
+            </ul>
+            <div class="btn">确定选择</div>
+        </div>
+    </div>
+    <style>
+        .xssy_sourceShareMu {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .7);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            display: none;
+        }
+
+        .sourceShare {
+            width: 664px;
+            height: 513px;
+            background: #fff;
+            border-radius: 4px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .sourceShare .shareBanner {
+            width: 100%;
+            height: 134px;
+            text-align: center;
+            padding: 20px;
+            background: url(img/pic/sourceshare.png) no-repeat center;
+            background-size: 100% 100%;
+            box-sizing: border-box
+        }
+
+        .sourceShare .shareBanner .shareClose {
+            width: 12px;
+            height: 12px;
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            right: 18px;
+            top: 14px;
+            cursor: pointer;
+        }
+
+        .sourceShare .shareBanner h2 {
+            height: 20px;
+            line-height: 20px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .sourceShare .shareBanner p {
+            line-height: 18px;
+            color: #fff;
+        }
+
+        .sourceShare .shareInstruct {
+            height: 56px;
+            line-height: 18px;
+            text-align: center;
+            padding: 10px;
+            color: #666;
+            background: #F5F8FF;
+            box-sizing: border-box;
+        }
+
+        .sourceShare .shareForm {
+            padding: 20px 70px;
+            box-sizing: border-box;
+        }
+
+        .sourceShare .shareForm * {
+            box-sizing: border-box
+        }
+
+        .sourceShare .shareForm p {
+            width: 50%;
+            height: 30px;
+            margin-bottom: 15px;
+            float: left;
+        }
+
+        .sourceShare .shareForm p span {
+            width: 56px;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 10px;
+            color: #333;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .sourceShare .shareForm p input,
+        .sourceShare .shareForm p select {
+            width: 170px;
+            height: 30px;
+            padding: 0 10px;
+            border: 1px solid #E8E8E8;
+            outline: none;
+        }
+
+        .sourceShare .shareForm p select {
+            padding: 0;
+        }
+
+        .sourceShare .shareForm p textarea {
+            width: 433px;
+            height: 70px;
+            padding: 4px 8px;
+            border: 1px solid #E8E8E8;
+            vertical-align: middle;
+            resize: none;
+            outline: none;
+        }
+
+        .sourceShare .shareForm .textareaFoo p {
+            width: 100%;
+            height: 70px;
+        }
+
+        .sourceShare .shareForm .textareaFoo p span {
+            height: 70px;
+            line-height: 70px;
+        }
+
+        .sourceShare .shareForm .inputFoo b {
+            width: 44px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 10px;
+            color: #666;
+            border: 1px solid #E6EFFF;
+            display: inline-block;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .sourceShare .shareForm .inputFoo b:hover,
+        .sourceShare .shareForm .inputFoo b.active {
+            color: #fff;
+            border: 1px solid #496FFF;
+            background: #496FFF;
+        }
+
+        .sourceShare .shareForm .formInstruct {
+            height: 18px;
+            line-height: 18px;
+            font-size: 12px;
+            color: #666;
+            clear: both;
+        }
+
+        .sourceShare .shareForm .btn {
+            width: 68px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin: 15px auto 0;
+            font-size: 14px;
+            color: #fff;
+            background: #496FFF;
+            cursor: pointer;
+        }
+    </style>
+    <div class="xssy_sourceShareMu">
+        <div class="sourceShare relative">
+            <div class="shareBanner">
+                <i class="shareClose">×</i>
+                <h2>制作你的专业课程</h2>
+                <p>如果您在大数据领域拥有丰富的经验和知识积累，如果您希望将您的知识通过精心打磨传递给更多人，<br />如果您相信您的分享可以帮助更多人或者企业节约学习时间和精力，让更多想学习的朋友少走弯路。<br />那就请您加入我们把！和犀数一起让更多热爱学习的朋友快速成长！</p>
+            </div>
+            <div class="shareInstruct">请填写下方申请表，我们的工作人员会在一个工作日内与您取得联系！<br />注：如有多门课程计划，只需填写一个，后续与犀数团队沟通时再告知即可。</div>
+            <div class="shareForm">
+                <div class="inputFoo">
+                    <p><span>姓名</span><input type="text" data-item="name"></p>
+                    <p><span>联系方式</span><input type="text" data-item="contact"></p>
+                </div>
+                <div class="inputFoo">
+                    <p><span>行业</span><input type="text" data-item="industry"></p>
+                    <p><span>职位</span><input type="text" data-item="position"></p>
+                </div>
+                <div class="inputFoo">
+                    <p>
+                        <span style="margin-right: 7px;">课程方向</span>
+                        <select name="" id="" data-item="orientation">
+							<option value=""></option>
+						</select>
+                    </p>
+                    <p><span>授课方式</span><b>录播</b><b>直播</b><b>线下</b></p>
+                </div>
+                <div class="textareaFoo">
+                    <p><span>课程摘要</span><textarea cols="30" rows="10" data-item="abstract"></textarea>
+                </div>
+                <div class="formInstruct">* 如需更多咨询，请直接联系犀数团队。 犀数邮箱：weike2018@chinacpda.org</div>
+                <div class="btn">确 认</div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide">
+
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+
+    <!-- 购物车 -->
+    <div class="fixed_btn">
+
+    </div>
+    <!-- msgbox -->
+    <div class="mu"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <div class="loading_lkw" style="display: none;"></div>
+    <!--提示消息-->
+    <div class="lkw-msg" style="top: -100%;">
+        <!--alert-message-->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 建议反馈</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/bootstrapx.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/summernote.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/feedback.css?v=0.19.11.21.11">
+
+    <!--	<link rel="stylesheet" type="text/css" href="css/style.css?v=0.19.11.21.11">-->
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jqueryx.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/bootstrapx.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/summernote.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/summernote-zh-CN.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/feedback.js?v=0.19.11.21.11"></script>
+
+
+    <style>
+        .slimScrollBar {
+            width: 5px !important;
+            background: #000000 !important;
+        }
+
+        .ycl_page input {
+            min-height: 20px;
+        }
+
+        .ckin {
+            float: left;
+            width: 50px;
+            position: relative
+        }
+
+        .doun {
+            float: left;
+            width: 50px;
+            padding-top: 6px
+        }
+
+        .pel {
+            overflow: hidden;
+        }
+
+        .pol {
+            padding-top: 10px
+        }
+
+        .wid {
+            width: 882px
+        }
+
+        .nie {
+            width: 2px;
+            height: 14px;
+            background: #496FFF;
+            float: left;
+            margin-top: 4px;
+        }
+
+        .jiaru {
+            float: left;
+            padding-left: 7px;
+            font-size: 16px
+        }
+
+        .nice {
+            width: 882px;
+            margin: 0 auto;
+        }
+
+        .zhon {
+            width: 43px;
+            height: 19px;
+            float: left;
+            margin: 3px 5px;
+            border-radius: 3px;
+            text-align: center;
+            border: 1px solid #FF6B63;
+        }
+
+        .riqi {
+            /* float: right; */
+            color: #666;
+            padding-left: 10px;
+        }
+
+        .zhichang {
+            width: 100%;
+            float: left;
+            font-size: 12px;
+            color: #606266;
+            margin-left: 10px
+        }
+
+        .zhichang img {
+            width: 160px !important;
+            height: 80px !important;
+            margin: 10px;
+        }
+
+        .cont {
+            width: 882px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .xiangqing {
+            /* float: right; */
+            color: blue;
+        }
+
+        .xiangqing a {
+            color: blue;
+            padding-left: 20px;
+        }
+
+        .xianq {
+            width: 875px;
+            border: 1px solid rgba(232, 232, 232, 1);
+            margin: 30px 7px
+        }
+
+        .den {
+            margin-top: 30px;
+        }
+
+        .gath {
+            margin-top: 12px
+        }
+
+        .back_box>p {
+            width: 210px;
+            /* margin: 0 auto */
+        }
+
+        body {
+            background: #FFFFFF
+        }
+
+        .plaes {
+            overflow: hidden
+        }
+
+        .no_btn {
+            font-size: 14px;
+            color: #FFFFFF;
+            float: left
+        }
+
+        .sure_btn {
+            font-size: 14px;
+            color: #FFFFFF;
+            float: left;
+            margin-left: 52px
+        }
+
+        .btn {
+            margin: 0 auto;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .navTop h1 {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .fadeTitle {
+            font-weight: bold;
+        }
+
+        .back_box .quiz .bottom_btn {
+            display: flex;
+            align-items: center;
+        }
+
+        .back_box .quiz h2 {
+            margin-top: 0;
+        }
+
+        .navHide>div .navHide_tabR.fxgzt p {
+            margin-bottom: 0;
+        }
+        /* .note-style,
+        .note-font,
+        .note-fontname,
+        .note-color,
+        .note-para,
+        .note-table,
+        .note-view {
+            display: none;
+        } */
+        /* .note-toolbar>div {
+            display: none;
+        } */
+
+        .note-insert {
+            display: inline-block !important;
+        }
+
+        .note-insert>button:nth-child(2) {
+            display: block !important;
+        }
+
+        .m .form-group>input {
+            width: 100%;
+        }
+
+        .note-group-image-url {
+            display: none;
+        }
+
+        .zhichang {
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        .zhichang_text {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .zhichang_text>p:nth-child(0) {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .feedbackContent {
+            display: flex;
+            justify-content: space-between;
+            width: 1200px;
+            margin: 0 auto
+        }
+    </style>
+    <script>
+        /*假数据  开始*/
+        // var msg ={
+        //     'success':true,
+        //     'status':true,
+        //     "data": [
+        //         {
+        //             "id": "1",
+        //             "title": "反馈标题1111111",
+        //             "status": "解决中",
+        //             "content": "在职场充电中,点击课程,(全套) 加入购物车候,弹出的 已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,再点我的收纳中查看购买",
+        //             "add_time": "2019-05-15"
+        //         },
+        //         {
+        //             "id": "2",
+        //             "title": "反馈标题2",
+        //             "status": "解决中",
+        //             "content": "在职场充电中,点击课程,(全套) 加入购物车候,弹出的 已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,再点我的收纳中查看购买",
+        //             "add_time": "2019-05-15"
+        //         },
+        //         {
+        //             "id": "3",
+        //             "title": "反馈标题3",
+        //             "status": "已解决",
+        //             "content": "在职场充电中,点击课程,(全套) 加入购物车候,弹出的 已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,再点我的收纳中查看购买",
+        //             "add_time": "2019-05-15"
+        //         },
+        //         {
+        //             "id": "4",
+        //             "title": "反馈标题4",
+        //             "status": "已解决",
+        //             "content": "在职场充电中,点击课程,(全套) 加入购物车候,弹出的 已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,再点我的收纳中查看购买",
+        //             "add_time": "2019-05-15"
+        //         },
+        //         {
+        //             "id": "5",
+        //             "title": "反馈标题5",
+        //             "status": "待解决",
+        //             "content": "在职场充电中,点击课程,(全套) 加入购物车候,弹出的 已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,再点我的收纳中查看购买",
+        //             "add_time": "2019-05-15"
+        //         }
+        //     ]};
+        // var message ={
+        //     'success':true,
+        //     'status':true,
+        //     "data": [
+        //         {
+        //             "user": "用户id",
+        //             "username": "超级管理员",
+        //             "status": "当前状态1",
+        //             "content": "非常感谢你提供的问题经过测试,点击[查看]按钮确实无法跳转我的收纳页,我们会尽快修复这个问题",
+        //             "add_time": "2019-05-15"
+        //         }
+        //     ]};
+        $(document).ready(function() {
+                // if (!window.sessionStorage.token) {
+                //     $('.shade').showMsg({
+                //         ptxt: '您目前还没有注册或登录~ '
+                //     });
+                //     //                window.location.href = 'login.html?back';
+                //     return;
+                // }
+                // /*这是调取的死数据,如需调取接口,屏蔽即可  开始*/
+                // var array_json = eval(msg);
+                // if(array_json.status){
+                //     eachArr(array_json);
+                // }
+                // return;
+                /*这是调取的死数据 结束*/
+                getList(1);
+            })
+            /*
+             获取列表
+             */
+        function getList(page) {
+            var url = url_ip + "/personal/question";
+            var timestamp = (new Date()).getTime();
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: {
+                    'page': page,
+                    '_': timestamp
+                },
+                dataType: "json",
+                headers: {
+                    "Authorization": token
+                },
+                success: function(msg) {
+                    var array_json = eval(msg);
+                    if (array_json.status) {
+                        eachArr(array_json);
+                    }
+                },
+                error: function(err) {
+                    // alert("网络错误,请重试");
+                    // return false;
+                    if (err.status == 401) {
+                        if (token == 'JWT undefined' || token == 'JWT null') {
+                            $('.shade').showMsg({ ptxt: '您目前还没有注册或登录~ ' });
+                        } else {
+                            $('.shade').showMsg({ ptxt: '系统检测,您的账号存在风险异常,请重新登录。' });
+                        }
+                    } else {
+                        $('.alertMsg').showMsg({
+                            ptxt: '连接超时, 请重试',
+                            isImg: 'isNo'
+                        });
+                    }
+                }
+            });
+        }
+        //把HTML格式的字符串转义成实体格式字符串
+        function escapeHTMLString(str) {
+            str = str.replace(/</g, '&lt;');
+            str = str.replace(/>/g, '&gt;');
+            return str;
+        }
+        /*
+         展示列表
+         */
+        // var key2 = [];
+
+        function eachArr(array_json) {
+            //解析数组
+            var str = "";
+            $.each(array_json.data, function(key, v) {
+                // key2.push(key);
+                var id = v['id'];
+                var add_time = v['add_time'].split('.')[0];
+                // var add_time = v['add_time'];
+                var url = 'xiangqinga.html?id=' + v['id'] + '&title=' + v['title'] + '&content=' +
+                    escapeHTMLString(v['content']) + '&add_time=' + add_time;
+                var url2 = 'xiangqinga.html?id=' + v['id'];
+                if (key > 0) {
+                    str += ('<div class="xianq"></div>');
+                }
+                str += ('<div class="record hide"  style="display: block;">');
+                str += ('<div class="wid">');
+                str += ('<div class="nice">');
+                str += ('<div class="nie"></div>');
+                str += ('<p class="jiaru"><a style="color:#303133" href="' + url2 + '">' + v['title'] + '</a></p>');
+                str += ('</div>');
+                str += ('<div class="zhon">');
+                if (v['status'] == "解决中") {
+                    str += ('<a href="javascript:;" class="jiejue" style="color:#FFB14A">' + v['status'] + '</a>');
+                } else if (v['status'] == "已解决") {
+                    str += ('<a href="javascript:;" class="jiejue" style="border:1px solid #496FFF;color:#496FFF">' + v['status'] + '</a>');
+                } else {
+                    str += ('<a href="javascript:;" class="jiejue" style="color:#FF6B63">' + v['status'] + '</a>');
+                }
+                str += ('</div>');
+                str += ('</div>');
+                str += ('</div>');
+                str += ('<div class="cont">');
+                str += ('<div class="zhichang">');
+                str += ('<div class="zhichang_text">' + v['content'] + '</div>');
+                str += ('<div class="zhichang_img"></div>');
+                str += ('</div>');
+                str += ('</div>');
+                str += ('');
+                str += ('<div class="xiangqing"><div class="riqi">' + add_time + '<a href="' + url2 + '">详情</a></div></div>');
+            });
+            var zhichang_img_src = [];
+            $("#div_feedback").append(str);
+            for (var i = 0; i < $(".zhichang_text").length; i++) {
+                if ($(".zhichang_text").eq(i).find("img").length > 0) {
+                    for (var j = 0; j < 3; j++) {
+                        $(".zhichang_img").eq(i).append($(".zhichang_text").eq(i).find("img").eq(j));
+                        $(".zhichang_img").eq(i).append($(".zhichang_text").eq(i).find("img").eq(j));
+                        $(".zhichang_img").eq(i).append($(".zhichang_text").eq(i).find("img").eq(j));
+                        $(".zhichang_text").eq(i).find("img").remove();
+                        if ($(".zhichang_text").eq(i).find("p").eq(j).text() == "") {
+                            $(".zhichang_text").eq(i).find("p").eq(j).remove();
+                        }
+                        $(".zhichang_text").eq(i).find("p").eq(0).siblings().hide();
+                        $(".zhichang_text").eq(i).find("p").eq(0).css("overflow", "hidden");
+                        if ($(".zhichang_text").eq(i).text() == "") {
+                            $(".zhichang_text").eq(i).css("margin", "0");
+                        }
+                    }
+                } else {
+
+                }
+            }
+        }
+    </script>
+</head>
+
+<body style="overflow-x:hidden">
+    <nav></nav>
+    <div class="mu3"></div>
+    <h1 class="fadeTitle">问题反馈</h1>
+    <div class="feedbackContent">
+        <div class="asideLeft">
+            <div class="back_box">
+                <p class="tabFoo">
+                    <span data-item="0" class="active">提交反馈</span>
+                    <span data-item="1">我的反馈</span>
+                </p>
+            </div>
+            <div class="back_box back_box2">
+                <!--		<p class="tabFoo">-->
+                <!--		 -->
+                <!--			<span data-item="0" class="active">提交反馈</span>-->
+                <!--			<span data-item="1">我的反馈</span>-->
+                <!--		</p>-->
+                </p>
+                <div class="clearfix quiz" data-item="0">
+                    <div class="questionClassify">
+                        <i style="color:red;font-size:21px;">*</i><span>问题类型:</span>
+                        <ul>
+                            <li class="active">DATAHOOP使用问题</li>
+                            <li>课程问题</li>
+                        </ul>
+                    </div>
+                    <!-- <h2>请对您遇到的问题拟定一个简单的题目，方便我们分类解决:</h2> -->
+                    <div class="questionDes">
+                        <i style="color:red;font-size:21px;">*</i>
+                        <span for="">问题简介:</span>
+                        <input type="txt" style="border-color:#E8E8E8">
+                    </div>
+                    <h2 style="position:relative"><span style="color:red;position: absolute;left: 1px;font-size:21px;top: 5px;">*</span><span style="font-size:14px;margin-left:13px">问题描述:</span></h2>
+                    <div class="m">
+                        <div class="summernote" prl>请输入你想要的反馈的问题</div>
+                    </div>
+                    <!-- <textarea style="height:205px;border-color:#E8E8E8"></textarea>
+                    <div class="plaes">
+                        <div style="float:left;">
+                                            <input style="position:absolute;opacity:0;" type="file" name="file" id="Album_img" accept="image/gif,image/jpeg,image/x-png"/>
+                            <img style="width:16px;" src="img/tupianaa.png">
+                        </div>
+                        <div style="float:left">
+                            <input style="position:absolute;opacity:0;width:53px;height: 16px;" type="file" name="file" id="Album_img" accept="image/gif,image/jpeg,image/x-png" />
+                            <div style="float:left;padding-left:5px;color:#606266;font-size: 12px">添加图片</div>
+                        </div>
+                    </div> -->
+                    <div style="position:relative">
+                        <p style="margin-top:20px;font-size: 14px;color:#333333"><span style="margin-left:13px;font-size:14px">邮箱地址或手机号:</span></p>
+                    </div>
+                    <!--			<textarea style="height:35px"></textarea>-->
+                    <input type="tel" name="tel" id="contact" style="border-color:#E8E8E8">
+                    <span class="Alltip" style="color:red;position:absolute;top:315px;left:20px;"></span>
+                    <div class="bottom_btn">
+                        <div class="btn">
+                            <div class="no_btn">取消</div>
+                            <div class="sure_btn">确定</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_feedback" style="display: none;" class="record hide" data-item="1">
+                    <!--<div class="record hide" data-item="1" style="display: block;">-->
+                    <!--<div class="wid">-->
+                    <!--<div class="nice">-->
+                    <!--<div class="nie"></div>-->
+                    <!--<p class="jiaru">加入购物车弹出的查看按钮无法点击转至</p>-->
+                    <!--</div>-->
+                    <!--<div class="zhon">-->
+                    <!--<a href="#" class="jiejue" style="border:1px solid #FFB14A;color:#FFB14A">解决中</a>-->
+                    <!--</div>-->
+                    <!--<div class="riqi">2018-04-05</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="cont">-->
+                    <!--<div class="zhichang">在"职场充电"中,点击课程,(全套) 加入购物车候, 弹出的已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,在点击我的收纳中查看购买.</div>-->
+                    <!--<div class="xiangqing"><a href="#">详情</a></div>-->
+                    <!--</div>-->
+
+
+
+                    <!--<div class="xianq"></div>-->
+                    <!--<div><div class="wid gath">-->
+                    <!--<div class="nice">-->
+                    <!--<div class="nie"></div>-->
+                    <!--<p class="jiaru">加入购物车弹出的查看按钮无法点击转至</p>-->
+                    <!--</div>-->
+                    <!--<div class="zhon">-->
+                    <!--<a href="#" class="jiejue" style="border:1px solid #496FFF;color:#496FFF">已解决</a>-->
+                    <!--</div>-->
+                    <!--<div class="riqi">2018-01-11</div>-->
+                    <!--</div></div>-->
+
+                    <!--<div class="cont">-->
+                    <!--<div class="zhichang" style="margin-top:5px">在"职场充电"中,点击课程,(全套) 加入购物车候, 弹出的已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,在点击我的收纳中查看购买.</div>-->
+                    <!--<div class="xiangqing"><a href="#">详情</a></div>-->
+
+
+                    <!--</div>-->
+                    <!--<div class="xianq"></div>-->
+                    <!--<div><div class="wid gath">-->
+                    <!--<div class="nice">-->
+                    <!--<div class="nie"></div>-->
+                    <!--<p class="jiaru">加入购物车弹出的查看按钮无法点击转至</p>-->
+                    <!--</div>-->
+                    <!--<div class="zhon">-->
+                    <!--<a href="#" class="jiejue" style="border:1px solid #FF6B63;color:#FF6B63">待解决</a>-->
+                    <!--</div>-->
+                    <!--<div class="riqi">2018-01-01</div>-->
+                    <!--</div></div>-->
+
+                    <!--<div class="cont">-->
+                    <!--<div class="zhichang" style="margin-top:5px">在"职场充电"中,点击课程,(全套) 加入购物车候, 弹出的已添加成功,请到个人中心-我的收纳中下方的查看按钮无法点击,还是要点击个人中心,在点击我的收纳中查看购买.</div>-->
+                    <!--<div class="xiangqing"><a href="#">详情</a></div>-->
+
+
+                    <!--</div>-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="asideRight">
+            <h3>常见问题</h3>
+            <div class="questionSpan">
+                <span class="active" data-id="0">平台问题</span>
+                <span data-id="1">课程问题</span>
+            </div>
+            <div class="questionContent">
+                <ul class="on">
+                </ul>
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- msgbox -->
+    <div class="mu"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide">
+        <!--登录提示-->
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <div class="fadeBack_footer"></div>
+    <div style="width:100%;margin-top:44px">
+        <img src="img/p_foot.png">
+    </div>
+    <script>
+        $(function() {
+            $('.summernote').summernote({
+                height: 200,
+                tabsize: 2,
+                lang: 'zh-CN'
+            });
+        });
+    </script>
+</body>
+
+</html>

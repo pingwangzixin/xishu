@@ -1,0 +1,125 @@
+body{-moz-user-select: none; -o-user-select:none; -khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none; user-select:none;-ms-overflow-style:none;overflow:hidden;}
+/*可视化弹窗*/
+.echars_box{width:100vw;height:calc(100vh - 100px);background:#FFF;position:absolute;top:100px;left:0;z-index:1;box-sizing:border-box;padding:10px;}
+.echars_box .echars_close{position:absolute;top:-26px;right:16px;cursor:pointer;}
+
+.select_pic{background: #FAFCFF;width:132px;height:100%;box-sizing:border-box; float:left;margin-right:10px;}
+.select_pic h2{padding-left: 10px;line-height:26px;font-weight: 700;color:#333333;font-size: 14px;}
+.select_pic ul{overflow:hidden;padding:5px 10px;}
+.select_pic ul li{float:left;margin-right:10px;margin-bottom:5px;box-sizing:border-box;}
+.select_pic ul li.on{box-shadow:0 0 5px #1414ce;}
+.select_pic ul li:nth-child(3n){margin-right:0;}
+.select_pic h3{padding-left:4px;}
+.select_pic h4{padding-left:10px;font-weight:bold;line-height:26px;}
+.select_pic p{padding:0 0 0 10px;color: #666666;}
+.select_pic .suggest{padding-left: 10px;font-weight: 700;padding-top: 15px;font-size:14px;color:rgba(51,51,51,1);line-height:19px;}
+
+.field_box{color:#333; width:132px;height:100%;box-sizing:border-box;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;float:left;margin-right:10px;padding:0 5px;padding-right: 18px;font-size:14px;position:relative;}
+.field_box .file {font-size: 14px;font-weight: bold;padding-top: 10px;padding-bottom: 8px;}
+.field_box h2{line-height:26px;font-weight:normal;margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100px;}
+.field_box .imgspan{width: 18px;height:18px;position:absolute;top:5px;right:2px;cursor:pointer;background: url(../img/icon/文件夹_normal.png)}
+.field_box .imgspan:hover {background: url(../img/icon/文件夹_hover.png)}
+.field_box .field_search{margin-bottom: 10px;width:100%;box-sizing:border-box;border:1px solid #c6c6e9;height:24px;}
+.field_box .field_search input{width:94px;padding-left:6px;line-height:22px;outline:none;}
+.field_box .field_search img{width:12px;height:12px;margin-top:4px;}
+.field_box dl{padding:5px 0;overflow:auto;}
+.field_box dl dt{line-height:26px;margin:10px 0;font-weight: 700}
+.field_box .weidu {border-bottom: 1px solid #E8E8E8;}
+.field_box dl dt.on {font-weight: normal;}
+.field_box dl dd:hover {background:#6181FF; color: white;}
+.field_box dl dd{font-size:12px;cursor:pointer;color: #666666;line-height:24px;padding:0 5px;height:24px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; position: relative;}
+.field_box dl dd::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: url(../img/icon/切换维度.png);
+}
+.field_box .dataBox{width:400px;height:260px;box-shadow:0 0 5px #c6c6e9;position:absolute;left:132px;top:0;background:#fff;z-index:1;border-radius:5px;overflow:hidden;display:none;}
+.field_box .dataBox h3{height:40px;line-height:40px;color:#fff;font-size:16px;background:#c6c6e9;margin-bottom:10px;}
+.field_box .dataBox h3>img{width:20px;height:20px;margin:10px;}
+.field_box .dataBox h3>i{width:16px;height:16px;position:absolute;right:12px;top:12px;background:url(../img/close5.png);background-size:100%;}
+.field_box .dataBox ul{padding-left:20px;overflow:auto;height:200px;line-height:22px;}
+.field_box .dataBox ul li{cursor:pointer;}
+
+.makeEchars{width:calc(100% - 284px);height:100%;box-sizing:border-box;float:left;}
+.makeEchars ul{width:100%;border-bottom:1px solid #c6c6e9;padding:5px 0;height:90px;box-sizing:border-box;}
+.makeEchars ul li{float:left;line-height:30px;width:50%;padding:5px 20px;box-sizing:border-box;position:relative;}
+.makeEchars ul li>img{margin-top:9px;width:12px;height:12px;}
+.makeEchars ul li>div{display:inline-block;min-height:30px;box-sizing:border-box;border:1px dashed #c6c6e9;width:calc(100% - 80px);vertical-align:top;position:absolute;left:60px;top:5px;background:#fff;overflow:hidden;padding-right:15px;height:30px;}
+.makeEchars ul li>div.on{z-index:1;height:auto;}
+.makeEchars ul li>div>img{width:12px;height:12px;position:absolute;right:2px;top:2px;cursor:pointer;}
+.makeEchars ul li>div span{padding:0 8px;line-height:20px;background:#c6c6e9;vertical-align:top;border:1px solid #c6c6e9;position:relative;margin:3px;float:left;}
+.makeEchars ul li>div span img.close{position:absolute;top:-3px;right:-6px;}
+.makeEchars ul li>div span img.img{margin:3px;}
+.makeEchars ul li>div table{width:100%;border-collapse:collapse;}
+.makeEchars ul li>div table td{padding:0 10px;white-space: nowrap;border:1px dashed #c6c6e9;border-top:0;border-bottom:0;color:#999;text-align:center;background:#fff;}
+.makeEchars ul li>div table td img{margin:7px;}
+.makeEchars .canvas{width:calc(100% - 75px);height:calc(100% - 90px);float:left;position:relative;overflow: auto;}
+.makeEchars .canvas>div{width:calc(100% - 23px);height:100%;position:absolute;top:0;left:0;}
+.makeEchars .canvas>img{position:absolute;right:5px;top:5px;cursor:pointer;}
+.makeEchars .canvas table{min-width:100%;border-collapse:collapse;line-height:26px;}
+.makeEchars .canvas table td{padding:0 10px;white-space: nowrap;border:1px dashed #c6c6e9;color:#999;text-align:center;}
+.makeEchars .historyChars{width:150px;height:calc(100% - 170px);box-sizing:border-box;border-left:1px solid #c6c6e9;border-bottom:1px solid #c6c6e9;float:left;}
+.makeEchars .historyChars dt{line-height:26px;padding-left:10px;border-bottom:1px solid #c6c6e9;}
+.makeEchars .historyChars dd{width:140px;height:24px;border:1px dashed #c6c6e9;line-height:24px;margin:5px auto;color:#666;}
+.makeEchars .historyChars dd span{width:120px;margin-left:4px;display:inline-block;vertical-align:top;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.makeEchars .historyChars dd img{margin-top:5px;cursor:pointer;}
+.makeEchars .btn{float:right;height:80px;}
+.makeEchars .btn div{line-height:30px;background:#1a9cea;;color:#fff;margin:6px 10px 0 0;width:65px;text-align:center;float:right;border-radius:5px;font-size:14px;cursor:pointer;}
+/* .makeEchars .btn div:hover{background:#1a9cea;} */
+.makeEchars .btn div img{margin:6px 2px;}
+
+.filter_box{width:198px;border:1px solid #c6c6e9;position:absolute;left:930px;top:80px;box-shadow:0 0 5px #c6c6e9;display:none;}
+.filter_box ul{overflow:hidden;position:relative;}
+.filter_box ul li{float:left;width:50%;cursor:pointer;}
+.filter_box ul li span{display:block;text-align:center;line-height:26px;background:#EAEAEA;}
+.filter_box>div{padding:5px 12px;width:198px;box-sizing:border-box;background:#fff;display:none;}
+.filter_box>div input[type="radio"]{margin:5px;}
+.filter_box>div label{line-height:20px;}
+.filter_box>div dl{margin-top:4px;border:1px solid #c6c6e9;width:174px;margin-bottom:5px;}
+.filter_box>div dl dt{border-bottom:1px solid #c6c6e9;}
+.filter_box>div dl dt input{padding-left:5px;width:150px;outline:none;line-height:26px;}
+.filter_box>div dl dt img{width:16px;height:16px;margin:5px 0;}
+.filter_box>div dl div{width:100%;height:120px;overflow-y:auto;}
+.filter_box>div dl div dd{padding-left:8px;line-height:20px;width:148px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.filter_box>div input[type="checkbox"]{margin:4px;}
+.filter_box>div #remove{margin:5px 5px 5px 130px;}
+.filter_box>div h2{line-height:26px;}
+.filter_box>div .filter_search{border:1px solid #c6c6e9;margin-bottom:5px;}
+.filter_box>div .filter_search input{padding-left:5px;width:167px;outline:none;line-height:26px;}
+.filter_box>div .filter_sure{width:80px;line-height:26px;text-align:center;color:#fff;background:#c6c6e9;margin:0 auto;border-radius:5px;cursor:pointer;}
+.filter_box>div .filter_sure:hover{background:#1a9cea;}
+.filter_box ul li.on span{background:#fff;}
+
+.filter_box2{width:222px;border:1px solid #c6c6e9;position:absolute;left:930px;top:80px;box-shadow:0 0 5px #c6c6e9;padding:5px 10px;background:#fff;display:none;}
+.filter_box2 h2{line-height:26px;margin-bottom:5px;}
+.filter_box2 select{line-height:26px;font-size:12px;height:26px;outline:none;}
+.filter_box2 select option{line-height:26px;height:26px;}
+.filter_box2 input{width:98px;height:24px;border:1px solid #AAA;padding-left:5px;outline:none;line-height:24px;margin-left:10px;}
+.filter_sure2{width:80px;line-height:26px;text-align:center;color:#fff;background:#c6c6e9;margin:10px auto 5px;border-radius:5px;cursor:pointer;}
+.filter_sure2:hover{background:#1a9cea;}
+
+.shadow_div{padding:2px 8px;border:1px dashed #999;color:#999;opacity:0.8;position:absolute;z-index:9;}
+.shadow_div.on{border-color:#c6c6e9;background:#c6c6e9;color:#000;opacity:1;}
+.transition_div {background: #e8e8e8;padding:2px 8px;color:#333;position:absolute;z-index:9;width: 100%}
+.transition_div dd {display: none}
+
+.bigChart{width:0;height:0;position:absolute;top:50%;left:50%;transition:all 0.2s;overflow:hidden;background:#fff;}
+.bigChart.on{width:100%;height:100%;top:0;left:0;}
+.bigChart>div{width:calc(100% - 60px);height:calc(100% - 40px);margin:20px auto;}
+.bigChart i{position:absolute;right:20px;top:20px;}
+
+.holdBox{width:100vw;height:100vh;position:fixed;left:0;top:0;background:rgba(0,0,0,0.6);display:none;}
+.holdBox_center{width:422px;height:211px;box-sizing:border-box;padding:12px 16px;background:#fff;border-radius:3px;position:absolute;top:50%;left:50%;margin-left:-211px;margin-top:-105px;}
+.holdBox_center h2{line-height:26px;font-size:18px;color:#333436;margin-bottom:23px;}
+.holdBox_center i{position:absolute;right:20px;top:20px;width:16px;height:16px;cursor:pointer;}
+.holdBox_center i img{width:100%;height:100%;}
+.holdBox_center h3{line-height:12px;color:#5F6266;margin-bottom:21px;font-size:12px;}
+.holdBox_center input{line-height:38px;border:1px solid #009FFF;border-radius:3px;width:373px;font-size:14px;padding-left:15px;}
+.holdBox_center h4{line-height:20px;font-size:12px;color:#FF6262;margin-bottom:15px;height:20px;}
+.holdBox_center .btn{height:32px;}
+.holdBox_center .btn div{float:right;margin-left:10px;line-height:30px;height:30px;border:1px solid #DBDFE6;line-height:30px;text-align:center;width:60px;color:#5F6266;border-radius:2px;cursor:pointer;}
+.holdBox_center .btn div:hover{background:#009FFF;border-color:#009FFF;color:#fff;}

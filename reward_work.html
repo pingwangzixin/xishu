@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/reward_work.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/reward_work.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+	<nav></nav>
+	<div class="mu3"></div>
+	<div class="is_quit">
+		<p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+		<div class="sure_quit">确定退出</div>
+		<div class="no_quit">再想一想</div>
+	</div>
+    <div class="head_bg">
+        <div class="reward_header">
+            <h1>需求详情</h1>
+        </div>
+    </div>
+    <div class="reward_body" id="reward">
+        <div class="reward_detail">
+            <div class="reward_left">
+                <div class="detail_top">您的需求已提交,请勿线下交易,未经平台线上支付资金造成损失,平台将不承担任何法律责任。</div>
+                <div class="detail_content" ref="content">
+                    <h1>{{title}}</h1>
+                    <div class="reward_msg">
+                        <span>发布时间：</span><i>{{time | to_date}}</i>
+                        <span>所属分类；</span><b>{{classify}}</b>
+                        <span>手机号码：</span><em>{{phone}}</em> <s style="text-decoration:none;color:#0054FF;margin-left:5px;cursor:pointer;" @click="get_phone()">获取联系方式</s>
+                    </div>
+                    <ul>
+                        <li @click="close_join()">关闭参与</li>
+                    </ul>
+                    <div class="reward_progress">
+                        <span :class="{on:type_num>1,to_on:type_num==1}">1<i>提交需求</i><em>{{time1 | to_date}}</em></span><b :class="{on:type_num>1}"></b><span :class="{on:type_num>2,to_on:type_num==2}">2<i>托管赏金</i><em>{{time2 | to_date}}</em><s>{{time1_2 | dao_date}}</s></span><b :class="{on:type_num>3}"></b><span :class="{on:type_num>4,to_on:type_num==4}">3<i>平台公示</i><em>{{time3 | to_date}}</em><s>{{time3_4 | dao_date}}</s></span><b :class="{on:type_num>4}"></b><span :class="{on:type_num>5,to_on:type_num==5}">4<i>产生中标</i><em>{{time5 | to_date}}</em><s>{{time4_5 | dao_date}}</s></span><b :class="{on:type_num>5}"></b><span :class="{on:type_num>6,to_on:type_num==6}">5<i>卖方提交成果</i><em>{{time6 | to_date}}</em><s>{{time5_6 | dao_date}}</s></span><b :class="{on:type_num>6}"></b><span :class="{on:type_num>7,to_on:type_num==7}">6<i>赏金支付</i><em>{{time7 | to_date}}</em><s>{{time6_7 | dao_date}}</s></span>
+                    </div>
+                    <h2>需求描述：</h2>
+                    <textarea readonly ref="xuqiu_html">{{xuqiu}}</textarea>
+                    <h2>场景描述：</h2>
+                    <textarea readonly ref="scene_html">{{scene}}</textarea>
+                </div>
+            </div>
+            <div class="reward_right">
+                <div class="reward_author">
+                    <img :src="img">发布人：<span>{{username}}</span>
+                </div>
+                <div class="right_xiaoxi" ref="xiaoxi">
+                    <dl>
+                        <dt>概况</dt>
+                        <dd>需求发布次数：<span></span></dd>
+                        <dd>完成交易次数：<span></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>最新</dt>
+                        <!-- <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd>
+                        <dd>Wang123已获得 <span>赏金￥6685</span></dd> -->
+                    </dl>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="reward_work" v-show="w_r=='w'">
+            <p>成果概要上传&nbsp;&nbsp;<span>温馨提示 1：此处上传内容将作为"需求发布方"筛选并确定中标方的重要依据。请上传您真实有效的成果概要。<br><b></b>2：请不要上传您的全部成果内容，以免对您的财产或版权造成损失。</span></p>
+            <ul>
+                <li><input type="file" @change=file1($event) ref="file1" accept="image/*"><img :src="file_img1"><em v-show="file1_show" @click="remove_img1()"></em></li>
+                <li><input type="file" @change=file2($event) ref="file2" accept="image/*"><img :src="file_img2"><em v-show="file2_show" @click="remove_img2()"></em></li>
+                <li><input type="file" @change=file3($event) ref="file3" accept="image/*"><img :src="file_img3"><em v-show="file3_show" @click="remove_img3()"></em></li>
+                <li><input type="file" @change=file4($event) ref="file4" accept="image/*"><img :src="file_img4"><em v-show="file4_show" @click="remove_img4()"></em></li>
+                <li><input type="file" @change=file5($event) ref="file5" accept="image/*"><img :src="file_img5"><em v-show="file5_show" @click="remove_img5()"></em></li>
+            </ul>
+            <textarea placeholder="此处可输入您想负载的文本内容" v-model="content"></textarea>
+            <div class="reward_button" @click="reward_submit()">确定提交</div>
+        </div>
+        <div class="reward_result" v-show="w_r=='r'">
+            <p>成果上传&nbsp;&nbsp;<span>温馨提示：中标方所上传并提交的文件必须保证无版权纠纷/知识产权纠纷，否则一切后果由中标方负责</span></p>
+            <div class="file" ref="file_submit"><input type="file" @change=file0($event) ref="file_input"></div>
+            <span id="file_name">{{file_name}}</span>
+            <div class="reward_button" @click="file_submit()">确定提交</div>
+        </div>
+        <div class="msgBox" v-show="msgBox_show">
+            <div>
+                <i :class="'s'+num"></i><br>
+                <span>{{msg}}</span>
+            </div>
+        </div>
+        <!-- 提示登录 -->
+        <div class="shade" v-show="shade_show">
+            <div id="hint_login">
+                <img src="img/hint_logo_cancel.png" height="35" width="35" class="hint_logo_cancel" @click="close_shade()">
+                <img src="img/hint_logo_shadow.png" height="50" width="135" class="hint_logo_shadow">
+                <img src="img/hint_logo.png" height="162" width="210" class="hint_logo">
+                <p>{{shade_msg}}</p>
+                <div class="btn">
+                    <a href="register.html" v-show="register_show">注册</a>
+                    <a href="login.html?back">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

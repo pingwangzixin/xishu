@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="color3"/>
+    <title>Datahoop 2.0 资讯</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" href="css/information_platform.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+</head>
+<body>
+    <nav></nav>
+    <section class="part1">
+        <div class="textarea">
+            <div class="crumbs">
+                <div class="logo">发现丨社区</div>
+                <div class="search">
+                    <input type="text" class="searchText" placeholder="搜索">
+                    <i><img src="./img/icon/icon_搜索.png" alt=""></i>
+                </div>
+            </div>
+            <div class="banner">
+                <ul class="part1-left">
+                </ul>
+                <ul class="part1-right">
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="datahoop" name="datahoop">
+        <a href="javascript:void(0)" name="datahoop"></a>
+        <div class="textarea">
+            <div class="top">
+                <img src="img/标题bg.png" alt="">
+                <p class="title">Datahoop</p>
+                <a href="info_list.html?id=1">查看更多</a>
+            </div>
+            <div class="datahoop-content">
+
+            </div>
+        </div>
+    </section>
+    <section class="professional">
+        <a href="javascript:void(0)" name="professional"></a>
+        <div class="textarea">
+            <div class="top">
+                <img src="img/标题bg.png" alt="">
+                <p class="title">专业资讯</p>
+                <a href="info_list.html?id=2">查看更多</a>
+            </div>
+            <div class="professional-content">
+                <div class="professional-up">
+                    <div class="professionalImg"></div>
+                    <ul></ul>
+                </div>
+                <div class="professional-bottom">
+                    <ul></ul>
+                    <div class="professionalImg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="association">
+        <a href="javascript:void(0)" name="association"></a>
+        <div class="textarea">
+            <div class="top">
+                <img src="img/标题bg.png" alt="">
+                <p class="title">协会资讯</p>
+                <a href="info_list.html?id=3">查看更多</a>
+            </div>
+            <div class="association-content">
+                <ul></ul>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</body>
+<script>
+    var imgurl = 'http://py.datahoop.cn/';
+    // 资讯首页
+    $.ajax({
+        url: url_ip + '/news/infolist/',
+        type: 'GET',
+        cache:false,
+        async:false,
+        dataType: 'json',
+        data:{},
+        success:function(res) {
+            // datahoop
+            var datahoop = res.data1.slice(0,5);
+            var datahoopHtml = `
+                <div class="top">
+                    <a href="info_detail.html?id=${datahoop[0].id}#home" style="padding-top: 0;">
+                        <div><img style="width: 100%;height:100%" src="${imgurl+datahoop[0].cover}"/></div>
+                        <div class="content">
+                            <h5>${datahoop[0].title}</h5>
+                            <div class="desc">${datahoop[0].desc}</div>
+                            <div class="add_time">${datahoop[0].add_time}</div>
+                        </div>
+                    </a>
+                    <a style="padding-top: 0; overflow: hidden" href="info_detail.html?id=${datahoop[1].id}#home">
+                        <img style="width: 100%;height: 100%" src="${imgurl+datahoop[1].cover}"/>
+                        <p>${datahoop[1].title}</p>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="info_detail.html?id=${datahoop[2].id}#home">
+                        <div class="top">
+                            <img src="${imgurl+datahoop[2].cover}"/>
+                        </div>
+                        <div class="content">
+                            <h5>${datahoop[2].title}</h5>
+                            <div class="desc">${datahoop[2].desc}</div>
+                            <div class="add_time">${datahoop[2].add_time}</div>
+                        </div>
+                    </a>
+                    <a href="info_detail.html?id=${datahoop[3].id}#home">
+                        <div class="top">
+                            <img src="${imgurl+datahoop[3].cover}"/>
+                        </div>
+                        <div class="content">
+                            <h5>${datahoop[3].title}</h5>
+                            <div class="desc">${datahoop[3].desc}</div>
+                            <div class="add_time">${datahoop[3].add_time}</div>
+                        </div>
+                    </a>
+                    <a href="info_detail.html?id=${datahoop[4].id}#home">
+                        <div class="top">
+                            <img src="${imgurl+datahoop[4].cover}"/>
+                        </div>
+                        <div class="content">
+                            <h5>${datahoop[4].title}</h5>
+                            <div class="desc">${datahoop[4].desc}</div>
+                            <div class="add_time">${datahoop[4].add_time}</div>
+                        </div>
+                    </a>
+                </div>
+            `;
+            $('.datahoop-content').append(datahoopHtml);
+            // 专业资讯
+            var professional1 = res.data2.slice(0,7);
+            var professional2 = res.data2.slice(7,14);
+            var img1Html = `
+                <a href="info_detail.html?id=${professional1[0].id}#home">
+                    <img src="${imgurl+professional1[0].cover}"/>
+                    <p>${professional1[0].title}</p>
+                </a>
+            `
+            var img2Html = `
+                <a href="info_detail.html?id=${professional1[1].id}#home">
+                    <img src="${imgurl+professional1[1].cover}"/>
+                    <p>${professional1[1].title}</p>
+                </a>
+            `
+            $('.professional-up .professionalImg').append(img1Html);
+            $('.professional-bottom .professionalImg').append(img2Html);
+            for(var i = 0; i < professional1.length; i++) {
+                var professionalHtml1 = `
+                    <li>
+                        <a href="info_detail.html?id=${professional1[i].id}#home"><span></span>${professional1[i].title}</a>
+                    </li>
+                `
+                $('.professional-up ul').append(professionalHtml1)
+            }
+            for(var i = 0; i < professional2.length; i++) {
+                var professionalHtml2 = `
+                    <li>
+                        <a href="info_detail.html?id=${professional2[i].id}#home"><span></span>${professional2[i].title}</a>
+                    </li>
+                `
+                $('.professional-bottom ul').append(professionalHtml2)
+            }
+            // 协会信息
+            var association = res.data3.slice(0,3);
+            for(var i = 0; i < association.length; i++) {
+                var associationHtml = `
+                    <li>
+                        <a href="info_detail.html?id=${association[i].id}#home">
+                            <div class="up">
+                                <img src="${imgurl+association[i].cover}"/>
+                            </div>
+                            <p>${association[i].title}</p>
+                        </a>
+                    </li>
+                `
+                $('.association-content ul').append(associationHtml)
+            }
+        }
+    })
+    // 轮播banner
+    var index = 0;
+    var allIndex = 0;
+    $.ajax({
+        url: url_ip + '/news/infobanner/',
+        type: 'GET',
+        cache:false,
+        async:false,
+        dataType: 'json',
+        data:{},
+        success:function(res) {
+            var bannerData = res.data.slice(0,4);
+            allIndex = bannerData.length;
+            for(var i = 0; i < bannerData.length; i++) {
+                var leftHtml = `
+                    <a href="info_detail.html?id=${res.data[i].id}#home">
+                        <li class="${i === 0? 'on': ''}" style="background-image:url('${imgurl+bannerData[i].img}')">
+                            <p>${bannerData[i].desc}</p>
+                        </li>
+                    </a>
+                `;
+                var rightHtml = `
+                    <li class="${i === 0? 'on': ''}">
+                        <a href="info_detail.html?id=${res.data[i].id}#home">
+                            <div><img src="${imgurl+bannerData[i].img}"/></div>
+                            <p>${bannerData[i].desc}</p>
+                        </a>
+                    </li>
+                `;
+                $('.part1 .part1-left').append(leftHtml);
+                $('.part1 .part1-right').append(rightHtml);
+            }
+        }
+    })
+    // 轮播hover
+    $('.part1 .part1-right li').hover(function() {
+        $(this).addClass('on').siblings().removeClass('on');
+        $(`.part1 .part1-left a:eq(${$(this).index()}) li`).addClass('on').parent().siblings().children('li').removeClass('on');
+    })
+    var timer = setInterval(addIndex, 2000)
+    // 定时轮播
+    function addIndex() {
+        index ++;
+        if(index >= allIndex) {
+            index = 0;
+        }
+        $('.part1 .part1-right').find('li').eq(index).addClass('on').siblings().removeClass('on');
+        $('.part1 .part1-left').find('a').eq(index).children('li').addClass('on').parent().siblings().children('li').removeClass('on');
+    }
+    // 搜索框绑定回车事件
+    $('.search input').on('keyup', function(e) {
+        if(e.keyCode === 13) {
+            $('.search img').click()
+        }
+    })
+    // 搜索
+    $('.search img').click(function() {
+        let keyword = $('.searchText').val();
+        if(keyword === undefined) {
+            return;
+        }
+        else {
+            window.location.href=`info_search.html?keyword=${keyword}`;
+        }
+    });
+</script>
+</html>

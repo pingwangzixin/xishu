@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/reward.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/reward.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+	<nav></nav>
+	<div class="mu3"></div>
+	<div class="is_quit">
+		<p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+		<div class="sure_quit">确定退出</div>
+		<div class="no_quit">再想一想</div>
+	</div>
+    <div class="head_bg">
+		<div class="reward_header">
+			<h1>寻求<span>算法</span></h1><p>尽可能详尽的描述您的需求,以便更多更专业的算法工程师/数据分析师为您服务。</p>
+		</div>
+	</div>
+	<div class="reward_body" id="reward">
+		<div class="reward_left">
+			<div class="reward_progress">
+				<span class="to_on">1<i>提交需求</i></span><b></b><span>2<i>托管赏金</i></span><b></b><span>3<i>平台公示</i></span><b></b><span>4<i>产生中标</i></span><b></b><span>5<i>卖方提交结果</i></span><b></b><span>6<i>赏金支付</i></span>
+			</div>
+			<div class="reward_form">
+				<form>
+					<div><span>{{title_type}}</span> <input type="text" placeholder="请输入算法名称,30字符以内" v-model="title"></div>
+					<div><span>需求描述：</span> <textarea placeholder="请输入需求描述,500字符以内" v-model="xuqiu"></textarea></div>
+					<div><span>场景描述：</span> <textarea placeholder="请输入场景描述,500字符以内" v-model="scene"></textarea></div>
+					<span>所属分类：</span>
+					<select v-model="select">
+						<option v-for="item in algo_type">{{item}}</option>
+					</select>
+					<span>赏金：</span><input type="number" v-model="money"> 元
+					<span style="margin-left:60px;">公示期限：</span><input type="number" v-model="time">  日
+					<div><span style="padding-left:12px;">手机号：</span> <input type="text" class="reward_phone" v-model="phone_num"><i @click="yanz($event)" :class="is_click">{{button_html}}</i></div>
+					<div><span style="padding-left:12px;">验证码：</span> <input type="text" class="yzm" v-model="yzm"></div>
+					<div class="reward_button" @click="fabu()">立即发布</div>
+				</form>
+			</div>
+		</div>
+		<div class="reward_right"></div>
+		<div class="clear"></div>
+		<div class="msgBox" v-show="msgBox_show">
+			<div>
+				<i :class="'s'+num"></i><br>
+				<span>{{msg}}</span>
+			</div>
+		</div>
+        <!-- 提示登录 -->
+        <div class="shade" v-show="shade_show">
+            <div id="hint_login">
+                <img src="img/hint_logo_cancel.png" height="35" width="35" class="hint_logo_cancel" @click="close_shade()">
+                <img src="img/hint_logo_shadow.png" height="50" width="135" class="hint_logo_shadow">
+                <img src="img/hint_logo.png" height="162" width="210" class="hint_logo">
+                <p>{{shade_msg}}</p>
+                <div class="btn">
+                    <a href="register.html" v-show="register_show">注册</a>
+                    <a href="login.html?back">登录</a>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/*全局样式*/
+*{margin:0;padding:0;}
+a{text-decoration:none;}
+a:hover{color:#0D6DB7;}
+i,em{font-style:normal;display:inline-block;vertical-align:top;}
+b,strong{font-weight:normal;}
+ul,li{list-style:none;}
+input,img{vertical-align:top;border:0;outline:none;}
+h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+body{background:#fff;font-size:12px;}
+.fl{float:left;}
+.fr{float:right;}
+
+/*导航*/
+.forget_bg{width:100%;height:100vh;background:url(../img/bg.png) no-repeat;background-size:100% 100%;position:relative;}
+nav{width:100%;height:57px;background:rgba(255,255,255,0.3);overflow:hidden;}
+.nav_logo{margin:14px 0 0 28px;width:156px;height:26px;float:left;}
+.nav_logo img{width:100%;}
+nav>ul{float:right;margin-right:35px;height:26px;margin-top:14px;}
+nav>ul li{height:26px;line-height:26px;z-index:999;}
+nav>ul li a{font-size:16px;color:#3e3a39;}
+
+/*忘记密码页样式*/
+.forget_bg{width:100%;height:100vh;background:url(../img/bg.png) no-repeat;background-size:100% 100%;position:relative;}
+.forget_box{width:400px;background:rgba(255,255,255,0.5);position:absolute;margin-left:50%;left:-200px;margin-top:60px;box-sizing:border-box;padding:30px;border-radius:6px;z-index:2;overflow:hidden;}
+.cancel{position:absolute;top:10px;right:10px}
+/*.zc_index,.dl_index{color:#3e3a39;}*/
+.forget_box input{width:298px;height:38px;box-sizing:border-box;padding-left:20px;margin:0 20px 20px;border:1px solid #0D6DB7;border-radius:8px;}
+.forget_box .forget_yz{width:198px;}
+.forget_box .forget_send{width:78px;height:28px;border:1px solid #0D6DB7;line-height:28px;text-align:center;font-size:12px;color:#fff;float:right;margin-right:20px;margin-top:5px;border-radius:5px;}
+.forget_box .forget_sendPre:hover{background:#0D6DB7;cursor:pointer;}
+.forget_box .check{width:13px;height:13px;border:1px solid #0D6DB7;position:relative;float:left;margin-right:10px;}
+.forget{width:298px;height:38px;border:1px solid #0D6DB7;margin:20px 20px 0;color:#fff;text-align:center;line-height:38px;font-size:16px;border-radius:8px;background:#0D6DB7;cursor:pointer;}
+
+/*底部*/
+/*footer*/
+footer{width:100%;border-top:1px solid #E5E5E5;box-sizing:border-box;padding:10px 0;position:absolute;left:0;top:0;}
+footer div{text-align:center;font-size:14px;color:#999;height:30px;line-height:30px;width:100%;}

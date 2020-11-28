@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 职业充电</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/xssy_index.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xssy_json.js?v=0.20.02.20.16"></script>
+    <script type="text/javascript" src="js/lajax.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/xssy_list.js?v=0.19.11.21.11"></script>
+    <style>
+        body{overflow-y:scroll;}
+		.loadGif.algRankCont_loadGif{height: 70px;text-align: center;position: absolute;left: 50%;top: 50%;transform: translateX(-50%);margin: -20px 0 0 -20px;display: none;}
+		.loadGif i{width: 40px;height: 40px;background: url(img/loading.gif) no-repeat center;background-size: 100%;display: inline-block;}
+		.loadGif p{height: 30px;line-height: 30px;font-size: 14px;}
+		.loadGif.err i{background-image: url(img/icon/war.png);}
+		.loadGif.algList_loadGif{height: 70px;text-align: center;display: none;}
+	</style>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="xssy_listTop">
+        <p><span><a href="xssy_index.html" style="color: #333;cursor: pointer;">网课中心</a></span><i>&gt;</i><span>全部课程</span></p>
+    </div>
+    <div class="xssy_listClass">
+        <h2>
+            <span>课程分类</span>
+            <p><input type="text" placeholder="请输入您要搜索的课程" id="inputSearch"><i class="btn"></i></p>
+        </h2>
+        <div class="spanFoo">
+
+        </div>
+    </div>
+    <div class="hot_source source_list">
+        <div class="loadGif algList_loadGif">
+            <i></i>
+            <p>加载中</p>
+        </div>
+        <ul class="xssy_source">
+
+        </ul>
+        <div class="ycl_page xssyList_page clear" style="display: none;">
+            <!--<div class="first_page">首页</div>-->
+            <div class="pre_page"><img src="img/weizuo.png"></div>
+            <span class="span left_dian">...</span>
+            <ul>
+                <li class="now_page" data-num="1">1</li>
+                <!--<li class="">2</li>-->
+            </ul>
+            <span class="span last_dian">...</span>
+            <div class="next_page"><img src="img/weiyou.png"></div>
+            <!--<div class="last_page">尾页</div>-->
+            <p>共 <span class="all_page"></span> 页</p>
+            <input type="text" class="will_page">
+            <div class="to_page">跳转</div>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="msg-box-wraper login-alert shade hide">
+
+    </div>
+    <!--提示信息-->
+    <div class="msg-box-wraper alertMsg hide">
+        <div class="msg-box">
+            <i class="msg-close">×</i>
+            <h6 class="msg-img"></h6>
+            <h2><span>提示信息</span></h2>
+        </div>
+    </div>
+    <!-- 购物车 -->
+    <div class="fixed_btn">
+        <div class="fixed_shouna">
+            <em>0</em>
+            <div class="fixed_shouna_img"><img src="img/shoun.png" class="shouna_img"></div>
+            <div class="shouna_box">
+                <div class="div shouna_weike">
+                    <h3><img src="img/weike.png">我的微课<i>0</i></h3>
+                    <ul></ul>
+                </div>
+                <div class="div shouna_algo">
+                    <h3><img src="img/algo.png">我的算法<i>0</i></h3>
+                    <ul></ul>
+                </div>
+                <div class="div shouna_data">
+                    <h3><img src="img/data_icon.png">我的数据<i>0</i></h3>
+                    <ul></ul>
+                </div>
+                <p>已收纳： <span>0</span>个</p>
+                <div class="shouna_get fr">GET</div>
+            </div>
+        </div>
+        <div class="fixed_xiaoxi">
+            <div class="fixed_xiaoxi_img"><img src="img/gout.png" class="xiaoxi_img"></div>
+            <div class="xiaoxi_box">
+                <i><img src="img/close.png"></i>
+                <div class="xiaoxi_info">
+                    <h3>为了给您提供便捷</h3>
+                    <p>1、您可以点击下方选择适合您的问题;<br>2、可以点击<a href="help_center.html?0">【帮助中心】</a>来解决您的疑问;<br>3、也可以在下方提交问题或对平台的建议/意见。</p>
+                    <div>我们会尽快处理改进，感谢您的配合~</div>
+                </div>
+                <dl class="xiaoxi_content">
+                    <dt class="first">
+                        <img src="img/kefu.png">
+                        <div>
+                            <p>您好！<br>我是您的私人小助理"小AI",很高兴为您服务。<br>为您筛选出以下几个常见问题：</p>
+                        </div>
+                    </dt>
+                </dl>
+                <div class="xiaoxi_input">
+                    <input type="text">
+                    <div class="xiaoxi_btn">提交</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- msgbox -->
+    <div class="mu"></div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <div class="loading_lkw" style="display: none;"></div>
+</body>
+
+</html>

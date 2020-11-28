@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Datahoop 2.0 工作台</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/model.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/base64.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jtopo-0.4.8-min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/echarts.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/datatool.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/chart_js.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/model.js?v=0.19.11.21.11"></script>
+</head>
+<body>
+    <div class="mu"></div>
+    <div class="loading"></div>
+    <div class="model_bg">
+        <div class="model_left">
+            <div class="model_left_logo">
+                <img src="img/model_logo_img.png">
+                <img src="img/model_logo_txt.png">
+            </div>
+            <div class="model_left_nav">
+                <div class="model_nav_li"><i class="model_nav_icon2"></i>算法模型</div>
+                <div class="model_nav_li2">
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>文件</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/s2.fw.png" title="文件"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>预处理</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/y1.fw.png" title="标准化"></li>
+                            <!-- <li><img src="img/y3.fw.png" title="特征选择"></li> -->
+                            <li><img src="img/y4.fw.png" title="变量离散化"></li>
+                            <li><img src="img/y5.fw.png" title="多项式特征"></li>
+                            <li><img src="img/y6.fw.png" title="标签编码"></li>
+                            <li><img src="img/y7.fw.png" title="主成分分析"></li>
+                            <li><img src="img/y8.fw.png" title="因子分析"></li>
+                            <li><img src="img/y9.fw.png" title="独热编码"></li>
+                            <li><img src="img/y2.fw.png" title="异常值检测"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>自建算法</span></div>
+                        <ul class="model_hide_ul zijian_list">
+                            <a href="python3/python_online.html" target="_blank" class="to_python"><img src="img/add_suanfa.png" title="新建算法"></a>
+                            <a class="suanfa_upload"><img src="img/upload.png"><input type="file" accept=".py"></a>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>监督学习</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/f1.fw.png" title="SVM"></li>
+                            <li><img src="img/f2.fw.png" title="神经网络"></li>
+                            <li><img src="img/f3.fw.png" title="逻辑回归"></li>
+                            <li><img src="img/f4.fw.png" title="朴素贝叶斯"></li>
+                            <li><img src="img/f5.fw.png" title="决策树"></li>
+                            <li><img src="img/f6.fw.png" title="Adaboost"></li>
+                            <li><img src="img/f7.fw.png" title="GBDT"></li>
+                            <li><img src="img/f8.fw.png" title="随机森林"></li>
+                            <li><img src="img/f9.fw.png" title="KNN"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>非监督学习</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/fj1.fw.png" title="K-Means"></li>
+                            <li><img src="img/fj2.fw.png" title="K-Medians"></li>
+                            <li><img src="img/fj3.fw.png" title="系统聚类"></li>
+                            <li><img src="img/fj4.fw.png" title="关联分析"></li>
+                            <li><img src="img/fj5.fw.png" title="对应分析"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>统计分析</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/t1.fw.png" title="移动平均"></li>
+                            <li><img src="img/t2.fw.png" title="简单指数平滑"></li>
+                            <li><img src="img/t3.fw.png" title="Holt指数平滑"></li>
+                            <li><img src="img/t4.fw.png" title="Winter指数平滑"></li>
+                            <li><img src="img/t5.fw.png" title="分解预测"></li>
+                            <li><img src="img/t6.fw.png" title="线性回归"></li>
+                            <li><img src="img/t7.fw.png" title="相关系数矩阵"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>文本分析</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/w1.fw.png" title="词频统计"></li>
+                            <li><img src="img/w2.fw.png" title="Textrank"></li>
+                        </ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>模型评估</span></div>
+                        <ul class="model_hide_ul">
+                            <li><img src="img/m1.fw.png" title="模型结果显示"></li>
+                            <li><img src="img/m3.fw.png" title="预测"></li>
+                            <li><img src="img/m2.fw.png" title="预测结果显示"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_left_nav">
+                <div class="model_nav_li"><i class="model_nav_icon3"></i>数据接入</div>
+                <div class="model_nav_li2">
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>公共数据</span></div>
+                        <ul class="model_hide_ul model_gg"></ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>个人数据</span></div>
+                        <ul class="model_hide_ul model_geren"></ul>
+                    </div>
+                    <div class="model_hide_div">
+                        <div class="open_load"><i class="model_ul_icon2"></i><span>上传数据</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="model_left_nav">
+                <div class="model_nav_li"><i class="model_nav_icon4"></i>常用模型</div>
+               <div class="model_nav_li2">
+                    <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>保存的模型</span></div>
+                        <ul class="model_hide_ul modelNames"></ul>
+                    </div>
+                    <!-- <div class="model_hide_div">
+                        <div><i class="model_ul_icon"></i><span>分享的模型</span></div>
+                        <ul class="model_hide_ul modelfenx"></ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="model_middle">
+            <canvas width="900" height="622" id="canvas" style="cursor:url(./img/zq.ico),auto;"></canvas>
+            <div class="msgbox2">
+                <div>
+                    <img src="img/toup.png"><img src="img/cancle2.png">
+                </div>
+            </div>
+            <div class="canvas_btn">
+                <div class="cookie_btn fl">保存</div>
+                <div class="empty_btn fl">清空</div>
+            </div>
+        </div>
+        <div class="model_right">
+            <!-- 右上角关闭按钮 -->
+            <div class="model_close_btn"><img src="img/close1.png"></div>
+            <!-- 文件 -->
+            <div class="model_right_form model_right_form0">
+                <div class="form0_txt">选择文件</div>
+                <div class="select_box"><input type="text"><i></i></div>
+                <ul class="select2"></ul>
+                <div class="right_bottom_btn btn1">查看</div>
+                <div class="right_bottom_btn btn2">重置</div>
+                <!-- <div class="right_bottom_btn btn3">取消</div>  -->
+            </div>
+            <!-- 表格 -->
+            <div class="model_right_form model_right_form2">
+                <div class="form3_box">
+                    <table></table>
+                </div>
+                <div class="right_bottom_btn btn1">返回</div>
+                <div class="right_bottom_btn btn2">详情</div>
+            </div>
+            <!-- 模型结果显示 -->
+            <div class="model_right_form model_right_form3">
+                <div class="form_btn form3_btn">结果展示</div>
+            </div>
+            <!-- 预测结果显示 -->
+            <div class="model_right_form model_right_form4">
+                <div class="form_btn form4_btn">结果展示</div>
+            </div>
+            <!-- 数据导入 -->
+            <div class="model_right_form model_right_form6">
+                <form class="model_ul2_li model_ul2_li34" style="display:block;"></form>
+                <div class="right_bottom_btn btn1">查看</div>
+                <div class="right_bottom_btn btn2">执行</div>
+                <div class="right_bottom_btn btn3">重置</div>
+            </div>
+            <!-- 分布式其他算法 -->
+            <div class="model_right_form model_right_form7">
+                <form class="model_ul2_li model_ul2_li35" style="display:block;"></form>
+                <div class="right_bottom_btn btn1">查看</div>
+                <div class="right_bottom_btn btn2">执行</div>
+                <div class="right_bottom_btn btn3">重置</div>
+            </div>
+            <!-- 自建算法列表 -->
+            <div class="model_right_form model_right_form8">
+                <div class="model_ul2_li model_ul2_li36" style="display:block;">
+                    <form></form>
+                </div>
+                <div class="right_bottom_btn btn1">执行</div>
+                <div class="right_bottom_btn btn2">修改</div>
+                <div class="right_bottom_btn btn3">重置</div>
+            </div>
+            <!-- 非文件 -->
+            <div class="model_right_form model_right_form1">
+                <!-- 右边栏算法名称 -->
+                <div class="model_right_title">算法名称:</div><div class="model_right_name"></div>
+                <div class="model_form1_btns">
+                    <div class="model_form1_btn fl">字段设置</div>
+                    <div class="model_form1_btn fr">参数设置</div>
+                </div>
+                <div class="model_form1_ul1">
+                    <li class="model_form1_li0">
+                        <h2>数值列</h2><span>必选</span>
+                        <div class="model_shulie">选择字段</div>
+                    </li>
+                    <li class="model_form1_li0">
+                        <h2>分组列</h2><span>可选</span>
+                        <div class="model_fenzu">选择字段</div>
+                    </li>
+                    <div class="right_bottom_btn btn1">执行</div>
+                    <div class="right_bottom_btn btn2">查看</div>
+                    <div class="right_bottom_btn btn3">重置</div>
+                </div>
+                <div class="model_form1_ul2">
+                    <!-- 标准化 -->
+                    <form class="model_ul2_li model_ul2_li1">
+                        <div class="form0_txt">标准化类型</div>
+                        <select>
+                            <option value="Z-Score">零均值规范化</option>
+                            <option value="MinMax">最小-最大规范化</option>
+                            <option value="Unit_Norm">归一化</option>
+                            <option value="Binarizer">特征二值化</option>
+                            <option value="Function">自定义特征函数</option>
+                        </select>
+                        <div class="li1_child">
+                            <div class="form0_txt">临界值</div>
+                            <input type="text" value = 1>
+                        </div>
+                        <div class="li1_child2">
+                            <div class="form0_txt">函数类型</div>
+                            <select>
+                                <option value="log">自然对数</option>
+                                <option value="log2">log2</option>
+                                <option value="log10">log10</option>
+                                <option value="exp">指数</option>
+                                <option value="sign">信号函数</option>
+                                <option value="sqrt">绝对值</option>
+                                <option value="abs">开方</option>
+                            </select>
+                        </div>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 异常处理 -->
+                    <form class="model_ul2_li model_ul2_li2">
+                        <div class="form0_txt">异常值检测</div>
+                        <select>
+                            <option value="delete_row">delete_row(删除)</option>
+                            <option value="fill_NaN">fill_NaN(非数值填充)</option>
+                            <option value="fill_mean">fill_mean(均值填充)</option>
+                            <option value="fill_median">fill_median(中位数填充)</option>
+                            <option value="fill_mode">fill_mode(模式填充)</option>
+                            <option value="nearest_interp">nearest_interp(临近值填充)</option>
+                        </select>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 特征选择 -->
+                    <form class="model_ul2_li model_ul2_li3">暂无参数设置
+                    </form>
+                    <!-- 变量离散化 -->
+                    <form class="model_ul2_li model_ul2_li4">
+                        <div class="form0_txt">种类个数</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 多项式特征 -->
+                    <form class="model_ul2_li model_ul2_li5">暂无参数设置
+                    </form>
+                    <!-- 标签编码 -->
+                    <form class="model_ul2_li model_ul2_li6">暂无参数设置
+                    </form>
+                    <!-- 主成分分析 -->
+                    <form class="model_ul2_li model_ul2_li7">
+                        <div class="form0_txt">主成分个数</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                     <!-- 因子分析 -->
+                    <form class="model_ul2_li model_ul2_li8">
+                        <input type="radio" name="FA" checked><span class="form0_txt">基于特征值(E):</span>
+                        <div>特征值大于(A):<input type="number" value="1"></div>
+                        <input type="radio" name="FA"><span class="form0_txt">因子的固定数量(N):</span>
+                        <div>提取的因子(T):<input type="txt" value="1"></div>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 独热编码 -->
+                    <form class="model_ul2_li model_ul2_li9">暂无参数设置
+                    </form>
+                    <!-- SVM -->
+                    <form class="model_ul2_li model_ul2_li10">
+                        <div class="form0_txt">惩罚因子</div>
+                        <input type="text" value = 1.0>
+                        <div class="form0_txt">核函数</div>
+                        <select>
+                            <option>rbf</option>
+                            <option>linear</option>
+                            <option>poly</option>
+                            <option>sigmoid</option>
+                        </select>
+                        <div class="form0_txt">核函数常数项</div>
+                        <input type="text" value = 0.0>
+                        <div class="form0_txt">核函数多项式幂次数</div>
+                        <input type="text" value = 3.0>
+                        <div class="form0_txt">核函数gamma因子</div>
+                        <input type="text" value = auto placeholder=">=0.0">
+                        <div class="form0_txt">最大迭代次数</div>
+                        <input type="text" value = 20>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 神经网络 -->
+                    <form class="model_ul2_li model_ul2_li11">
+                        <div class="form0_txt">隐含层设置</div>
+                        <input type="text" value = 100_100_100>
+                        <div class="form0_txt">激活函数</div>
+                        <select>
+                            <option>relu</option>
+                            <option>identity</option>
+                            <option>logistic</option>
+                            <option>tanh</option>
+                        </select>
+                        <div class="form0_txt">求解器</div>
+                        <select>
+                            <option>adam</option>
+                            <option>lbfgs</option>
+                            <option>sgd</option>
+                        </select>
+                        <div class="form0_txt">惩罚参数</div>
+                        <input type="text" value = 0.0001>
+                        <div class="form0_txt">学习速率模式</div>
+                        <select>
+                            <option>constant</option>
+                            <option>invscaling</option>
+                            <option>adaptive</option>
+                        </select>
+                        <div class="form0_txt">最大迭代次数</div>
+                        <input type="text" value = 200>
+                        <div class="form0_txt">冲量因子</div>
+                        <input type="text" value = 0.9>
+                        <div class="form0_txt">是否提前终止</div>
+                        <select>
+                            <option>False</option>
+                            <option>True</option>
+                        </select>
+                        <div class="form0_txt">验证比例</div>
+                        <input type="text" value = 0.9>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 逻辑回归 -->
+                    <form class="model_ul2_li model_ul2_li12">
+                        <div class="form0_txt">最大迭代次数</div>
+                        <input type="text" value = 100>
+                        <div class="form0_txt">最优化方法</div>
+                        <select>
+                            <option>liblinear</option>
+                            <option>newton-cg</option>
+                            <option>lbfgs</option>
+                            <option>sag</option>
+                        </select>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 朴素贝叶斯 -->
+                    <form class="model_ul2_li model_ul2_li13">
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 决策树 -->
+                    <form class="model_ul2_li model_ul2_li14">
+                        <div class="form0_txt">损失函数</div>
+                        <select>
+                            <option>gini</option>
+                            <option>entropy</option>
+                        </select>
+                        <div class="form0_txt">树最大深度</div>
+                        <input type="text" value = 'None'>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- Adaboost -->
+                    <form class="model_ul2_li model_ul2_li15">
+                        <div class="form0_txt">分类器最大数量</div>
+                        <input type="text" value = 50>
+                        <div class="form0_txt">学习速率</div>
+                        <input type="text" value = 1.0>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- GBDT -->
+                    <form class="model_ul2_li model_ul2_li16">
+                        <div class="form0_txt">迭代次数</div>
+                        <input type="text" value = 100>
+                        <div class="form0_txt">学习速率</div>
+                        <input type="text" value = 0.1>
+                        <div class="form0_txt">树最大深度</div>
+                        <input type="text" value = 3>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 随机森林 -->
+                    <form class="model_ul2_li model_ul2_li17">
+                        <div class="form0_txt">分类树个数</div>
+                        <input type="text" value = 10>
+                        <div class="form0_txt">分类树损失函数</div>
+                        <select>
+                            <option>gini</option>
+                            <option>entropy</option>
+                        </select>
+                        <div class="form0_txt">树最大深度</div>
+                        <input type="text" value = 'None'>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- KNN -->
+                    <form class="model_ul2_li model_ul2_li18">
+                        <div class="form0_txt">最近邻个数</div>
+                        <input type="text" value = 5>
+                        <div class="form0_txt">近邻权重分配方式</div>
+                        <select>
+                            <option>uniform</option>
+                            <option>distance</option>
+                        </select>
+                        <div class="form0_txt">距离模式</div>
+                        <input type="text" value = 2>
+                        <div class="form0_txt">测试集占整个数据集的比例</div>
+                        <input type="text" value = 0.2>
+                        <div class="form0_txt">伪随机数发生器种子</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- K-means -->
+                    <form class="model_ul2_li model_ul2_li19">
+                        <div class="form0_txt">聚类个数</div>
+                        <input type="text" value = 3>
+                        <div class="form0_txt">初始中心点选择次数</div>
+                        <input type="text" value = 10>
+                        <div class="form0_txt">最大迭代次数</div>
+                        <input type="text" value = 300>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- K-medians -->
+                    <form class="model_ul2_li model_ul2_li20">
+                        <div class="form0_txt">聚类个数</div>
+                        <input type="text" value = 3>
+                        <div class="form0_txt">距离模式</div>
+                        <select>
+                            <option>euclidean</option>
+                            <option>cosine</option>
+                            <option>manhattan</option>
+                            <option>cityblock</option>
+                            <option>cosine</option>
+                            <option>l1</option>
+                            <option>l2</option>
+                        </select>
+                        <div class="form0_txt">最大迭代次数</div>
+                        <input type="text" value = 100>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 层次聚类 -->
+                    <form class="model_ul2_li model_ul2_li21">
+                        <div class="form0_txt">距离模式</div>
+                        <select>
+                            <option>braycurtis</option>
+                            <option>canberra</option>
+                            <option>chebyshev</option>
+                            <option>cityblock</option>
+                            <option>correlation</option>
+                            <option>cosine</option>
+                            <option>dice</option>
+                            <option>euclidean</option>
+                            <option>hamming</option>
+                            <option>jaccard</option>
+                            <option>kulsinski</option>
+                            <option>mahalanobis</option>
+                            <option>matching</option>
+                            <option>minkowski</option>
+                            <option>rogerstanimoto</option>
+                            <option>russellrao</option>
+                            <option>seuclidean</option>
+                            <option>sokalmichener</option>
+                            <option>sokalsneath</option>
+                            <option>sqeuclidean</option>
+                            <option>yule</option>
+                        </select>
+                        <div class="form0_txt">聚类方法</div>
+                        <select>
+                            <option>single</option>
+                            <option>complete</option>
+                            <option>average</option>
+                            <option>weighted</option>
+                            <option>centroid</option>
+                        </select>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 关联分析 -->
+                    <form class="model_ul2_li model_ul2_li22">
+                        <div class="form0_txt">最小支持度</div>
+                        <input type="text" value = 0.05 placeholder=">0 & <=1">
+                        <div class="form0_txt">度量</div>
+                        <select>
+                            <option>confidence</option>
+                            <!--<option>lift</option>-->
+                        </select>
+                        <div class="form0_txt">最小置信度</div>
+                        <input type="text" value = 0.08 placeholder=">0 & <=1">
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 对应分析 -->
+                    <form class="model_ul2_li model_ul2_li23">暂无参数设置
+                    </form>
+                    <!-- 移动平均 -->
+                    <form class="model_ul2_li model_ul2_li24">
+                        <div class="form0_txt">移动窗口大小</div>
+                        <input type="text" value = 2>
+                        <div class="form0_txt">是否在窗口中心</div>
+                        <select>
+                            <option>False</option>
+                            <option>True</option>
+                        </select>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 简单指数平滑 -->
+                    <form class="model_ul2_li model_ul2_li25">
+                        <div class="form0_txt">预测长度</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- Holt指数平滑 -->
+                    <form class="model_ul2_li model_ul2_li26">
+                        <div class="form0_txt">预测长度</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- Winter指数平滑 -->
+                    <form class="model_ul2_li model_ul2_li27">
+                        <div class="form0_txt">模型模式</div>
+                        <select>
+                            <option>additive</option>
+                            <option>multiplicative</option>
+                        </select>
+                        <div class="form0_txt">周期长度</div>
+                        <input type="text" value = 4>
+                        <div class="form0_txt">预测长度</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 分解预测 -->
+                    <form class="model_ul2_li model_ul2_li28">
+                        <div class="form0_txt">模型模式</div>
+                        <select>
+                            <option>additive</option>
+                            <option>multiplicative</option>
+                        </select>
+                        <div class="form0_txt">周期长度</div>
+                        <input type="text" value = 4>
+                        <div class="form0_txt">预测长度</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 线性回归 -->
+                    <form class="model_ul2_li model_ul2_li29">暂无参数设置
+                    </form>
+                    <!-- 相关系数矩阵 -->
+                    <form class="model_ul2_li model_ul2_li30">暂无参数设置
+                    </form>
+                    <!-- 词频统计 -->
+                    <form class="model_ul2_li model_ul2_li31">暂无参数设置
+                    </form>
+                    <!-- Textrank -->
+                    <form class="model_ul2_li model_ul2_li32">
+                        <div class="form0_txt">关键词个数</div>
+                        <input type="text" value = 1>
+                        <input type="reset" style="display:none;">
+                    </form>
+                    <!-- 预测 -->
+                    <form class="model_ul2_li model_ul2_li34">暂无参数设置
+                    </form>
+                    <!-- 分布式 -->
+                    <div class="model_ul2_li model_ul2_li33"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 数值列弹窗 -->
+        <div id="shuzhi_box">
+            <div class="close"><span>选择字段</span><img src="img/close.png"></div>
+            <div class="shuzhi_input"><input type="text" class="shuzhi_search" placeholder="输入关键字搜索列，包含关键字即可"><img src="img/search.png"></div>
+            <div class="shuzhi_middle">
+                <div class="middle_left fl">
+                    <p>全部字段</p>
+                    <div class="all_check"><div class="shuzhi_check shuzhi_check0"><input type="checkbox"></div>全选</div>
+                    <ul class="shuzhi_left"></ul>
+                    <div class="shuzhi_btn1">添加</div>
+                </div>
+                <div class="middle_right fr">
+                    <p>已选字段</p>
+                    <ul class="shuzhi_right"></ul>
+                    <div class="shuzhi_btn3">清空</div>
+                </div>
+            </div>
+            <div class="shuzhi_footer">
+                <div class="shuzhi_btn2">确定</div>
+            </div>
+        </div>
+        <!-- 分组列弹窗 -->
+        <div id="fenzu_box">
+            <div class="close"><span>选择字段</span><img src="img/close.png"></div>
+            <div class="fenzu_input"><input type="text" class="fenzu_search" placeholder="输入关键字搜索列，包含关键字即可"><img src="img/search.png"></div>
+            <div class="fenzu_middle">
+                <div class="middle_left fl">
+                    <p>全部字段</p>
+                    <div class="all_check"><div class="fenzu_check fenzu_check0"><input type="checkbox"></div>全选</div>
+                    <ul class="fenzu_left"></ul>
+                    <div class="fenzu_btn1">添加</div>
+                </div>
+                <div class="middle_right fr">
+                    <p>已选字段</p>
+                    <ul class="fenzu_right"></ul>
+                    <div class="fenzu_btn3">清空</div>
+                </div>
+            </div>
+            <div class="fenzu_footer">
+                <div class="fenzu_btn2">确定</div>
+            </div>
+        </div>
+        <!-- 上传数据弹窗 -->
+        <div id="load_box">
+            <div class="load_top">
+                <p class="fl">本地上传</p>
+                <img src="img/close.png" class="fr">
+            </div>
+            <div class="load_contxt">
+                <p>文本文件</p>
+                <div class="load_pic load_exc"><img src="img/exc_h.png"></div>
+                <div class="load_pic load_txt"><img src="img/txt_h.png"></div>
+                <div class="load_pic load_csv"><img src="img/csv_h.png"></div>
+            </div>
+            <div class="load_contxt" style="border:0">
+                <p>数据库文件</p>
+                <div class="load_pic load_wysql"><img src="img/mysql_h.png"><input type="file" accept=".sql"><p></p></div>
+                <div class="load_pic load_postsql"><img src="img/postgresql_h.png"><input type="file" accept=".sql"><p></p></div>
+            </div>
+        </div>
+        <!-- 上传数据选择分隔符弹窗 -->
+        <div class="load_check_box load_check_box0">
+            <p>选择分割符:(请确认分隔符小于四个字节)</p>
+            <img src="img/close.png">
+            <div><input type="radio" name="fgf0"><b>分号 ( ; )</b></div>
+            <div><input type="radio" name="fgf0" checked><b>逗号 ( , )</b></div>
+            <div><input type="radio" name="fgf0"><b>竖线 ( | )</b></div>
+            <div class="input"><input type="text" placeholder="自定义分隔符"></div>
+            <div><input type="checkbox" checked>是否包含表头</div>
+            <div class="load_file_btn load_file_btn0"><input type="file" accept=".xls,.xlsx">选择文件</div>
+            <span>未选择任何文件</span>
+            <div class="load_sure load_sure0">确定</div>
+        </div>
+        <div class="load_check_box load_check_box1">
+            <p>选择分割符:(请确认分隔符小于四个字节)</p>
+            <img src="img/close.png">
+            <div><input type="radio" name="fgf1"><b>分号 ( ; )</b></div>
+            <div><input type="radio" name="fgf1" checked><b>逗号 ( , )</b></div>
+            <div><input type="radio" name="fgf1"><b>竖线 ( | )</b></div>
+            <div class="input"><input type="text" placeholder="自定义分隔符"></div>
+            <div><input type="checkbox" checked>是否包含表头</div>
+            <div class="load_file_btn load_file_btn1"><input type="file" accept=".txt">选择文件</div>
+            <span>未选择任何文件</span>
+            <div class="load_sure load_sure1">确定</div>
+        </div>
+        <div class="load_check_box load_check_box2">
+            <p>选择分割符:(请确认分隔符小于四个字节)</p>
+            <img src="img/close.png">
+            <div><input type="radio" name="fgf2"><b>分号 ( ; )</b></div>
+            <div><input type="radio" name="fgf2" checked><b>逗号 ( , )</b></div>
+            <div><input type="radio" name="fgf2"><b>竖线 ( | )</b></div>
+            <div class="input"><input type="text" placeholder="自定义分隔符"></div>
+            <div><input type="checkbox" checked>是否包含表头</div>
+            <div class="load_file_btn load_file_btn2"><input type="file" accept=".csv">选择文件</div>
+            <span>未选择任何文件</span>
+            <div class="load_sure load_sure2">确定</div>
+        </div>
+        <!-- 模型保存弹窗 -->
+        <div class="cun_model">
+            <div class="cun_model_title">
+                <span class="fl">保存模型</span>
+                <i class="fr"><img src="img/close.png"></i>
+            </div>
+            <div class="cun_model_name">
+                <input type="text" placeholder="请输入您要保存的模型名字...">
+            </div>
+            <ul class="cun_model_tab">
+                <p>请选择标签类别</p>
+            </ul>
+            <div class="cun_model_txt">
+                <textarea placeholder="请输入对该标签的简单描述..."></textarea>
+            </div>
+            <div class="cun_model_btn">
+                <div class="model_sure fl">确定</div>
+                <div class="model_nosure fr">取消</div>
+            </div>
+        </div>
+        <!-- 提示登录 -->
+        <div class="msg-box-wraper login-alert shade hide" data-to="back">
+
+        </div>
+    </div>
+    <!-- 表格信息弹窗 -->
+    <div id="msg_box">
+        <h2 class="close">
+            <p class="close_logo">
+                <span>数据结果展示</span>
+            </p>
+            <img src="img/close.png" class="close_img" />
+        </h2>
+        <div class="msg_box0"></div>
+        <div class="msg_box"></div>
+        <div class="msg_box2"></div>
+    </div>
+    <!-- 模型结果展示弹窗 -->
+    <div id="model_result_box">
+        <div class="model_result_title">
+            <span>模型结果展示</span>
+            <img src="img/close.png">
+        </div>
+        <div class="model_result_context">
+            <div class="model_result_title2">
+                <a class="download">下载</a>
+                <span class="fl"></span><b class="fl">模型结果</b>
+                <select class="fl">
+                    <option value="cs">测试集</option>
+                    <option value="xl">训练集</option>
+                </select>
+                <div class="div" id="train_confusion_matrix"><input type="checkbox" checked name="hxjz_train">混淆矩阵</div>
+                <div class="div" id="train_omega_matrix_fig_data"><input type="checkbox" checked name="hgfc_train">逻辑回归方程</div>
+                <div class="div" id="ciyuntu"><input type="checkbox" checked name="cyt">词云图</div>
+                <div class="div" id="dyfxt"><input type="checkbox" checked name="dyfxt">对应分析图</div>
+                <div class="div" id="test_confusion_matrix"><input type="checkbox" checked name="hxjz_test">混淆矩阵</div>
+                <div class="div" id="test_omega_matrix_fig_data"><input type="checkbox" checked name="hgfc_test">逻辑回归方程</div>
+                <div class="div" id="train_result_data"><input type="checkbox" checked name="mxjg_train">模型结果</div>
+                <div class="div" id="test_result_data"><input type="checkbox" checked name="mxjg_test">模型结果</div>
+                <div class="div" id="PREDICTED_TRAINING"><input type="checkbox" checked name="mxjg">模型结果</div>
+                <div class="div" id="PREDICTED_RESULTS_ON_NEW_DATA"><input type="checkbox" checked name="ydpj">移动平均预测</div>
+                <div class="div" id="result_validation_1"><input type="checkbox" checked name="mxjgjy1">原始模型结果及检验</div>
+                <div class="div" id="result_validation_3"><input type="checkbox" checked name="mxjgjy3">向后删除模型结果及检验</div>
+                <div class="div" id="result_validation_2"><input type="checkbox" checked name="mxjgjy2">原始模型汇总</div>
+                <div class="div" id="result_validation_4"><input type="checkbox" checked name="mxjgjy4">向后删除模型汇总</div>
+                <div class="div" id="result_data"><input type="checkbox" checked name="mxnhjg">模型拟合结果</div>
+                <div class="div" id="result_data_pred"><input type="checkbox" checked name="mxycjg">模型预测结果</div>
+                <div class="div" id="train_result_validation_1"><input type="checkbox" checked name="mxzb1_train">模型指标1</div>
+                <div class="div" id="train_result_validation_2"><input type="checkbox" checked name="mxzb2_train">模型指标2</div>
+                <div class="div" id="test_result_validation_1"><input type="checkbox" checked name="mxzb1_test">模型指标1</div>
+                <div class="div" id="test_result_validation_2"><input type="checkbox" checked name="mxzb2_test">模型指标2</div>
+                <div class="div" id="MODEL_VERIFICATION"><input type="checkbox" checked name="mxzb1">模型指标1</div>
+                <div class="div" id="MODEL_VERIFICATION_2"><input type="checkbox" checked name="mxzb2">模型指标2</div>
+                <div class="div" id="MODEL_VERIFICATION_3"><input type="checkbox" checked name="mxzb3">模型指标3</div>
+                <div class="div" id="train_ROC_data"><input type="checkbox" checked name="ROC_train">ROC曲线</div>
+                <div class="div" id="test_ROC_data"><input type="checkbox" checked name="ROC_test">ROC曲线</div>
+                <div class="div" id="DRAW_DATA"><input type="checkbox" checked name="SDT">散点图</div>
+                <div class="div" id="DRAW_DATA2"><input type="checkbox" checked name="SDT2">折线图</div>
+                <div class="div" id="Square_distance_matrix"><input type="checkbox" checked name="jljz">平方距离矩阵</div>
+                <div class="div" id="Dendrogram_data"><input type="checkbox" checked name="SZT">树状图</div>
+                <div class="div" id="cluster"><input type="checkbox" checked name="jljg">聚类结果</div>
+                <div class="div" id="PREDICTED_RESULT"><input type="checkbox" checked name="mxjgzc">模型结果(按支持度排序)</div>
+                <div class="div" id="PREDICTED_RESULT_support"><input type="checkbox" checked name="mxjgzx">模型结果(按置信度排序)</div>
+                <div class="div" id="result_data_of_predict"><input type="checkbox" checked name="yc">预测</div>
+                <div class="div" id="DRAW_DATA3"><input type="checkbox" checked name="ZXT">折线图</div>
+                <div class="div" id="Original_Series"><input type="checkbox" checked name="YSZXT">原始数据折线图</div>
+                <div class="div" id="Random"><input type="checkbox" checked name="SJZXT">随机折线图</div>
+                <div class="div" id="Season"><input type="checkbox" checked name="JJZXT">季节折线图</div>
+                <div class="div" id="Trend"><input type="checkbox" checked name="PHZXT">趋势预测图</div>
+                <div class="div" id="trend_fitted_result"><input type="checkbox" checked name="ROT">Regression of Trend</div>
+                <div class="div" id="DRAW_DATA"><input type="checkbox" checked name="JGYCT">结果预测图</div>
+                <div class="div" id="result_data_1"><input type="checkbox" checked name="GJC">关键词</div>
+                <div class="div" id="result_data_2"><input type="checkbox" checked name="GJCY">关键词语</div>
+                <div class="div" id="result_data_3"><input type="checkbox" checked name="ZY">摘要</div>
+                <div class="div" id="CORRELATION_MATRIX"><input type="checkbox" checked name="xgxsjz">相关系数矩阵</div>
+                <div class="div" id="text_data"><input type="checkbox" checked name="text">词频统计</div>
+            </div>
+            <div class="cs_result">
+                <div class="cs_hxjz_test">
+                    <div class="cs_hxjz_test_title">混淆矩阵</div>
+                    <div class="div_tu cs_hxjz_test_context">
+                        <img>
+                    </div>
+                </div>
+                <div class="cs_hgfc_test">
+                    <div class="cs_hgfc_test_title">逻辑回归方程</div>
+                    <div class="cs_hgfc_test_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_cyt">
+                    <div class="cs_cyt_title">词云图</div>
+                    <div class="div_tu cs_cyt_context">
+                        <img>
+                    </div>
+                </div>
+                <div class="cs_dyfxt">
+                    <div class="cs_dyfxt_title">对应分析图</div>
+                    <div class="div_tu cs_dyfxt_context">
+                        <img>
+                    </div>
+                </div>
+                <div class="cs_mxjg">
+                    <div class="cs_mxjg_title">模型结果</div>
+                    <div class="cs_mxjg_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_ydpj">
+                    <div class="cs_ydpj_title">移动平均预测</div>
+                    <div class="cs_ydpj_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_text">
+                    <div class="cs_text_title">词频统计</div>
+                    <div class="cs_text_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjg_test">
+                    <div class="cs_mxjg_test_title">模型结果</div>
+                    <div class="cs_mxjg_test_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgjy1">
+                    <div class="cs_mxjgjy1_title">原始模型结果及检验</div>
+                    <div class="cs_mxjgjy1_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgjy3">
+                    <div class="cs_mxjgjy3_title">向后删除模型结果及检验</div>
+                    <div class="cs_mxjgjy3_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgjy2">
+                    <div class="cs_mxjgjy2_title">原始模型汇总</div>
+                    <div class="cs_mxjgjy2_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgjy4">
+                    <div class="cs_mxjgjy4_title">向后删除模型汇总</div>
+                    <div class="cs_mxjgjy4_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxnhjg">
+                    <div class="cs_mxnhjg_title">模型拟合结果</div>
+                    <div class="cs_mxnhjg_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxycjg">
+                    <div class="cs_mxycjg_title">模型预测结果</div>
+                    <div class="cs_mxycjg_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxzb1_test">
+                    <div class="cs_mxzb1_test_title">模型指标1</div>
+                    <div class="cs_mxzb1_test_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxzb2_test">
+                    <div class="cs_mxzb2_test_title">模型指标2</div>
+                    <div class="cs_mxzb2_test_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxzb1">
+                    <div class="cs_mxzb1_title">模型指标1</div>
+                    <div class="cs_mxzb1_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxzb2">
+                    <div class="cs_mxzb2_title">模型指标2</div>
+                    <div class="cs_mxzb2_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxzb3">
+                    <div class="cs_mxzb3_title">模型指标3</div>
+                    <div class="cs_mxzb3_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_ROC_test">
+                    <div class="cs_ROC_test_title">ROC曲线</div>
+                    <div class="cs_ROC_test_context">
+                        <div id="roc"></div>
+                    </div>
+                </div>
+                <div class="cs_SDT">
+                    <div class="cs_SDT_title">散点图</div>
+                    <div class="cs_SDT_context">
+                        <div id="sdt"></div>
+                    </div>
+                </div>
+                <div class="cs_SDT2">
+                    <div class="cs_SDT2_title">折线图</div>
+                    <div class="cs_SDT2_context">
+                        <div id="sdt2"></div>
+                    </div>
+                </div>
+                <div class="cs_jljz">
+                    <div class="cs_jljz_title">平方距离矩阵</div>
+                    <div class="cs_jljz_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_SZT">
+                    <div class="cs_SZT_title">树状图</div>
+                    <div class="div_tu cs_SZT_context">
+                        <img>
+                    </div>
+                </div>
+                <div class="cs_jljg">
+                    <div class="cs_jljg_title">聚类结果</div>
+                    <div class="cs_jljg_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgzx">
+                    <div class="cs_mxjgzx_title">模型结果(按置信度排序)</div>
+                    <div class="cs_mxjgzx_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_mxjgzc">
+                    <div class="cs_mxjgzc_title">模型结果(按支持度排序)</div>
+                    <div class="cs_mxjgzc_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_yc">
+                    <div class="cs_yc_title">预测</div>
+                    <div class="cs_yc_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_ZXT">
+                    <div class="cs_ZXT_title">折线图</div>
+                    <div class="cs_ZXT_context">
+                        <div id="ZXT"></div>
+                    </div>
+                </div>
+                <div class="cs_YSZXT">
+                    <div class="cs_YSZXT_title">原始数据折线图</div>
+                    <div class="cs_YSZXT_context">
+                        <div id="YSZXT"></div>
+                    </div>
+                </div>
+                <div class="cs_SJZXT">
+                    <div class="cs_SJZXT_title">随机折线图</div>
+                    <div class="cs_SJZXT_context">
+                        <div id="SJZXT"></div>
+                    </div>
+                </div>
+                <div class="cs_JJZXT">
+                    <div class="cs_JJZXT_title">季节折线图</div>
+                    <div class="cs_JJZXT_context">
+                        <div id="JJZXT"></div>
+                    </div>
+                </div>
+                <div class="cs_PHZXT">
+                    <div class="cs_PHZXT_title">趋势预测图</div>
+                    <div class="cs_PHZXT_context">
+                        <div id="PHZXT"></div>
+                    </div>
+                </div>
+                <div class="cs_ROT">
+                    <div class="cs_ROT_title">Regression of Trend</div>
+                    <div class="cs_ROT_context">
+                        <div id="ROT"></div>
+                    </div>
+                </div>
+                <div class="cs_JGYCT">
+                    <div class="cs_JGYCT_title">结果预测图</div>
+                    <div class="cs_JGYCT_context">
+                        <div id="JGYCT"></div>
+                    </div>
+                </div>
+                <div class="cs_GJC">
+                    <div class="cs_GJC_title">关键词</div>
+                    <div class="cs_GJC_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_GJCY">
+                    <div class="cs_GJCY_title">关键词语</div>
+                    <div class="cs_GJCY_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_ZY">
+                    <div class="cs_ZY_title">摘要</div>
+                    <div class="cs_ZY_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs_xgxsjz">
+                    <div class="cs_xgxsjz_title">相关系数矩阵</div>
+                    <div class="cs_xgxsjz_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xl_result">
+                <div class="xl_hxjz_train">
+                    <div class="xl_hxjz_train_title">混淆矩阵</div>
+                    <div class="div_tu xl_hxjz_train_context">
+                        <img>
+                    </div>
+                </div>
+                <div class="xl_hgfc_train">
+                    <div class="xl_hgfc_train_title">逻辑回归方程</div>
+                    <div class="xl_hgfc_train_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl_mxjg_train">
+                    <div class="xl_mxjg_train_title">模型结果</div>
+                    <div class="xl_mxjg_train_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl_mxzb1_train">
+                    <div class="xl_mxzb1_train_title">模型指标1</div>
+                    <div class="xl_mxzb1_train_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl_mxzb2_train">
+                    <div class="xl_mxzb2_train_title">模型指标2</div>
+                    <div class="xl_mxzb2_train_context">
+                        <div class="table_box">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl_ROC_train">
+                    <div class="xl_ROC_train_title">ROC曲线</div>
+                    <div class="xl_ROC_train_context">
+                        <div id="roc2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="msgbox">
+        <img src="img/success.png" class="success on">
+        <img src="img/fail.png" class="fail">
+        <span></span>
+    </div>
+    <div id="zjMsgBox">
+        <img src="img/logo_min.png" class="zjMsgLogo">
+        <img src="img/close.png" class="zjMsgClose">
+        <a>下载</a>
+        <div class="zjMsg"></div>
+    </div>
+</body>
+</html>

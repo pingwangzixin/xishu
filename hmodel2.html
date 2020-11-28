@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Datahoop 2.0 分析工作台</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/hmodel2.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/base64.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jtopo-0.4.8-min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/toolbar.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/echarts.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/datatool.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/chart_js.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/hmodel2.js?v=0.19.11.21.11"></script>
+    <!-- <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/networkgraph.js"></script> -->
+    <!-- 用户画像出图-->
+    <!-- <script src="js/myHicharts.js"></script> -->
+    <!--用户画像点击事件-->
+    <!-- <script src="js/hmodel2_sjfz.js"></script> -->
+</head>
+
+<body>
+<h1>
+    <a href="index.html"><img src="img/logo_niu.png"></a>
+    <span>分析工作台</span><b>|</b>
+    <i></i>
+    <ol>
+        <span class="guide">新手引导</span>
+        <span class="feedback">问题反馈</span>
+    </ol>
+</h1>
+<div class="workBox">
+    <div class="scalePercent">
+
+    </div>
+    <div class="guideVideo">
+        <i>x</i>
+        <video controls src="./img/新手引导new.mp4"></video>
+    </div>
+    <div class="workspace">
+        <ul class="zujian">
+            <li>
+                <img src="img/icon2/dhb/left_icon_3@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>上传数据</i>
+            </li>
+            <li>
+                <img src="img/icon2/dhb/left_icon_2@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>数据接入</i>
+            </li>
+            <li>
+                <img src="img/icon2/dhb/left_icon_1@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>数 据 集</i>
+            </li>
+            <li>
+                <img src="img/icon2/dhb/left_icon_4@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>数据加工</i>
+            </li>
+            <li>
+                <img src="img/icon2/dhb/left_icon_6@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>可 视 化</i>
+            </li>
+            <li>
+                <img src="img/icon2/dhb/left_icon_5@2x.png">
+                <i style="display: none;">算 法 集</i>
+                <div class="sfj" data-type="sfj2">
+                    <ul>
+                        <li>
+                            <p class="sfj_p1" style="cursor:url(img/fk2.ico), auto;"><img
+                                    src="img/icon2/dhb/left_icon_5@2x.png">算法库</p>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">预处理</p>
+                            <div>
+                                <span><img src="img/icon2/y1.fw.png" title="标准化" style="cursor:url(img/fk2.ico), auto;"
+                                           class="on"></span>
+                                <span><img src="img/icon2/y4.fw.png" title="变量离散化"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y5.fw.png" title="多项式特征"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y6.fw.png" title="标签编码"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y7.fw.png" title="主成分分析"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y8.fw.png" title="因子分析"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y9.fw.png" title="独热编码"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y2.fw.png" title="异常值处理"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y11.fw.png" title="哑变量"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/y10.fw.png" title="因子分析SPSS版"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                           
+                                <span><img src="img/icon2/y12.fw.png" title="BoxCox变换"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">监督学习</p>
+                            <div class="clear">
+                                <span><img src="img/icon2/f1.fw.png" title="SVM" style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f2.fw.png" title="神经网络"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f3.fw.png" title="逻辑回归"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f4.fw.png" title="朴素贝叶斯"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f5.fw.png" title="决策树" style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f6.fw.png" title="Adaboost"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f7.fw.png" title="GBDT"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f8.fw.png" title="随机森林"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/f9.fw.png" title="KNN" style="cursor:url(img/fk2.ico), auto;"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">非监督学习</p>
+                            <div>
+                                <span><img src="img/icon2/fj1.fw.png" title="K-Means"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/fj2.fw.png" title="K-Medians"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/fj3.fw.png" title="系统聚类"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/fj4.fw.png" title="关联分析"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/fj5.fw.png" title="对应分析"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">统计分析</p>
+                            <div>
+                                <span><img src="img/icon2/t1.fw.png" title="移动平均"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t2.fw.png" title="简单指数平滑"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t3.fw.png" title="Holt指数平滑"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t4.fw.png" title="Winter指数平滑"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t5.fw.png" title="分解预测"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t6.fw.png" title="线性回归"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t7.fw.png" title="相关系数矩阵"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t8.fw.png" title="KMO和巴特利球形检验"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t9.fw.png" title="描述性统计"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/t10.fw.png" title="卡方独立性检验"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">文本分析</p>
+                            <div>
+                                <span><img src="img/icon2/w1.fw.png" title="词频统计"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                                <span><img src="img/icon2/w2.fw.png" title="TextRank"
+                                           style="cursor:url(img/fk2.ico), auto;"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="sfj_p2">预测</p>
+                            <div>
+                                <!-- <span><img src="img/icon2/m1.fw.png" title="模型结果显示" style="cursor:url(img/fk2.ico), auto;"></span> -->
+                                <span><img src="img/icon2/m3.fw.png" title="预测" style="cursor:url(img/fk2.ico), auto;"></span>
+                                <!-- <span><img src="img/icon2/m2.fw.png" title="预测结果显示" style="cursor:url(img/fk2.ico), auto;"></span> -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <img src="img/icon2/dhb/left_icon_8@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>结果展示</i>
+            </li>
+            <!-- <li>
+                <img src="img/icon2/dhb/left_icon_7@2x.png" style="cursor:url(img/fk2.ico), auto;">
+                <i>数据分组</i>
+            </li> -->
+            <div class="historyScene"><i></i></div>
+        </ul>
+        <canvas id="canvas" style="cursor:url(./img/zq.ico)" width="1065px"></canvas>
+        <!-- 信息弹窗 -->
+        <div class="msgspace">
+            <div class="msg_text"></div>
+            <div class="msg_box"></div>
+            <img src="img/toup.png" style="position:fixed;right:230px;bottom:30px;width:20px;height:20px;margin:5px;">
+            <img src="img/cancle2.png" style="position:fixed;right:230px;bottom:0;width:20px;height:20px;margin:5px;">
+        </div>
+    </div>
+    <div class="rsidebar">
+        <ul>
+            <li class="down_tree" style="width: 25%;" title="纵向排列"><img src="img/zxpl.png"></li>
+            <li class="right_tree" style="width: 25%;" title="横向排列"><img src="img/hxpl.png"></li>
+            <!-- <li class="allDo" title="一键执行"><img src="img/yjzx.png"></li> -->
+            <li class="scenekeep" style="width: 25%;" title="场景保存"><img src="img/cjbc.png"></li>
+            <li class="clearScene" style="width: 25%;" title="清空画布"><img src="img/qkhb.png"></li>
+        </ul>
+        <div class="rside_btm">
+            <div class="rside_content">
+                <p></p>
+                <div class="rside_content_frame">
+                    <div class="rside_cf rside_cf_sj" data-type="sj">
+                        <!-- 文件列表 -->
+                        <div class="file_box movable">
+                            <div class="search">
+                                <input type="text">
+                                <img src="img/下拉.png">
+                            </div>
+                            <div class="table">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <!-- <div class="btn">
+                        <div class="file_sure">确定</div>
+                        <div class="file_look">查看</div>
+                        <div class="file_no">取消</div>
+                    </div> -->
+                    </div>
+                    <div class="rside_cf rside_cf_ku" data-type="ku">
+                        <div class="databaseBox">
+                            <ul>
+                                <li>
+                                    <span>数据库类型：</span><select class="c">
+                                    <option value="MySQL">MySQL</option>
+                                    <option value="SQLserver">SQLserver</option>
+                                    <option value="Postgresql">Postgresql</option>
+                                    <option value="MariaDB">MariaDB</option>
+                                    <option value="Oracle">Oracle</option>
+                                </select>
+                                </li>
+                                <li><span>主机：</span><input type="text" class="v"></li>
+                                <li><span>端口号：</span><input type="text" class="r"></li>
+                                <div>请输入数据库登录信息</div>
+                                <li><span>用户名：</span><input type="text" class="u"></li>
+                                <li><span>密<b></b>码：</span><input type="text" class="p"></li>
+                                <li><span>数据库名称：</span><input type="text" class="n"></li>
+                                <li><span>表名称：</span><input type="text" class="f"></li>
+                            </ul>
+                            <!-- <div class="btn">
+                            <div class="databaseNo">取消</div>
+                            <div class="databaseSure">确定</div>
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="rside_cf rside_cf_up" data-type="up">
+                        <div class="up_xz">
+                            <p>未上传文件</p>
+                            <button>选择数据</button>
+                        </div>
+                    </div>
+                    <div class="rside_cf rside_cf_wk" data-type="wk"></div>
+                    <div class="rside_cf rside_cf_sf" data-type="sf">
+                        <div class="sf_xz">
+                            <p>未选择算法</p>
+                            <button>选择算法</button>
+                        </div>
+                    </div>
+                    <div class="rside_cf rside_cf_sf2" data-type="sf2">
+                        <!-- <div class="sf_cs2">
+                            <div class="set_XY2">
+                                <i>字段设置</i>
+                                <div class="set_X2">
+                                    <span>数值列 <b>*</b></span><button>选择字段</button>
+                                </div>
+                            </div>
+                            <div class="set_parm2">
+                                <i>参数设置</i>
+                                <ul class="parm_box2"></ul>
+                            </div> -->
+                        <!-- <div class="btn">
+                                <div class="set_sure">确定</div>
+                                <div class="set_reset">重置</div>
+                                <div class="set_no">取消</div>
+                            </div> -->
+                        <!-- </div> -->
+                    </div>
+                    <div class="rside_cf rside_cf_ksh" data-type="ksh"></div>
+                    <div class="rside_cf rside_cf_jg" data-type="jg"></div>
+                    <div class="rside_cf rside_cf_sjfz" data-type="sjfz">
+                        <div class="model2_r_titlFoo">
+                            <!-- <div class="model2_r_titl">数据分组</div> -->
+                            <div class="model2_r_bar1_cont model_inputFoo relative rside_cf_sjfz_ul1_inputFoo">
+                                <input type="text"><i></i>
+                                <ul class="rside_cf_sjfz_ul1">
+
+                                </ul>
+                            </div>
+                            <div class="modelr_txt_btnFoo">
+                                <p><span>分组规则</span><i class="model_r_hx_alertBtn">规则设置</i></p>
+                            </div>
+                        </div>
+                        <div class="model2_r_bar1">
+                            <div class="model2_r_bar1_titl">已有规则列表</div>
+                            <div class="model2_r_bar1_cont model_inputFoo relative">
+                                <input type="text"><i></i>
+                                <ul class="yygzList">
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="right_bottom_btn_foo right_bottom_btn_foo2">
+                            <div class="right_bottom_btn" data-type="zx">执行</div>
+                            <div class="right_bottom_btn" data-type="ck">删除</div>
+                            <div class="right_bottom_btn" data-type="cz">用户画像</div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="rside_operation">
+                <div class="rside_btn rside_btn_sj" data-type="sj">
+                    <button class="file_look">查看</button>
+                    <button class="file_reset_sj">重置</button>
+                </div>
+                <div class="rside_btn rside_btn_ku" data-type="ku">
+                    <button class="databaseSure">查看</button>
+                    <button class="file_reset_ku">重置</button>
+                </div>
+                <div class="rside_btn rside_btn_up" data-type="up">
+                    <button class="look_file">查看</button>
+                    <button class="file_reset_up">重置</button>
+                </div>
+                <div class="rside_btn rside_btn_wk" data-type="wk">
+                    <button class="jiag_data">加工</button>
+                    <button class="look_file">查看</button>
+                </div>
+                <div class="rside_btn rside_btn_sf" data-type="sf">
+                    <!-- <button class="set_reset">重置</button> -->
+                    <button class="exe_algo">执行</button>
+                </div>
+                <div class="rside_btn rside_btn_sf2" data-type="sf2">
+                    <!-- <button class="set_reset2">重置</button> -->
+                    <button class="exe_algo2">执行</button>
+                </div>
+                <div class="rside_btn rside_btn_ksh" data-type="ksh">
+                    <button class="ksh_result">可视化</button>
+                </div>
+                <div class="rside_btn rside_btn_jg" data-type="jg">
+                    <button class="look_result1">查看</button>
+                </div>
+                <div class="rside_btn rside_btn_sjfz" data-type="sjfz">
+                    <button class="set_sjfz" data-type="cz">重置</button>
+                    <button class="del_sjfz" data-type="zx">执行</button>
+                    <button class="hua_sjfz" data-type="hx">用户画像</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 场景页 -->
+    <div class="YCCJ">
+        <h2>已存场景预览</h2>
+        <div class="createNew"><img src="img/矩形.png">新建</div>
+        <ul></ul>
+    </div>
+</div>
+<div class="delete_cj_mask">
+    <div class="delete_cj_tk">
+        <div class="delete_cj_tkt">
+            <span>永久删除</span>
+            <img src="img/close5.png" alt="图片">
+        </div>
+        <div class="delete_cj_tkc">
+            <p>删除后，该场景及其搭建的模型将从分析工作台永久删除，这个操作无法撤销，你确定要删除该场景吗？</p>
+        </div>
+        <div class="delete_cj_tkb">
+            <button class="delete_cj_tkb_btnd">永久删除</button>
+            <button class="delete_cj_tkb_btnc">取消</button>
+        </div>
+    </div>
+</div>
+<div class="fun sj_fun">
+    <h2>
+        <span class="title1">删除</span>
+        <span class="title2">选择文件</span>
+        <span class="title3">查看文件</span>
+    </h2>
+    <ul>
+        <li id="li1" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li2" class="select_file"><img src="img/icon_change1.png"></li>
+        <li id="li3" class="file_look"><img src="img/icon_look1.png"></li>
+    </ul>
+</div>
+<div class="fun ku_fun">
+    <h2>
+        <span class="title4">删除</span>
+        <!-- <span class="title5">接入数据</span> -->
+        <span class="title6">查看数据</span>
+    </h2>
+    <ul>
+        <li id="li4" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <!-- <li id="li5" class="input_data"><img src="img/icon_input.png"></li> -->
+        <li id="li6" class="databaseSure"><img src="img/icon_look2.png"></li>
+    </ul>
+</div>
+<div class="fun up_fun">
+    <h2>
+        <span class="title4_1">删除</span>
+        <span class="title5_1">上传数据</span>
+        <span class="title6_1">查看数据</span>
+    </h2>
+    <ul>
+        <li id="li4_1" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li5_1" class="up_data"><img src="img/icon_up.png"></li>
+        <li id="li6_1" class="look_file"><img src="img/icon_look2.png"></li>
+    </ul>
+</div>
+<div class="fun wk_fun">
+    <h2>
+        <span class="title4">删除</span>
+        <span class="title5">数据加工</span>
+        <span class="title6">查看数据</span>
+    </h2>
+    <ul>
+        <li id="li4" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li5" class="jiag_data"><img src="img/icon_jiag.png"></li>
+        <li id="li6" class="look_file"><img src="img/icon_look2.png"></li>
+    </ul>
+</div>
+<div class="fun sf_fun">
+    <h2>
+        <span class="title7">删除</span>
+        <span class="title8">选择算法</span>
+        <!-- <span class="title9">参数配置</span> -->
+        <span class="title12">执行</span>
+    </h2>
+    <ul>
+        <li id="li7" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li8" class="select_algo"><img src="img/icon_change2.png"></li>
+        <!-- <li id="li9" class="set_algo"><img src="img/icon_set.png"></li> -->
+        <li id="li12" class="exe_algo"><img src="img/icon_exe.png"></li>
+    </ul>
+</div>
+<div class="fun sf2_fun">
+    <h2>
+        <span class="title7">删除</span>
+        <!-- <span class="title8">选择算法</span> -->
+        <!-- <span class="title9">参数配置</span> -->
+        <span class="title12">执行</span>
+    </h2>
+    <ul>
+        <li id="li7" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <!-- <li id="li8" class="select_algo"><img src="img/icon_change2.png"></li> -->
+        <!-- <li id="li9" class="set_algo"><img src="img/icon_set.png"></li> -->
+        <li id="li12" class="exe_algo2"><img src="img/icon_exe.png"></li>
+    </ul>
+</div>
+<div class="fun ksh_fun">
+    <h2>
+        <span class="title10">删除</span>
+        <span class="title11">数据可视化</span>
+    </h2>
+    <ul>
+        <li id="li10" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li11" class="ksh_result"><img src="img/icon_look3.png"></li>
+    </ul>
+</div>
+<div class="fun jg_fun">
+    <h2>
+        <span class="title10">删除</span>
+        <span class="title11">查看</span>
+    </h2>
+    <ul>
+        <li id="li10" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <li id="li11" class="look_result1"><img src="img/icon_look3.png"></li>
+    </ul>
+</div>
+<div class="fun sjfz_fun">
+    <h2>
+        <span class="title7">删除</span>
+        <!-- <span class="title8">选择算法</span>
+        <span class="title9">参数配置</span>
+        <span class="title12">执行</span> -->
+    </h2>
+    <ul>
+        <li id="li7" class="li_cancle"><img src="img/icon_cancle.png"></li>
+        <!-- <li id="li8" class="select_algo"><img src="img/icon_change2.png"></li>
+        <li id="li9" class="set_algo"><img src="img/icon_set.png"></li>
+        <li id="li12" class="exe_algo"><img src="img/icon_exe.png"></li> -->
+    </ul>
+</div>
+<!-- 文件详情 -->
+<div class="fileDetail_box">
+    <h2>文件名字.csv</h2>
+    <div class="table">
+        <table></table>
+    </div>
+    <div class="fileDetail_close">关闭</div>
+</div>
+<!-- 远程数据库弹窗 -->
+<!-- <div class="database"></div> -->
+<!-- 数据上传弹窗 -->
+<div class="updata_box">
+    <div class="updaat_center">
+        <!-- <i><img src="img/close.png"></i> -->
+        <!-- <h2>上传文件</h2> -->
+        <div class="uc_top">
+            <p>上传文件</p>
+            <i><img src="img/close.png"></i>
+        </div>
+        <div class="uc_cnt">
+            <p>选择上传文件类型</p>
+            <ul>
+                <li data-type=".xls,.xlsx" class="on">
+                    <img src="img/excel2.png">
+                    <p><i></i>Excel</p>
+                </li>
+                <li data-type=".txt">
+                    <img src="img/txt2.png">
+                    <p><i></i>Text</p>
+                </li>
+                <li data-type=".csv">
+                    <img src="img/csv2.png">
+                    <p><i></i>Csv</p>
+                </li>
+            </ul>
+            <p>选择数据文件的分隔符</p>
+            <ol>
+                <li class="on">
+                    <p><i></i>逗号( , )<input type="radio" value="," readonly></p>
+                </li>
+                <li>
+                    <p><i></i>分号( ; )<input type="radio" value=";" readonly></p>
+                </li>
+                <li>
+                    <p><i></i>竖线( | )<input type="radio" value="|" readonly></p>
+                </li>
+                <li style="width: 100%;">
+                    <p class="zdy_fgf"><i></i>自定义分隔符<input type="text" placeholder="自定义分隔符应少于4个字节" value=""></p>
+                </li>
+            </ol>
+            <p style="display: none;">选择是否包含表头</p>
+            <div style="display: none;">
+                <select class="biaot">
+                    <option value="1">包含表头</option>
+                    <option value="0">不包含表头</option>
+                </select>
+            </div>
+            <div class="uc_cnt_wj">
+                <div class="uc_cnt_wj_sel">选择文件:</div>
+                <div class="sel_file">选择文件<input type="file" accept=".xls,.xlsx"></div>
+                <span>还未选择任何文件</span>
+                <b>建议选择2007及以上版本的excel文件</b>
+            </div>
+            <div class="up_toc" style="visibility: hidden;">
+                <p>添加到:</p>
+                <div class="up_toc_add">
+                    <p>
+                        <input type="text" readonly="true">
+                        <i></i>
+                    </p>
+                    <ul>
+                        <li class="create_file">创建新文件夹</li>
+                    </ul>
+                </div>
+                <div class="create_type">
+                    <input type="text" placeholder="请输入文件夹名">
+                </div>
+            </div>
+        </div>
+        <div class="uc_bottom">
+            <div class="uc_bottom_box">
+                <button>确定</button>
+                <button>取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 数据加工弹窗 -->
+<div class="datawork_box">
+    <div class="dataFile">
+        <h2>我的数据文件</h2>
+        <input type="text" placeholder="关键字搜索">
+        <ul></ul>
+    </div>
+    <div class="dataWork">
+        <div class="workTop">
+            <ul class="workTop_box"></ul>
+            <div class="set_workTop">
+                <p>选择合并方式</p>
+                <dl>
+                    <dd class="on" type="inner">
+                        <img src="img/yuan1.png">
+                        <span>内部</span>
+                    </dd>
+                    <dd type="right">
+                        <img src="img/yuan2.png">
+                        <span>右侧</span>
+                    </dd>
+                    <dd type="left">
+                        <img src="img/yuan3.png">
+                        <span>左侧</span>
+                    </dd>
+                    <dd type="outer">
+                        <img src="img/yuan4.png">
+                        <span>外部</span>
+                    </dd>
+                </dl>
+                <p>选择合并基准列</p>
+                <div class="select set_select1">
+                    <span></span>
+                    <img src="img/down.png">
+                    <div></div>
+                </div>
+                <select class="select set_select2"></select>
+                <div class="btn">
+                    <div class="setwork_sure">确定</div>
+                    <div class="setwork_no">取消</div>
+                </div>
+            </div>
+        </div>
+        <div class="dataworkLine"></div>
+        <div class="table">
+            <img src="img/loading.gif" class="load">
+            <div class="work_table">
+                <table></table>
+            </div>
+            <div class="work_box">
+                <div><span>重命名(M)</span></div>
+                <div><span>删除当前列(C)</span></div>
+                <h3 class="line"><span><p></p></span></h3>
+                <div>
+                    <span>缺失值处理(V)<s></s></span>
+                    <ul style="display:none;">
+                        <li>向前填充</li>
+                        <li>向后填充</li>
+                        <li>均值填充</li>
+                        <li>0值填充</li>
+                    </ul>
+                </div>
+                <div>
+                    <span>列值转换(T)<s></s></span>
+                    <ul>
+                        <li>转整数型</li>
+                        <li>转浮点型</li>
+                        <li>转字符型</li>
+                        <li>转日期型</li>
+                    </ul>
+                </div>
+                <div>
+                    <span>大小写转换(U)<s></s></span>
+                    <ul>
+                        <li>全大写</li>
+                        <li>全小写</li>
+                        <li>首字母大写</li>
+                    </ul>
+                </div>
+                <div>
+                    <span>去除特殊符(D)<s></s></span>
+                    <ul>
+                        <li>去除逗号</li>
+                        <li>去除$符</li>
+                        <li>去除%符</li>
+                    </ul>
+                </div>
+                <h3 class="line"><span><p></p></span></h3>
+                <div><span>归类统计(S)</span></div>
+                <div><span>数据信息(I)</span></div>
+                <h3 class="line"><span><p></p></span></h3>
+                <div>
+                    <span>全局处理(A)<s></s></span>
+                    <ul>
+                        <li>向前填充(A)</li>
+                        <li>向后填充(A)</li>
+                        <li>均值填充(A)</li>
+                        <li>0值填充(A)</li>
+                        <li>去除缺失值</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <div class="work_sure">保存</div>
+            <div class="work_no">重置</div>
+            <div class="work_back" style="display:none;">撤销当前操作</div>
+        </div>
+    </div>
+    <div class="reset_name">
+        <dl>
+            <dt><input type="text"></dt>
+            <dd class="reset_sure">确定</dd>
+            <dd class="reset_no">取消</dd>
+        </dl>
+    </div>
+    <div class="baocun_name">
+        <dl>
+            <h2>请为加工后的数据命名一个新的文件名</h2>
+            <dt><input type="text"></dt>
+            <dd class="baocun_sure">确定</dd>
+            <dd class="baocun_no">取消</dd>
+        </dl>
+    </div>
+    <div class="classify_box">
+        <div>
+            <h2></h2>
+            <div>
+                <table></table>
+            </div>
+            <i><img src="img/close5.png"></i>
+        </div>
+    </div>
+</div>
+<!--数据分组弹窗-->
+<!--用户画像弹窗-->
+<div class="sjfz_box">
+    <div class="sjfz_box_head">
+        <div class="head_userImg">
+            <p></p>
+        </div>
+        <div class="headCont">
+            <h3>选择分析对象</h3>
+            <ul>
+                <!--选择分析对象li区域-->
+                <li class="add_fxdx"><span>＋</span></li>
+            </ul>
+        </div>
+        <div class="head_r">
+            <h3>用户画像</h3>
+            <p></p>
+            <span>PERSONAS</span>
+            <div class="head_btn">
+                <b>生成画像</b>
+            </div>
+        </div>
+    </div>
+    <div class="sjfz_box_d3">
+        <div class="sjfz_box_d3_qiehuan sjfz_box_d3_table">
+            <h3>快速添加</h3>
+            <p class="sjfz_box_d3_table_line"></p>
+            <h4>从下方表格中快速选择您想要分析的标签</h4>
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr></tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="sjfz_box_d3_qiehuan sjfz_box_d3_img hide">
+            <div class="close_d3">&times;</div>
+            <style>
+                #container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    border: 1px solid #E8E8E8;
+                }
+            </style>
+            <div id="container"></div>
+
+        </div>
+    </div>
+    <ul class="sjfz_box_head_slide">
+        <li class="sjfz_box_head_slide1">
+            <span class="sjfz_box_head_slide1_span"><b>消费金额</b><i>&gt;</i></span>
+            <ul class="sjfz_box_head_slide2">
+                <li><span>二级1</li>
+                <li><span>二级1</li>
+                <li><span>二级1</li>
+                <li><span>二级1</li>
+                <li><span>二级1</li>
+            </ul>
+        </li>
+        <li class="sjfz_box_head_slide1">
+            <span class="sjfz_box_head_slide1_span"><b>消费金额</b><i>&gt;</i></span>
+            <ul class="sjfz_box_head_slide2">
+                <li><span>二级2</span></li>
+                <li><span>二级2</span></li>
+                <li><span>二级2</span></li>
+                <li><span>二级2</span></li>
+                <li><span>二级2</span></li>
+            </ul>
+        </li>
+        <li class="sjfz_box_head_slide1">
+            <span class="sjfz_box_head_slide1_span"><b>消费金额</b><i>&gt;</i></span>
+            <ul class="sjfz_box_head_slide2">
+                <li><span>二级3</span></li>
+                <li><span>二级3</span></li>
+                <li><span>二级3</span></li>
+                <li><span>二级3</span></li>
+                <li><span>二级3</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- 算法列表 -->
+<div class="algo_box movable">
+    <div class="algo_box_cnt">
+        <div class="algo_boxcnt_top">
+            <p>选择算法</p>
+            <i class="algo_no"><img src="img/close.png"></i>
+        </div>
+        <div class="algo_boxcnt_cnt">
+            <div class="search">
+                <input type="text" placeholder="请输入关键词、算法标签进行搜索">
+                <img src="img/搜索.png">
+            </div>
+            <ul>
+                <li class="on">平台自有</li>
+                <li>个人自建</li>
+                <li>商用自选</li>
+                <i></i>
+            </ul>
+            <ol>
+                <li class="pingtai" style="display:block;"></li>
+                <li class="geren"></li>
+                <li class="syong"></li>
+            </ol>
+        </div>
+        <div class="algo_boxcnt_btm">
+            <div class="algo_boxcnt_btm_box">
+                <button class="algo_sure">确定</button>
+                <button class="algo_look">查看</button>
+                <button class="algo_no">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 参数配置弹窗 -->
+<!-- <form class="set_configure movable"></form> -->
+<!-- 数值列弹窗 -->
+<div class="filedX_box">
+    <div class="filed_box movable">
+        <div class="filed_box_top">
+            <p>选择字段</p>
+            <i class="filedX_no"><img src="img/close.png"></i>
+        </div>
+        <div class="filed_box_cnt">
+            <div class="search">
+                <input type="text" placeholder="输入关键字搜索列,包含关键字即可">
+                <img src="img/搜索.png">
+            </div>
+            <div class="filed_box_cnt_content">
+                <dl class="filedX_all">
+                    <dt>全部字段</dt>
+                    <div class="filedX_all_ctr"></div>
+                    <!-- <div class="filedX_all_btm">
+                        <div><b></b><span>全选</span></div>
+                        <button class="add">添加</button>
+                    </div> -->
+                </dl>
+                <!-- <ul>
+                    <li class="add"><img src="img/yjt.png"></li>
+                    <li class="remove"><img src="img/zjt.png"></li>
+                </ul> -->
+                <ul class="filedX_ctr">
+                    <li class="add">
+                        <p class="filedX_ctr_btn"><img src="img/向右.png"></p>
+                        <p>全部选择</p>
+                    </li>
+                    <li class="remove">
+                        <p class="filedX_ctr_btn"><img src="img/向左.png"></p>
+                        <p>清空选择</p>
+                    </li>
+                </ul>
+                <dl class="filedX_selc">
+                    <dt>已选字段(<i>空</i>)</dt>
+                    <div class="filedX_all_ctr"></div>
+                    <!-- <div class="filedX_all_btm">
+                        <div></div>
+                        <button class="remove">清空</button>
+                    </div> -->
+                </dl>
+            </div>
+        </div>
+        <div class="filed_box_btm">
+            <div>
+                <button class="filedX_sure">确定</button>
+                <button class="filedX_reset">重置</button>
+                <button class="filedX_no">取消</button>
+            </div>
+        </div>
+        <!-- <div class="btn">
+            <div class="filedX_sure">确定</div>
+
+            <div class="filedX_no">取消</div>
+        </div> -->
+    </div>
+</div>
+<!-- 分组列弹窗 -->
+<div class="filedY_box">
+    <div class="filed_box movable">
+        <div class="filed_box_top">
+            <p>选择字段</p>
+            <i class="filedY_no"><img src="img/close.png"></i>
+        </div>
+        <div class="filed_box_cnt">
+            <div class="search">
+                <input type="text" placeholder="输入关键字搜索列,包含关键字即可">
+                <img src="img/搜索.png">
+            </div>
+            <div class="filed_box_cnt_content">
+                <dl class="filedY_all">
+                    <dt>全部字段</dt>
+                    <div class="filedY_all_ctr"></div>
+                    <!-- <div class="filedY_all_btm">
+                        <div><b></b><span>全选</span></div>
+                        <button class="add">添加</button>
+                    </div> -->
+                </dl>
+                <!-- <ul>
+                        <li class="add"><img src="img/yjt.png"></li>
+                        <li class="remove"><img src="img/zjt.png"></li>
+                    </ul> -->
+                <ul class="filedX_ctr">
+                    <li class="add">
+                        <p class="filedX_ctr_btn"><img src="img/向右.png"></p>
+                        <p>全部选择</p>
+                    </li>
+                    <li class="remove">
+                        <p class="filedX_ctr_btn"><img src="img/向左.png"></p>
+                        <p>清空选择</p>
+                    </li>
+                </ul>
+                <dl class="filedY_selc">
+                    <dt>已选字段(<i>空</i>)</dt>
+                    <div class="filedY_all_ctr"></div>
+                    <!-- <div class="filedY_all_btm">
+                        <div></div>
+                        <button class="remove">清空</button>
+                    </div> -->
+                </dl>
+            </div>
+            <!-- <div class="btn">
+                <div class="filedY_sure">确定</div>
+                <div class="filedY_reset">重置</div>
+                <div class="filedY_no">取消</div>
+            </div> -->
+        </div>
+        <div class="filed_box_btm">
+            <div>
+                <button class="filedY_sure">确定</button>
+                <button class="filedY_reset">重置</button>
+                <button class="filedY_no">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 数值列弹窗_详细算法 -->
+<div class="filedX_box2">
+    <div class="filed_box2 movable">
+        <div class="filed_box_top">
+            <p>选择字段</p>
+            <i class="filedX_no2"><img src="img/close.png"></i>
+        </div>
+        <div class="filed_box_cnt">
+            <div class="search">
+                <input type="text" placeholder="输入关键字搜索列,包含关键字即可">
+                <img src="img/搜索.png">
+            </div>
+            <div class="filed_box_cnt_content">
+                <dl class="filedX_all2">
+                    <dt>全部字段</dt>
+                    <div class="filedX_all_ctr"></div>
+                    <!-- <div class="filedX_all_btm2">
+                        <div><b></b><span>全选</span></div>
+                        <button class="add">添加</button>
+                    </div> -->
+                </dl>
+                <!-- <ul>
+                        <li class="add"><img src="img/yjt.png"></li>
+                        <li class="remove"><img src="img/zjt.png"></li>
+                    </ul> -->
+                <ul class="filedX_ctr">
+                    <li class="add">
+                        <p class="filedX_ctr_btn"><img src="img/向右.png"></p>
+                        <p>全部选择</p>
+                    </li>
+                    <li class="remove">
+                        <p class="filedX_ctr_btn"><img src="img/向左.png"></p>
+                        <p>清空选择</p>
+                    </li>
+                </ul>
+                <dl class="filedX_selc2">
+                    <dt>已选字段(<i>空</i>)</dt>
+                    <div class="filedX_all_ctr"></div>
+                    <!-- <div class="filedX_all_btm2">
+                        <div></div>
+                        <button class="remove">清空</button>
+                    </div> -->
+                </dl>
+            </div>
+        </div>
+        <div class="filed_box_btm">
+            <div>
+                <button class="filedX_sure2">确定</button>
+                <button class="filedX_reset2">重置</button>
+                <button class="filedX_no2">取消</button>
+            </div>
+        </div>
+        <!-- <div class="btn">
+                <div class="filedX_sure">确定</div>
+
+                <div class="filedX_no">取消</div>
+            </div> -->
+    </div>
+</div>
+<!-- 分组列弹窗_详细算法 -->
+<div class="filedY_box2">
+    <div class="filed_box2 movable">
+        <div class="filed_box_top">
+            <p>选择字段</p>
+            <i class="filedY_no2"><img src="img/close.png"></i>
+        </div>
+        <div class="filed_box_cnt">
+            <div class="search">
+                <input type="text" placeholder="输入关键字搜索列,包含关键字即可">
+                <img src="img/搜索.png">
+            </div>
+            <div class="filed_box_cnt_content">
+                <dl class="filedY_all2">
+                    <dt>全部字段</dt>
+                    <div class="filedY_all_ctr"></div>
+                    <!-- <div class="filedY_all_btm2">
+                        <div><b></b><span>全选</span></div>
+                        <button class="add">添加</button>
+                    </div> -->
+                </dl>
+                <!-- <ul>
+                    <li class="add"><img src="img/yjt.png"></li>
+                    <li class="remove"><img src="img/zjt.png"></li>
+                </ul> -->
+                <ul class="filedX_ctr">
+                    <li class="add">
+                        <p class="filedX_ctr_btn"><img src="img/向右.png"></p>
+                        <p>全部选择</p>
+                    </li>
+                    <li class="remove">
+                        <p class="filedX_ctr_btn"><img src="img/向左.png"></p>
+                        <p>清空选择</p>
+                    </li>
+                </ul>
+                <dl class="filedY_selc2">
+                    <dt>已选字段(<i>空</i>)</dt>
+                    <div class="filedY_all_ctr"></div>
+                    <!-- <div class="filedY_all_btm2">
+                        <div></div>
+                        <button class="remove">清空</button>
+                    </div> -->
+                </dl>
+            </div>
+            <!-- <div class="btn">
+                    <div class="filedY_sure">确定</div>
+                    <div class="filedY_reset">重置</div>
+                    <div class="filedY_no">取消</div>
+                </div> -->
+        </div>
+        <div class="filed_box_btm">
+            <div>
+                <button class="filedY_sure2">确定</button>
+                <button class="filedY_reset2">重置</button>
+                <button class="filedY_no2">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 结果展示弹窗 -->
+<div class="result_box">
+    <h2>模型结果展示</h2>
+    <select>
+        <option>训练集</option>
+        <option>测试集</option>
+    </select>
+    <a>下载</a>
+    <ul></ul>
+    <ol></ol>
+</div>
+<!-- 可视化弹窗 -->
+<div class="echars_box">
+    <div class="select_pic">
+        <h2>选择图表</h2>
+        <ul>
+            <!-- <div class="more_pic fl" style="line-height:38px;color:#999;">更多...</div> -->
+            <div class="more_pic fl" style="line-height:38px;color:#999;"></div>
+        </ul>
+        <h3><span style="color:#c6c6e9;">—————————</span></h3>
+        <h3 class="suggest">作图建议</h3>
+        <h4><span></span>：</h4>
+        <p></p>
+    </div>
+    <div class="field_box">
+        <!-- <h3 class="file">数据文件</h3> -->
+        <!-- <h2>还未选择文件</h2><span class="imgspan"></span> -->
+        <!-- <dl class="weidu"> -->
+        <!-- <dl>
+            <dt>字段</dt>
+            <div class="field_search">
+                <input type="text" placeholder="关键字搜索"><img src="img/search.png">
+            </div>
+        </dl> -->
+        <dl class="weidu">
+            <dt class="on">维度</dt>
+        </dl>
+        <dl class="duliang">
+            <dt class="on">度量</dt>
+        </dl>
+        <!-- <div class="dataBox">
+            <h3><img src="img/wjj.png">选择文件<i></i></h3>
+            <ul></ul>
+        </div> -->
+    </div>
+    <div class="makeEchars">
+        <ul>
+            <li>
+                <img src="img/lie.png"> <span>列:</span>
+                <div class="dragBox">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+            <li>
+                <img src="img/hang.png"> <span>行:</span>
+                <div class="dragBox">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+            <li>
+                <span>标 记:</span>
+                <div class="biaoji">
+                    <img src="img/empty.png">
+                    <table>
+                        <tr>
+                            <td><img src="img/颜色.png">颜色</td>
+                            <td><img src="img/角度.png">角度</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <span style="color:#ccc;">筛 选:</span>
+                <div class="dragBox" id="filter" style="background:#f3ecec;border-color:#f3ecec;">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+        </ul>
+        <div class="canvas">
+            <div class="form">
+                <table class="weidu2">
+                    <tr id="weidu2"></tr>
+                </table>
+                <div class="middle_box0" id="middle_box2">
+                    <table></table>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="historyChars">
+            <dl>
+                <dt>历史作图</dt>
+            </dl>
+        </div> -->
+        <div class="btn">
+            <div><img src="img/放大.png">放大</div>
+            <!-- <div><img src="img/保存.png">保存</div> -->
+        </div>
+    </div>
+    <div class="filter_box">
+        <ul>
+            <li class="on"><span>常规</span></li>
+            <li><span>通配符</span></li>
+        </ul>
+        <div class="filter_cg" style="display:block;">
+            <input type="radio" name="cg" id="select" value="select" checked><label for="select">从列表中选择</label></br>
+            <input type="radio" name="cg" id="self" value="self"><label for="self">自定义列表值</label></br>
+            <input type="radio" name="cg" id="all" value="all"><label for="all">使用全部</label>
+            <dl>
+                <dt><input type="text" placeholder="关键字搜索"><img src="img/search.png"></dt>
+                <div>
+                    <dd>安安的点点滴滴多多多多多多多多多多多</dd>
+                    <dd><input type="checkbox" id=""><label></label></dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                </div>
+            </dl>
+            <div class="filter_search" style="display:none;"><input type="text" placeholder="请输入要匹配的文本"></div>
+            <input type="checkbox" id="remove"><label for="remove">排除</label>
+            <div class="filter_sure">确认</div>
+        </div>
+        <div class="filter_tpf">
+            <h2>匹配值</h2>
+            <div class="filter_search"><input type="text" placeholder="请输入要匹配的文本"></div>
+            <input type="radio" name="tpf" id="have" checked><label for="have">包含有</label></br>
+            <input type="radio" name="tpf" id="begin"><label for="begin">起始值</label></br>
+            <input type="radio" name="tpf" id="last"><label for="last">结尾值</label></br>
+            <input type="radio" name="tpf" id="is"><label for="is">精确匹配</label></br>
+            <input type="radio" name="tpf" id="empty"><label for="empty">空值</label></br>
+            <input type="checkbox" id="remove"><label for="remove">排除</label>
+            <div class="filter_sure">确认</div>
+        </div>
+    </div>
+    <div class="filter_box2">
+        <h2>根据范围取值</h2>
+        <select>
+            <option value="little">小于 ( < )</option>
+            <option value="little_aqule">小于等于 ( <= )</option>
+            <option value="aqule">等于 ( = )</option>
+            <option value="big_aqule">大于等于 ( >= )</option>
+            <option value="big">大于 ( > )</option>
+        </select><input type="number">
+        <div class="filter_sure2">确定</div>
+    </div>
+    <div class="bigChart">
+        <i><img src="img/close.png"></i>
+    </div>
+    <div class="holdBox">
+        <div class="holdBox_center">
+            <h2>提示</h2>
+            <i><img src="img/close.png"></i>
+            <h3>请输入文件名</h3>
+            <input type="text">
+            <h4></h4>
+            <div class="btn">
+                <div class="holdSure">确定</div>
+                <div class="holdNo">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="echars_box">
+    <div class="select_pic">
+        <h2>选择图表</h2>
+        <ul>
+            <div class="more_pic fl" style="line-height:38px;color:#999;">更多...</div>
+        </ul>
+        <h3>作图建议<span style="color:#c6c6e9;">——————</span></h3>
+        <h4><span></span>：</h4>
+        <p></p>
+    </div>
+    <div class="field_box">
+        <h2>还未选择文件</h2>
+        <div class="field_search">
+            <input type="text" placeholder="关键字搜索"><img src="img/search.png">
+        </div>
+        <dl class="weidu">
+            <dt class="on">维度</dt>
+        </dl>
+        <dl class="duliang">
+            <dt class="on">度量</dt>
+        </dl>
+    </div>
+    <div class="makeEchars">
+        <ul>
+            <li>
+                <img src="img/lie.png"> <span>列:</span>
+                <div class="dragBox">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+            <li>
+                <img src="img/hang.png"> <span>行:</span>
+                <div class="dragBox">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+            <li>
+                <span>标 记:</span>
+                <div class="biaoji">
+                    <img src="img/empty.png">
+                    <table>
+                        <tr>
+                            <td><img src="img/ys.png">颜色</td>
+                            <td><img src="img/jd.png">角度</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <span style="color:#ccc;">筛 选:</span>
+                <div class="dragBox" id="filter" style="background:#f3ecec;border-color:#f3ecec;">
+                    <img src="img/empty.png">
+                </div>
+            </li>
+        </ul>
+        <div class="canvas">
+            <img src="img/close.png">
+        </div>
+        <div class="historyChars">
+            <dl>
+                <dt>历史作图</dt>
+            </dl>
+        </div>
+        <div class="btn">
+            <div><img src="img/fd.png">放大</div>
+            <div><img src="img/bc.png">保存</div>
+            <div style="width:140px;background:#e6d9d9;"><img src="img/tj.png">添加至数据大盘</div>
+        </div>
+    </div>
+    <div class="filter_box">
+        <ul>
+            <li class="on"><span>常规</span></li>
+            <li><span>通配符</span></li>
+        </ul>
+        <div class="filter_cg" style="display:block;">
+            <input type="radio" name="cg" id="select" value="select" checked><label for="select">从列表中选择</label></br>
+            <input type="radio" name="cg" id="self" value="self"><label for="self">自定义列表值</label></br>
+            <input type="radio" name="cg" id="all" value="all"><label for="all">使用全部</label>
+            <dl>
+                <dt><input type="text" placeholder="关键字搜索"><img src="img/search.png"></dt>
+                <div>
+                    <dd>安安的点点滴滴多多多多多多多多多多多</dd>
+                    <dd><input type="checkbox" id=""><label></label></dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                    <dd>安安</dd>
+                    <dd>不不</dd>
+                    <dd>出错</dd>
+                </div>
+            </dl>
+            <div class="filter_search" style="display:none;"><input type="text" placeholder="请输入要匹配的文本"></div>
+            <input type="checkbox" id="remove"><label for="remove">排除</label>
+            <div class="filter_sure">确认</div>
+        </div>
+        <div class="filter_tpf">
+            <h2>匹配值</h2>
+            <div class="filter_search"><input type="text" placeholder="请输入要匹配的文本"></div>
+            <input type="radio" name="tpf" id="have" checked><label for="have">包含有</label></br>
+            <input type="radio" name="tpf" id="begin"><label for="begin">起始值</label></br>
+            <input type="radio" name="tpf" id="last"><label for="last">结尾值</label></br>
+            <input type="radio" name="tpf" id="is"><label for="is">精确匹配</label></br>
+            <input type="radio" name="tpf" id="empty"><label for="empty">空值</label></br>
+            <input type="checkbox" id="remove"><label for="remove">排除</label>
+            <div class="filter_sure">确认</div>
+        </div>
+    </div>
+    <div class="filter_box2">
+        <h2>根据范围取值</h2>
+        <select>
+            <option value="little">小于 ( < )</option>
+            <option value="little_aqule">小于等于 ( <= )</option>
+            <option value="aqule">等于 ( = )</option>
+            <option value="big_aqule">大于等于 ( >= )</option>
+            <option value="big">大于 ( > )</option>
+        </select><input type="number">
+        <div class="filter_sure2">确定</div>
+    </div>
+    <div class="bigChart">
+        <i><img src="img/close.png"></i>
+    </div>
+    <div class="holdBox">
+        <div class="holdBox_center">
+            <h2>提示</h2>
+            <i><img src="img/close.png"></i>
+            <h3>请输入文件名</h3>
+            <input type="text">
+            <h4></h4>
+            <div class="btn">
+                <div class="holdSure">确定</div>
+                <div class="holdNo">取消</div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="loadingm"><img src="img/loading.gif"></div>
+<!-- 保存弹窗 -->
+<div class="save">
+    <div class="saveBox">
+        <h2>保存场景</h2>
+        <h3>场景信息</h3>
+        <input type="text" placeholder="请输入您要保存的算法名字">
+        <input type="text" placeholder="请输入对该算法的简单描述"></input>
+        <h3>场景缩略图</h3>
+        <div class="sceneImg"><img></div>
+        <span></span>
+        <div class="btn">
+            <div class="saveBoxNo">取消</div>
+            <div class="saveBoxSure">确定</div>
+        </div>
+    </div>
+</div>
+<!-- 保存方式弹窗 -->
+<div class="save_cj_type_mask">
+    <div class="save_cj_type_tk">
+        <div class="save_cj_type_tkt">
+            <span>保存方式</span>
+            <img src="img/close5.png" alt="图片">
+        </div>
+        <div class="save_cj_type_tkc">
+            <p>请选择你想要的保存方式?</p>
+        </div>
+        <div class="save_cj_type_tkb">
+            <button class="save_cj_type_tkb_btnc">覆盖保存</button>
+            <button class="save_cj_type_tkb_btns">另存为</button>
+        </div>
+    </div>
+</div>
+<div class="huaxiangAlertFoo hide">
+    <div class="huaxiangAlert">
+        <div class="huaxiangAlert_titl"><span>设置规则</span><i class="huaxiangAlert_close">×</i></div>
+        <div class="huaxiangAlert_scroll">
+            <div class="huaxiangAlert_name"><span>规则名称</span><input type="text" placholder="用户购物量"></div>
+            <div>
+                <div class="huaxiangAlert_bar">
+                    <div class="huaxiangAlert_bar_titl">
+                        <span>条件名</span>
+                        <div class="huaxiangAlert_inputFoo relative fl">
+                            <input type="text" class="input_tjm"><i></i>
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="huaxiangAlert_dash">
+                        <div class="huaxiangAlert_dash_l"><span>且</span></div>
+                        <div class="huaxiangAlert_dash_r">
+                            <div class="huaxiangAlert_dash_r_li">
+                                <select name="" id="" class="model_select fl morenOption">
+
+                                </select>
+                                <select name="" id="" class="model_select fl model_select_symbol">
+                                    <option value="小于">小于</option>
+                                    <option value="大于">大于</option>
+                                    <option value="等于">等于</option>
+                                    <option value="不等于">不等于</option>
+                                    <option value="包含">包含</option>
+                                    <option value="不包含">不包含</option>
+                                    <option value="介于">介于</option>
+                                </select>
+                                <p class="p1 model_inputFoo fl"><input type="text"></p>
+                                <p class="p2 model_inputFoo model_inputFoo_s fl hide"><input type="text"
+                                                                                             class="fl"><span
+                                        class="fl">-</span><input type="text" class="fl"></p>
+                            </div>
+                            <div class="huaxiangAlert_dash_r__add_li">＋</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="huaxiangAlert_dash_r__add_bar">＋添加</div>
+            </div>
+        </div>
+        <div class="huaxiangAlert_submitFoo">
+            <span class="huaxiangAlert_btn" data-type="no">取消</span>
+            <span class="huaxiangAlert_btn" data-type="ok">确认</span>
+        </div>
+    </div>
+</div>
+<!-- 问题反馈 -->
+<div class="iframe" style="width: 600px; height: 537px">
+    <div class="feedback_top">
+        <p>问题反馈</p>
+        <i class="feedback_no"><img src="img/close.png"></i>
+    </div>
+    <iframe style="width:100%; height:100%" src="./feedback2.html" frameborder="0"></iframe>
+</div>
+<!-- 提示登录 -->
+<div class="msg-box-wraper login-alert shade hide" data-to="back"></div>
+<!-- 提示信息弹窗 -->
+<div class="msg-box-wraper alertMsg hidden">
+    <div class="msg-box">
+        <i class="msg-close">×</i>
+        <h6 class="msg-img"></h6>
+        <h2><span>提示信息</span></h2>
+    </div>
+</div>
+</body>
+
+</html>

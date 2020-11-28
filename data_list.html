@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Datahoop 2.0 数据</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/uploading.new.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/long_range_servers.new.css?v=0.19.11.21.11" />
+    <link rel="stylesheet" type="text/css" href="css/alg_list.css?v=0.19.11.21.11" />
+    <script type="text/javascript" src="js/base64.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/jquery.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav_json.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/uploading_data.new.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/long_range_servers.new.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/data_list.js?v=0.19.11.21.11"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .loadGif.algRankCont_loadGif {
+            height: 70px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            margin: -20px 0 0 -20px;
+            display: none;
+        }
+
+        .loadGif i {
+            width: 40px;
+            height: 40px;
+            background: url(img/icon/loading.gif) no-repeat center;
+            background-size: 100%;
+            display: inline-block;
+        }
+
+        .loadGif p {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        .loadGif.err i {
+            background-image: url(img/icon/war.png);
+        }
+
+        .loadGif.algList_loadGif {
+            height: 70px;
+            text-align: center;
+            display: none;
+        }
+
+        .scroll_div {
+            width: calc(100% - 100px);
+            height: 70px;
+            float: left;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .scroll_begin,
+        .scroll_end,
+        .scroll_begin ul,
+        .scroll_end ul {
+            display: inline;
+        }
+
+        .scroll_div li {
+            line-height: 70px;
+            margin-right: 20px;
+            display: inline;
+        }
+    </style>
+    <style type="text/css">
+        .love_from_nav.active {
+            animation: glow 800ms ease-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                border-color: #393;
+                box-shadow: 0 0 5px rgba(204, 204, 204, .1), inset 0 0 5px rgba(204, 204, 204, .1), 0 0 5px #ccc;
+            }
+            100% {
+                border-color: #6f6;
+                box-shadow: 0 0 40px rgba(204, 204, 204, .8), inset 0 0 30px rgba(204, 204, 204, .8), 0 0 25px #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="indexApp">
+        <div class="indexTop relative">
+            <nav>
+
+            </nav>
+            <div class="listBan">
+                <div class="listBan_txt">人人都会用的数据分析平台</div>
+                <!-- <div class="algCont">
+					<h3>帮助中心</h3>
+					<div>
+						<h4 class="clearfix">
+							<input type="text" placeholder="请输入想要查询的问题" id="algSearch">
+							<p id="algSearchBtn"><i></i></p>
+						</h4>
+					</div>
+				</div> -->
+            </div>
+        </div>
+        <div class="newRecentFoo hide">
+
+            <!-- 			<div class="newRecent">
+				<div>
+					<h3>最新动态<i></i></h3>
+					<p>
+						<span>基于项的协同过滤算法</span>
+						<span>词频统计算法</span>
+						<span>因子分析算法</span>
+					</p>
+				</div>
+
+			</div> -->
+
+            <div class="newRecent" id="index_msg" class="index_msg">
+                <h3>最新动态<i></i></h3>
+                <div id="scroll_div" class="scroll_div">
+                    <div id="scroll_begin" class="scroll_begin">
+                        <ul>
+                            <li><a href="#">基于项的协同过滤算法</a></li>
+                            <li><a href="#">词频统计算法</a></li>
+                            <li><a href="#">因子分析算法</a></li>
+                            <li><a href="#">基于项的协同过滤算法</a></li>
+                            <li><a href="#">词频统计算法</a></li>
+                            <li><a href="#">因子分析算法</a></li>
+                            <li><a href="#">基于项的协同过滤算法</a></li>
+                            <li><a href="#">词频统计算法</a></li>
+                            <li><a href="#">因子分析算法</a></li>
+                        </ul>
+                    </div>
+                    <div id="scroll_end" class="scroll_end"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="algRank hide">
+            <div class="algRankTab">
+                <h3>人工智能为您推荐</h3>
+                <p>
+                    <span class="active" data-name="算法" data-type="sf">算 法</span>
+                    <span data-name="数据" data-type="sj">数 据</span>
+                    <span data-name="模型" data-type="mx">模 型</span>
+                </p>
+            </div>
+            <div class="algRankContFoo relative">
+                <!-- <img src="img/pic/jqr.png" alt=""> -->
+                <ul class="algRankCont">
+
+                </ul>
+                <div class="loadGif algRankCont_loadGif">
+                    <i></i>
+                    <p>加载中</p>
+                </div>
+            </div>
+        </div>
+        <div class="newRecentFoo hide">
+            <div class="newRecent">
+                <div>
+                    <h3>算例排行榜<i></i></h3>
+                    <p class="algo_rank">
+                        <!-- <span>基于项的协同过滤算法</span>
+						<span>词频统计算法</span>
+						<span>因子分析算法</span> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="dataUpLoadFoo">
+            <h2><span>数据上传</span></h2>
+            <div class="dataUpLoad_oper">
+                <p data-type="mydata" class="mr20">我的数据</p>
+                <p data-type="datawork">数据加工</p>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="uploading_box">
+            <div class="uploading_content">
+                <div class="textfile">
+                    <h1>文本文件</h1>
+                    <ul>
+                        <li>
+                            <i class="love_from_nav" data-item="excel"><strong>Excel</strong></i>
+                            <!-- 分隔符 -->
+                            <div class="separator separator0">
+                                <h2>上传Excel文件<b></b></h2>
+                                <h3>1、请选择分隔符：(请确认分隔符小于四个字节)</h3>
+                                <div>
+                                    <ol>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol" checked="checked">
+                                            <p>逗号( , )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol">
+                                            <p>分号( ; )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol">
+                                            <p>竖线( | )</p>
+                                        </li>
+                                        <li class="w" style="margin-bottom: 0;">
+                                            <input type="text" class="ww fl" placeholder="填写分隔符">
+                                        </li>
+                                    </ol>
+                                    <div style="width: 100%;padding-top: 20px;">
+                                        <h3 style="margin-bottom: 20px;">2、选择文件，建议选择2007及以上版本的excel文件</h3>
+                                        <div class="olR">
+                                            <span class="filename filename0"></span>
+                                            <div class="file file0"><img src="img/icon/upfile.png" alt="" style="margin: 7px 5px 0 0;">选择文件
+                                                <input type="file" accept=".xls,.xlsx">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <input type="checkbox" class="duigou1 all" checked>
+                                    <p class="qqq">是否包含表头</p>
+                                    <button class="ok disabled">确定</button>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <i class="love_from_nav" data-item="txt"><strong>Txt</strong></i>
+                            <!-- 分隔符 -->
+                            <div class="separator separator0">
+                                <h2>上传Txt文件<b></b></h2>
+                                <h3>1、请选择分隔符：(请确认分隔符小于四个字节)</h3>
+                                <div>
+                                    <ol>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol0" checked="checked">
+                                            <p>逗号( , )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol0">
+                                            <p>分号( ; )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol0">
+                                            <p>竖线( | )</p>
+                                        </li>
+                                        <li class="w" style="margin-bottom: 0;">
+                                            <input type="text" class="ww fl" placeholder="填写分隔符">
+                                        </li>
+                                    </ol>
+                                    <div style="width: 100%;padding-top: 20px;">
+                                        <h3 style="margin-bottom: 20px;">2、选择文件，建议选择2007及以上版本的Txt文件</h3>
+                                        <div class="olR">
+                                            <span class="filename filename0"></span>
+                                            <div class="file file0"><img src="img/icon/upfile.png" alt="" style="margin: 7px 5px 0 0;">选择文件
+                                                <input type="file" accept=".txt">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <input type="checkbox" class="duigou1 all">
+                                    <p class="qqq">是否包含表头</p>
+                                    <button class="ok disabled">确定</button>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <i class="love_from_nav" data-item="csv"><strong>Csv</strong></i>
+                            <div class="separator separator1">
+                                <h2>上传Csv文件<b></b></h2>
+                                <h3>1、请选择分隔符：(请确认分隔符小于四个字节)</h3>
+                                <div>
+                                    <ol>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2" checked="checked">
+                                            <p>逗号( , )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2">
+                                            <p>分号( ; )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2">
+                                            <p>竖线( | )</p>
+                                        </li>
+                                        <li class="w" style="margin-bottom: 0;">
+                                            <input type="text" class="ww fl" placeholder="填写分隔符">
+                                        </li>
+                                    </ol>
+                                    <div style="width: 100%;padding-top: 20px;">
+                                        <h3 style="margin-bottom: 20px;">2、选择文件，建议选择2007及以上版本的Csv文件</h3>
+                                        <div class="olR">
+                                            <span class="filename filename0"></span>
+                                            <div class="file file0"><img src="img/icon/upfile.png" alt="" style="margin: 7px 5px 0 0;">选择文件
+                                                <input type="file" accept=".csv">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <input type="checkbox" class="duigou1 all" checked="checked">
+                                    <p class="qqq">是否包含表头</p>
+                                    <button class="ok disabled">确定</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="love_from_nav" data-item="csv"><strong>Json</strong></i>
+                            <div class="separator separator1" style="height: 240px">
+                                <h2>上传Json文件<b></b></h2>
+                                <!-- <h3>1、请选择分隔符：(请确认分隔符小于四个字节)</h3> -->
+                                <div>
+                                    <!-- <ol>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2" checked="checked">
+                                            <p>逗号( , )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2">
+                                            <p>分号( ; )</p>
+                                        </li>
+                                        <li>
+                                            <input type="radio" class="duigou" name="symbol2">
+                                            <p>竖线( | )</p>
+                                        </li>
+                                        <li class="w" style="margin-bottom: 0;">
+                                            <input type="text" class="ww fl" placeholder="填写分隔符">
+                                        </li>
+                                    </ol> -->
+                                    <div style="width: 100%;padding-top: 20px;">
+                                        <h3 style="margin-bottom: 20px;">1、选择json文件</h3>
+                                        <div class="olR">
+                                            <span class="filename filename0"></span>
+                                            <div class="file file0"><img src="img/icon/upfile.png" alt="" style="margin: 7px 5px 0 0;">选择文件
+                                                <input type="file" accept=".json">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <!-- <input type="checkbox" class="duigou1 all" checked="checked">
+                                    <p class="qqq">是否包含表头</p> -->
+                                    <button class="ok disabled" style="margin: 0 auto;position: absolute;
+                                    left: 50%;transform: translateX(-50%);">确定</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="more">
+                        <!-- <i></i> -->
+                        <!-- <span>更多</span> -->
+                    </div>
+                </div>
+                <div class="database hide">
+                    <!-- <h1>数据库文件</h1>
+					<ul>
+						<li class="love_from_nav" data-item="mysql">
+							<i></i>
+							<input type="file" accept=".sql" class="sql1">
+						</li>
+						<li class="love_from_nav" data-item="postgresql">
+							<i></i>
+							<input type="file" accept=".sql" class="sql2">
+						</li>
+					</ul>
+					<div class="clear"></div>
+					<div class="more">
+						<i></i>
+						<span>更多</span>
+					</div> -->
+                </div>
+                <div class="long_range_servers_box">
+                    <h1>数据库源</h1>
+                    <dl class="yuanc">
+                        <dd class="love_from_nav" data-item="postgresql">
+                            <img src="img/pic/postgresql.png">
+                            <div>Postgresql</div>
+                        </dd>
+                        <dd class="love_from_nav" data-item="sql server">
+                            <img src="img/pic/sqlserver.png">
+                            <div>SQL Server</div>
+                        </dd>
+                        <dd class="love_from_nav" data-item="mysql">
+                            <img src="img/pic/mysql.png">
+                            <div>MySQL</div>
+                        </dd>
+                        <dd class="love_from_nav" data-item="oracle">
+                            <img src="img/pic/oracle.png">
+                            <div>Oracle</div>
+                        </dd>
+                        <dd class="love_from_nav" data-item="hive">
+                            <img src="img/pic/mariadb.png">
+                            <div>MariaDB</div>
+                        </dd>
+                    </dl>
+                    <div class="mu"></div>
+                    <div class="server_box">
+                        <span class="title"></span>
+                        <i><img src="img/close.png"></i>
+                        <div style="overflow: hidden;">
+                            <div style="width: 50%;float: left;"><span class="inputTip">服务器(V): </span><input type="text" class="middle_input" id="host"></div>
+                            <div style="width: 50%;float: left;"><span class="inputTip">端口号(R): </span><input type="text" class="middle_input" id="port"></div>
+                        </div>
+                        <p>输入服务器登录信息</p>
+                        <div><span class="width80 inputTip">用户名:&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="text" id="username"></div>
+                        <div><span class="width80 inputTip">密&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="text" id="password"></div>
+                        <div><span class="width80 inputTip">数据库名: </span><input type="text" id="name"></div>
+                        <div><span class="width80 inputTip">文件名: </span><input type="text" id="file_name"></div>
+                        <div><span class="width80 inputTip">编码格式: </span><select><option>UTF-8</option><option>UTF-16</option><option>GB2312</option><option>GBK</option><option>ISO-8859-1</option></select></div>
+                        <!---<input type="text" id="coded_format">--->
+                        <div class="login">确定上传</div>
+                    </div>
+                    <div class="result_box">
+                        <h2>选择要上传的表</h2>
+                        <i><img src="img/close.png"></i>
+                        <ul></ul>
+                        <div class="next">下一步</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="alg_list hide">
+            <h2>
+                <p class="modeSwitch">
+                    <i class="active" data-type="min"></i>
+                    <i data-type="max"></i>
+                </p>
+                <!-- <span class="active" data-type="sf">算法集群</span> -->
+                <span data-type="sj" class="fl active" style="margin: 0">数据</span>
+            </h2>
+            <div>
+                <ul class="alg_listTap">
+                    <li data-type="sj" data-name="商业">商 业</li>
+                    <li data-type="sj" data-name="文化">文 化</li>
+                    <li data-type="sj" data-name="环境">环 境</li>
+                    <li data-type="sj" data-name="生活">生 活</li>
+                    <li data-type="sj" data-name="社会">社 会</li>
+                    <li data-type="sj" data-name="体育">体 育</li>
+                    <li data-type="sj" data-name="教育">教 育</li>
+                    <li data-type="sj" data-name="科技">科 技</li>
+                    <li data-type="sj" data-name="时政">时 政</li>
+                </ul>
+                <div class="alg_listSech">
+                    <input type="text">
+                    <i></i>
+
+                </div>
+            </div>
+            <div class="clear">
+                <div class="loadGif algList_loadGif">
+                    <i></i>
+                    <p>加载中</p>
+                </div>
+                <!-- <ul>
+					<li class="fl">名称</li>
+					<li class="fl">名称</li>
+					<li class="fl">名称</li>
+					<li class="fl">名称</li>
+					<li class="fl">名称</li>
+				</ul> -->
+                <ul class="alg_listCont alg_listContMin">
+
+                </ul>
+                <div class="ycl_page alg_listPag">
+                    <div class="pre_page"><img src="img/weizuo.png"></div>
+                    <span class="span left_dian">...</span>
+                    <ul>
+
+                    </ul>
+                    <span class="span last_dian">...</span>
+                    <div class="next_page"><img src="img/weiyou.png"></div>
+                    <p>共 <span class="all_page"></span> 页</p>
+                    <input type="text" class="will_page">
+                    <div class="to_page">跳转</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+
+        </footer>
+
+        <div class="lkw-fshadow"></div>
+        <div class="lkw-msg" style="top: -100%;">
+            <!--alert-message-->
+        </div>
+
+        <div class="fixed_btn">
+
+        </div>
+
+        <a href="javascript:;" class="backtop" title="返回顶部" style="display: block;">返回顶部</a>
+        <div class="lkw-fshadow"></div>
+        <div class="lkw-msg" style="top: -100%;">
+            <!--alert-message-->
+        </div>
+
+        <div class="mu"></div>
+
+        <div class="mu2"></div>
+
+        <div class="msgbox" style="z-index: 1001;">
+            <img src="img/success.png" class="success on">
+            <img src="img/fail.png" class="fail">
+            <span></span>
+        </div>
+
+        <div class="msg-box-wraper login-alert shade hide">
+            <!--登录提示-->
+        </div>
+
+        <div class="msg-box-wraper alertMsg hide">
+            <div class="msg-box">
+                <i class="msg-close">×</i>
+                <h6 class="msg-img"></h6>
+                <h2><span>提示信息</span></h2>
+            </div>
+        </div>
+
+        <!-- 算法购买配置 -->
+        <div class="set_buy">
+            <i><img src="img/close.png"></i>
+            <h2>算法名称：<span></span></h2>
+            <div>成本计算器：(单价/秒：￥<span></span>)</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>样本计算/秒</td>
+                        <td></td>
+                        <td>调用次数</td>
+                        <td></td>
+                        <td>预估千次调用产生的费用</td>
+                    </tr>
+                    <tr class="tr2">
+                        <td class="td miao"></td>
+                        <td class="td2">×</td>
+                        <td class="td ci"></td>
+                        <td class="td2">=</td>
+                        <td class="td jia"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>请选择您需要购买的调用次数</h3>
+            <ul></ul>
+            <button>加入我的收纳</button>
+            <p>共计：<b>0</b>元</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

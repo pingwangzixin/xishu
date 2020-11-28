@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Datahoop 2.0 悬赏</title>
+    <link rel="icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png?v=0.19.11.21.11" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/nav.css?v=0.19.11.21.11">
+    <link rel="stylesheet" type="text/css" href="css/reward_index.css?v=0.19.11.21.11">
+    <script type="text/javascript" src="js/jquery.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/vue.min.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/url_ip.js?v=0.19.11.21.11"></script>
+	<script type="text/javascript" src="js/nav.js?v=0.19.11.21.11"></script>
+    <script type="text/javascript" src="js/reward_index.js?v=0.19.11.21.11"></script>
+</head>
+<body style="padding-top:100px;">
+	<nav></nav>
+	<div class="mu3"></div>
+	<div class="is_quit">
+		<p>亲，退出登录后，平台中的许多功能将会受到限制<br/><span>您确定要离开我们吗？</span></p>
+		<div class="sure_quit">确定退出</div>
+		<div class="no_quit">再想一想</div>
+	</div>
+    <div class="head_bg">
+        <div class="reward_header">
+            <h1>悬赏详情</h1>
+            <div><input type="text" placeholder="请输入要查询的内容"><i class="public_search"><img src="img/sou.png"></i></div>
+        </div>
+    </div>
+    <div class="reward_body" id="reward">
+        <div class="Top" style="display:none;">
+            <div class="fl"><img src="img/reward_algo.png"></div>
+            <div class="fr">
+                <h1>置顶发布</h1>
+                <div class="title"><i>新零售最优配比算法</i><span>发布：<b>王ni玛</b></span></div>
+                <div class="msg">
+                    <div class="fl">需求描述:</div>
+                    <p class="xuqiu fl">TXT格式的电子书是被手机普遍支持的一种文字格式电子书，这种格式的电子书容量大，所占空间小，所以得到广大爱看电子书人们的支持,而更因为这种格式为手机普遍支持的电子书格式，所以也得到广大手机用户的肯定和喜爱。TXT格式的电子书是被手机普遍支持的一种文字格式电子书，这种格式的电子书容量大，所占空间小，所以得到广大爱看电子书人们的支持,而更因为这种格式为手机普遍支持的电子书格式，所以也得到广大手机用户的肯定和喜爱。</p>
+                </div>
+                <div class="msg">
+                    <div class="fl">场景描述:</div>
+                    <p class="scene fl">TXT格式的电子书是被手机普遍支持的一种文字格式电子书，这种格式的电子书容量大，所占空间小，所以得到广大爱看电子书人们的支持,而更因为这种格式为手机普遍支持的电子书格式，所以也得到广大手机用户的肯定和喜爱。TXT格式的电子书是被手机普遍支持的一种文字格式电子书，这种格式的电子书容量大，所占空间小，所以得到广大爱看电子书人们的支持,而更因为这种格式为手机普遍支持的电子书格式，所以也得到广大手机用户的肯定和喜爱。</p>
+                </div>
+                <ul>
+                    <li style="margin-right:20px;">赏金：<span>￥1000</span></li>
+                    <li>投标：<span>0</span></li>
+                    <li style="font-family:'宋体'">查看详情 >></li>
+                </ul>
+            </div>
+        </div>
+        <div class="list Hot">
+            <h1>最热悬赏</h1>
+            <ul>
+                <li v-for="item in hot_list">
+                    <div>
+                        <img :src="url + item.image" class="fl">
+                        <dl class="fl">
+                            <dt>{{item.title}}</dt>
+                            <dd>发布：<span>{{item.username}}</span></dd>
+                            <dd>投标：<span>{{item.count}}</span></dd>
+                        </dl>
+                    </div>
+                    <p>需求描述：<span>{{item.need_describe}}</span><br>场景描述：<span>{{item.scene_describe}}</span></p>
+                    <i>赏金：<span>{{item.money}}</span></i>
+                    <b :data-id="item.id" :data-user="item.user_id" @click="detail($event)">查看详情</b>
+                </li>
+            </ul>
+            <div class="more" @click="more('hot')">查看更多 <span>>></span></div>
+        </div>
+        <div class="list Money">
+            <h1>重金悬赏</h1>
+            <ul>
+                <li v-for="item in money_list">
+                    <div>
+                        <img :src="url + item.image" class="fl">
+                        <dl class="fl">
+                            <dt>{{item.title}}</dt>
+                            <dd>发布：<span>{{item.username}}</span></dd>
+                            <dd>投标：<span>{{item.count}}</span></dd>
+                        </dl>
+                    </div>
+                    <p>需求描述：<span>{{item.need_describe}}</span><br>场景描述：<span>{{item.scene_describe}}</span></p>
+                    <i>赏金：<span>{{item.money}}</span></i>
+                    <b :data-id="item.id" :data-user="item.user_id" @click="detail($event)">查看详情</b>
+                </li>
+            </ul>
+            <div class="more" @click="more('money')">查看更多 <span>>></span></div>
+        </div>
+        <div class="list New">
+            <h1>最新悬赏</h1>
+            <ul>
+                <li v-for="item in new_list">
+                    <div>
+                        <img :src="url + item.image" class="fl">
+                        <dl class="fl">
+                            <dt>{{item.title}}</dt>
+                            <dd>发布：<span>{{item.username}}</span></dd>
+                            <dd>投标：<span>{{item.count}}</span></dd>
+                        </dl>
+                    </div>
+                    <p>需求描述：<span>{{item.need_describe}}</span><br>场景描述：<span>{{item.scene_describe}}</span></p>
+                    <i>赏金：<span>{{item.money}}</span></i>
+                    <b :data-id="item.id" :data-user="item.user_id" @click="detail($event)">查看详情</b>
+                </li>
+            </ul>
+            <div class="more" @click="more('new')">查看更多 <span>>></span></div>
+        </div>
+        <div class="advert"><img src="img/guanggao.png"></div>
+        <div class="list Hot">
+            <h1>我的悬赏</h1>
+            <ul>
+                <li v-for="item in mine_list">
+                    <div>
+                        <img :src="url + item.image" class="fl">
+                        <dl class="fl">
+                            <dt>{{item.title}}</dt>
+                            <dd>发布：<span>{{item.username}}</span></dd>
+                            <dd>投标：<span>{{item.count}}</span></dd>
+                        </dl>
+                    </div>
+                    <p>需求描述：<span>{{item.need_describe}}</span><br>场景描述：<span>{{item.scene_describe}}</span></p>
+                    <i>赏金：<span>{{item.money}}</span></i>
+                    <b :data-id="item.id" :data-user="item.user_id" @click="detail($event)">查看详情</b>
+                </li>
+            </ul>
+            <!-- <div class="fabu"><a href="reward.html"></a></div> -->
+            <div class="more" @click="more('mine')">查看更多 <span>>></span></div>
+        </div>
+    </div>
+</body>
+</html>
